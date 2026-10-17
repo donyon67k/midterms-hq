@@ -1,0 +1,41 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Midterms HQ main window",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    {
+      "identifier": "http:default",
+      "allow": [
+        {
+          "url": "https://*.wikipedia.org/*"
+        },
+        {
+          "url": "https://*.wikimedia.org/*"
+        },
+        {
+          "url": "https://api.open.fec.gov/*"
+        },
+        {
+          "url": "https://tigerweb.geo.census.gov/*"
+        }
+      ]
+    },
+    "notification:default",
+    "opener:default",
+    {
+      "identifier": "opener:allow-open-url",
+      "allow": [
+        {
+          "url": "https://*"
+        }
+      ]
+    },
+    "store:default",
+    "updater:default",
+    "process:allow-restart"
+  ]
+}

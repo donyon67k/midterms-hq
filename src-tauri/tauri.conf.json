@@ -1,0 +1,88 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Midterms HQ",
+  "version": "1.0.0",
+  "identifier": "local.donovan.midtermshq",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5199",
+    "beforeDevCommand": "bash scripts/dev-server.sh",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "MIDTERMS HQ",
+        "width": 1480,
+        "height": 920,
+        "minWidth": 1024,
+        "minHeight": 680,
+        "center": true,
+        "resizable": true,
+        "backgroundColor": "#050510",
+        "dragDropEnabled": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "category": "News",
+    "shortDescription": "2026 midterm election intelligence dashboard",
+    "macOS": {
+      "minimumSystemVersion": "12.0",
+      "signingIdentity": "-",
+      "dmg": {
+        "windowSize": {
+          "width": 560,
+          "height": 340
+        },
+        "appPosition": {
+          "x": 150,
+          "y": 170
+        },
+        "applicationFolderPosition": {
+          "x": 410,
+          "y": 170
+        }
+      }
+    },
+    "publisher": "Midterms HQ",
+    "copyright": "\u00a9 2026 Midterms HQ. Data: Wikipedia (CC BY-SA 4.0), U.S. Census, FEC.",
+    "longDescription": "An 8-bit spy-HQ dashboard for the 2026 U.S. midterm elections: live forecaster ratings, polls, campaign finance, candidate dossiers, district and county maps, and election-night results.",
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "displayLanguageSelector": false,
+        "installerIcon": "icons/icon.ico"
+      },
+      "webviewInstallMode": {
+        "type": "downloadBootstrapper",
+        "silent": true
+      }
+    },
+    "createUpdaterArtifacts": true
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDg2RDg5RUEwMzVDODkwMzQKUldRMGtNZzFvSjdZaHMzTmxLVkZxakRvVDlFU1lDUFVHeUF3NkRMUjdXMGsvU2JzTE9ZQlNBZ1gK",
+      "endpoints": [
+        "https://github.com/donyon67k/midterms-hq/releases/latest/download/latest.json"
+      ],
+      "windows": {
+        "installMode": "passive"
+      }
+    }
+  }
+}

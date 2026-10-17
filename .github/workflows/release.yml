@@ -1,0 +1,82 @@
+# Builds the installers in the cloud (free for public repos) and attaches them
+# to a draft GitHub Release:
+#   macOS   -> Midterms.HQ_<ver>_universal.dmg   (Apple Silicon + Intel)
+#   Windows -> Midterms.HQ_<ver>_x64-setup.exe   (+ .msi)
+#
+# Trigger: push a tag like v1.0.0   (git tag v1.0.0 && git push origin v1.0.0)
+# or run it by hand from the Actions tab.
+#
+# Required repo secret:
+#   TAURI_SIGNING_PRIVATE_KEY  — contents of "CLAUDE HOME/.secrets/midterms-hq-updater.key"
+#                                (signs updates; installed apps auto-update from latest.json)
+#
+# Code signing (optional, add later as repo secrets — builds work without them):
+#   APPLE_CERTIFICATE, APPLE_CERTIFICATE_PASSWORD, APPLE_SIGNING_IDENTITY,
+#   APPLE_ID, APPLE_PASSWORD, APPLE_TEAM_ID          (Apple Developer ID + notarization)
+name: release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: macos-latest
+            args: --target universal-apple-darwin
+            rust_targets: aarch64-apple-darwin,x86_64-apple-darwin
+          - platform: windows-latest
+            args: ''
+            rust_targets: ''
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.rust_targets }}
+
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - run: npm ci
+      - run: npm test
+
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # signs update packages so installed apps can auto-update (required)
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ''
+          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        with:
+          tagName: ${{ github.ref_type == 'tag' && github.ref_name || format('v{0}', '__VERSION__') }}
+          releaseName: 'Midterms HQ v__VERSION__'
+          releaseBody: |
+            **Download:** Mac → the `.dmg` · Windows → the `-setup.exe`
+
+            First launch (until the app is code-signed):
+            - **Mac:** open the .dmg, drag Midterms HQ to Applications, open it. If macOS blocks it, go to System Settings → Privacy & Security → "Open Anyway".
+            - **Windows:** if SmartScreen appears, click "More info" → "Run anyway".
+          releaseDraft: true
+          includeUpdaterJson: true
+          prerelease: false
+          args: ${{ matrix.args }}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" shape-rendering="crispEdges">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#0b2414"/><stop offset="1" stop-color="#050510"/></radialGradient>
+    <pattern id="scan" width="1024" height="16" patternUnits="userSpaceOnUse"><rect width="1024" height="8" fill="#00ff41" opacity="0.05"/></pattern>
+  </defs>
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)"/>
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#scan)"/>
+  <rect x="112" y="112" width="800" height="800" rx="175" fill="none" stroke="#00ff41" stroke-width="16" opacity="0.8"/>
+  <g transform="translate(232 232) scale(40)"><g fill="#00ff41"><rect x="4" y="1" width="6" height="1"/><rect x="2" y="2" width="2" height="1"/><rect x="10" y="2" width="2" height="1"/><rect x="1" y="3" width="1" height="2"/><rect x="12" y="3" width="1" height="2"/><rect x="0" y="5" width="1" height="4"/><rect x="13" y="5" width="1" height="4"/><rect x="1" y="9" width="1" height="2"/><rect x="12" y="9" width="1" height="2"/><rect x="2" y="11" width="2" height="1"/><rect x="10" y="11" width="2" height="1"/><rect x="4" y="12" width="6" height="1"/><rect x="6" y="6" width="2" height="2"/><rect x="7" y="2" width="1" height="4"/></g><rect x="9" y="4" width="1" height="1" fill="#ffd700"/></g>
+</svg>
