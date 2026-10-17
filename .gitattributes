@@ -1,0 +1,5 @@
+# Keep LF everywhere (Windows CI checkouts would otherwise turn test fixtures into CRLF)
+* text=auto eol=lf
+*.png binary
+*.icns binary
+*.ico binary
