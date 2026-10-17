@@ -1,10 +1,11 @@
 {
   "name": "midterms-hq",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "admin": "vite --port 5199 --open /admin.html",
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
@@ -15,6 +16,7 @@
     "app:ship": "bash scripts/ship-app.sh",
     "test": "node --test tests/*.test.mjs",
     "data:counties": "node scripts/build-counties.mjs",
+    "data:cities": "node scripts/build-cities.mjs",
     "app:dmg": "bash scripts/build-installer.sh"
   },
   "dependencies": {

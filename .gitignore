@@ -28,3 +28,6 @@ src-tauri/target
 src-tauri/gen
 release/
 .env.local
+
+# local draft of the live control file (published to the `live` branch by the admin page)
+live/

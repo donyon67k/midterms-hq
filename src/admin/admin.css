@@ -1,0 +1,29 @@
+html, body, #root { overflow: auto; }
+.admin { max-width: 880px; margin: 0 auto; padding: 24px 16px 80px; font-size: 14px; color: var(--text-data); }
+.admin h1 { font-size: 22px; color: var(--green); margin-bottom: 8px; }
+.admin h2 { font-size: 11px; color: var(--green); margin-bottom: 6px; }
+.admin header { position: sticky; top: 0; background: var(--bg-primary); padding-bottom: 12px; border-bottom: 2px solid var(--green-dim); z-index: 2; }
+.admin section { margin-top: 24px; padding: 12px 14px; border: 1px solid var(--border-dim); }
+.admin .dim { color: var(--text-dim); font-size: 12px; margin-bottom: 8px; }
+.admin .bar, .admin .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px; }
+.admin .row b { color: #fff; font-weight: normal; }
+.admin input, .admin select, .admin textarea {
+  font-family: var(--font-mono); font-size: 14px; color: #fff; background: #03080f;
+  border: 1px solid var(--green-dim); padding: 7px 9px;
+}
+.admin input:not([type]), .admin textarea { flex: 1; min-width: 220px; width: 100%; }
+.admin input.bad { border-color: var(--rep); }
+.admin input:focus, .admin select:focus, .admin textarea:focus { outline: none; border-color: var(--green); }
+.admin button, .admin .bar a {
+  font-family: var(--font-pixel); font-size: 9px; padding: 9px 12px; color: var(--green);
+  border: 1px solid var(--green); background: rgba(0, 255, 65, 0.05); text-decoration: none; cursor: pointer;
+}
+.admin button:disabled { opacity: 0.4; cursor: default; }
+.admin button.go { background: var(--green); color: var(--bg-primary); }
+.admin .status { margin-top: 10px; white-space: pre-wrap; font-family: var(--font-mono); font-size: 12px; color: var(--amber); }
+.admin .list { padding-left: 22px; }
+.admin .list li { display: flex; justify-content: space-between; gap: 8px; padding: 3px 0; }
+.admin .list li span { display: flex; gap: 4px; }
+.admin .list button, .admin .row button { padding: 6px 9px; }
+.admin .note { margin-bottom: 10px; }
+.admin label { display: flex; gap: 4px; align-items: center; font-size: 12px; }

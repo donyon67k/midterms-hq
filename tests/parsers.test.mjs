@@ -4,7 +4,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { parseGovernorPage, parseHousePage, parseSenatePage } from '../src/data/wiki.js'
+import { parseGovernorPage, parseHousePage, parseRacePage, parseSenatePage } from '../src/data/wiki.js'
 import { healthCheck } from '../src/data/live.js'
 
 const fixture = (name) => readFileSync(new URL(`./fixtures/${name}`, import.meta.url), 'utf8')
@@ -52,4 +52,45 @@ test('2026 snapshot: complete and clean', () => {
   // open seats are flagged, never shown as a person named "None (new seat)"
   assert.ok(seats.every((r) => !/new seat|^vacant/i.test(r.incumbent.name || '')))
   assert.ok(seats.some((r) => r.incumbent.vacancy === 'new'))
+})
+
+test('Governor race page: primaries, runoff, debates, endorsements', () => {
+  const r = parseRacePage(fixture('governor-race-ga-2026.wiki'))
+  assert.deepEqual(r.primaries.map((p) => p.title), ['Republican primary', 'Republican primary runoff', 'Democratic primary'])
+  const dem = r.primaries[2].cands[0]
+  assert.deepEqual([dem.name, dem.pct, dem.votes, dem.won], ['Keisha Lance Bottoms', 56.2, 608264, true])
+  assert.equal(r.primaries[1].cands[0].name, 'Rick Jackson')
+  assert.equal(r.debates.length, 1)
+  assert.match(r.debates[0].url, /youtube/)
+  assert.deepEqual(r.endorsements.map((e) => e.title), ['Rick Jackson (R)', 'Keisha Lance Bottoms (D)'])
+  assert.ok(r.background.length > 100)
+})
+
+test('Governor race page: running mates from {{ubl}} tickets', () => {
+  const r = parseRacePage(fixture('governor-race-oh-2026.wiki'))
+  assert.equal(r.runningMates['Amy Acton'], 'David Pepper')
+  assert.equal(r.runningMates['Vivek Ramaswamy'], 'Rob McColley')
+  assert.equal(r.primaries[0].cands[0].name, 'Vivek Ramaswamy')
+})
+
+test('Control file: junk is dropped, overrides layer onto races', async () => {
+  const { sanitizeControl, applyControl } = await import('../src/data/control.js')
+  const ctl = sanitizeControl({
+    banner: { text: 'Polls closing', link: 'javascript:alert(1)' },
+    ratings: { 'senate-GA': 'Lean R', 'senate-TX': 'Very Safe' },
+    results: { 'senate-GA': { winner: 'Jon Ossoff', party: 'D', pct: 51.2 }, 'senate-NC': { winner: 'X', party: 'Q' } },
+    notes: { 'senate-GA': 'Watch the suburbs', bad: 42 },
+    featured: ['senate-GA', 7],
+    minVersion: 'latest',
+  })
+  assert.equal(ctl.banner.link, null)
+  assert.deepEqual(Object.keys(ctl.ratings), ['senate-GA'])
+  assert.deepEqual(Object.keys(ctl.results), ['senate-GA'])
+  assert.deepEqual(ctl.featured, ['senate-GA'])
+  assert.equal(ctl.minVersion, null)
+  const ga = applyControl(snapshot, ctl).senate.GA
+  assert.equal(ga.consensus.label, 'Lean R')
+  assert.equal(ga.result.winner, 'Jon Ossoff')
+  assert.equal(ga.hqNote, 'Watch the suburbs')
+  assert.equal(applyControl(snapshot, sanitizeControl(null)).senate.GA, snapshot.senate.GA)
 })

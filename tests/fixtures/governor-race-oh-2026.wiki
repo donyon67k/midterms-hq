@@ -1,0 +1,1211 @@
+{{short description|none}}
+<!-- "none" is preferred when the title alone is adequate; see [[WP:SDNONE]] -->
+{{for|related races|2026 United States gubernatorial elections}}
+{{Use American English|date=January 2025}}
+{{Use mdy dates|date=October 2026}}
+{{Infobox election
+| election_name = 2026 Ohio gubernatorial election
+| country = Ohio
+| type = presidential
+| ongoing = yes
+| previous_election = 2022 Ohio gubernatorial election
+| previous_year = 2022
+| next_election = 2030 Ohio gubernatorial election
+| next_year = ''2030''
+| election_date = November 3, 2026
+| image1 = Vivek Ramaswamy (55241367373) (cropped).jpg
+| nominee1 = [[Vivek Ramaswamy]]
+| party1 = Ohio Republican Party
+| running_mate1 = [[Rob McColley]]
+| popular_vote1 = 
+| percentage1 = 
+| image2 = Amy Acton 05 (cropped).jpg
+| nominee2 = [[Amy Acton]]
+| party2 = Ohio Democratic Party
+| running_mate2 = [[David Pepper (politician)|David Pepper]]
+| popular_vote2 = 
+| percentage2 = 
+| map_image = 
+| map_size = 
+| map_caption = 
+| title = [[Governor of Ohio|Governor]]
+| before_election = [[Mike DeWine]]
+| before_party = Ohio Republican Party
+| after_election = 
+| after_party = 
+}}
+
+{{ElectionsOH}}
+
+The '''2026 Ohio gubernatorial election''' will be held on November 3, 2026, to elect the [[governor of Ohio]]. [[Republican Party (United States)|Republican]] entrepreneur [[Vivek Ramaswamy]] and [[Democratic Party (United States)|Democratic]] former state health director [[Amy Acton]] are the nominees for their respective parties. Republican incumbent governor [[Mike DeWine]] is ineligible to seek a third consecutive term.
+
+[[Primary elections]] were held on May 5, with Ramaswamy defeating minimal opposition for the Republican nomination and Acton running unopposed for the Democratic nomination. If elected, Ramaswamy would become Ohio's first [[Indian American]] and billionaire<ref>{{cite web |last1=Coolidge |first1=Alexander |title=Ramaswamy could be Ohio's first billionaire governor |url=https://www.cincinnati.com/story/news/politics/2026/07/21/vivek-ramaswamy-net-worth-how-he-made-his-billions/90593373007/ |website=[[The Cincinnati Enquirer]] |date=July 21, 2026 |access-date=July 21, 2026}}</ref> governor and the first [[Hindus|Hindu]] governor in the United States.{{Efn|[[Bobby Jindal]] was raised Hindu but converted to Christianity as a teenager.}} Acton would be the first woman elected to the office{{Efn|Acton would be the first woman elected governor, but would be the second to serve in the position. [[Nancy Hollister]] served as governor, albeit for only 11 days, following [[George Voinovich]]'s resignation to join the [[U.S. Senate]]. To date, Hollister is the only woman to have served as governor of Ohio.}} and the state's first Jewish governor.
+
+Democrats have not won a gubernatorial election in Ohio since [[2006 Ohio gubernatorial election|2006]]. The winner of the election will be inaugurated on January 11, 2027.<ref>{{cite web |last1=Muhammad |first1=Mariyam |title=Can Mike DeWine run for Ohio governor in 2026? What to know about term limits |url=https://www.dispatch.com/story/news/2024/11/08/mike-dewine-run-ohio-governor-2026-state-law-says/76111304007/ |website=[[The Columbus Dispatch]] |access-date=February 5, 2025}}</ref>
+
+==Republican primary==
+
+===Candidates===
+====Nominee====
+*[[Vivek Ramaswamy]], founder of [[Roivant Sciences]] and [[Vivek Ramaswamy 2024 presidential campaign|candidate]] for president in [[2024 United States presidential election|2024]]<ref name="ent">{{Cite web |date=February 24, 2025 |title=Entrepreneur Vivek Ramaswamy joins the Ohio governor's race |url=https://apnews.com/article/election-2026-ohio-governor-vivek-ramaswamy-799f0c8bdb38c43cd1c2846411867711 |access-date=February 24, 2025 |website=[[The Associated Press]] |language=en|last1=Smyth |first1=Julie Carr}}</ref>
+** Running mate: [[Rob McColley]], [[president of the Ohio Senate]] (2025–present) from the [[Ohio's 1st senatorial district|1st district]] (2017–present)<ref>{{cite web |last1=Gomez |first1=Henry J. |title=Vivek Ramaswamy taps Ohio state Senate president as his running mate in campaign for governor |url=https://www.nbcnews.com/politics/2026-election/vivek-ramaswamy-taps-ohio-state-senate-president-running-mate-campaign-rcna252681 |access-date=January 6, 2026 |work=[[NBC News]] |date=January 6, 2026}}</ref>
+
+====Eliminated in primary====
+*Casey Putsch, automotive entrepreneur<ref name="dug">{{cite web |last1=Dugger |first1=Victoria |title=Tiffin native announces run for Ohio governor, challenges Vivek Ramaswamy |url=https://www.wkyc.com/article/news/politics/casey-putsch-ohio-governor-race/512-e93e5cc2-acfe-43a4-89e4-c7eaa736a9d2 |access-date=December 16, 2025 |work=[[WKYC]] |date=December 16, 2025}}</ref>
+** Running mate: Kim Georgeton, [[Warren County, Ohio|Warren County]] central committee member<ref>{{cite web |title=Perrysburg gubernatorial candidate announces pick for lieutenant governor |url=https://www.toledoblade.com/local/politics/2026/01/12/perrysburg-gubernatorial-candidate-announces-pick-for-lieutenant-governor/stories/20260112077 |website=[[The Blade (Toledo, Ohio)|The Blade]] |date=January 12, 2026 |access-date=January 12, 2026}}</ref>
+
+====Disqualified====
+*Heather Hill, business owner, and former president of the [[Morgan County, Ohio|Morgan County]] School Board<ref>{{cite web |title=Heather Hill (Ohio) |url=https://ballotpedia.org/Heather_Hill_(Ohio) |website=Ballotpedia |access-date=January 11, 2026 |language=en}}</ref><ref name="auto4">{{cite web |last1=Balmert |first1=Jessie |title=Running mate quits, voiding votes for Ohio governor candidate |url=https://www.cincinnati.com/story/news/politics/elections/2026/04/22/ohio-governor-candidates-votes-wont-count-after-running-mate-resigns/89739260007/ |access-date=April 23, 2026 |work=[[Cincinnati.com]] |date=April 22, 2026}}</ref>
+**Running mate: Stuart Moats, business owner and reality TV star<ref>{{cite web |title=Hill announces reality TV actor Stuart Moats as running mate |url=https://spectrumnews1.com/oh/columbus/news/2026/01/08/hill-moats-ohio-governors-race |website=SpectrumNews1 |access-date=January 11, 2026 |language=en}}</ref>
+
+====Not on ballot====
+*Renea Turner<ref>{{Cite web |last=Henry |first=Megan |date=February 21, 2026 |title=Ohio certifies candidates for primary ballot|url=https://www.newsandsentinel.com/news/local-news/2026/02/ohio-certifies-candidates-for-primary-ballot/|access-date=April 25, 2026 |website=The Parkersburg News and Sentinel|language=en-US}}</ref>
+** Running mate: Jalen Turner<ref>{{Cite web |last=Henry |first=Megan |date=February 6, 2026 |title=Here are the candidates running for Ohio statewide office in 2026 |url=https://ohiocapitaljournal.com/2026/02/06/here-are-the-candidates-running-for-ohio-statewide-office-in-2026/ |access-date=April 25, 2026 |website=Ohio Capital Journal |language=en-US}}</ref>
+
+====Withdrawn====
+*Matt Mayer, former director of the [[The Buckeye Institute|Buckeye Institute]]<ref>{{cite web|last=Pelzer|first=Jeremy|title=Ohio Republican bows out of 2026 governor's race|url=https://www.cleveland.com/news/2023/09/ohio-republican-bows-out-of-2026-governors-race.html|publisher=[[The Plain Dealer]]|date=September 25, 2023|access-date=October 2, 2023}}</ref>
+*[[Robert Sprague]], [[Ohio State Treasurer|Ohio state treasurer]] (2019–present) ''(endorsed Ramaswamy, [[2026 Ohio Secretary of State election|running for secretary of state]])''<ref name="SpragueWithdraw">{{cite news |last1=Balmert |first1=Jessie |last2=BeMiller |first2=Haley |title=Ohio Treasurer Robert Sprague to run for secretary of state, backs Ramaswamy for governor |url=https://www.dispatch.com/story/news/politics/2025/02/05/robert-sprague-mounts-bid-for-secretary-of-state-backs-vivek-ramaswamy/77973361007/ |access-date=February 5, 2025 |work=[[The Columbus Dispatch]] |date=February 5, 2025}}</ref>
+*[[Dave Yost]], [[Ohio Attorney General|Ohio attorney general]] (2019–2026) and former [[Ohio State Auditor|Ohio state auditor]] (2011–2019)<ref name=YostOut>{{cite news |last1=Jordan |first1=Felicia |title='I am simply not that important' {{!}} AG Dave Yost suspends his campaign to be Ohio's governor |url=https://www.wcpo.com/news/state/state-ohio/ag-dave-yost-suspends-his-campaign-to-be-ohios-governor |access-date=May 16, 2025 |work=[[WCPO-TV]] |date=May 16, 2025 |language=en}}</ref>
+
+==== Declined ====
+*[[Warren Davidson]], [[United States House of Representatives|U.S. representative]] from [[Ohio's 8th congressional district]] (2016–present) ''(endorsed Ramaswamy,<ref>{{Cite news |last1=Nir|first1=David |last2=Singer|first2=Jeff |title=Morning Digest, sponsored by Liftoff Campaigns: The Democratic plan to win back one of Pennsylvania's swingiest counties |url=https://www.the-downballot.com/i/159091459/oh-gov |access-date=August 1, 2025 |date=March 17, 2025 |website=The Downballot |quote=Republican Rep. Warren Davidson has endorsed businessman Vivek Ramaswamy's campaign for Ohio's open governorship, ending what little talk there'd been that the congressman might seek the post. |language=en}}</ref> [[2026 United States House of Representatives elections in Ohio#District 8|running for re-election]])''
+*[[Jon Husted]], [[United States Senate|U.S. senator]] (2025–present), former [[Lieutenant Governor of Ohio|lieutenant governor]] (2019–2025), and candidate for governor in [[2018 Ohio gubernatorial election|2018]]<ref>{{Cite news |last1=Strauss|first1=Daniel |last2=Krieg|first2=Gregory |date=January 17, 2025 |title=DeWine expected to name state Ohio Lt. Gov. Jon Husted to fill Senate seat vacated by Vance |url=https://www.cnn.com/2025/01/17/politics/jon-husted-ohio-senate-seat/index.html |access-date=January 17, 2025 |work=[[CNN]] |quote=Pressed on his previous interest in being governor, and the decision to accept the appointment to the US Senate, Husted said he 'switched my mind probably 100 times.' |language=en}}</ref> (''endorsed Ramaswamy,<ref>{{cite web |last1=Jacobs |first1=Chris |date=September 22, 2025 |title=U.S. Sen. Husted, gubernatorial candidate Ramaswamy endorse each other in key Ohio races |url=https://www.wlwt.com/article/jon-husted-vivek-ramaswamy-ohio-announcement-governor/68008469 |access-date=September 22, 2025 |website=[[WLWT]]}}</ref> [[2026 United States Senate special election in Ohio|running for U.S. Senate]])<ref>{{cite news |last1=Smyth |first1=Julie Carr |date=April 9, 2025 |title=Trump favorite Jon Husted launches 2026 U.S. Senate campaign in Ohio |url=https://apnews.com/article/election-2025-senate-ohio-husted-trump-67ed124a587b2265aaba273b2d5f3f43 |access-date=April 9, 2025 |work=[[Associated Press]] |language=en}}</ref>''
+*[[Frank LaRose]], [[Ohio Secretary of State|Ohio secretary of state]] (2019–present) and candidate for U.S. Senate in [[2024 United States Senate election in Ohio|2024]] ''(endorsed Ramaswamy,<ref name=shake>{{cite web |last1=Trau |first1=Morgan |title=From gridiron to Statehouse: Could Jim Tressel shake up the Buckeye State's 2026 gubernatorial election |url=https://www.news5cleveland.com/news/politics/ohio-politics/from-gridiron-to-statehouse-could-jim-tressel-shake-up-the-buckeye-states-2026-gubernatorial-election |website=[[WEWS-TV]] |date=February 12, 2025 |access-date=February 12, 2025}}</ref> [[2026 Ohio State Auditor election|running for state auditor]])<ref>{{cite news |last1=Smyth |first1=Julie Carr |title=Ohio elections chief Frank LaRose will run for state auditor in 2026 |url=https://apnews.com/article/election-2026-ohio-auditor-54a413311573b76428127ce6ba30a8fc |access-date=February 6, 2025 |work=[[Associated Press]] |date=February 6, 2025 |language=en}}</ref>''
+*[[Jim Tressel]], [[lieutenant governor of Ohio]] (2025–present)<ref>{{Cite web |last1=BeMiller |first1=Haley |last2=Balmert |first2=Jessie |date=September 19, 2025 |title=Ohio Lt. Gov. Jim Tressel won't run for governor in 2026, clearing GOP field for Ramaswamy |url=https://www.dispatch.com/story/news/politics/2025/09/19/jim-tressel-wont-run-for-ohio-governor-in-2026/86242220007/ |access-date=September 19, 2025 |website=[[The Columbus Dispatch]] |language=en-US}}</ref>
+
+===Endorsements===
+{{Endorsements box
+|title= Casey Putsch 
+|list=
+;Organizations
+*[[Michael Rectenwald#Anti-Zionist America PAC|Anti-Zionist America PAC]]<ref>{{Cite web |last=Valdez |first=Jonah |date=February 19, 2026|title=A New PAC Wants to Counter Israel's Influence. It Also Welcomes Hitler Apologists. |url=https://theintercept.com/2026/02/19/israel-palestine-antisemitism-azapac-michael-rectenwald/}}</ref>
+}}
+{{Endorsements box
+|title=Vivek Ramaswamy
+|colwidth=60
+|list=
+;Executive branch officials
+*[[Elon Musk]], former [[Senior Advisor to the President of the United States|senior advisor to the president]] (2025) ''(Independent)''<ref name="TrumpMusk"/>
+*[[Donald Trump]], [[president of the United States]] (2017–2021, 2025–present)<ref name="TrumpMusk">{{cite news|last=Ashleigh|first=Fields|title=Trump, Musk endorse Ramaswamy in Ohio governor's race|url=https://thehill.com/homenews/state-watch/5162524-donald-trump-elon-musk-vivek-ramaswamy-endorsement-ohio-governor-bid/ |website=[[The Hill (newspaper)|The Hill]] |date=February 25, 2025|access-date=February 26, 2025}}</ref>
+*[[JD Vance]], [[vice president of the United States]] (2025–present)<ref>{{cite news |last= Henninger|first= Taylor|title=Vivek Ramaswamy to make campaign stop in Ashland on Friday |url=https://www.ashlandsource.com/2025/10/16/vivek-ramaswamy-to-make-campaign-stop-in-ashland-on-friday/ |newspaper=Ashland Source |date=October 16, 2025 |access-date=October 17, 2025}}</ref>
+
+;U.S. senators
+*[[Marsha Blackburn]], [[Tennessee]] (2019–present)<ref name ="Senators">{{cite news |last1=Wright |first1=David |title=Vivek Ramaswamy announces 2026 bid for Ohio governor |url=https://edition.cnn.com/2025/02/24/politics/vivek-ramaswamy-2026-bid-ohio-governor/index.html |access-date=April 9, 2025 |work=CNN |date=February 24, 2025}}</ref>
+*[[Jon Husted]], [[Ohio]] (2025–present)<ref>{{cite news |last1=Chenoweth |first1=Doral |title=Ohio Sen. Jon Husted and gubernatorial candidate Vivek Ramaswamy endorse each other |url=https://www.dispatch.com/picture-gallery/news/2025/09/22/husted-ramaswamy-endorse-each-other/86303138007/ |website=[[The Columbus Dispatch]] |date=September 22, 2025 |access-date=September 23, 2025}}</ref>
+*[[Mike Lee]], [[Utah]] (2011–present)<ref name ="Senators" />
+*[[Cynthia Lummis]], [[Wyoming]] (2021–present)<ref name ="Cynthia">{{cite news |last1=Sinha |first1=Anand |title= Senator Lummis backs Vivek Ramaswamy for Ohio governor |url= https://www.thestreet.com/crypto/policy/senator-lummis-backs-fellow-pro-bitcoin-ramaswamy-for-ohio-governor |access-date=April 23, 2025 |work=TheStreet |date=April 23, 2025}}</ref>
+*[[Bernie Moreno]], [[Ohio]] (2025–present)<ref name="Moreno">{{cite news |last1=Kasler |first1=Karen |title=Moreno, state senators add to list of endorsements for Ramaswamy over Yost for Ohio governor |url=https://www.wyso.org/2025-03-24/moreno-state-senators-add-to-list-of-endorsements-for-ramaswamy-over-yost-for-ohio-governor |access-date=March 24, 2025 |work=[[WYSO]] |date=March 24, 2025 |language=en}}</ref>
+*[[Rob Portman]], former [[Ohio]] (2011–2023)<ref name="Taft"/>
+*[[Rick Scott]], [[Florida]] (2019–present)<ref name ="Senators" />
+
+;U.S. representatives
+*[[Warren Davidson]], {{ushr|OH|8|OH-08}} (2016–present)<ref>{{cite news |title=Vivek Ramaswamy scores another endorsement in bid for Ohio governor |first=Jack |last=Windsor |work=The Ohio Press Network |date=March 14, 2025 |access-date=March 14, 2025 |url=https://www.theohiopressnetwork.com/news/ohio/vivek-ramaswamy-scores-another-endorsement-in-bid-for-ohio-governor/article_6e1b18f2-00e2-11f0-a690-abfb65197e25.html}}</ref>
+*[[Jim Jordan]], {{ushr|OH|4|OH-04}} (2007–present)<ref name="jim jordan">{{cite news |last1=Nir|first1=David |last2=Singer|first2=Jeff |title=Morning Digest: Democrats land first major candidate for top 2026 Senate race |url=https://www.the-downballot.com/p/morning-digest-democrats-land-first-cff |access-date=April 9, 2025 |work=The Downballot |date=April 9, 2025 |language=en}}</ref>
+*[[Greg Lopez]], former {{ushr|CO|4|CO-04}} (2024–2025) ''(Independent)''<ref name="vivek campaign launch">{{cite news|url=https://www.cincinnati.com/story/news/politics/2025/02/24/ramaswamy-launches-campaign-in-cincinnati-area/79100957007/|title=Vivek Ramaswamy running for Ohio governor. Wants to end income, property taxes|date=February 24, 2025|access-date=August 1, 2025|last1=Wartman|first1=Scott|last2=Balmert|first2=Jessie|work=[[The Cincinnati Enquirer]] }}</ref>{{efn|Lopez was a Republican throughout his tenure in Congress and at the time of his endorsement. He left the party in 2026.}} 
+*[[Max Miller (politician)|Max Miller]], {{ushr|OH|7|OH-07}} (2023–present)<ref>{{cite web |last1=Lucas |first1=Bonnie |title=Vivek Ramaswamy touts endorsement from GOP congressman accused of holding gun to ex-wife's head, injuring toddler |url=https://tiffinohio.net/posts/ramaswamy-touts-endorsement-from-max-miller-abuse-allegations/ |website=TiffinOhio.net |date=August 2, 2026 |access-date=August 2, 2026}}</ref>
+*[[Michael Rulli]], {{ushr|OH|6|OH-06}} (2024–present)<ref name="jim jordan" />
+*[[David Taylor (Ohio politician)|David Taylor]], {{ushr|OH|2|OH-02}} (2025–present)<ref name="CincyEndorsements">{{cite news |last1=Moorwood |first1=Victoria |title=Yost or Ramaswamy for governor? Where Cincinnati-area Republicans stand |url=https://www.cincinnati.com/story/news/2025/04/07/dave-yost-vivek-ramaswamy-governor-southwest-ohio-report/82671617007/ |access-date=April 7, 2025 |work=[[The Cincinnati Enquirer]] |date=April 7, 2025}}</ref>
+*[[Brad Wenstrup]], former {{ushr|OH|2|OH-02}} (2013–2025)<ref name="Taft"/>
+
+;Statewide officials
+*[[Mike DeWine]], [[governor of Ohio]] (2019–present)<ref name="auto3">{{cite news|last=Balmert|first=Jessie|title= Ohio Gov. Mike DeWine endorses Vivek Ramaswamy as successor |url= https://www.dispatch.com/story/news/politics/2026/01/07/gov-mike-dewine-endorses-vivek-ramaswamy-for-governor/87395826007/ |website=[[The Columbus Dispatch]] |date=January 7, 2026|access-date=January 7, 2026}}</ref> ''(previously declined to endorse)''<ref name="auto5">{{cite news|url=https://ohiocapitaljournal.com/2025/12/17/ohio-gop-endorsed-vivek-ramaswamy-in-may-ag-dave-yost-still-says-it-was-the-wrong-choice/|title=Ohio GOP endorsed Vivek Ramaswamy in May. AG Dave Yost still says it was the wrong choice.|work=Ohio Capital Journal|date=December 17, 2025|access-date=September 8, 2026}}</ref>
+*[[Patrick F. Fischer]], justice of the [[Supreme Court of Ohio|Ohio Supreme Court]] (2017–present)<ref name="CincinattiHall">{{cite news|url=https://www.cincinnati.com/story/news/politics/2025/08/04/vivek-ramaswamy-town-hall-to-discuss-crime-in-wake-of-cincinnati-brawl/85477950007/|title=Cultural reawakening' part of reducing crime, Ramaswamy tells packed Cincinnati town hall|date=August 5, 2025|access-date=November 11, 2025 |last1=Wartman |first1=Scott |last2=Coolidge |first2=Alexander |last3=Goldman |first3=Annie |last4=Newberry |first4=Patricia Gallagher|publisher=[[The Cincinnati Enquirer]]}}</ref>
+*[[Frank LaRose]], [[Ohio Secretary of State|secretary of state of Ohio]] (2019–present)<ref name=shake/>
+*[[Robert Sprague]], [[Ohio State Treasurer|state treasurer of Ohio]] (2019–present)<ref name="SpragueWithdraw" />
+*[[Bob Taft]], former [[governor of Ohio]] (1999–2007)<ref name="Taft">{{cite web |last1=Tobias |first1=Andrew |last2=Zuckerman |first2=Jake |title=This former Ohio governor backed Sherrod Brown in 2024. Now he's with Vivek Ramaswamy |url=https://signalohio.org/this-former-ohio-governor-backed-sherrod-brown-in-2024-now-hes-with-vivek-ramaswamy/ |website=Signal Ohio |date=November 13, 2025 |access-date=November 13, 2025}}</ref>
+
+;State legislators
+*[[Theresa Gavarone]], majority leader of the [[Ohio Senate]] (2025–present) from the [[Ohio's 2nd senatorial district|2nd district]] (2019–present)<ref name="Moreno" />
+*[[Matt Huffman]], [[List of speakers of the Ohio House of Representatives|speaker of the Ohio House of Representatives]] (2025–present) from the 78th district (2025–present)<ref>{{cite news |title=Matt Huffman: Ramaswamy has the right approaches |url=https://www.limaohio.com/columns/2025/07/15/matt-huffman-ramaswamy-has-the-right-approaches/ |website=[[Lima News]] |last1=Huffman|first1=Matt |date=July 15, 2025 |access-date=July 16, 2025}}</ref>
+*[[Rob McColley]], [[List of presidents of the Ohio Senate|president of the Ohio senate]] (2025–present) from the [[Ohio's 1st senatorial district|1st district]] (2017–present)<ref>{{cite news |title=To the editor: Ohio needs bold leadership; that's why I'm for Ramaswamy |first=Rob |last=McColley |work=[[Toledo Blade]] |date=March 14, 2025 |access-date=March 14, 2025 |url=https://www.toledoblade.com/opinion/letters-to-the-editor/2025/03/14/to-editor-ohio-needs-bold-leadership-ramaswamy/stories/20250314005}}</ref>
+*[[Bill Reineke]], president pro tempore of the [[Ohio Senate]] (2025–present) from the [[Ohio's 26th senatorial district|26th district]] (2021–present)<ref name=Moreno/>
+* 12 other current [[Ohio Senate|state senators]]{{efn|
+*[[Andrew Brenner]], [[Ohio Senate|state senator]] from the [[Ohio's 19th senatorial district|19th district]] (2019–present)<ref name=Moreno/>
+*[[Brian Chavez]], [[Ohio Senate|state senator]] from the [[Ohio's 30th senatorial district|30th district]] (2023–present)<ref name=Moreno/>
+*[[Jerry Cirino]], [[Ohio Senate|state senator]] from the [[Ohio's 18th senatorial district|18th district]] (2021–present)<ref name=Moreno/>
+*[[Steve Huffman (Ohio politician)|Steve Huffman]], [[Ohio Senate|state senator]] from the [[Ohio's 5th senatorial district|5th district]] (2019–present)<ref name=Moreno/>
+*[[Terry Johnson (Ohio politician)|Terry Johnson]], [[Ohio Senate|state senator]] from the [[Ohio's 14th senatorial district|14th district]] (2019–present)<ref name=Moreno/>
+*[[George Lang (Ohio politician)|George Lang]], [[Ohio Senate|state senator]] from the [[Ohio's 4th senatorial district|4th district]] (2021–present)<ref name=Moreno/>
+*[[Susan Manchester]], [[Ohio Senate|state senator]] from the [[Ohio's 12th senatorial district|12th district]] (2025–present)<ref name=Moreno/>
+*[[Sandra O'Brien]], [[Ohio Senate|state senator]] from the [[Ohio's 32nd senatorial district|32nd district]] (2021–present)<ref name=Moreno/>
+*[[Michele Reynolds]], [[Ohio Senate|state senator]] from the [[Ohio's 3rd senatorial district|3rd district]] (2023–present)<ref name=Moreno/>
+*[[Kristina Roegner]], [[Ohio Senate|state senator]] from the [[Ohio's 27th senatorial district|27th district]] (2019–present)<ref name=Moreno/>
+*[[Jane Timken]], [[Ohio Senate|state senator]] from the [[Ohio's 29th senatorial district|29th district]] (2025–present)<ref name=Moreno/>
+*[[Shane Wilkin]], [[Ohio Senate|state senator]] from the [[Ohio's 17th senatorial district|17th district]] (2023–present)<ref name=Moreno/>
+}}
+* 7 other current [[Ohio House of Representatives|state representatives]]{{efn|
+*[[Rodney Creech]], [[Ohio House of Representatives|state representative]] from the 40th district (2023–present)<ref>{{cite news |title=Plummer announces Senate bid, setting up primary race between feuding lawmakers |url=https://www.daytondailynews.com/local/plummer-announces-senate-bid-setting-up-primary-race-between-feuding-lawmakers/YPBBGA3VMFDO5PVEFE5KQ4ZMQY/ |website=Dayton Daily News |last1=Kreemer |first1=Avrey |date=July 15, 2025 |access-date=November 21, 2025}}</ref>
+*[[Kellie Deeter]], [[Ohio House of Representatives|state representative]] from the 54th district (2024–present)<ref name="VivekVisitsCity">{{cite news|last=Burton|first=Terry|title= Vivek visits city for fundraiser |url= https://sanduskyregister.com/news/640535/vivek-visits-city-for-fundraiser/ |website= Sandusky Register |date=October 6, 2025|access-date=November 30, 2025}}</ref>
+*[[Ron Ferguson (politician)|Ron Ferguson]], [[Ohio House of Representatives|state representative]] from the 96th district (2021–present)<ref>{{cite news |title=Vivek Ramaswamy is the outsider Ohio needs to take on the establishment |url=https://www.cincinnati.com/story/opinion/contributors/2025/03/03/ohio-vivek-ramaswamy-governor-election-vote-reform/81095335007/ |website=[[The Cincinnati Enquirer]] |last1=Ferguson |first1=Ron |date=March 3, 2025 |access-date=November 21, 2025}}</ref>
+*[[Tex Fischer]], [[Ohio House of Representatives|state representative]] from the 59th district (2024–present)<ref name="YostTrumpHopes">{{cite news |last1=Skolnick |first1=David |title= Yost hopes for nod from Trump |url= https://www.vindy.com/news/local-news/2025/04/yost-hopes-for-nod-from-trump/ |access-date=November 30, 2025 |work=The Vindicator |date=April 22, 2025 |language=en}}</ref>
+*[[Adam Mathews]], [[Ohio House of Representatives|state representative]] from the 56th district (2023–present)<ref>{{cite news |last1=Moorwood |first1=Victoria |date=April 7, 2025 |title=Yost or Ramaswamy for governor? Where Cincinnati-area Republicans stand |url=https://www.cincinnati.com/story/news/2025/04/07/dave-yost-vivek-ramaswamy-governor-southwest-ohio-report/82671617007/ |access-date=November 30, 2025 |work=[[The Cincinnati Enquirer]]}}</ref>
+*[[Nick Santucci]], [[Ohio House of Representatives|state representative]] from the 64th district (2023–present)<ref name=YostTrumpHopes/>
+*[[Josh Williams (politician)|Josh Williams]], [[Ohio House of Representatives|state representative]] from the 44th district (2023–present)<ref>{{cite news |title= Vivek Ramaswamy aims for Ohio |url=https://toledofreepress.com/vivek-ramaswamy-aims-to-run-ohio/ |website=Toledo Free Press |last1=Zenner |first1=Stephen |date=February 26, 2025 |access-date=November 21, 2025}}</ref>
+}}
+
+;Local officials
+*65 Ohio county sheriffs<ref>{{cite news |title=65 Ohio sheriffs endorse Vivek Ramaswamy for governor |url=https://abc6onyourside.com/news/local/ohio-sheriffs-endorse-vivek-ramaswamy-2026-governor-campaign-law-enforcement-support-republican-candidate-election-politics |website=ABC6 On Your Side |date=September 24, 2025 |access-date=May 1, 2026}}</ref>
+*[[Matt Miller (mayor)|Matt Miller]], mayor of [[Ashland, Ohio]]<ref>{{cite news |title=Republican Vivek Ramaswamy caps gubernatorial kickoff from Strongsville bar |url=https://signalcleveland.org/republican-vivek-ramaswamy-caps-gubernatorial-kickoff-from-strongsville-bar/ |work=Signal Cleveland |date=February 26, 2025 |access-date=May 1, 2026}}</ref> 
+*[[Christopher Smitherman]], former vice mayor of [[Cincinnati]] (2018–2022) ''(Independent)''<ref name="CincinattiHall"/>
+
+;Party branches
+*[[Columbiana County, Ohio|Columbiana County Republican Party]]<ref>{{cite web |url=https://ballotpedia.org/Vivek_Ramaswamy |title=Vivek Ramaswamy |website=Ballotpedia |access-date=May 1, 2026}}</ref>
+*[[Pickaway County, Ohio|Pickaway County Republican Party]]<ref>{{cite news |title=Pickaway County Republicans Announce Primary Endorsements |url=https://www.sciotopost.com/pickaway-county-republicans-announce-primary-endorsements/ |access-date=March 28, 2026 |work=Scioto Post |date=March 28, 2026 |language=en}}</ref>
+*[[Warren County, Ohio|Warren County Republican Party]]<ref>{{cite web |title=Warren County Republican Party Officially Endorses Ramaswamy for Governor and Husted for U.S. Senate in 2026 |url=https://warrencountypost.com/g/lebanon-oh/n/332054/warren-county-republican-party-officially-endorses-ramaswamy-governor-and |website=Warren County Post |date=August 19, 2025 |access-date=January 8, 2026 |language=en}}</ref>
+
+;Party officials
+*[[Alex Triantafilou]], chairman of the [[Ohio Republican Party]] (2023–present)<ref>{{cite news|url=https://www.daytondailynews.com/local/ohio-gop-endorses-vivek-ramaswamy-for-governor/MJ4LMAQAWRAPTF6UKU7HR6HQXE/|title=Vivek Ramaswamy bid for governor boosted by early Ohio GOP endorsement|date=May 9, 2025|access-date=August 1, 2025|last1=Kreemer|first1=Avery|work=[[Dayton Daily News]]}}</ref>
+
+;Individuals
+*[[Aaron Baer]], president of the [[Center for Christian Virtue]]<ref>{{cite news |title=Leader of influential Christian group endorses Vivek Ramaswamy for Ohio governor |url=https://www.wosu.org/2025-03-06/leader-of-influential-christian-group-endorses-hindu-candidate-for-ohio-governor |website=WOSU |date=March 6, 2025 |access-date=May 3, 2026}}</ref>
+*[[Steve Hilton]], former [[Fox News]] host and candidate in the [[2026 California gubernatorial election]]<ref name="vivek campaign launch" />
+*[[Charlie Kirk]], co-founder of [[Turning Point USA]] ''(deceased)''<ref name="kirk and jr">{{cite news|url=https://www.usatoday.com/story/news/politics/2025/04/25/who-has-and-hasnt-endorsed-in-the-ohio-governors-race/83247059007/|title=Trump is backing Ramaswamy for Ohio governor. Who has endorsed in race to replace DeWine?|date=April 25, 2025|access-date=August 1, 2025 |last1=Balmert|first1=Jessie|publisher=[[USA Today]]|work=[[Columbus Dispatch]]}}</ref>
+*[[Anthony Muñoz]], former professional [[American football|football]] player<ref name="CincinattiHall"/>
+*[[Jake Paul]], professional boxer and YouTuber<ref>{{cite news|url=https://www.livemint.com/news/us-news/donald-trump-says-vivek-ramaswamy-ohio-governor-bid-special-elon-musk-wish-good-luck-full-endorsement-jake-paul-us-news-11740457883876.html|title=Vivek Ramaswamy's Ohio Governor bid: Elon Musk wishes 'good luck, full endorsement', Donald Trump says 'SPECIAL'|date=February 25, 2025|access-date=August 1, 2025|last1=Fernandes|first1=Jocelyn|work=mint }}</ref>
+*[[Donald Trump Jr.]], businessman and son of president [[Donald Trump]]<ref name="kirk and jr" />
+
+;Political parties
+*[[Ohio Republican Party]]<ref>{{cite news |last1=Donaldson |first1=Sarah |title=Ramaswamy secures Ohio GOP's early endorsement for governor in contested 2026 race |url=https://www.wvxu.org/2025-05-09/ramaswamy-gets-ohio-gops-early-endorsement-for-governor-in-contested-2026-primary |access-date=May 9, 2025 |work=[[WVXU]] |date=May 9, 2025 |language=en}}</ref>
+
+;Organizations
+*[[Armenian National Committee of America]]<ref>{{cite web|url=https://anca.org/press-release/armenian-national-committee-of-america-endorses-vivek-ramaswamy-for-ohio-governor/|title=Armenian National Committee of America Endorses Vivek Ramaswamy for Ohio Governor|date=May 7, 2025|access-date=May 7, 2025}}</ref>
+*Buckeye Firearms Association<ref>{{cite web |title=BFA-PAC endorses Vivek Ramaswamy for Ohio governor |url=https://www.buckeyefirearms.org/bfa-pac-endorses-vivek-ramaswamy-ohio-governor |website=Buckeye Firearms Association |date=April 15, 2026 |access-date=April 15, 2026}}</ref>
+*[[Construction Employers Association]]<ref>{{cite news|last=Pelzer|first=Jeremy|title=State pushes safety grants for Ohio schools amid rising gun violence: Capitol Letter|url=https://www.cleveland.com/open/2025/09/state-pushes-safety-grants-for-ohio-schools-amid-rising-gun-violence-capitol-letter.html|work=Cleveland.com|publisher=Cleveland.com|date=September 4, 2025|access-date=September 23, 2025}}</ref>
+*[[Political Victory Fund|NRA Political Victory Fund]]<ref>{{cite web |title=NRA Political Victory Fund endorses Vivek Ramaswamy, Republican for governor |url=https://chroniclet.com/news/463050/nra-political-victory-fund-endorses-vivek-ramaswamy-republican-for-governor/ |website=Chronicle Telegram |date=April 10, 2026 |access-date=April 11, 2026}}</ref>
+*[[Ohio Cattlemen's Association]]<ref>{{cite news|last=Pelzer|first=Jeremy|title=Ohio lawmakers pass glut of bills during marathon 'mini lame duck' session: Capitol Letter|url=https://www.cleveland.com/open/2025/11/ohio-lawmakers-pass-glut-of-bills-during-marathon-mini-lame-duck-session-capitol-letter.html|work=Cleveland.com|publisher=Cleveland.com|date=November 20, 2025|access-date=December 18, 2025}}</ref>
+*Ohio Chamber of Commerce<ref>{{cite web |last1=Ehrmantraut |first1=Amanda |title=Ohio Chamber of Commerce PAC Endorses Vivek Ramaswamy in the 2026 Gubernatorial Primary Election |url=https://ohio-chamber-prod.s3.us-east-1.amazonaws.com/uploads/FOR%20IMMEDIATE%20(1).pdf |website=Ohio Chamber of Commerce |access-date=July 24, 2025}}</ref>
+*[[Ohio Corn & Wheat]]<ref>{{cite web |author=<!-- not stated --> |title=Ohio Grain Farmers Make Historic Endorsement of Vivek Ramaswamy |url=https://ohiocornandwheat.org/uncategorized/ohio-grain-farmers-make-historic-endorsement-of-vivek-ramaswamy/ |website=Ohio Corn & Wheat |access-date=September 2, 2025|date=August 12, 2025}}</ref>
+*Ohio Real Estate Investors Association<ref>{{cite web|url=https://www.oreia.com/Page.aspx?ID=OREIAPAC|title=OREIA Political Action Committee (OREIAPAC)|website=Ohio Real Estate Investors Association|access-date=November 8, 2025}}</ref>
+*[[Ohio Right to Life]]<ref>{{cite news |url=https://irontontribune.com/2026/03/24/ohio-right-to-life-political-action-committee-announces-endorsements/ |title=Ohio Right to Life political action committee announces endorsements |publisher=The Ironton Tribune |date=March 24, 2026 |access-date=May 1, 2026}}</ref><ref>{{cite web |url=https://ohiolife.org/ohio-right-to-life-pac-announces-statewide-primary-candidate-endorsements/ |title=Ohio Right to Life PAC Announces Statewide Primary Candidate Endorsements |publisher=Ohio Right to Life |date=March 11, 2026 |access-date=May 1, 2026}}</ref>
+*Right to Life Action Coalition of Ohio<ref>{{cite web|url=https://rtlaohio.org/news/rtlaco-endorses-vivek-ramaswamy-1|title=RTLACO Endorses Vivek Ramaswamy|website=Right to Life Action Coalition of Ohio|access-date=December 18, 2025}}</ref>
+*[[Veterans for America First]]<ref>{{cite web|url=https://vfaf.us/vivek-ramaswamy-accepts-vfaf-veterans-for-america-first-endorsement-for-ohio-governer|title=Vivek Ramaswamy accepts VFAF Veterans for America First endorsement for Ohio Governer|website=Veterans for America First|date=April 2, 2025|access-date=November 8, 2025}}</ref>
+
+;Labor unions
+*[[Affiliated Construction Trades of Ohio]]<ref name="Ramaswamy gets sixth union endorsement">{{cite news |last1=Skolnick |first1=David |title=Ramaswamy gets sixth union endorsement |url=https://www.vindy.com/news/latest-news/2025/09/ramaswamy-gets-sixth-union-endorsement/ |website=[[The Vindicator (Ohio newspaper)|The Vindicator]] |date=September 24, 2025 |access-date=September 25, 2025}}</ref>
+*[[Central Midwest Regional Council of Carpenters]]<ref>{{cite news|url= https://www.nbcnews.com/politics/trump-administration/live-blog/trump-walkinshaw-congress-epstein-poland-ukraine-gaza-live-updates-rcna229667/rcrd88034?canonicalCard=true |title= Republican Vivek Ramaswamy lands more labor support in Ohio governor bid |work=[[NBC News]] |publisher=NBCUniversal|date=September 10, 2025 |access-date=September 7, 2025}}</ref>
+*[[Cleveland Building and Construction Trades Council]]<ref>{{cite news |title=CBCTC endorses Ramaswamy for governor |url=https://www.portsmouth-dailytimes.com/news/cnctc-endorses-ramaswamy-for-governor/article_05ac56ec-b754-46e4-97c2-3e5ef6bcdbef.html |website=[[Portsmouth Daily Times]] |date=September 2, 2025 |access-date=September 3, 2025}}</ref>
+*[[International Union of Operating Engineers Local 18]]<ref>{{cite web |last1=Millard |first1=Katie |title=Who are unions backing in 2026? Ramaswamy, Brown draw early support |url=https://www.nbc4i.com/news/your-local-election-hq/who-are-unions-backing-in-2026-ramaswamy-brown-draw-early-support/ |website=[[WCMH-TV]] |date=September 23, 2025 |access-date=October 11, 2025}}</ref>
+*[[Northwest Ohio Building and Construction Trades Council]]<ref>{{cite news |title=Northwest Ohio trades council endorses Ramaswamy for governor |url=https://www.toledoblade.com/local/politics/2025/08/29/northwest-ohio-trades-council-endorses-ramaswamy-for-governor/stories/20250829108 |website=[[The Blade (Toledo, Ohio)|The Blade]] |date=August 29, 2025 |access-date=August 29, 2025}}</ref>
+*[[Ohio Conference of Teamsters]]<ref>{{cite news |last1=Talcott |first1=Shelby |title=Ramaswamy nabs Teamsters endorsement |url=https://www.semafor.com/article/09/19/2025/vivek-ramaswamy-nabs-teamsters-endorsement-for-ohio-governor |website=[[Semafor (website)|Semafor]] |date=September 19, 2025 |access-date=September 19, 2025}}</ref>
+*[[Ohio Laborers' District Council]]<ref>{{cite news |last=Staff |first=WSYX |title=Ohio Laborers' District Council endorses Vivek Ramaswamy for Ohio governor in 2026 |url=https://abc6onyourside.com/news/local/ohio-laborers-district-council-endorses-vivek-ramaswamy-governor-2026-union-trade-workers-liuna-construction-iupoe-teamsters-plumbers-carpenters-midwest-building-trades-cbctc-nwobctc-millwrights-economic-freedom-limited-government-ohio-politics-election- |website=[[WSXY]] |date=November 9, 2025 |access-date=November 12, 2025}}</ref>
+*[[Ohio State Association of Plumbers and Pipefitters]]<ref>{{cite news |url=https://www.dispatch.com/story/news/politics/2025/09/18/unions-split-support-between-vivek-ramaswamy-sherrod-brown-as-tim-ryan-mulls-gov-bid/86203438007/ |title=Some Ohio unions split endorsements between Ramaswamy, Brown |publisher=The Columbus Dispatch |date=September 18, 2025 |access-date=September 22, 2025}}</ref>
+}}
+{{Endorsements box
+|title=Dave Yost ''(withdrawn)''
+|list=
+;Statewide officials
+*[[Ken Blackwell]], former [[Ohio Secretary of State|Ohio secretary of state]] (1999–2007)<ref>{{cite news|url=https://www.crescent-news.com/news/blackwell-endorses-yost-in-ohio-governors-race/article_cfc34688-e32d-11ef-86ec-4fb0f1552a7b.html|title=Blackwell endorses Yost in Ohio governor's race|work=The Crescent-News|date=February 5, 2025|access-date=February 24, 2025}}</ref>
+
+;Local officials
+*30 county sheriffs<ref name=sheriffs>{{cite news|url=https://www.cleveland.com/news/2025/03/ohio-sheriffs-line-up-behind-ramaswamy-in-ohio-governors-race.html|title=Ramaswamy, Yost split Ohio sheriff endorsements in 2026 Republican governor's race|work=[[Cleveland.com]]|date=March 3, 2025|access-date=August 1, 2025|last1=Pelzer|first1=Jeremy}}</ref>
+}}
+{{Endorsements box
+|title=Declined to endorse
+|colwidth=
+|width=
+|list=
+;Statewide officials
+* <s>[[Mike DeWine]], [[governor of Ohio]] (2019–present)</s><ref name="auto5"/> ''(later endorsed Ramaswamy)''<ref name="auto3"/>
+*[[Dave Yost]], [[Ohio Attorney General|attorney general of Ohio]] (2019–2026)<ref name="auto5" />
+}}
+
+===Polling===
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- valign=bottom
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name=Key|Key:<br />A – all adults<br />RV – registered voters<br />LV – likely voters<br />V – unclear}}
+! Margin<br />of error
+! style="width:60px"| Heather<br />Hill
+! style="width:60px"| Casey<br />Putsch
+! style="width:60px"| Vivek<br />Ramaswamy
+! style="width:60px"| Dave<br />Yost
+! Other
+! Undecided
+|-
+|- style="background:lightyellow;"
+| style="border-right-style:hidden; background:lightyellow;" |
+| style="border-right-style:hidden; " |April 25, 2026
+| colspan="8" | Hill gets disqualified<ref name="auto4"/>
+|-
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSUApr2026"/>
+|April 7–14, 2026
+|383 (LV)
+|–
+|12%
+|12%
+|{{party shading/Republican}}|'''76%'''
+|–
+|- style="background:lightyellow;"
+| style="border-right-style:hidden; background:lightyellow;" |
+| style="border-right-style:hidden; " |December 16, 2025
+| colspan="8" | Putsch declares his candidacy<ref name="dug"/>
+|-
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSUOct2025">{{Cite web|url=https://scholarworks.bgsu.edu/cgi/viewcontent.cgi?article=1013&amp;context=depo|title=Survey of 800 Ohio Registered voters, October 2025 Toplines|first1=Robert|last1= Alexander|first2=Melissa|last2=Miller|first3=David J.|last3=Jackson|first4=Joshua|last4=Boston|website=Bowling Green State University|date=October 19, 2025|access-date=October 19, 2025}}</ref>
+|October 2–14, 2025
+|287 (RV)
+|–
+|18%
+|–
+|{{party shading/Republican}}|'''76%'''
+|–
+|6%{{efn|"Someone else" with 6%}}
+|–
+|-
+|- style="background:lightyellow;"
+| style="border-right-style:hidden; background:lightyellow;" |
+| style="border-right-style:hidden; " |May 16, 2025
+| colspan="8" | Yost withdraws his candidacy<ref name=YostOut/>
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSU0013TABS"/><ref name="BGSU0013TOPLINES"/>
+|April 18–24, 2025
+|359 (RV)
+|–
+|4%
+|–
+|{{party shading/Republican}}|'''64%'''
+|13%
+|19%{{efn|Jim Tressel with 14%}}
+|–
+|-
+|style="text-align:left;" rowspan="3"|Fabrizio, Lee & Associates (R)<ref>{{Cite web|url=https://cdn.sanity.io/files/ifn0l6bs/production/1aa7e3eef0c6857efa12c4ac95cebc264ce7f212.pdf|title=Trump Endorsement Propels Ramaswamy Into Huge Lead in Republican Primary|first1=Tony|last1=Fabrizio|first2=David|last2=Lee|first3=Travis|last3=Tunis|work=Fabrizio, Lee & Associates|date=April 14, 2025|access-date=April 15, 2025}}</ref>
+|rowspan="3"|April 6–10, 2025
+|rowspan="3"|500 (LV)
+|rowspan="3"|±&nbsp;4.4%
+|1%
+|–
+|{{party shading/Republican}}|'''71%'''
+|10%
+|11%{{efn|Jim Tressel with 11%}}
+|8%
+|-
+|–
+|–
+|{{party shading/Republican}}|'''75%'''
+|19%
+|–
+|6%
+|-
+|–
+|–
+|{{party shading/Republican}}|'''77%'''
+|–
+|17%{{efn|Jim Tressel with 17%}}
+|6%
+|- style="background:lightyellow;"
+| style="border-right-style:hidden; background:lightyellow;" |
+| style="border-right-style:hidden; " |February 25, 2025
+| colspan="8" | Ramaswamy declares his candidacy<ref name="ent"/>
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="hillmarch4">{{Cite web|url=https://thehill.com/homenews/state-watch/5175880-vivek-ramaswamy-sherrod-brown-ohio-governor-poll/ |title=Ohio governor's race poll: Ramaswamy a favorite, Sherrod Brown has strong backing |first=Sarah|last=Fortinsky|website=[[The Hill (newspaper)|The Hill]]|date=March 4, 2025|access-date=March 13, 2025}}</ref>
+|February 14–21, 2025
+|800 (RV)
+|±&nbsp;4.0%
+|9%
+|–
+|{{party shading/Republican}}|'''61%'''
+|24%
+|–
+|9%
+|-
+|style="text-align:left;"|National Public Affairs (R)<ref>{{Cite web|url=https://www.nationalreview.com/wp-content/uploads/2025/02/2026_OH_Governor_Republican_Primary_Research_Memo_-_Yost_Campaign.pdf|title=National Public Affairs Polling – 2026 Ohio Governor Republican Primary Research|first=Justin|last=Clark|website=National Public Affairs|date=February 18, 2025|access-date=February 25, 2025}}</ref>{{Efn-ua|Poll sponsored by Yost's campaign}}
+|February 2–5, 2025
+|602 (RV)
+|±&nbsp;4.0%
+|–
+|–
+|{{party shading/Republican}}|'''46%'''
+|18%
+|2%{{efn|Robert Sprague and Jeremiah Workman with 1%}}
+|34%
+|-
+|style="text-align:left;"|WPA Intelligence (R)<ref>{{Cite web|url=https://www.clubforgrowth.org/wp-content/uploads/2025/02/CfG_OH-Gov_Baseline_PollingMemo_V2.pdf|title=Recent WPA Intelligence Poll Shows Vivek Ramasway With a Commanding Lead in the Republican primary for Ohio Governor|first=Bryon|last=Allen|website=Club for Growth|date=February 3, 2025|access-date=February 27, 2025}}</ref>{{Efn-ua|Poll sponsored by [[Club for Growth]]}}
+|January 28–30, 2025
+|600 (LV)
+|±&nbsp;4.0%
+|–
+|–
+|{{party shading/Republican}}|'''57%'''
+|26%
+|6%{{efn|Robert Sprague with 6%}}
+|10%
+|-
+|style="text-align:left;"|Fabrizio, Lee & Associates (R)<ref>{{Cite web|url=https://www.documentcloud.org/documents/25507264-1-28-25-oh-sw-gop-memo/|title=Ramasway is the overwhelming frontrunner in GOP Race for Ohio governor|first=Tony|last=Fabrizio|website=DocumentCloud|date=January 28, 2025|access-date=February 27, 2025}}</ref>{{Efn-ua|Poll sponsored by Ramaswamy's campaign}}
+|January 26–27, 2025
+|600 (LV)
+|±&nbsp;4.0%
+|–
+|–
+|{{party shading/Republican}}|'''52%'''
+|18%
+|3%{{efn|Robert Sprague with 2%; Jeremiah Workman with 1%}}
+|27%
+|}
+
+===Results===
+[[File:2026 Ohio gubernatorial Republican primary election results map by county.svg|thumb|210px|Primary results by county:
+{{collapsible list
+| title = {{legend|#E27F7F|Ramaswamy}}
+|{{legend|#D75D5D|60–70%}}
+|{{legend|#D72F30|70–80%}}
+|{{legend|#C21B18|80–90%}}
+}}
+]]
+{{Election box begin no change
+ | title=Republican primary<ref name="Republican Primary Results">{{Cite web |title=May 5, 2026 Primary/Special Election Official Canvass|url= https://publicfiles.ohiosos.gov/election-results/past-elections/2026/Primary+Special%20Election%20-%20May%205,%202026/group1/summary-level-official-results-2026-primary---republican.xlsx |website=Ohio Secretary of State |access-date=June 5, 2026}}</ref>}}
+{{Election box winning candidate with party link no change
+ | party=Ohio Republican Party
+ | candidate={{ubl|[[Vivek Ramaswamy]]|[[Rob McColley]]}}
+ | votes=676,562
+ | percentage=82.4}}
+{{Election box candidate with party link no change
+ | party=Ohio Republican Party
+ | candidate={{ubl|Casey Putsch|Kim Georgeton}}
+ | votes=144,184
+ | percentage=17.6}}
+{{Election box total no change
+ | votes=820,746
+ | percentage=100.0}}
+{{Election box end}}
+
+==Democratic primary==
+===Candidates===
+====Nominee====
+*[[Amy Acton]], former director of the [[Ohio Department of Health]] (2019–2020)<ref>{{cite news |last=Buchanan|first=Tyler |access-date=January 7, 2025 |date=January 7, 2025 |title=Acton announces run for Ohio governor |work=[[Axios (website)|Axios]] |url=https://www.axios.com/local/columbus/2025/01/07/amy-acton-ohio-governor-run-campaign}}</ref><ref>{{Cite web |date=February 4, 2026 |title=Secretary LaRose Releases List of Candidates Filing for Statewide Office |url=https://www.ohiosos.gov/media-center/press-releases/2026/2026-02-04/ |access-date=February 5, 2026 |website=Ohio Secretary of State}}</ref>
+** Running mate: [[David Pepper (politician)|David Pepper]], former chair of the [[Ohio Democratic Party]] (2015–2020), former [[Hamilton County, Ohio|Hamilton County]] commissioner (2007–2011), nominee for [[Ohio Auditor of State|state auditor]] in [[2010 Ohio State Auditor election|2010]], and nominee for [[Ohio Attorney General|attorney general]] in [[2014 Ohio Attorney General election|2014]]<ref>{{cite web |last1=Trau |first1=Morgan |title=Amy Acton chooses former Ohio Democratic Party leader David Pepper as running mate |url=https://ohiocapitaljournal.com/2026/01/07/amy-acton-chooses-former-ohio-democratic-party-leader-david-pepper-as-running-mate/ |access-date=January 7, 2026 |work=[[Ohio Capital Journal]] |date=January 7, 2026}}</ref>
+
+====Withdrawn====
+*Jacob Chiara ''(endorsed Acton)''<ref name="auto6">{{cite tweet|user=JacobForOhio|number=2002164002223276473|title=After talking it over with my friends and family I have decided to suspend my campaign for Ohio Governor. I would like to thank everyone who supported the campaign from the beginning. I would like to officially endorse @amyactonoh for Governor.|date=December 19, 2025|access-date=February 3, 2026}}</ref>
+
+====Declined====
+*[[Sherrod Brown]], former [[United States Senate|U.S. senator]] (2007–2025) ''([[2026 United States Senate special election in Ohio|running for U.S. Senate]], endorsed Acton)''<ref>{{cite web|url=https://www.cleveland.com/news/2025/08/sherrod-brown-to-run-for-us-senate-in-2026-challenging-jon-husted.html|title=Sherrod Brown to run for U.S. Senate in 2026, challenging Jon Husted|last=Pelzer|first=Jeremy|date=August 12, 2025|access-date=August 12, 2025|website=[[The Plain Dealer]]}}</ref><ref name="1/6 Downballot">{{cite web|url=https://www.the-downballot.com/p/morning-digest-get-caught-up-on-all|title=Morning Digest: Get caught up on all the latest election news with The Downballot!|last1=Nir|last2=Singer|first1=David|first2=Jeff|date=January 5, 2026|access-date=January 5, 2026}}</ref>
+*[[Shontel Brown]], [[U.S. Representative|U.S. representative]] from {{ushr|OH|11}} (2021–present) ''([[2026 United States House of Representatives elections in Ohio#District 11|running for re-election]])''<ref name="Axios1" />
+*[[Greg Landsman]], [[U.S. Representative|U.S. representative]] from {{ushr|OH|1}} (2023–present) ''([[2026 United States House of Representatives elections in Ohio#District 1|running for re-election]])''<ref name="Complicate"/><ref name="Axios1" />
+*[[Allison Russo]], former minority leader of the [[Ohio House of Representatives]] (2022–2025) and nominee for [[Ohio's 15th congressional district]] in the [[2021 Ohio's 15th congressional district special election|2021 special election]]<ref>{{Cite web |title=Ohio House Dem Leader Russo on plans, 'There will be more time for this discussion at a later point'|url=https://ohiocapitaljournal.com/briefs/there-will-be-more-time-for-this-discussion-at-a-later-point-ohio-minority-leader-russo-on-future/ |access-date=August 1, 2025 |website=[[Ohio Capital Journal]] |language=en-US|last1=Henry |first1=Megan|date=June 12, 2025}}</ref> ''([[2026 Ohio Secretary of State election|running for Secretary of State]])''<ref>{{cite news |last1=Henry |first1=Megan |title=Former Ohio House Democratic leader Allison Russo is running for Ohio Secretary of State |url=https://ohiocapitaljournal.com/2025/08/21/former-ohio-house-democratic-leader-allison-russo-is-running-for-ohio-secretary-of-state/ |access-date=August 21, 2025 |work=[[Ohio Capital Journal]] |date=August 21, 2025}}</ref>
+*[[Tim Ryan (Ohio politician)|Tim Ryan]], former [[U.S. representative]] (2003–2023), nominee for U.S. Senate in [[2022 United States Senate election in Ohio|2022]], and candidate for president in [[2020 United States presidential election|2020]]<ref>{{Cite news |last=Pelzer |first=Jeremy |date=November 21, 2025 |title=Tim Ryan rules out run for Ohio governor, leaving Amy Acton as presumptive Democratic nominee |url=https://www.cleveland.com/news/2025/11/tim-ryan-rules-out-run-for-ohio-governor-leaving-amy-acton-as-presumptive-democratic-nominee.html |access-date=November 21, 2025 |publisher=cleveland |language=en}}</ref>
+*[[Emilia Sykes]], [[U.S. Representative|U.S. representative]] from {{ushr|OH|13}} (2023–present) ''([[2026 United States House of Representatives elections in Ohio#District 13|running for re-election]])''<ref name="Complicate">{{cite news |last1=Gonzales |first1=Nathan |title=House members running for governor could complicate fight for majority |url=https://rollcall.com/2025/02/12/governor-elections-house-members/ |access-date=February 12, 2025 |work=[[Roll Call]] |date=February 12, 2025}}</ref><ref name="Axios1">{{Cite web |last=Solender |first=Andrew |date=April 10, 2025 |title=House leaders face growing horde of members grasping for higher office |url=https://www.axios.com/2025/04/10/house-members-running-for-senate-governor |access-date=May 9, 2025 |website=Axios |language=en}}</ref>
+
+===Endorsements===
+{{Endorsements box
+|title=Amy Acton
+|colwidth=100
+|list=
+;Executive branch officials
+*[[John Patterson (Ohio state representative)|John Patterson]], former state executive director of the [[Farm Service Agency]] (2022–2025)<ref>{{cite web |title=Week in review: October 5, 2025 |url=https://ohiocpa.com/get-involved/news/2025/10/03/week-in-review--october-5--2025 |website=The Ohio Society of CPAs |access-date=November 10, 2025 |language=en}}</ref>
+
+;U.S. senators
+*[[Sherrod Brown]], former [[List of United States senators from Ohio|Ohio]] (2007–2025) and Democratic nominee for [[U.S. Senate]] in [[2026 United States Senate special election in Ohio|2026]]<ref name="1/6 Downballot"/>
+
+;U.S. representatives
+*[[Ed Feighan]], former {{ushr|OH|19|OH-19}} (1983–1993)<ref name="Celeste"/>
+*[[Mary Jo Kilroy]], former {{ushr|OH|15|OH-15}} (2009–2011)<ref name="Celeste"/>
+
+;Statewide officials
+*[[Dick Celeste]], former [[governor of Ohio]] (1983–1991)<ref name="Celeste">{{cite web |last1=Pelzer |first1=Jeremy |date=September 23, 2025 |title=Ex-Ohio Gov. Dick Celeste endorses Amy Acton to take his old job |url=https://www.cleveland.com/news/2025/09/ex-ohio-gov-dick-celeste-endorses-amy-acton-to-take-his-old-job.html |access-date=September 25, 2025 |website=[[Cleveland.com]]}}</ref>
+*[[Teresa Fedor]], member of the [[Ohio Department of Education|Ohio State Board of Education]] from the 2nd district (2023–present)<ref name="Cleveland">{{cite web |last1=Staver |first1=Anna |title=JD Vance changes 9/11 plans to honor Charlie Kirk in Utah: Capitol Letter |url=https://www.cleveland.com/open/2025/09/jd-vance-changes-911-plans-to-honor-charlie-kirk-in-utah-capitol-letter.html |website=Cleveland News |access-date=November 2, 2025 |language=en |date=September 12, 2025}}</ref>
+*[[Jim Petro]], former [[attorney general of Ohio]] (2003–2007) ''(Republican)''<ref>{{cite web |last1=Staver |first1=Anna |date=October 3, 2025 |title=Government shutdown impacts federal court cases in Ohio: Capitol Letter |url=https://www.cleveland.com/open/2025/10/government-shutdown-impacts-federal-court-cases-in-ohio-capitol-letter.html |access-date=October 3, 2025 |website=[[Cleveland.com]] |quote=Amy Acton, a Democratic candidate for governor, has been endorsed by Jim Petro, a Republican former Ohio attorney general and state auditor, according to the [[Youngstown Vindicator]]}}</ref>
+*[[Ted Strickland]], former governor of Ohio (2007–2011)<ref>{{cite web |last1=Larkin |first1=Brent |title=Why would Tim Ryan want to play spoiler in this race? |url=https://www.cleveland.com/opinion/2025/11/why-would-tim-ryan-want-to-play-spoiler-in-this-race-brent-larkin.html |website=[[The Plain Dealer]] |date=November 16, 2025 |access-date=November 20, 2025 |quote=A small army of prominent Democrats have already endorsed her, including the state's only two living Democratic ex-governors, Dick Celeste and Ted Strickland.}}</ref>
+
+;State legislators
+*7 current and former [[Ohio Senate|state senators]]<ref name=Six>{{cite web |url=https://www.portsmouth-dailytimes.com/news/state-representatives-legislators-endorse-acton-for-governor/article_64ef2a35-3a15-4e68-96ae-332096260c0c.html|title=State representatives, legislators endorse Acton for governor|website=[[Portsmouth Daily Times]]|date=September 19, 2025|access-date=October 19, 2025|url-access=subscription}}</ref><ref>{{cite web |last1=Pelzer |first1=Jeremy |title=Hemp THC drinks, candy remain legal in Ohio as judge temporarily freezes ban: Capitol Letter |url=https://www.cleveland.com/open/2025/10/hemp-thc-drinks-candy-remain-legal-in-ohio-as-judge-temporarily-freezes-ban-capitol-letter.html |access-date=October 21, 2025 |website=[[Cleveland.com]] |date=October 15, 2025 |quote=Amy Acton, a Democratic candidate for governor, has been endorsed by Ohio Senate Minority Whip Kent Smith, a Euclid Democrat.}}</ref><ref name="CuyahogaAct">{{cite web |last1=McGowan |first1=Mary Frances |title=Ohio congressional redistricting process hits dead end: Capitol Letter |url=https://www.cleveland.com/open/2025/10/ohio-congressional-redistricting-process-hits-dead-end-capitol-letter.html |access-date=October 21, 2025 |website=[[Cleveland.com]] |date=October 1, 2025 |quote=Amy Acton, a Democratic candidate for governor, has been endorsed by Cuyahoga County Council President Dale Miller, as well as Cuyahoga County Councilmembers Robert Schleper Jr. and Sunny Simon.}}</ref>
+*[[Munira Abdullahi]], [[Ohio House of Representatives|HD-09]] (2023–present)<ref name="auto2">{{cite web |title=State representatives, legislators endorse Acton for governor |url=https://www.portsmouth-dailytimes.com/news/state-representatives-legislators-endorse-acton-for-governor/article_64ef2a35-3a15-4e68-96ae-332096260c0c.html |website=Portsmouth Daily Times |date=September 19, 2025 |access-date=January 6, 2026}}</ref>
+*[[Rachel Baker]], HD-27 (2023–present)<ref name="auto2"/>
+*[[Crystal Lett]], HD-11 (2025–present)<ref name="auto2"/>
+*13 other state representatives<ref name=Six/><ref name="auto2"/>
+*3 former state representatives<ref name=Hagan>{{cite web |title=Valley politicians support Acton for governor |url=https://www.tribtoday.com/news/local-news/2025/08/valley-politicians-support-acton-for-governor/ |website=Tribune Chronicle}}</ref><ref name="Cleveland"/>
+
+;Local officials
+*[[Justin Bibb]], mayor of [[Cleveland]] (2022–present)<ref name="OHMayors">{{cite web |last1=Sanderson |first1=Emily |title=Cincinnati's Aftab Pureval joins three Ohio mayors backing Amy Acton for governor |url=https://www.wlwt.com/article/amy-acton-governor-aftab-pureval-endorsement/69528219 |access-date=November 24, 2025 |work=[[WLWT]] |date=November 24, 2025}}</ref>
+*[[Andrew Ginther]], mayor of [[Columbus, Ohio|Columbus]] (2016–present)<ref name="OHMayors"/>
+*[[Wade Kapszukiewicz]], mayor of [[Toledo, Ohio|Toledo]] (2018–present)<ref name="OHMayors"/>
+*[[Aftab Pureval]], mayor of [[Cincinnati]] (2022–present)<ref name="OHMayors"/>
+*[[Nan Whaley]], former [[Mayor of Dayton, Ohio|mayor of Dayton]] (2014–2022) and Democratic nominee in the [[2022 Ohio gubernatorial election]]<ref>{{cite news |title=Former Mayor of Dayton Nan Whaley Endorses Dr. Amy Acton for Governor |url=https://www.circlevilleherald.com/comment/former-mayor-of-dayton-nan-whaley-endorses-dr-amy-acton-for-governor/article_a26574d8-676a-4965-8071-ecb95312550a.html |website=Circleville Herald |date=August 21, 2025 |access-date=September 8, 2025}}</ref>
+
+;Party officials
+*[[Jaime Harrison]], former chair of the [[Democratic National Committee]] (2021–2025)<ref>{{cite web |title=Week in review: November 16, 2026 |url=https://ohiocpa.com/get-involved/news/2025/11/14/week-in-review--november-16--2026 |website=The Ohio Society of CPAs |access-date=November 20, 2025 |language=en}}</ref>
+
+;Individuals
+*[[Ed O'Neill]], actor<ref>{{cite web |title='From Youngstown kid to another,' TV star Ed O'Neill endorses Amy Acton for Ohio governor |url=https://abc6onyourside.com/news/local/ohio-politicsyoungstown-actor-ed-oneill-endorses-dr-amy-acton-for-ohio-governor-married-with-children-modern-family-tim-ryan-vivek-ramaswamy-jim-tressel-democratic-primary-election-2025 |website=[[WSYX]] |access-date=September 8, 2025 |date=August 27, 2025}}</ref>
+*[[Connie Schultz]], columnist and wife of [[Sherrod Brown]]<ref>{{Cite web |last=Tobias |first=Andrew |date=November 21, 2025 |title=Democrat Tim Ryan passes on running in Ohio governor's race |url=https://signalohio.org/democrat-tim-ryan-passes-on-running-in-ohio-governors-race/ |access-date=January 3, 2026 |website=Signal Ohio |language=en-US}}</ref>
+
+;Political parties
+*[[Ohio Democratic Party]]<ref>{{cite web |last1=Ingles |first1=Jo |title=Ohio Democratic Party endorses candidates for governor, U.S. Senator |url=https://www.statenews.org/government-politics/2026-03-02/ohio-democratic-party-endorses-candidates-for-governor-u-s-senator |website=The Statehouse News Bureau |date=March 2, 2026 |access-date=March 3, 2026}}</ref>
+
+;Labor unions
+*[[AFL-CIO]] Ohio<ref>{{cite web |last1=Halperin |first1=Eric |title=Dr. Amy Acton endorsed by Ohio's largest union |url=https://fox8.com/news/dr-amy-acton-endorsed-by-ohios-largest-union/ |website=Fox 8 Cleveland WJW |access-date=February 15, 2026 |date=February 14, 2026}}</ref>
+*[[American Federation of Government Employees]]<ref name="Tribune1283">{{cite web |title=Acton secures another union endorsement |url=https://irontontribune.com/2026/03/06/acton-secures-another-union-endorsement/ |website=The Tribune |access-date=March 6, 2026 |language=en |date=March 6, 2026}}</ref>
+*[[American Nurses Association]] Ohio<ref>{{Cite web|last=Leonardi|first=Anthony|date=April 29, 2026 |title=Ohio Nurses Association endorses Dr. Amy Acton for governor |url=https://www.wfmj.com/news/political/ohio-nurses-association-endorses-dr-amy-acton-for-governor/article_da1703f7-a84e-4cfb-aad7-4f00e4a15362.html |access-date=May 3, 2026 |website=WFMJ |language=en}}</ref>
+*[[American Federation of State, County and Municipal Employees]]<ref name="Pledge">{{cite web |last1=Balmert |first1=Jessie |title=Unions back Amy Acton, pledge to fight against Vivek Ramaswamy |url=https://www.dispatch.com/story/news/politics/2025/12/04/unions-back-dr-amy-acton-pledge-to-fight-against-vivek-ramaswamy/87586398007/ |access-date=December 9, 2025 |work=[[Cincinnati Enquirer]] |publisher=[[The Columbus Dispatch]] |date=December 4, 2025}}</ref>
+*[[Communications Workers of America]]<ref name="Tribune1283"/>
+*[[International Union of Painters and Allied Trades]]<ref name="lining"/>
+*[[Ohio Education Association]]<ref name="OEA">{{cite web |last1=Hostetter |first1=Tristan |title=Ohio's largest educators' labor union backs Amy Acton for governor |url=https://www.wfmj.com/news/local-news/ohio-s-largest-educators-labor-union-backs-amy-acton-for-governor/article_272a4532-d8b2-53dd-b04c-6ef22c467502.html |website=WFMJ |access-date=April 27, 2026 |date=February 26, 2026}}</ref>
+*[[Ohio Federation of Teachers]]<ref name="Tribune1283"/>
+*[[Service Employees International Union]]<ref name="SEIU">{{cite web |title=Service Employees International Union endorses Dr. Amy Acton for Ohio governor |url=https://chroniclet.com/news/462850/service-employees-international-union-endorses-dr-amy-acton-for-ohio-governor/ |website=The Chronicle |access-date=April 27, 2026 |date=April 8, 2026}}</ref>
+*[[United Auto Workers]]<ref>{{cite web |last1=Mosca |first1=Zach |title=UAW endorses Amy Acton for Ohio governor |url=https://www.wfmj.com/story/53295403/uaw-endorses-amy-acton-for-ohio-governor |access-date=December 3, 2025 |work=[[WFMJ-TV]] |date=December 3, 2025}}</ref>
+*[[United Mine Workers of America]]<ref name="Tribune1283"/>
+*[[United Steelworkers]]<ref name="lining">{{cite web |last1=Pelzer |first1=Jeremy |title=Labor lining up with Ramaswamy illustrates how a Democrat base of support has shifted |url=https://www.cleveland.com/open/2025/11/labor-lining-up-with-ramaswamy-illustrates-how-a-democrat-base-of-support-has-shifted.html |website=[[The Plain Dealer]] |access-date=November 23, 2025 |language=en |date=November 16, 2025}}</ref>
+
+;Organizations
+*[[314 Action]]<ref>{{cite web |title=314 Action Fund Endorses Dr. Amy Acton For Ohio Governor, as a Guardian of Public Health |url=https://314action.org/2025/06/18/314-action-fund-endorses-dr-amy-acton-for-ohio-governor-as-a-guardian-of-public-health/ |website=314action.org |date=June 18, 2025 |access-date=September 10, 2025}}</ref>
+*[[College Democrats of America]]<ref name="CD">{{cite web|url=https://www.instagram.com/p/DUTUwMnDq_K/|title=CDA and CDOH are proud to endorse Amy Acton for Governor of Ohio!|date=February 3, 2026|access-date=February 5, 2026}}</ref>
+*[[EMILYs List]]<ref>{{cite web |url=https://emilyslist.org/news/emilys-list-endorses-dr-amy-acton-for-ohio-governor/ |title=EMILYs List Endorses Dr. Amy Acton for Ohio Governor |website=emilyslist.org |date=November 5, 2025 |access-date=November 6, 2025}}</ref>
+*[[End Citizens United]]<ref>{{cite web |title=End Citizens United Endorses Amy Acton for Ohio Governor |url=https://www.endcitizensunited.org/end-citizens-united-endorses-amy-acton-for-ohio-governor |website=endcitizensunited.org |date=March 27, 2026 |access-date=April 2, 2026}}</ref>
+}}
+
+===Polling===
+<!-- = = = don't edit the line below = = = -->
+{{hidden begin|titlestyle=background:#cff|title=Hypothetical polling|contentstyle=border:solid 1px silver; padding:8px; background:var(--background-color-base); color:var(--color-base);}}
+<!-- = = = don't edit the line above = = = -->
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- valign=bottom
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name=Key|Key:<br />A – all adults<br />RV – registered voters<br />LV – likely voters<br />V – unclear}}
+! Margin<br />of error
+! style="width:75px"| Amy<br />Acton
+! style="width:75px"| Sherrod<br />Brown
+! style="width:75px"| Tim<br />Ryan
+! Other
+! Undecided
+|-
+|- style="background:lightyellow;"
+| style="border-right-style:hidden; background:lightyellow;" |
+| style="border-right-style:hidden; " |November 22, 2025
+| colspan="7" | Tim Ryan declines to run for governor
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSUOct2025"/>
+|October 2–14, 2025
+|377 (RV)
+|–
+|{{party shading/Democratic}}|'''50%'''
+|–
+|41%
+|8%{{efn|"Someone else" with 8%}}
+|–
+|-
+|- style="background:lightyellow;"
+| style="border-right-style:hidden; background:lightyellow;" |
+| style="border-right-style:hidden; " |August 18, 2025
+| colspan="7" | Sherrod Brown announces his candidacy for the U.S. Senate<ref>{{cite web |last1=Otterbein |first1=Holly |title=Former Sen. Sherrod Brown launches Ohio Senate campaign|url=https://www.politico.com/news/2025/08/18/sherrod-brown-ohio-senate-campaign-launch-2026-00513314|website=[[Politico]] |date=August 18, 2025 |access-date=August 19, 2025}}</ref>
+|-
+|style="text-align:left;" rowspan="2"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSU0013TABS"/><ref name="BGSU0013TOPLINES"/>
+| rowspan="2"|April 18–24, 2025
+| rowspan="2"|335 (RV)
+| rowspan="2"|–
+|20%
+|{{party shading/Democratic}}|'''59%'''
+|16%
+|14%{{efn|"Neither" with 14%}}
+|–
+|-
+|{{party shading/Democratic}}|'''52%'''
+|–
+|38%
+|10%{{efn|name="SE10"|"Someone else" with 10%}}
+|–
+|-
+| rowspan="2" style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="hillmarch4"/>
+| rowspan="2"|February 14–21, 2025
+| rowspan="2"|335 (RV)
+| rowspan="2"|±&nbsp;4.0%
+|20%
+|{{party shading/Democratic}}|'''59%'''
+|17%
+|–
+|4%
+|-
+|{{party shading/Democratic}}|'''46%'''
+|–
+|45%
+|–
+|9%
+|}
+{{Hidden end}}
+
+===Results===
+{{Election box begin no change
+ | title=Democratic primary <ref name="Democratic Primary Results">{{Cite web |title=May 5, 2026 Primary/Special Election Official Canvass|url= https://publicfiles.ohiosos.gov/election-results/past-elections/2026/Primary+Special%20Election%20-%20May%205,%202026/group1/summary-level-official-results-2026-primary---democratic.xlsx |website=Ohio Secretary of State |access-date=June 5, 2026}}</ref>}}
+{{Election box winning candidate with party link no change
+ | party=Ohio Democratic Party
+ | candidate={{ubl|[[Amy Acton]]|[[David Pepper (politician)|David Pepper]]}}
+ | votes=767,360
+ | percentage=100.0}}
+{{Election box total no change
+ | votes=767,360| percentage=100.0}}
+{{Election box end}}
+
+== Libertarian primary ==
+=== Candidates ===
+====Nominee====
+*Don Kissick, television station operator, nominee for [[Ohio's 5th congressional district]] in [[2018 United States House of Representatives elections in Ohio#District 5|2018]], and nominee for U.S. Senate in [[2024 United States Senate election in Ohio|2024]]<ref name="auto1">{{cite news |agency=Cleveland.com |access-date=January 6, 2026 |url=https://www.cleveland.com/news/2026/01/ohio-libertarians-states-lone-third-party-lining-up-candidates-for-top-2026-races.html |last1=Pelzer|first1=Jeremy |title=Ohio Libertarians, state's lone third party, lining up candidates for top 2026 races |date=January 6, 2026}}</ref>
+** Running mate: James Mills<ref>{{Cite web |last=Ohio |first=Press release written and provided by the Libertarian Party of |date=January 9, 2026 |title=Don Kissick announces candidacy for governor of Ohio, names James Mills as lieutenant governor running mate |url=https://www.hometownstations.com/news/allen_county/don-kissick-announces-candidacy-for-governor-of-ohio-names-james-mills-as-lieutenant-governor-running/article_7cf08961-6f00-4459-acc1-e939c8b36ff7.html |access-date=February 8, 2026 |website=Your Hometown Stations |language=en}}</ref>
+
+====Eliminated in primary====
+*Travis Jon Vought ''(write-in)''<ref name=CertifiedCandidates>{{cite news |agency=voteloraincountyohio.gov |access-date=June 2, 2026 |url=https://www.voteloraincountyohio.gov/_files/ugd/2568d0_084e43e27256471584dd8fad210539a8.pdf|title=Certified list of candidates for the 2026 Ohio Primaries |date=March 19, 2026}}</ref>
+** Running mate: Christy Jo Orr<ref name=CertifiedCandidates/>
+
+===Results===
+{{Election box begin no change
+ | title=Libertarian primary <ref name="Libertarian Primary Results">{{Cite web |title=May 5, 2026 Primary/Special Election Official Canvass|url= https://publicfiles.ohiosos.gov/election-results/past-elections/2026/Primary+Special%20Election%20-%20May%205,%202026/group1/summary-level-official-results-2026-primary---libertarian.xlsx |website=Ohio Secretary of State |access-date=June 5, 2026}}</ref>}}
+{{Election box winning candidate with party link no change
+ | party= Libertarian Party of Ohio
+ | candidate= {{ubl|Don Kissick|James Mills}}
+ | votes=8,705
+ | percentage=97.8}}
+{{Election box candidate with party link no change
+ | party= Libertarian Party of Ohio
+ | candidate= {{ubl|Travis Jon Vought|Christy Jo Orr}} ''(Write-in)''
+ | votes=180
+ | percentage=2.2}}
+{{Election box total no change
+ | votes=8,885
+ | percentage=100.0}}
+{{Election box end}}
+
+== General election ==
+On September 2, Ramaswamy accepted invitations to participate in gubernatorial debates hosted by [[CNN]] and [[WLWT]] and called on Acton to join him. Acton's campaign subsequently declined, citing what it characterized as inaccurate and personal attacks in Ramaswamy's campaign advertising. As a result, no debates between the two major-party nominees have been scheduled.<ref>{{cite web |last1=Bischoff |first1=Laura A. |title=Amy Acton refuses to debate Vivek Ramaswamy in Ohio governor's race |url=https://www.dispatch.com/story/news/state/2026/09/02/ohio-governor-candidates-may-not-debate-find-out-why/91585349007/ |website=[[The Columbus Dispatch]] |date=September 2, 2026 |access-date=September 4, 2026}}</ref>
+
+On September 6, Acton was attacked at a campaign event at the [[Canfield, Ohio|Canfield]] Fair. An armed individual lunged at her and was apprehended by local authorities. Several campaign volunteers suffered minor injuries.<ref>{{Cite web |last=Knue |first=Kurt |date=September 6, 2026 |title=Amy Acton attacked at campaign event near Youngstown; multiple people reportedly injured |url=https://www.wlwt.com/article/amy-acton-attacked-at-campaign-event-near-youngstown/73625988 |access-date=September 6, 2026 |website=WLWT |language=en}}</ref> The suspect, Patrick Havas, was charged with "two counts of assault and one count of disorderly conduct."<ref>{{cite web |last1=Ziegler |first1=Jen |title=Armed man arrested after pushing toward Amy Acton is brother of Ramaswamy donor who quit Husted campaign |url=https://tiffinohio.net/posts/patrick-havas-arrested-acton-attack-brother-ramaswamy-donor/ |website=TiffinOhio.net |date=September 6, 2026 |access-date=September 25, 2026}}</ref>
+
+===Predictions===
+{| class="wikitable" style=text-align:center
+!Source
+!Ranking
+!As of
+|-
+|align=left|''[[The Cook Political Report]]''<ref>{{cite web|title=2026 CPR Governor Race ratings|url=https://www.cookpolitical.com/ratings/governor-race-ratings|website=[[The Cook Political Report]]|access-date=October 11, 2026}}</ref>
+|{{USRaceRating|Tossup}}
+|October 1, 2026
+|-
+|align=left|[[Decision Desk HQ]]<ref name="DDHQ">{{cite web |title=2026 Governor Forecast |url=https://votes.decisiondeskhq.com/forecast/2026/governor |website=[[Decision Desk HQ]] |access-date=October 11, 2026}}</ref>
+|{{USRaceRating|Tossup}}
+|October 11, 2026
+|-
+|align=left|[[Fox News]]<ref>{{Cite news |last=Numa |first=Rémy |title=Fox News Power Rankings: The biggest surprises come after October |url=https://www.foxnews.com/politics/fox-news-power-rankings-the-biggest-surprises-come-after-october |work=[[Fox News]] |date=October 6, 2026 |access-date=October 11, 2026}}</ref>
+|{{USRaceRating|Tossup}}
+|October 6, 2026
+|-
+|align=left|''[[Inside Elections]]''<ref>{{Cite web|title=Gubernatorial Ratings|url=https://insideelections.com/ratings/governor|access-date=October 11, 2026|website=[[Inside Elections]]}}</ref>
+|{{USRaceRating|Tossup}}
+|October 1, 2026
+|-
+|align="left"|[[RealClearPolitics]]<ref>{{Cite web|url=https://www.realclearpolling.com/maps/governor/2026/toss-up |title=2026 Governor Races |website=[[RealClearPolitics]] |access-date=October 11, 2026}}</ref>
+|{{USRaceRating|Tossup}}
+|October 5, 2026
+|-
+|align=left|''[[Sabato's Crystal Ball]]''<ref>{{cite web|title=2026 Governor|url=https://centerforpolitics.org/crystalball/2026-governor/|website=[[Sabato's Crystal Ball]]|access-date=October 11, 2026}}</ref>
+|{{USRaceRating|Tossup}}
+|October 6, 2026
+|-
+|align="left"|[[Silver Bulletin]]<ref name="Silver">{{Cite web |url=https://www.natesilver.net/p/nate-silver-2026-midterm-election-polls-model |title=FLIPR 2026 midterm election forecast |last1=Silver |first1=Nate |author1-link=Nate Silver |last2=McKown-Dawson |first2=Eli |website=[[Silver Bulletin]] |via=[[Substack]] |date=October 11, 2026 |orig-date=August 11, 2026 |access-date=October 11, 2026 |url-access=subscription}}</ref>
+|{{USRaceRating|Lean|D|Flip}}
+|October 11, 2026
+|}
+
+===Post-primary endorsements===
+{{Endorsements box
+|title=Vivek Ramaswamy (R)
+|colwidth=
+|width=
+|list=
+;Labor unions
+*[[National Fraternal Order of Police|Fraternal Order of Police of Ohio]]<ref>{{cite web |last1=Knue |first1=Kurt |title=Ohio Fraternal Order of Police issues endorsements for Republicans in all 2026 statewide races |url=https://www.wlwt.com/article/ohio-fop-issues-endorsements-for-republicans-in-2026-races/73219619 |website=[[WLWT]] |date=July 21, 2026 |access-date=July 21, 2026}}</ref>
+
+;Organizations
+*[[National Federation of Independent Business|National Federation of Independent Business in Ohio]]<ref>{{cite web |last1=Dietz |first1=Matthew |title=National Federation of Independent Business in Ohio endorses Ramaswamy for Gov. |url=https://www.wlwt.com/article/vivek-ramaswamy-endorsement-national-federation-business-ohio/73489723 |website=WLWT |access-date=August 20, 2026 |language=en |date=August 20, 2026}}</ref>
+*[[Susan B. Anthony Pro-Life America]]<ref>{{cite web |last1=Dannenfelser |first1=Marjorie |title=Leading Nat'l Pro-Life Group Endorses Vivek Ramaswamy for Ohio Governor |url=https://sbaprolife.org/newsroom/press-releases/leading-natl-pro-life-group-endorses-vivek-ramaswamy-for-ohio-governor |website=SBA Pro-Life America |date=July 9, 2026 |access-date=July 9, 2026}}</ref>
+
+}}
+{{Endorsements box
+|title=Amy Acton (D)
+|colwidth=
+|width=
+|list=
+;Executive branch officials
+*[[Pete Buttigieg]], former [[United States Secretary of Transportation|secretary of transportation]] (2021–2025)<ref>{{cite web |last1=Knue |first1=Kurt |title=Pete Buttigieg campaigns for Amy Acton, Greg Landsman at Cincinnati AFL-CIO picnic |url=https://www.wlwt.com/article/pete-buttigieg-campaigns-for-ohio-democrats/73623579 |website=[[WLWT]] |date=September 6, 2026 |access-date=September 9, 2026}}</ref>
+*[[Barack Obama]], former [[president of the United States]] (2009–2017)<ref>{{cite news |last=Davis |first=Sarah |title=Obama to campaign with Brown, Acton in Cleveland |url=https://thehill.com/homenews/campaign/6146037-obama-campaigning-ohio-midterms/ |work=The Hill |date=October 13, 2026 |access-date=October 13, 2026}}</ref>
+
+;Statewide officials
+*[[Mikie Sherrill]], [[governor of New Jersey]] (2026–present)<ref>{{Cite web|url=https://newjerseyglobe.com/governor/sherrill-heading-to-midwest-for-campaign-events/|title=Sherrill heading to midwest for campaign events|date=October 7, 2026|access-date=October 7, 2026|last=Wildstein|first=David|website=[[New Jersey Globe]]}}</ref>
+
+;Labor unions
+* [[International Association of Fire Fighters|Ohio Association of Professional Fire Fighters]]<ref>{{Cite web |last=Lang |first=Marlena |date=August 3, 2026 |title=Ohio Association of Professional Firefighters endorses Amy Acton for governor |url=https://www.wcpo.com/news/local-news/ohio-association-of-professional-firefighters-endorses-amy-acton-for-governor |access-date=August 4, 2026 |website=WCPO 9 Cincinnati |language=en}}</ref>
+
+;Individuals
+*[[Nick Fuentes]], far-right political commentator<ref>{{cite news |last=Millard |first=Katie |date=May 15, 2026 |title=Analyst says far-right support for Amy Acton unlikely to sway Ohio voters |url= https://www.yahoo.com/news/articles/analyst-says-far-support-amy-110000029.html|access-date=May 15, 2026 |website=[[WCMH]] |via=[[Yahoo News]] |language=en-US}}</ref>
+}}
+
+=== Fundraising ===
+{| class="wikitable sortable"
+! colspan="4" |Campaign finance reports as of June 5, 2026
+|- style="text-align:center;"
+!Candidate
+!Raised
+!Spent
+!Cash on hand
+|-
+| {{party shading/Democratic}} |Amy Acton (D)
+|$5,363,780
+|$2,230,781
+|$8,136,282
+|-
+| {{party shading/Republican}} |Vivek Ramaswamy (R)
+|$25,435,113
+|$12,568,962
+|$30,742,722
+|-
+! colspan="4" |<small>Source:</small> <small>[[Ohio Secretary of State]]</small><ref>{{Cite web |title=Ohio Campaign Finance |url=https://data.ohiosos.gov/portal/campaign-finance |access-date=June 30, 2026 |website=[[Ohio Secretary of State]]}}</ref>
+|}
+
+=== Polling ===
+'''Aggregate polls'''
+{| class="wikitable sortable" style="text-align:center;font-size:90%;line-height:17px"
+!Source of poll<br/>aggregation
+!Dates<br/>administered
+!Dates<br/>updated
+! style="width:100px;" |Vivek<br />Ramaswamy (R)
+! style="width:100px;" |Amy<br />Acton (D)
+! style="width:100px;" |Other/<wbr/>Undecided{{Efn|Calculated by taking the difference of 100% and all other candidates combined.|name=|group=}}
+!Margin
+|-
+|[[270toWin]]<ref>{{cite web |title=2026 Polls: Ohio Governor |url=https://www.270towin.com/2026-governor-polls/ohio |access-date=September 2, 2026 |website=[[270toWin]]}}</ref>
+|September 16 – October 4, 2026
+|October 4, 2026
+|43.8%
+|{{party shading/Democratic}}|'''49.3%'''
+|6.9%
+|{{party shading/Democratic}}|'''Acton +5.5%'''
+|-
+|[[Decision Desk HQ]]<ref>{{cite web |title=Ohio Governor General Ballot Test |url=https://polls.decisiondeskhq.com/averages/general-ballot-test/2026-oh-governor/ohio/lv-rv-adults |access-date=April 4, 2026 |website=Decision Desk HQ}}</ref>
+|through October 9, 2026
+|October 16, 2026
+|43.6%
+|{{party shading/Democratic}}|'''48.3%'''
+|8.1%
+|{{party shading/Democratic}}|'''Acton +4.7%'''
+|-
+|[[G. Elliott Morris|FiftyPlusOne]]<ref name="FPOGeneral">{{cite web |title=Ohio General Governor Election |url=https://fiftyplusone.news/polls/governor/general/ohio |website=FiftyPlusOne |access-date=October 7, 2026}}</ref>
+|through October 9, 2026
+|October 16, 2026
+|43.9%
+|{{party shading/Democratic}}|'''48.6%'''
+|7.5%
+|{{party shading/Democratic}}|'''Acton +4.7%'''
+|-
+|[[RealClearPolitics]]<ref>{{cite web |title=2026 Ohio Governor – Ramaswamy vs. Acton|url=https://www.realclearpolling.com/polls/governor/general/2026/ohio/ramaswamy-vs-acton |access-date=November 7, 2025 |website=RealClearPolitics.com}}</ref>
+|September 18 – October 9, 2026
+|October 16, 2026
+|44.1%
+|{{party shading/Democratic}} | '''48.4%'''
+|7.5%
+|{{party shading/Democratic}} |'''Acton +4.3%'''
+|-
+|''[[Silver Bulletin]]''<ref name="Silver"/>
+|through October 6, 2026
+|October 16, 2026
+|44.5%
+|{{party shading/Democratic}}|'''48.5%'''
+|7.0%
+|{{party shading/Democratic}}|'''Acton +4.0%'''
+|-
+|colspan="3"|'''Average'''
+|44.0%
+|{{party shading/Democratic}}|'''48.6%'''
+|7.4%
+|{{party shading/Democratic}}|'''Acton +4.6%'''
+|}
+
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- valign=bottom
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name=Key}}
+! Margin<br />of error
+! style="width:100px;"| Vivek<br />Ramaswamy (R)
+! style="width:100px;"| Amy<br />Acton (D)
+! Other
+! Undecided
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref>{{Cite web|url=https://scholarworks.bgsu.edu/cgi/viewcontent.cgi?article=1028&context=depo|title=Democracy and Public Policy Network Expert Analysis on October 2026 Ohio Likely Voters Poll2026 Ohio Likely Voters Poll|first1=Robert|last1=Alexander|website=[[Bowling Green State University]]|date=October 16, 2026|access-date=October 16, 2026}}</ref>
+|September 29 – October 9, 2026
+|1,000 (LV)
+|±&nbsp;4.0%
+|44%
+|{{party shading/Democratic}} |'''50%'''
+|{{TBA}}
+|{{TBA}}
+|-
+| style="text-align:left;|co/efficient (R)<ref name="coefficient10/8">{{cite web |title=Ohio · U.S. Senate |url=https://battlegrounds.coefficient.org/oh/ |website=co/efficient |access-date=October 8, 2026 |date=October 8, 2026}}</ref>
+|October 5–6, 2026
+|925 (LV)
+|±&nbsp;3.5%
+|{{party shading/Republican}} |'''45%'''
+|43%
+|3%{{efn|name=Kissick3}}
+|8%
+|-
+| style="text-align:left;|SSRS<ref>{{cite web |title=CNN Ohio Poll Conducted by SSRS |url=https://www.documentcloud.org/documents/28729016-cnn-ohio-poll-conducted-by-ssrs/ |work=SSRS |date=October 8, 2026 |access-date=October 8, 2026 |via=[[DocumentCloud]]}}</ref>{{efn-ua|Poll conducted for [[CNN]]}}
+|September 29 – October 5, 2026
+|760 (LV)
+|±&nbsp;4.5%
+|42%
+|{{party shading/Democratic}} |'''50%'''
+|8%{{efn|"Neither" with 6%; "Other" with 2%}}
+|1%
+|-
+| style="text-align: left;" |[[The New York Times|New York Times]]/[[Siena University (New York)|Siena University]]<ref>{{cite web|title=Cross-Tabs: September 2026 Times/Siena Poll of the Likely Electorate in Ohio|url=https://www.nytimes.com/interactive/2026/10/03/polls/times-siena-ohio-poll-crosstabs.html |website=[[New York Times]] |date=October 3, 2026 |access-date=October 3, 2026}}</ref>
+|September 22 – October 1, 2026
+|616 (LV)
+|±&nbsp;4.5%
+|45%
+|{{party shading/Democratic}}|'''49%'''
+|–
+|6%
+|-
+| style="text-align:left;|[[YouGov]]<ref>{{cite web|title=Ohio General Election 2026 – Likely Voters|url=https://d3nkl3psvxxpe9.cloudfront.net/documents/ttw_oh_20260921_lv.pdf |website=[[YouGov]] |date=October 6, 2026 |access-date=October 6, 2026}}</ref>
+|September 18–30, 2026
+|3,780 (LV)
+|±&nbsp;2.5%
+|44%
+|{{party shading/Democratic}} |'''48%'''
+|1%
+|6%
+|-
+| style="text-align:left;" rowspan="4"|Big Data Poll (R)<ref>{{cite web|url=https://www.bigdatapoll.com/blog/buckeye-state-poll-sherrod-brown-leads-jon-husted-for-us-senate-in-ohio/|title=Buckeye State Poll: Sherrod Brown Leads Jon Husted for U.S. Senate in Ohio|website=Big Data Poll|date=September 29, 2026|access-date=September 29, 2026}}</ref>
+|rowspan="4"|September 26–27, 2026
+|rowspan="2"|680 (LV)
+|rowspan="4"|±&nbsp;4.0%
+|{{party shading/Republican}}|'''48%'''{{efn|name="lean"|With voters who lean towards a given candidate}}
+|47%
+|5%{{efn|name=Kissick5}}
+|—
+|-
+|{{party shading/Republican}}|'''46%'''
+|44%
+|3%{{efn|name=Kissick3|Don Kissick (L) with 3%}}
+|7%
+|-
+|rowspan="2"|735 (RV)
+|{{party shading/Republican}}|'''47%'''{{efn|name="lean"}}
+|46%
+|7%{{efn|Don Kissick (L) with 7%}}
+|—
+|-
+|{{party shading/Republican}}|'''45%'''
+|43%
+|4%{{efn|name=Kissick4|Don Kissick (L) with 4%}}
+|8%
+|-
+| style="text-align:left;"|[[Marist University]]<ref>{{cite web |title=Midterm Elections in Ohio, September 2026|url=https://maristpoll.marist.edu/polls/midterm-elections-in-ohio-september-2026/ |website=Marist Poll |access-date=September 28, 2026}}</ref>
+|September 24–27, 2026
+|1,298 (RV)
+|±&nbsp;3.8%
+|44%
+|{{party shading/Democratic}}|'''50%'''
+|3%
+|3%
+|-
+| style="text-align:left;"|[[Suffolk University]]<ref>{{cite web|url=https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2026/9_29_2026_ohio_embargoed_marginals_part_1.pdf|title=Governor and US Senate with USA TODAY Network Ohio marginals|website=[[Suffolk University]]|date=September 29, 2026|access-date=September 29, 2026}}</ref>{{efn-ua|name=USAToday|Poll sponsored by ''[[USA Today]]''}}
+|September 23–27, 2026
+|500 (LV)
+|±&nbsp;4.4%
+|41%
+|{{party shading/Democratic}}|'''50%'''
+|3%{{efn|Don Kissick (L) with 3%; "Refused" and "Vote/Lean Write-in" with 0%}}
+|6%
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSUSep2026">{{Cite web|url=https://drive.google.com/file/d/16DCSUQaBOGTTk0u3flp6q0uwC6AO8euZ/view|title=Survey of 1000 Ohio Likely Voters, September 2026 Toplines|first1=Robert|last1=Alexander|first2=Melissa K.|last2=Miller|first3=David|last3= Jackson|first4=Joshua|last4=Boston|website=[[Bowling Green State University]]|date=September 16, 2026|access-date=September 16, 2026}}</ref>
+|September 1–10, 2026
+|1,000 (LV)
+|±&nbsp;4.0%
+|45%
+|{{party shading/Democratic}}|'''48%'''
+|7%{{efn|name="SE5"}}
+|–
+|-
+| style="text-align: left;" |Wedgewood Polls<ref>{{Cite web |title=Wedgewood_Polls_Ohio_Gen_Survey.pdf |url=https://drive.google.com/file/d/1rP-26-yqNx9jy_gRqoLDmgJgzm5X8a4O/view?usp=embed_facebook |access-date=August 14, 2026 |website=Google Docs}}</ref>
+|August 11–13, 2026
+|800 (LV)
+|±&nbsp;4.0%
+|46%
+|{{party shading/Democratic}}|'''47%'''
+| –
+|7%
+|-
+|style="text-align:left;"|Beacon Research (D)/<br />Shaw & Co. Research (R)<ref>{{Cite web|url=https://www.foxnews.com/politics/fox-news-poll-economic-anxiety-candidate-concerns-define-ohio-senate-race|title=Fox News Poll: Economic anxiety and candidate concerns define Ohio Senate race|first=Dana|last=Blanton|website=[[Fox News]]|date=August 13, 2026|access-date=August 13, 2026}}</ref>{{efn-ua|name=Fox}}
+|August 6–10, 2026
+|1,008 (RV)
+|±&nbsp;3.0%
+|{{party shading/Republican}}|'''50%'''
+|48%
+|–
+|2%
+|-
+|style="text-align:left;"|Tulchin Research (D)<ref>{{cite web|url=https://www.documentcloud.org/documents/28549388-oh-sen-gov-ag-tulchin-research-for-john-kulewicz/|title=John Kulewicz Leads Keith Faber in Race for Ohio Attorney General|first=Ben|last=Krompak|work=Tulchin Research|date=August 10, 2026|access-date=August 12, 2026|via=[[DocumentCloud]]}}</ref>{{efn-ua|name=JK}}
+|July 29 – August 4, 2026
+|600 (LV)
+|±&nbsp;4.0%
+|44%
+|{{party shading/Democratic}}|'''46%'''
+|5%{{efn|name=Kissick5|Don Kissick (L) with 5%}}
+|5%
+|-
+| style="text-align:left;|[[New York Times]]/[[Siena University (New York)|Siena University]]<ref>{{cite web|title=Toplines: June 2026 Times/Siena Polls of Likely Voters in Battleground Senate Races|work=The New York Times |url=https://www.nytimes.com/interactive/2026/07/01/polls/times-siena-battleground-poll-toplines.html |date=June 30, 2026 |access-date=July 1, 2026}}</ref>
+|June 15–28, 2026
+|601 (LV)
+|±&nbsp;4.7%
+|'''47%'''
+|'''47%'''
+|–
+|6%
+|-
+|style="text-align:left;"|Fabrizio Ward (R)/<br/>Impact Research (D)<ref>{{cite news |title=New AARP Ohio Poll: 50+ Voters Key in Tight Senate, Governor Races |url=https://www.aarp.org/press/releases/2026-06-25-ohio-poll-50-voters-key-tight-senate-governor-races/ |website=[[AARP]] |date=June 25, 2026 |access-date=June 25, 2026}}</ref>{{efn-ua|name=AARP|Poll conducted for [[AARP]]}}
+|June 14–16, 2026
+|800 (LV)
+|±&nbsp;3.5%
+|44%
+|{{party shading/Democratic}}|'''47%'''
+|1%
+|9%
+|-
+|style="text-align:left;"|Tulchin Research (D)<ref>{{cite news |title=New poll shows Democratic candidates ahead in Ohio |url=https://www.nbc4i.com/news/your-local-election-hq/new-poll-shows-democratic-candidates-ahead-in-ohio/|website=Tulchin Research|access-date=June 17, 2026}}</ref>{{efn-ua|name=JK|Poll conducted for John Kulewicz, Democratic candidate for Attorney General}}
+|June 2–4, 2026
+|600 (LV)
+|±&nbsp;4.0%
+|44%
+|{{party shading/Democratic}}|'''47%'''
+|–
+|9%
+|-
+|style="text-align:left;"|Beacon Research (D)/<br />Shaw & Co. Research (R)<ref>{{Cite web|url=https://www.foxnews.com/politics/fox-news-poll-democratic-unity-republican-crossovers-shape-ohio-senate-race|title=Fox News Poll: Democratic unity, Republican crossovers shape Ohio Senate race|first=Dana|last=Blanton|website=[[Fox News]]|date=June 3, 2026|access-date=June 3, 2026}}</ref>{{efn-ua|name=Fox|Poll conducted for ''[[Fox News]]''}}
+|May 28 – June 1, 2026
+|1,015 (RV)
+|±&nbsp;3.0%
+|49%
+|{{party shading/Democratic}}|'''50%'''
+|–
+|1%
+|-
+|- style="background:lightyellow;"
+| style="border-right-style:hidden; background:lightyellow;" |
+| style="border-right-style:hidden; " |May 5, 2026
+| colspan="6" | Primary elections are held
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSUApr2026">{{Cite web|url=https://scholarworks.bgsu.edu/cgi/viewcontent.cgi?article=1021&context=depo|title=Survey of 1000 Ohio Registered Voters, April 2026 Toplines|first1=Robert|last1=Alexander|first2=Melissa K.|last2=Miller|first3=David|last3= Jackson|first4=Joshua|last4=Boston|website=[[Bowling Green State University]]|date=April 20, 2026|access-date=April 20, 2026}}</ref>
+|April 7–14, 2026
+|1,000 (RV)
+|±&nbsp;4.5%
+|{{party shading/Republican}}|'''48%'''
+|47%
+|5%{{efn|name="SE5"}}
+|–
+|-
+|style="text-align:left;"|Echelon Insights (R)<ref>{{Cite web|url=https://netchoice.org/wp-content/uploads/2026/04/NetChoice-Apr-2026-National-Antitrust-Survey-Topline.pdf|title=NetChoice — April 2026 Antitrust Survey — Topline|work=Echelon Insights|date=April 21, 2026|access-date=April 21, 2026}}</ref>{{efn-ua|Poll sponsored by NetChoice}}
+|April 3–9, 2026
+|413 (LV)
+|±&nbsp;5.8%
+|{{party shading/Republican}}|'''49%'''
+|44%
+|–
+|7%
+|-
+| style="text-align: left;"|Quantus Insights (R)<ref>{{Cite web|url=https://quantusinsights.org/f/quantus-insights-ohio-voters-signal-competitive-2026-environment|title=Quantus Insights: Ohio Voters Signal Competitive 2026 Environment|website=Quantus Insights|date=March 16, 2026|access-date=March 16, 2026}}</ref>
+|March 13–14, 2026
+|809 (LV)
+|±&nbsp;3.8%
+|45%
+|{{party shading/Democratic}}|'''46%'''
+|3%{{efn|"Some other candidate" with 3%}}
+|6%
+|-
+|style="text-align:left;"|EMC Research (D)<ref name=":0">{{cite news |title=Ohio Voter Survey Results|url=https://theoec.org/wp-content/uploads/2026/03/OEC-Ohio-Survey-Results-2026.pdf|access-date=March 12, 2026|work=EMC Research|date=March 10, 2026}}</ref>{{Efn-ua|Polling commissioned by [[Ohio Environmental Council]], an environmental organization}}
+|February 10–22, 2026
+|1,343 (LV)
+|±&nbsp;2.7%
+|43%
+|{{party shading/Democratic}}|'''53%'''
+|–
+|4%
+|-
+|style="text-align:left;"|[[Emerson College]]<ref>{{Cite web|url=https://emersoncollegepolling.com/ohio-2026-poll-democrats-make-gains-in-races-for-governor-and-us-senate/|title=Ohio 2026 Poll: Democrats Make Gains in Races for Governor and US Senate|website=Emerson College Polling|date=December 11, 2025|access-date=December 11, 2025}}</ref>
+|December 6–8, 2025
+|850 (RV)
+|±&nbsp;3.3%
+|45%
+|{{party shading/Democratic}}|'''46%'''
+|–
+|9%
+|-
+|style="text-align:left;"|Data Targeting (R)<ref>{{Cite web|url=https://files.constantcontact.com/0298af4f501/e1c7247f-6c5b-4b40-8fd0-04ce6718023a.pdf?rdr=true|title=Ohio Statewide Survey|website=Data Targeting|date=December 9, 2026|access-date=December 18, 2025}}</ref>{{Efn-ua|Poll sponsored by T. Roosevelt Action, a nonprofit organization committed to advocating for the rights of hunters and anglers across the United States.}}
+|December 3–8, 2025
+|603 (LV)
+|±&nbsp;4.0%
+|{{party shading/Republican}}|'''45%'''
+|43%
+|–
+|12%
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSUOct2025"/>
+|October 2–14, 2025
+|800 (RV)
+|±&nbsp;4.5%
+|{{party shading/Republican}}|'''50%'''
+|47%
+|3%{{efn|"Someone else" with 3%}}
+|–
+|-
+|style="text-align:left;"|Hart Research (D)<ref>{{cite web |title=OFT Poll: Ohio Governor's Race a Toss Up; Acton Outpaces Ramaswamy on Favorability {{!}} Ohio Federation of Teachers, AFT, AFL-CIO |url=https://www.oft-aft.org/press/oft-poll-ohio-governors-race-toss-acton-outpaces-ramaswamy-favorability |website=OFT AFT |access-date=November 6, 2025 |language=en |date=November 5, 2025}}</ref>{{Efn-ua|Poll sponsored by the [[Ohio Federation of Teachers]]}}
+|September 19–22, 2025
+|800 (LV)
+|±&nbsp;3.0%
+|45%
+|{{party shading/Democratic}}|'''46%'''
+|–
+|9%
+|-
+|style="text-align:left;"|[[Emerson College]]<ref name="EmersonAug2025">{{Cite web|url=https://emersoncollegepolling.com/ohio-2026/|title=Ohio 2026 Poll:Ramaswamy leads Democratic candidates in potential Gubernatorial matchups|website=Emerson College Polling|date=August 21, 2025|access-date=August 21, 2025}}</ref>
+|August 18–19, 2025
+|1,000 (RV)
+|±&nbsp;3.0%
+|{{party shading/Republican}}|'''49%'''
+|39%
+|–
+|12%
+|-
+| style="text-align:left;"|Impact Research (D)<ref name="Impact Research">{{Cite web|title=Ohio Statewide Poll Findings|url=https://mcusercontent.com/350a1d4442fd0b270ac8072f7/files/a27b8473-e2e2-2c57-82a5-b046ce7e590a/Impact_Research_Amy_Acton_for_OH_Governor_August_Polling_Memo.pdf|work=Impact Research|date=August 5, 2025|access-date=August 12, 2025}}</ref>{{Efn-ua|name=Acton|Poll sponsored by Acton's campaign}}
+|July 24–28, 2025
+|800 (LV)
+|±&nbsp;3.5%
+|{{party shading/Republican}}|'''47%'''
+|46%
+|–
+|7%
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSU0013TABS">{{Cite web|url=https://scholarworks.bgsu.edu/cgi/viewcontent.cgi?article=1009&context=depo |title=Survey of 800 Ohio Registered voters 18+, April 2025 Tabs |first=Robert|last=Alexander|website=Bowling Green State University |date=April 29, 2025|access-date=April 30, 2025}}</ref><ref name="BGSU0013TOPLINES">{{Cite web|url=https://scholarworks.bgsu.edu/cgi/viewcontent.cgi?article=1010&context=depo |title=Survey of 800 Ohio Registered voters 18+, April 2025 Toplines Survey of 800 Ohio Registered voters 18+, April 2025 Toplines|first=Robert|last=Alexander|website=Bowling Green State University |date=April 29, 2025|access-date=April 30, 2025}}</ref>
+|April 18–24, 2025
+|800 (RV)
+|±&nbsp;4.1%
+|{{party shading/Republican}}|'''50%'''
+|45%
+|5%{{efn|name="SE5"|"Someone else" with 5%}}
+|–
+|- style="background:lightyellow;"
+| style="border-right-style:hidden; background:lightyellow;" |
+| style="border-right-style:hidden; " |February 25, 2025
+| colspan="6" | Ramaswamy declares his candidacy
+|-
+|style="text-align:left;"|[[Public Policy Polling]] (D)<ref name="PPPFeb2025"/>{{Efn-ua|name=314Action}}
+|February 19–20, 2025
+|642 (RV)
+|±&nbsp;3.9%
+|44%
+|{{party shading/Democratic}}|'''45%'''
+|–
+|11%
+|}
+<!-- = = = don't edit the line below = = = -->
+{{hidden begin|titlestyle=background:#cff|title=Hypothetical polling|contentstyle=border:solid 1px silver; padding:8px; background:var(--background-color-base); color:var(--color-base);}}
+<!-- = = = don't edit the line above = = = -->
+'''Vivek Ramaswamy vs. Tim Ryan'''<br />
+
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- valign=bottom
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name=Key}}
+! Margin<br />of error
+! style="width:100px;"| Vivek<br />Ramaswamy (R)
+! style="width:100px;"| Tim<br />Ryan (D)
+! Other
+! Undecided
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSUOct2025"/>
+|October 2–14, 2025
+|800 (RV)
+|±&nbsp;4.5%
+|{{party shading/Republican}}|'''49%'''
+|47%
+|4%{{efn|"Someone else" with 4%}}
+|–
+|-
+|style="text-align:left;"|[[Emerson College]]<ref name="EmersonAug2025"/>
+|August 18–19, 2025
+|1,000 (RV)
+|±&nbsp;3.0%
+|{{party shading/Republican}}|'''49%'''
+|41%
+|–
+|10%
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSU0013TABS"/><ref name="BGSU0013TOPLINES"/>
+|April 18–24, 2025
+|800 (RV)
+|±&nbsp;4.1%
+|{{party shading/Republican}}|'''51%'''
+|44%
+|5%{{efn|name="SE5"}}
+|–
+|-
+|style="text-align:left;"|[[Public Policy Polling]] (D)<ref name="PPPFeb2025">{{Cite web|url=https://314action.org/wp-content/uploads/2025/02/Ohio-Poll-Feb-2025.pdf|title=Acton Leads Ramaswamy in Gubernatorial Matchup|first=Jim|last=Williams|website=314 Action|date=February 24, 2025|access-date=February 25, 2025}}</ref>{{Efn-ua|name=314Action|Poll sponsored by [[314 Action]], an organization dedicated to electing Democratic scientists to public office.}}
+|February 19–20, 2025
+|642 (RV)
+|±&nbsp;3.9%
+|{{party shading/Republican}}|'''48%'''
+|42%
+|–
+|10%
+|}
+
+'''Dave Yost vs. Amy Acton'''<br />
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- valign=bottom
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name=Key}}
+! Margin<br />of error
+! style="width:100px;"|Dave<br />Yost (R)
+! style="width:100px;"|Amy<br />Acton (D)
+! Other
+! Undecided
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSU0013TABS"/><ref name="BGSU0013TOPLINES"/>
+|April 18–24, 2025
+|800 (RV)
+|±&nbsp;4.1%
+|{{party shading/Republican}}|'''46%'''
+|45%
+|9%{{efn|"Someone else" with 9%}}
+|–
+|}
+
+'''Dave Yost vs. Tim Ryan'''<br />
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- valign=bottom
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name=Key}}
+! Margin<br />of error
+! style="width:100px;"|Dave<br />Yost (R)
+! style="width:100px;"|Tim<br />Ryan (D)
+! Other
+! Undecided
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSU0013TABS"/><ref name="BGSU0013TOPLINES"/>
+|April 18–24, 2025
+|800 (RV)
+|±&nbsp;4.1%
+|{{party shading/Republican}}|'''46%'''
+|44%
+|10%{{efn|name="SE10"}}
+|–
+|}
+
+'''Jim Tressel vs. Amy Acton'''<br />
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- valign=bottom
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name=Key}}
+! Margin<br />of error
+! style="width:100px;"| Jim<br />Tressel (R)
+! style="width:100px;"|Amy<br />Acton (D)
+! Other
+! Undecided
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSU0013TABS"/><ref name="BGSU0013TOPLINES"/>
+|April 18–24, 2025
+|800 (RV)
+|±&nbsp;4.1%
+|{{party shading/Republican}}|'''46%'''
+|44%
+|10%{{efn|name="SE10"}}
+|–
+|}
+
+'''Jim Tressel vs. Tim Ryan'''<br />
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- valign=bottom
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name=Key}}
+! Margin<br />of error
+! style="width:100px;"|Jim<br />Tressel (R)
+! style="width:100px;"|Tim<br />Ryan (D)
+! Other
+! Undecided
+|-
+|style="text-align:left;"|[[Bowling Green State University]]/[[YouGov]]<ref name="BGSU0013TABS"/><ref name="BGSU0013TOPLINES"/>
+|April 18–24, 2025
+|800 (RV)
+|±&nbsp;4.1%
+|{{party shading/Republican}}|'''46%'''
+|43%
+|11%{{efn|"Someone else" with 11%}}
+|–
+|}
+{{hidden end}}
+
+===Results===
+{{Election box begin
+ | title=2026 Ohio gubernatorial election}}
+{{Election box candidate with party link
+ | party=Republican Party (United States)
+ | candidate= {{ubl|[[Vivek Ramaswamy]]|[[Rob McColley]]}}
+ | votes=
+ | percentage=
+ | change=
+}}
+{{Election box candidate with party link
+ | party=Democratic Party (United States)
+ | candidate={{ubl|[[Amy Acton]]|[[David Pepper (politician)|David Pepper]]}}
+ | votes= 
+ | percentage=
+ | change=
+}}
+{{Election box candidate with party link
+ | party=Libertarian Party (United States)
+ | candidate={{ubl|Don Kissick|James L. Mills}}
+ | votes= 
+ | percentage=
+ | change=
+}}
+{{Election box write-in with party link
+ | votes= 
+ | percentage=
+ | change=
+}}
+{{Election box total 
+ | votes= 
+ | percentage=100.0
+ | change=
+}}
+{{Election box end}}
+
+== See also ==
+*[[2026 United States gubernatorial elections]]
+*[[2026 Ohio elections]]
+
+==Notes==
+{{notelist}}
+'''Partisan clients'''<br />
+{{notelist-ua}}
+
+==References==
+{{reflist}}
+
+==External links==
+'''Official campaign websites'''
+*[https://www.actonforgovernor.com/ Amy Acton (D)]
+*[https://timgradyforohio.com/ Timothy Grady (I)]
+*[https://donkissick.com/ Don Kissick (L)]
+*[https://www.vivekforohio.com Vivek Ramaswamy (R)]
+
+{{2026 United States elections}}
+
+[[Category:Ohio gubernatorial elections]]
+[[Category:2026 Ohio elections|Gubernatorial]]
+[[Category:2026 United States gubernatorial elections|Ohio]]
+[[Category:Vivek Ramaswamy|Gubernatorial election]]
+[[Category:Amy Acton]]

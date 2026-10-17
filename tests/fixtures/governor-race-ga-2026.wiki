@@ -1,0 +1,1612 @@
+{{Short description|none}}
+{{for|related races|2026 United States gubernatorial elections}}
+{{Use American English|date=January 2025}}
+{{Use mdy dates|date=September 2023}}
+{{Infobox election
+| election_name = 2026 Georgia gubernatorial election
+| country = Georgia (U.S. state)
+| type = presidential
+| ongoing = yes
+| previous_election = 2022 Georgia gubernatorial election
+| previous_year = 2022
+| next_election = 2030 Georgia gubernatorial election
+| next_year = ''2030''
+| election_date = November 3, 2026
+| image1 = File:Rick Jackson (cropped) (cropped).png
+| nominee1 = [[Rick Jackson (businessman)|Rick Jackson]]
+| party1 = Georgia Republican Party
+| running_mate1 = 
+| popular_vote1 = 
+| percentage1 = 
+| image2 = Keisha Lance Bottoms (cropped).jpg
+| nominee2 = [[Keisha Lance Bottoms]]
+| running_mate2 = 
+| party2 = Democratic Party of Georgia
+| popular_vote2 = 
+| percentage2 = 
+| title = [[Governor of Georgia|Governor]]
+| before_election = [[Brian Kemp]]
+| before_party = Georgia Republican Party
+| after_election = 
+| after_party = 
+}}
+{{Elections in Georgia (U.S. state) sidebar}}
+The '''2026 Georgia gubernatorial election''' will take place on November 3, 2026, to elect the [[governor of Georgia]]. Incumbent [[Georgia Republican Party|Republican]] governor [[Brian Kemp]] is [[Term limits in the United States|ineligible]] to seek re-election to a third consecutive term. 
+
+[[Primary elections]] were held on May 19, 2026, with a primary runoff held on June 16. Businessman [[Rick Jackson (businessman)|Rick Jackson]] and incumbent Lieutenant Governor [[Burt Jones]] received the most votes in the first round of the Republican primary, but failed to reach the 50% threshold, causing a runoff which Jackson won. Jackson's campaign was predominantly self-funded, managing to overcome an endorsement for Jones from President [[Donald Trump]] and Kemp. Former [[Mayor of Atlanta|Atlanta Mayor]] [[Keisha Lance Bottoms]] won the Democratic nomination without a runoff against six other candidates.
+
+The 2026 gubernatorial primary was the first time that Democratic turnout exceeded that of Republicans since [[2006 Georgia gubernatorial election|2006]].
+
+If Lance Bottoms is elected, she would be the first female and first African-American governor of Georgia and could be the first female African-American governor in United States history. If Jackson is elected, he would be the oldest elected governor at the age of 72 surpassing [[Lamartine Griffin Hardman]].
+
+== Background ==
+Georgia is considered a [[swing state]] at the federal level, but the state has maintained a Republican lean at the state level, with Republicans holding all statewide executive offices in the [[2022 Georgia elections|2022 midterms]], where incumbent governor Brian Kemp was [[2022 Georgia gubernatorial election|re-elected]] in a rematch against [[Democratic Party of Georgia|Democrat]] [[Stacey Abrams]] by a 7.5 percent margin.<ref>{{Cite news |last=Bluestein |first=Greg |title=Abrams says she will 'likely run again.' That doesn't excite some Democrats |language=English |work=[[The Atlanta Journal-Constitution]] |url=https://www.ajc.com/politics/abrams-says-she-will-likely-run-again-that-doesnt-excite-some-democrats/23WS3YRCB5E5FEVI5DPK6PU6LA/ |access-date=2023-05-13 |issn=1539-7459 |date=March 16, 2023}}</ref> Republicans also control both the [[Georgia State Senate|state senate]] and [[Georgia House of Representatives|House of Representatives]], together with Kemp's governorship establishing a [[government trifecta]], alongside an all but one Republican pick on the [[Supreme Court of Georgia (U.S. state)|state's supreme court]]. A year prior to the 2026 elections, the [[2025 Georgia Public Service Commission special election]] resulted in two Democrats being elected to the Commission, both by landslide victories, and marking the first time that Democrats won any seats on the PSC since the [[2000 Georgia state elections|2000 elections]] or any state-wide non-federal offices since the [[2006 Georgia state elections|2006 elections]].<ref>{{Cite web |last=Vakil |first=Caroline |date=November 4, 2025 |title=Democrats win key Georgia special elections seen as midterm bellwethers |url=https://thehill.com/homenews/5589670-gop-incumbents-lose-seats/ |access-date=November 12, 2025 |website=[[The Hill (newspaper)|The Hill]]}}</ref><ref>{{Cite web |last=Jones |first=Emily |date=2025-11-06 |title=What Georgia Democrats' PSC wins could mean for power bills and the midterm elections |url=https://www.wabe.org/what-democrats-psc-wins-could-mean-for-power-bills-and-the-midterm-elections/ |access-date=2025-11-12 |website=WABE |language=en-US}}</ref> Democrats have not won a gubernatorial election in Georgia since [[1998 Georgia gubernatorial election|1998]].
+
+== Republican primary ==
+
+=== Candidates ===
+With Kemp term-limited, speculation mounted about Lieutenant Governor [[Burt Jones]], Secretary of State [[Brad Raffensperger]], and Attorney General [[Chris Carr (politician)|Chris Carr]]. Carr and Raffensperger sought to associate themselves with Kemp, drawing on his relative popularity.<ref>{{cite news |last1=Timotija |first1=Filip |title=Georgia attorney general launches bid in 2026 governor’s race |url=https://thehill.com/homenews/campaign/5003295-georgia-chris-carr-governor-race/ |access-date=October 7, 2026 |date=November 21, 2024}}</ref> Jones sought to ally himself with Trump, who endorsed him in August 2025. 
+
+Rick Jackson, a healthcare CEO, announced his campaign in February 2026. Previously unknown in the political realm, Jackson quickly consolidated support from right-wing primary voters, in part due to his significant personal financial resources. Jackson spent more than $83 million in personal funds during the primary. Jackson's campaign emphasized his success as a self-made billionaire, highlighting his impoverished childhood. Jackson also sought to tie himself to Trump, claiming he would be "Trump's favorite governor" and "just like Trump, but with a Southern tone."<ref name="Trumps favorite governor">{{cite news |title=Burt Jones was the inevitable Republican nominee for Georgia governor. Then Rick Jackson showed up |url=https://apnews.com/article/rick-jackson-georgia-governor-burt-jones-trump-4c1789c599857e220180068e26de9199 |access-date=October 7, 2026 |agency=Associated Press |date=March 14, 2026}}</ref> An aggressive television ad campaign allowed Jackson to take a small polling lead by spring 2026. Jackson's self-funding represented the largest amount any candidate had ever spent in a primary race for Georgia governor.<ref name="Trumps favorite governor"></ref>
+
+Jones's campaign focused primarily on rural connections, Trump, and support from Republican allies in the General Assembly. Jones accused Jackson of "made his fortune recruiting for [[Planned Parenthood]]" and funding [[Transgender surgery]] for minors.<ref>{{cite news |last1=Bynum |first1=Zachary |title=Georgia GOP governor candidates Rick Jackson and Burt Jones clash over defamation lawsuit as the race heats up |url=https://www.cbsnews.com/atlanta/news/georgia-gop-governors-race-turns-messy-as-burt-jones-and-rick-jackson-clash-over-money-smears-and-campaign-tactics/ |access-date=October 7, 2026 |agency=CBS News |date=March 10, 2026}}</ref> Jackson denied these accusations and filed for [[defamation]] against Jones, a lawsuit he later dropped.<ref>{{cite news |title=Rick Jackson drops lawsuits against Burt Jones as he seeks rival’s endorsement |url=https://www.ajc.com/politics/2026/09/gop-candidate-for-governor-rick-jackson-drops-lawsuits-against-burt-jones/ |access-date=October 7, 2026 |agency=Atlanta Journal-Constitution |date=September 22, 2026}}</ref>
+
+==== Nominee ====
+*[[Rick Jackson (businessman)|Rick Jackson]], healthcare executive<ref>{{Cite web |last1=Bluestein |first1=Greg |title=Republican Rick Jackson enters Georgia governor's race in surprise move |url=https://www.ajc.com/politics/2026/02/surprise-republican-rick-jackson-enters-georgia-governors-race/ |date=February 3, 2026 |website=[[The Atlanta Journal-Constitution]]}}</ref>
+
+==== Eliminated in runoff ====
+*[[Burt Jones]], [[lieutenant governor of Georgia]] (2023–present)<ref>{{Cite news |last=Bluestein |first=Greg |date=July 8, 2025 |title=Burt Jones enters Georgia governor's race with Trump-aligned platform |url=https://www.ajc.com/politics/2025/07/burt-jones-enters-georgia-governors-race-with-trump-aligned-platform/ |access-date=2025-07-08 |work=[[The Atlanta Journal-Constitution]] |language=English |issn=}}</ref>
+
+==== Eliminated in primary ====
+*[[Chris Carr (politician)|Chris Carr]], [[attorney general of Georgia]] (2016–present)<ref>{{cite news |last1=Bluestein |first1=Greg |title=Georgia AG Chris Carr launches GOP campaign for governor, kicking off 2026 race |url=https://www.ajc.com/politics/georgia-ag-chris-carr-enters-2026-race-for-governor-kicking-off-race/UUBZXWHT25GHPNBUVO6RBEKPSA/ |access-date=November 21, 2024 |work=[[The Atlanta Journal-Constitution]] |date=November 21, 2024 |language=English}}</ref> (''endorsed Jackson in runoff'')<ref name="auto">{{cite web |first1=Tim|last1=Darnell|title=AG Chris Carr endorses Rick Jackson in Georgia GOP governor's runoff|url=https://www.atlantanewsfirst.com/2026/05/26/ag-chris-carr-endorses-rick-jackson-georgia-gop-governors-runoff/|access-date=May 26, 2026 |work=Atlanta News First|date=May 26, 2026}}</ref> 
+*Clark Dean, real estate executive<ref>{{Cite news |last=Bluestein |first=Greg |title=Clark Dean preps outsider-themed GOP run for Georgia governor |url=https://www.ajc.com/politics/2025/09/clark-dean-preps-outsider-themed-gop-run-for-georgia-governor/ |access-date=September 14, 2025 |archive-date=September 13, 2025 |archive-url=https://archive.today/20250913181628/https://www.ajc.com/politics/2025/09/clark-dean-preps-outsider-themed-gop-run-for-georgia-governor/ |date=September 13, 2025 |work=[[The Atlanta Journal-Constitution]] |language=English |issn=1539-7459}}</ref>
+*Gregg Kirkpatrick, entrepreneur<ref name=":0">{{Cite web |title=Elections Portal |url=https://mvp.sos.ga.gov/s/qualifying-candidate-information?electionYear=2026&election=a0pcs00000J6e6HAAR&party=Republican&contestType=Statewide&contest=Governor%20%28R%29&county=null&electiondatename=5%2F19%2F2026%20-%20MAY%2019%2C%202026%20-%20GENERAL%20PRIMARY%20ELECTION |access-date=2026-03-26 |website=mvp.sos.ga.gov}}</ref>
+*[[Brad Raffensperger]], [[Georgia secretary of state]] (2019–present)<ref>{{cite news |first1=Joyce |last1=Lupiani |first2=Lindsay |last2=Tuman |work=[[WAGA-TV]] |access-date=September 17, 2025 |url=https://www.fox5atlanta.com/news/brad-raffensperger-announces-run-georgia-governor |date=September 17, 2025 |title=Brad Raffensperger announces run for Georgia governor}}</ref>
+*Tom Williams, retired software engineer<ref name=":0" />
+*Ken Yasger, member of the [[Georgia Army National Guard]]<ref>{{cite news |last1=Johnson |first1=Patrick |title=Southern, out, and electable: Sexual identity is not the deciding factor|url=https://www.csmonitor.com/USA/Society/2023/1102/Southern-out-and-electable-Sexual-identity-is-not-the-deciding-factor |access-date=June 15, 2025|work=[[Christian Science Monitor]] |date=November 2, 2023}}</ref>
+
+====Declined====
+*[[Andrew Clyde]], [[U.S. representative]] from [[GA-09]] (2021–present)<ref>{{cite news |work=[[Axios (website)|Axios]] |url=https://www.axios.com/2024/12/12/juan-ciscomani-arizona-governor-2026 |date=December 12, 2024 |access-date=December 12, 2024 |author=Solender, Andrew |title=GOP Rep. Ciscomani passes on run for Arizona governor|quote=Rep. Andrew Clyde (R-Ga.) is not considering a run for Senate or governor and his 'focused on and happy serving [Northeast] GA in the House,' a spokesperson said.}}</ref> ''([[2026 United States House of Representatives elections in Georgia#District 9|running for re-election]])''<ref>{{cite news |last1=Daughtry |first1=Will |title=Amid primary challenge, Rep. Andrew Clyde talks 2026 reelection bid |url=https://accesswdun.com/article/2025/2/1285055/amid-primary-challenge-andrew-clyde-talks-2026-reelection-bid |access-date=February 17, 2025 |work=[[WDUN-FM]] |date=February 6, 2025 |language=en}}</ref>
+*[[Marjorie Taylor Greene]], [[U.S. representative]] from [[GA-14]] (2021–2026)<ref>{{cite news|title=Georgia Republican Marjorie Taylor Greene won't run for governor in 2026|url=https://apnews.com/article/marjorie-taylor-greene-republican-governor-georgia-3afd2ed330a227c42710ae664a12cf6a |access-date=July 29, 2025 |work=[[Associated Press]] |author=Amy, Jeff |date=July 29, 2025 |language=en}}</ref>
+
+=== Endorsements ===
+{{Endorsements box
+|title=Chris Carr ''(eliminated)''
+|list=
+'''Statewide officials'''
+*<s>[[Nathan Deal]], former [[governor of Georgia]] (2011–2019)</s><ref>{{cite news |last1= |first1= |title=Carr gets endorsement from Deal during Gainesville visit |url=https://accesswdun.com/news/carr-gets-endorsement-from-deal-during-gainesville-visit |access-date=April 29, 2026 |work=AccessWDUN |date=April 29, 2026}}</ref> ''(later endorsed Rick Jackson)''<ref name="Shockwave"/>
+'''Local officials '''
+*53 county sheriffs<ref>{{cite web |author=Press |title=53 Sheriffs Endorse Chris Carr for Governor |url=https://www.thegeorgiavirtue.com/2026-elections/53-sheriffs-endorse-chris-carr-for-governor/ |access-date=September 25, 2025 |work=The Georgia Virtue |date=September 24, 2025}}</ref>
+}}
+
+{{Endorsements box
+|title=Rick Jackson
+|list=
+;U.S. representatives
+*[[Newt Gingrich]], former [[Speaker of the United States House of Representatives|speaker of the House]] (1995–1999) from [[GA-06]] (1979–1999)<ref>{{cite news |last1=Darnell |first1=Tim |title=Lt. Gov. Burt Jones challenges Rick Jackson to a debate |url=https://www.msn.com/en-us/news/politics/lt-gov-burt-jones-challenges-rick-jackson-to-a-debate/ar-AA1ZzaOV |access-date=March 27, 2026 |work=[[Spectrum News]] |date=March 27, 2026}}</ref>
+
+;Statewide officials
+*[[John F. King]], [[Insurance Commissioner of Georgia|insurance commissioner of Georgia]] (2019–present)<ref name="Biden1"/>
+*[[Bubba McDonald]], [[Georgia Public Service Commission|Georgia public service commissioner]] from the 4th district (1998–2003, 2008–present)<ref>{{cite web |first1=Greg|last1=Bluestein|first2=Tia|last2=Mitchell|first3=Adam|last3=Beam|title=Ahead of Atlanta visit, Cory Booker casts Georgia as key political battleground|url=https://www.ajc.com/politics/2026/03/ahead-of-atlanta-visit-cory-booker-casts-georgia-as-key-political-battleground/|access-date=September 25, 2025 |work=The Atlanta Journal-Constitution|date=March 27, 2026}}</ref>
+
+;State legislators
+*[[Jan Jones (Georgia politician)|Jan Jones]], speaker pro tempore of the [[Georgia House of Representatives]] (2010–present) from [[Georgia's 47th House of Representatives district|HD-47]] (2013–present)<ref name="IBEW613"/>
+*2 state representatives{{Efn|
+*[[Bethany Ballard]], [[Georgia's 147th House of Representatives district|HD-147]] (2023–present)<ref name="Biden1"/>
+*[[Steven Sainz]], [[Georgia's 180th House of Representatives district|HD-180]] (2019–present)<ref name="Biden1"/>}}
+
+;Individuals
+*[[Fran Tarkenton]], former [[National Football League|NFL]] [[quarterback]]<ref name="Biden1"/>
+
+;Organizations
+*[[Job Creators Network]]<ref>{{cite web |last1=Ortiz |first1=Alfredo |title=Job Creators Network Endorses Rick Jackson for Georgia Governor |url=https://www.jobcreatorsnetwork.com/press_releases/job-creators-network-endorses-rick-jackson-for-georgia-governor/ |access-date=September 28, 2026 |work=Job Creators Network |date=February 4, 2026}}</ref>
+}}
+{{Endorsements box
+|title=Burt Jones
+|colwidth=
+|list=
+'''Executive branch officials'''
+*<s>[[Donald Trump]], [[president of the United States]] (2017–2021, 2025–present)</s><ref>{{cite web |url=https://www.politico.com/news/2025/08/11/trump-burt-jones-georgia-governor-00504647 |title=Trump endorses Lt. Gov. Burt Jones for Georgia governor |last=Wendler |first=Jacob |date=August 11, 2025 |access-date=August 11, 2025 |website=[[Politico]]}}</ref> ''(later endorsed Rick Jackson)''<ref>{{Cite news |last=Wright |first=Irene |date=July 23, 2026 |title=Trump endorses Georgia governor candidate who beat his previous pick |url=https://www.usatoday.com/story/news/state/georgia/atlanta/2026/07/23/did-trump-endorse-rick-jackson-for-governor-in-georgia-school-speech/91020427007/ |access-date=August 16, 2026 |work=[[USA Today]]}}</ref>
+<!--*[[JD Vance]], [[vice president of the United States]] (2025–present) <ref>https://x.com/burtjonesforga/status/2044178115274916191</ref>-->
+
+'''U.S. representatives'''
+*[[Rick Allen (politician)|Rick Allen]], [[GA-12]] (2015–present)<ref name="Biden1"/>
+*[[Andrew Clyde]], [[GA-09]] (2021–present)<ref name="Biden1"/>
+*[[Clay Fuller]], [[GA-14]] (2026–present)<ref name="USATodayGAGov">{{cite web |last1=Wright |first1=Irene |title=More endorsements for Georgia governor's race flow in ahead of runoff |url=https://www.usatoday.com/story/news/2026/05/27/former-opponents-join-list-of-endorsements-ahead-of-ga-governors-race/90275306007/ |website=USA Today |access-date=May 28, 2026 |date=May 27, 2026}}</ref>
+*[[Brian Jack]], [[GA-03]] (2025–present)<ref name="USATodayGAGov"/>
+*[[Austin Scott]], [[GA-08]] (2011–present)<ref name="USATodayGAGov"/>
+
+'''State legislators'''
+*[[Jason Anavitarte]], majority leader of the [[Georgia State Senate|Georgia Senate]] (2025–present) from [[Georgia's 31st Senate district|SD-31]] (2021–present)<ref name="Lanier"/>
+*[[John F. Kennedy (Georgia politician)|John F. Kennedy]], former president pro tempore of the [[Georgia State Senate]] (2023–2025) from [[Georgia's 18th Senate district|SD-18]] (2015–2025)<ref name="Lanier"/>
+*[[Larry Walker III]], president pro tempore of the Georgia Senate (2026–present) from [[Georgia's 20th Senate district|SD-20]] (2015–present)<ref name="Lanier"/>
+*24 other state senators{{efn|
+*[[John Albers]], [[Georgia's 56th Senate district|SD-56]] (2011–present)<ref name="Lanier">{{Cite web |date=2025-09-22 |title=State Legislators and Sheriffs Endorse Lt. Governor Burt Jones for Governor |url=https://www.laniercountynewsonline.com/2025/09/22/state-legislators-and-sheriffs-endorse-lt-governor-burt-jones-for-governor/ |access-date=2025-11-13 |website=Lanier County News |language=en-US}}</ref>
+*[[Lee Anderson (American politician)|Lee Anderson]], [[Georgia's 24th Senate district|SD-24]] (2017–present)<ref name="Lanier"/>
+*[[Tim Bearden]], [[Georgia's 30th Senate district|SD-30]] (2024–present)<ref name="Lanier"/>
+*[[Matt Brass]], [[Georgia's 28th Senate district|SD-28]] (2017–present)<ref name="Lanier"/>
+*[[Max Burns]], [[Georgia's 23rd Senate district|SD-23]] (2021–present)<ref name="Lanier"/>
+*[[Clint Dixon]], [[Georgia's 45th Senate district|SD-45]] (2021–present)<ref name="Lanier"/>
+*[[Greg Dolezal]], [[Georgia's 27th Senate district|SD-27]] (2019–present)<ref name="Lanier"/>
+*[[Drew Echols]], [[Georgia's 49th Senate district|SD-49]] (2025–present)<ref name="Lanier"/>
+*[[Steve Gooch]], [[Georgia's 51st Senate district|SD-51]] (2011–present)<ref name="Lanier"/>
+*[[Russ Goodman]], [[Georgia's 8th Senate district|SD-08]] (2021–present)<ref name="Lanier"/>
+*[[Marty Harbin]], [[Georgia's 16th Senate district|SD-16]] (2015–present)<ref name="Lanier"/>
+*[[Bo Hatchett]], [[Georgia's 50th Senate district|SD-50]] (2021–present)<ref name="Lanier"/>
+*[[Billy Hickman]], [[Georgia's 4th Senate district|SD-04]] (2020–present)<ref name="Lanier"/>
+*[[Mike Hodges (politician)|Mike Hodges]], [[Georgia's 3rd Senate district|SD-03]] (2023–present)<ref name="Lanier"/>
+*[[Chuck Hufstetler]], [[Georgia's 52nd Senate district|SD-52]] (2013–present)<ref name="Lanier"/>
+*[[Kay Kirkpatrick]], [[Georgia's 32nd Senate district|SD-32]] (2017–present)<ref name="Lanier"/>
+*[[Steven McNeel]], [[Georgia's 18th Senate district|SD-18]] (2026–present)<ref name="Biden1"/>
+*[[Randy Robertson (politician)|Randy Robertson]], [[Georgia's 29th Senate district|SD-29]] (2019–present)<ref name="Lanier"/>
+*[[Shawn Still]], [[Georgia's 48th Senate district|SD-48]] (2023–present)<ref name="Lanier"/>
+*[[Carden Summers]], [[Georgia's 13th Senate district|SD-13]] (2020–present)<ref name="Lanier"/>
+*[[Blake Tillery]], [[Georgia's 19th Senate district|SD-19]] (2017–present)<ref name="Lanier"/>
+*[[Ben Watson (politician)|Ben Watson]],[[Georgia's 1st Senate district|SD-01]] (2015–present)<ref name="Lanier"/>
+*[[Sam Watson (politician)|Sam Watson]], [[Georgia's 11th Senate district|SD-11]] (2023–present)<ref name="Lanier"/>
+*[[Rick Williams (Georgia politician)|Rick Williams]], [[Georgia's 25th Senate district|SD-25]] (2023–present)<ref name="Lanier"/>}}
+*38 [[Georgia House of Representatives|state representatives]]{{efn|
+*[[Victor Anderson (Georgia politician)|Victor Anderson]], [[Georgia's 10th House of Representatives district|HD-10]] (2021–present)<ref name="Lanier"/>
+*[[James Burchett (politician)|James Burchett]], [[Georgia's 176th House of Representatives district|HD-176]] (2019–present)<ref name="Lanier"/>
+*[[Beth Camp]], [[Georgia's 135th House of Representatives district|HD-135]] (2021–present)<ref name="Lanier"/>
+*[[Charles Cannon (Georgia politician)|Charles Cannon]], [[Georgia's 172nd House of Representatives district|HD-172]] (2023–present)<ref name="Lanier"/>
+*[[Mike Cheokas]], [[Georgia's 138th House of Representatives district|HD-138]] (2005–2017, 2019–present)<ref name="Lanier"/>
+*[[David Clark (Georgia politician)|David Clark]], [[Georgia's 100th House of Representatives district|HD-100]] (2015–present)<ref name="Lanier"/>
+*[[Clint Crowe]], [[Georgia's 110th House of Representatives district|HD-110]] (2021–present)<ref name="Lanier"/>
+*[[Buddy DeLoach]], [[Georgia's 167th House of Representatives district|HD-167]] (1995–2005, 2021–present)<ref name="Lanier"/>
+*[[Robert Dickey (American politician)|Robert Dickey]], [[Georgia's 134th House of Representatives district|HD-134]] (2011–present)<ref name="Lanier"/>
+*[[Emory Dunahoo]], [[Georgia's 31st House of Representatives district|HD-31]] (2011–present)<ref name="Lanier"/>
+*[[Ginny Ehrhart]], [[Georgia's 36th House of Representatives district|HD-36]] (2019–present)<ref name="Lanier"/>
+*[[Tim Fleming (politician)|Tim Fleming]], [[Georgia's 114th House of Representatives district|HD-114]] (2023–present)<ref name="Lanier"/>
+*[[Lehman Franklin]], [[Georgia's 160th House of Representatives district|HD-160]] (2023–present)<ref name="Lanier"/>
+*[[Gerald Greene]], [[Georgia's 154th House of Representatives district|HD-154]] (1983–present)<ref name="Lanier"/>
+*[[Lee Hawkins]], [[Georgia's 27th House of Representatives district|HD-27]] (2013–present)<ref name="Lanier"/>
+*[[Justin Howard (politician)|Justin Howard]], [[Georgia's 71st House of Representatives district|HD-71]] (2025–present)<ref name="Lanier"/>
+*[[Rick Jasperse]], [[Georgia's 11th House of Representatives district|HD-11]] (2010–present)<ref name="Lanier"/>
+*[[Todd Jones (politician)|Todd Jones]], [[Georgia's 25th House of Representatives district|HD-25]] (2017–present)<ref name="Lanier"/>
+*[[Noelle Kahaian]], [[Georgia's 81st House of Representatives district|HD-81]] (2025–present)<ref name="Lanier"/>
+*[[John LaHood]], [[Georgia's 175th House of Representatives district|HD-175]] (2018–present)<ref name="Lanier"/>
+*[[Eddie Lumsden (politician)|Eddie Lumsden]], [[Georgia's 12th House of Representatives district|HD-12]] (2013–present)<ref name="Lanier"/>
+*[[Reynaldo Martinez]], [[Georgia's 111th House of Representatives district|HD-111]] (2023–present)<ref name="Lanier"/>
+*[[Danny Mathis]], [[Georgia's 133rd House of Representatives district|HD-133]] (2019–present)<ref name="Lanier"/>
+*[[Karen Mathiak]], [[Georgia's 82nd House of Representatives district|HD-82]] (2017–present)<ref name="Lanier"/>
+*[[Mark Newton (politician)|Mark Newton]], [[Georgia's 127th House of Representatives district|HD-127]] (2017–present)<ref name="Lanier"/>
+*[[Jesse Petrea]], [[Georgia's 166th House of Representatives district|HD-166]] (2015–present)<ref name="Lanier"/>
+*[[Alan Powell (politician)|Alan Powell]], [[Georgia's 33rd House of Representatives district|HD-33]] (1991–present)<ref name="Lanier"/>
+*[[Trey Rhodes]], [[Georgia's 120th House of Representatives district|HD-120]] (2015–2023)<ref name="Lanier"/>
+*[[Gary Richardson (Georgia politician)|Gary Richardson]], [[Georgia's 125th House of Representatives district|HD-125]] (2024–present)<ref name="Lanier"/>
+*[[Jason Ridley]], [[Georgia's 6th House of Representatives district|HD-06]] (2017–present)<ref name="Lanier"/>
+*[[Devan Seabaugh]], [[Georgia's 34th House of Representatives district|HD-34]] (2021–present)<ref name="Lanier"/>
+*[[Ed Setzler]], former [[Georgia's 35th House of Representatives district|HD-35]] (2005–2023)<ref name="Lanier"/>
+*[[Lynn Smith (politician)|Lynn Smith]], [[Georgia's 70th House of Representatives district|HD-70]] (1997–present)<ref name="Lanier"/>
+*[[Tyler Smith (politician)|Tyler Smith]], [[Georgia's 18th House of Representatives district|HD-18]] (2021–present)<ref name="Lanier"/>
+*[[Ron Stephens (Georgia politician)|Ron Stephens]], [[Georgia's 164th House of Representatives district|HD-164]] (1997–present)<ref name="Lanier"/>
+*[[Steve Tarvin]], [[Georgia's 2nd House of Representatives district|HD-02]] (2014–present)<ref name="Lanier"/>
+*[[Dale Washburn]], [[Georgia's 144th House of Representatives district|HD-144]] (2019–present)<ref name="Lanier"/>
+*[[Marcus Wiedower]], former [[Georgia's 121st House of Representatives district|HD-121]] (2019–2025)<ref name="Lanier"/>
+*[[Bruce Williamson (politician)|Bruce Williamson]], [[Georgia's 112th House of Representatives district|HD-112]] (2011–present)<ref name="Lanier"/>
+*[[Noel Williams Jr.]], [[Georgia's 148th House of Representatives district|HD-148]] (2019–present)<ref name="Lanier"/>}}
+
+'''Individuals'''
+*[[Jason Aldean]], singer<ref>{{cite web |url=https://www.ajc.com/politics/2025/08/jones-tries-to-straddle-trump-loyalty-and-broad-appeal-in-georgia-governors-launch/ |title=Jones tries to straddle Trump loyalty and broad appeal in Georgia governor's launch |last=Bluestein |first=Greg |date=August 27, 2025 |access-date=November 24, 2025 |website=AJC Politics}}</ref>
+*[[Mark Richt]], former head football coach at the [[University of Georgia]]<ref>{{cite web |url=https://pjmedia.com/chris-queen/2026/01/15/im-not-ready-to-endorse-burt-jones-but-heres-why-im-pretty-dawg-gone-close-n4948335 |title=I'm Not Ready to Endorse Burt Jones, but Here's Why I'm Pretty Dawg Gone Close |last=Queen |first=Chris |date=January 15, 2026 |access-date=January 25, 2026 |website=PJ Media Politics}}</ref>
+
+'''Organizations'''
+*[[Turning Point Action]]<ref name="TPAc">{{cite web |title=Endorsements |url=https://www.tpaction.com/endorsements |website=Turning Point Action |access-date=January 16, 2026}}</ref>
+*[[Veterans for America First]]<ref name="vfaf">{{cite web |title=VFAF has Endorsed Burt Jones for Governor of Georgia said Stan Fi |url=https://natlawreview.com/press-releases/vfaf-has-endorsed-burt-jones-governor-georgia-said-stan-fitzgerald-veterans |website=National Law Review |access-date=March 10, 2026 |language=en}}</ref>
+}}
+
+===Fundraising===
+''Italics'' indicate a candidate that has either withdrawn from the race, declined to run, or been eliminated in the primary.
+{| class="wikitable sortable"
+|-
+! colspan=4 |Campaign finance reports as of April 30, 2026
+|- style="text-align:center;"
+!Candidate
+!Raised
+!Spent
+!Cash on hand
+|-
+|{{party shading/Republican}}|''Chris Carr'' (R)
+|$5,324,601
+|$4,168,947
+|$1,117,682
+|-
+|{{party shading/Republican}}|Burt Jones (R)*
+|$4,408,079
+|$18,035,637
+|$3,350,140
+|-
+|{{party shading/Republican}}|''Brad Raffensperger'' (R)*
+|$1,102,127
+|$4,570,050
+|$2,532,076
+|-
+|{{party shading/Republican}}|Rick Jackson (R)
+|$83,495,513
+|$65,672,560
+|$17,649,980
+|-
+|{{party shading/Republican}}|''Clark Dean'' (R)
+|$393,763
+|$318,155
+|$75,607
+|-
+|{{party shading/Republican}}|''Ken Yasger'' (R)
+|$5,791
+|$946
+|$4,845
+|-
+! colspan="4" |<small>Source: Georgia Campaign Finance Commission<ref name="GCFS">{{Cite web |title=Financial Disclosure |url=https://peachfile.ethics.ga.gov/public/cf/publiccandidate |access-date=2026-02-14 |website=peachfile.ethics.ga.gov}}</ref></small>
+|}
+''Asterisk indicates loans or previous campaign account balances''
+
+===Polling===
+'''Aggregate polls'''
+{| class="wikitable sortable" style="text-align:center;font-size:90%;line-height:17px"
+!Source of poll<br />aggregation
+!Dates<br />administered
+!Dates<br />updated
+! style="width:75px;"| Chris<br />Carr
+! style="width:75px;"| Rick<br />Jackson
+! style="width:75px;"| Burt<br />Jones
+! style="width:75px;"| Brad<br />Raffensperger
+! style="width:75px;"| Other/Undecided<br />{{Efn|Calculated by taking the difference of 100% and all other candidates combined.|name=combined|group=}}
+!Margin
+|-
+|[[270toWin]]<ref name="270toWin">{{cite web |title=2026 Polls: Georgia Governor|url=https://www.270towin.com/2026-governor-polls/georgia |website=270toWin |access-date=March 4, 2026}}</ref>
+|April 29 – May 5, 2026
+|May 11, 2026
+|7.2%
+|{{party shading/Republican}}|'''28.3%'''
+|{{party shading/Republican}}|'''24.8%'''
+|14.0%
+|25.7%{{efn|Clark Dean with 0.6%}}
+|{{party shading/Republican}}|'''Jackson +3.5%'''
+|-
+|[[Decision Desk HQ]]<wbr><ref>{{Cite web |title=Georgia Governor Republican Primary Ballot Test|url=https://polls.decisiondeskhq.com/averages/primary-ballot-test/2026-ga-governor-gop/georgia/lv-rv-adults|access-date=2026-04-10 |website=Decision Desk HQ}}</ref>
+|through May 2, 2026
+|May 11, 2026
+|7.2%
+|{{party shading/Republican}}|'''28.6%'''
+|{{party shading/Republican}}|'''24.9%'''
+|14.0%
+|25.3%
+|{{party shading/Republican}}|'''Jackson +3.7%'''
+|-
+|[[RealClearPolitics]]<ref name="RCP">{{cite web |title=2026 Georgia Governor – Republican Primary |url=https://www.realclearpolling.com/polls/governor/republican-primary/2026/georgia |website=RealClearPolitics |access-date=February 11, 2026 |archive-url=https://web.archive.org/web/20260520114901/https://www.realclearpolling.com/polls/governor/republican-primary/2026/georgia |archive-date=May 20, 2026 |url-status=dead}}</ref>
+|February 28 – May 2, 2026
+|May 11, 2026
+|6.3%
+|{{party shading/Republican}}|'''26.2%'''
+|{{party shading/Republican}}|'''24.0%'''
+|14.2%
+|29.3%
+|{{party shading/Republican}}|'''Jackson +2.2%'''
+|-
+|-
+|colspan=3|'''Average'''
+|6.9%
+|{{party shading/Republican}}|'''27.7%'''
+|{{party shading/Republican}}|'''24.6%'''
+|14.1%
+|26.8%
+|{{party shading/Republican}}|'''Jackson +3.1%'''
+|}
+
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- style="vertical-align:bottom"
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name="Key"}}
+! Margin<br />{{nowrap|of error}}
+! style="width:60px;"| Chris<br />Carr
+! style="width:60px;"| Rick<br />Jackson
+! style="width:60px;"| Burt<br />Jones
+! style="width:60px;"| Brad<br />Raffensperger
+! Other
+! Undecided
+|-
+|style="text-align:left;"|InsiderAdvantage (R)<ref>{{Cite web |url=https://insideradvantage.com/insideradvantage-georgia-gop-survey-jackson-and-jones-likely-headed-to-runoff-dooley-moves-into-second-place-behind-collins-towery-warns-republican-national-party-of-early-voting-failure/ |title=InsiderAdvantage Georgia GOP Survey: Jackson and Jones Likely Headed to Runoff; Dooley Moves Into Second Place Behind Collins; Towery Warns Republican National Party of Early Voting Failure |website=InsiderAdvantage |date=May 17, 2026 |access-date=May 17, 2026}}</ref>
+|May 16–17, 2026
+|800 (LV)
+|±&nbsp;3.5%
+|10%
+|{{party shading/Republican}} |'''31%'''
+|{{party shading/Republican}}|'''27%'''
+|16%
+|4%{{efn|Gregg Kirkpatrick with 2%; Clark Dean and LeLand Olinger with 1%; Ken Yasger with 0%}}
+|12%
+|-
+|style="text-align:left;"|Quantus Insights (R)<ref>{{Cite web |url=https://quantusinsights.org/f/quantus-insights-georgia-gop-primaries-enter-the-final-stretch#ddfaccf9-bede-412a-8ce9-6f9ddda07554 |title=Quantus Insights: Georgia GOP Primaries Enter the Final Stretch |website=Quantus Insights |date=May 5, 2026 |access-date=May 5, 2026}}</ref>
+|April 28 – May 2, 2026
+|1,677 (LV)
+|±&nbsp;2.7%
+|8%
+|{{party shading/Republican}}|'''27%'''
+|{{party shading/Republican}}|'''22%'''
+|14%
+|15%{{efn|Clark Dean with 1% and Ken Yasger with 1%; Gregg Kirkpatrick and Tom Williams with a combined 1%; "I have no interest/will not vote in Republican primary races" with 12%}}
+|14%
+|-
+|style="text-align:left;"|Remington Research Group (R)<ref>{{Cite web |url=https://remingtonrg.wpenginepowered.com/wp-content/uploads/GA-STATEWIDE-GOP-PRIMARY-042926.pdf |title=Georgia Statewide Republican Primary Election |website=Remington Research Group |date=May 4, 2026 |access-date=May 5, 2026}}</ref>
+|April 28–29, 2026
+|815 (LV)
+|±&nbsp;3.3%
+|5%
+|{{party shading/Republican}}|'''29%'''
+|{{party shading/Republican}} |'''28%'''
+|14%
+|–
+|24%
+|-
+|style="text-align:left;"|[[University of Georgia]]<ref>{{Cite web |url=https://thehill.com/homenews/campaign/5857144-georgia-gop-gubernatorial-race/ |title=Jackson, Jones in dead heat in Georgia's GOP gubernatorial race: Survey |first=Max |last=Rego |website=[[The Hill (newspaper)|The Hill]] |date=April 30, 2026 |access-date=April 30, 2026}}</ref>{{efn-ua|name=AJC}}
+|April 18–26, 2026
+|1,000 (LV)
+|±&nbsp;3.1%
+|3%
+|{{party shading/Republican}}|'''27%'''
+|{{party shading/Republican}} |'''25%'''
+|14%
+|–
+|{{party shading/Undecided}} |'''31%'''
+|-
+|style="text-align:left;"|yes. every kid.<ref>{{Cite web |url=https://yeseverykidfoundation.org/wp-content/uploads/YESF_Georgia-GOP-Primary-Voters-Survey_Topline.pdf |title=Georgia Republican Primary Voters Survey|website=yes. every kid. foundation |date=April 29, 2026 |access-date=April 29, 2026}}</ref>
+|April 22–24, 2026
+|603 (LV)
+|±&nbsp;4.0%
+|10%
+|{{party shading/Republican}}|'''32%'''
+|{{party shading/Republican}} |'''26%'''
+|12%
+|1%{{efn|name=Dean|Dean with 1%}}
+|19%
+|-
+|style="text-align:left;"|Cygnal (R)<ref>{{Cite web |url=https://mcusercontent.com/092fbec46773c3f4351d146a2/files/8253a8ce-4437-8cd4-ddfb-c32dc6376279/23798_DDP_GA_GOP_Toplines.pdf |title=Survey of Likely 2026 Republican Primary Election Voters |website=Democracy Defense Project |access-date=May 5, 2026}}</ref>{{Efn-ua|Poll sponsored by the Democracy Defense Project}}
+|April 22–23, 2026
+|600 (LV)
+|±&nbsp;4.0%
+|6%
+|{{party shading/Republican}}|'''27%'''
+|{{party shading/Republican}} |'''24%'''
+|12%
+|1%{{efn|name=Dean}}
+|{{party shading/Undecided}} |'''30%'''
+|-
+|style="text-align:left;"|InsiderAdvantage (R)<ref>{{Cite web |url=https://insideradvantage.com/insideradvantage-georgia-survey-gop-governors-race-remain-a-two-man-contest-senate-contest-could-become-close-between-all-three-major-candidates/ |title=InsiderAdvantage Georgia Survey: GOP Race For Governor Remains a Two Man Contest; Senate Contest Could Become Close Between All Three Major Candidates |website=InsiderAdvantage |access-date=April 24, 2026}}</ref>
+|April 22–23, 2026
+|800 (LV)
+|±&nbsp;3.5%
+|6%
+|{{party shading/Republican}}|'''32%'''
+|{{party shading/Republican}} |'''25%'''
+|11%
+|3%
+|23%
+|-
+|style="text-align:left;"|JMC Analytics<ref>{{Cite web |url=https://winwithjmc.com/wp-content/uploads/2026/03/Georgia-Executive-Summary.pdf |title=Georgia Statewide Poll Results |work=JMC Analytics |date=March 9, 2026 |access-date=March 9, 2026}}</ref>
+|March 7–8, 2026
+|560 (LV)
+|±&nbsp;4.1%
+|4%
+|{{party shading/Republican}}|'''37%'''
+|{{party shading/Republican}}|'''22%'''
+|11%
+|<1%{{efn|Clark Dean, Gregg Kirkpatrick, Tom Williams, and Ken Yasger with <1%}}
+|25%
+|-
+|style="text-align:left;"|[[Emerson College]]<ref name="EmersonFeb2026">{{Cite web |url=https://emersoncollegepolling.com/georgia-2026-poll-senator-ossoff-starts-re-election-near-50-and-outpaces-gop-field/ |title=Georgia 2026 Poll: Senator Ossoff Starts Re-Election Near 50% and Outpaces GOP Field |website=Emerson College Polling |date=March 5, 2026 |access-date=March 5, 2026}}</ref>{{efn-ua|name=Nexstar}}
+|February 28 – March 2, 2026
+|453 (LV)
+|±&nbsp;4.6%
+|6%
+|{{party shading/Republican}}|'''20%'''
+|{{party shading/Republican}}|'''21%'''
+|11%
+|4%{{efn|Gregg Kirkpatrick and Leland Olinger II with 2%; Ken Yasger with 1%}}
+|{{party shading/Undecided}}|'''38%'''
+|-
+|style="text-align:left;"|Quantus Insights (R)<ref>{{Cite web |url=https://polls.quantusinsights.org/polls/georgia-pri-2026-1400-csv-7jxj0s7p?tab=toplines |title=Georgia 2026 Republican Primaries |website=Quantus Insights |access-date=February 19, 2026}}</ref>
+|February 17–18, 2026
+|1,337 (LV)
+|±&nbsp;3.0%
+|5%
+|{{party shading/Republican}}|'''33%'''
+|{{party shading/Republican}}|'''17%'''
+|8%
+|–
+|{{party shading/Undecided}}|'''37%'''
+|-
+| style="text-align:left;" |[[Rasmussen Reports]] (R)<ref>{{cite web |url=https://www.rasmussenreports.com/public_content/politics/partner_surveys/georgia_gop_primary_rick_jackson_zooms_ahead |title=Georgia GOP Primary: Rick Jackson Zooms Ahead |date=February 17, 2026 |website=Rasmussen Reports}}</ref>
+|February 11–12, 2026
+|1,022 (LV)
+|±&nbsp;3.0%
+|10%
+|{{party shading/Republican}}|'''22%'''
+|16%
+|{{party shading/Republican}}|'''18%'''
+|colspan=2 {{party shading/Undecided}}|'''34%'''
+|-
+|style="text-align:left;"|co/efficient (R)<ref>{{Cite web |url=https://coefficient.org/ga-gov-2026-gop-primary/ |title=Georgia Statewide 2026 Republican Primary |website=co/efficient |date=February 9, 2026 |access-date=February 10, 2026}}</ref>
+|February 8–9, 2026
+|1,123 (LV)
+|±&nbsp;3.2%
+|3%
+|{{party shading/Republican}}|'''24%'''
+|{{party shading/Republican}}|'''16%'''
+|9%
+|6%{{efn|"Someone else" with 4%; Gregg Kirkpatrick with 1%; Clark Dean with 1%}}
+|{{party shading/Undecided}}|'''42%'''
+|-
+|style="text-align:left;"|Cygnal (R)<ref>{{Cite web |title=Georgia Statewide Poll 2026 |url=https://www.cygn.al/polls/georgia-statewide-poll-2026/ |date=February 9, 2026 |website=Cygnal |access-date=February 10, 2026}}</ref>
+|February 5–6, 2026
+|600 (LV)
+|±&nbsp;4.0%
+|7%
+|{{party shading/Republican}}|'''16%'''
+|{{party shading/Republican}}|'''22%'''
+|10%
+|–
+|{{party shading/Undecided}}|'''45%'''
+|-
+|-style="background:lightyellow;" 
+| style="border-right-style:hidden; background:lightyellow;" |
+| style="border-right-style:hidden; " | February 3, 2026
+| colspan="9" | Jackson enters the race
+|-
+|style="text-align:left;"|InsiderAdvantage (R)/<br />Rosetta Stone (R)<ref>{{Cite web |url=https://insideradvantage.com/insideradvantage-rosetta-stone-georgia-gop-governor-and-senate-survey-jones-leads-for-gop-gubernatorial-nomination-collins-leads-in-gop-senate-contest-towery-says-both-races-are-still-wide-open/ |title=InsiderAdvantage/Rosetta Stone Georgia GOP Governor and Senate Survey: Jones Leads for GOP Gubernatorial Nomination; Collins Leads in GOP Senate Contest; Towery Says Both Races Are Still Wide Open |website=InsiderAdvantage |access-date=December 22, 2025}}</ref>
+|December 18–19, 2025
+|1,000 (LV)
+|±&nbsp;3.1%
+|9%
+|–
+|{{party shading/Republican}}|'''24%'''
+|{{party shading/Republican}} |'''14%'''
+|4%{{efn|Dean with 4%}}
+|{{party shading/Undecided}}|'''49%'''
+|-
+|style="text-align:left;"|[[University of Georgia School of Public and International Affairs|University of Georgia]]<ref name="AJCNov2025"/>{{efn-ua|name=AJC}}
+|October 15–23, 2025
+|1,000 (LV)
+|±&nbsp;3.1%
+|7%
+|–
+|{{party shading/Republican}}|'''22%'''
+|{{party shading/Republican}}|'''15%'''
+|1%{{efn|name=Dean}}
+|{{party shading/Undecided}}|'''55%'''
+|-
+|style="text-align:left;" |Quantus Insights (R)<ref>{{Cite web |url=https://quantusinsights.org/f/quantus-georgia-poll-the-base-is-listening-not-following#ddfaccf9-bede-412a-8ce9-6f9ddda07554 |title=Quantus Georgia Poll: The Base is Listening, Not Following |website=Quantus Insights |date=October 15, 2025 |access-date=October 15, 2025}}</ref>
+|October 13–14, 2025
+|900 (RV)
+|±&nbsp;3.2%
+|12%
+|–
+|{{party shading/Republican}}|'''32%'''
+|{{party shading/Republican}}|'''15%'''
+|3%{{efn|Clark Dean with 2%; Ken Yasger with 1%}}
+|{{party shading/Undecided}}|'''38%'''
+|-
+|style="text-align:left;" |20/20 Insight<ref name="20/20 Insight">{{Cite web |url=https://s3.documentcloud.org/documents/23998163/938-topline.pdf |title=20-20 Insight, LLC – Poll of Georgia Likely Voters |work=20/20 Insight |via=[[DocumentCloud]] |date=September 29, 2023 |access-date=April 29, 2025}}</ref>
+|September 25–28, 2023
+|245 (LV)
+|±&nbsp;6.3%
+|{{party shading/Republican}}|'''9%'''
+|–
+|{{party shading/Republican}}|'''18%'''
+|–
+|–
+|{{party shading/Undecided}}|'''73%'''
+|}
+
+<!-- = = = don't edit the line below = = = -->
+{{hidden begin|titlestyle=background:#cff|title=Hypothetical polling|contentstyle=border:solid 1px silver; padding:8px; background:var(--background-color-base); color:var(--color-base);}}
+<!-- = = = don't edit the line above = = = -->
+'''Marjorie Taylor Greene vs. Burt Jones vs. Brad Raffensperger vs. Chris Carr'''
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- valign=bottom
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name="Key"|Key:<br />A – all adults<br />RV – registered voters<br />LV – likely voters<br />V – unclear}}
+! Margin<br />of error
+! style="width:75px;"| Chris<br />Carr
+! style="width:75px;"| Burt<br />Jones
+! style="width:75px;"| Brad<br />Raffersperger
+! style="width:75px;"| Marjorie<br />{{nowrap|Taylor Greene}}
+! Other
+! Undecided
+|-
+|style="text-align:left;" |yes. every kid. (D)<ref>{{cite web |title=Georgia GOP Voters Put Education Freedom Front and Center |url=https://yeseverykidfoundation.org/wp-content/uploads/YESF-GA-GOP-Primary-Survey-TOPLINE-Sept-2025.pdf |website=yes. every kid. Foundation |access-date=November 18, 2025 |date=September 18, 2025}}</ref>
+|July 22–23, 2025
+|608 (LV)
+|±&nbsp;4.0%
+|11%
+|{{party shading/Republican}}|'''18%'''
+|13%
+|{{party shading/Republican}}|'''22%'''
+|1%{{efn|"Someone else/Other" with 1%}}
+|{{party shading/Undecided}}|'''35%'''
+|}
+{{hidden end}}
+
+===Results===
+[[File:2026 Georgia Republican gubernatorial primary election results map by county.svg|thumb|250px|Primary results by county:
+{{collapsible list
+| title = {{legend|#FF9A50|Jones}}
+|{{legend|#FFDAC1|20–30%}}
+|{{legend|#FFCCA9|30–40%}}
+|{{legend|#FFB580|40–50%}}
+|{{legend|#FF9A50|50–60%}}
+|{{legend|#EE8E50|60–70%}}
+|{{legend|#D69850|70–80%}}
+}}
+{{collapsible list
+| title = {{legend|#E27F7F|Jackson}}
+|{{legend|#FFC8CD|30–40%}}
+|{{legend|#FFB2B2|40–50%}}
+|{{legend|#E27F7F|50–60%}}
+}}
+{{collapsible list
+| title = {{legend|#5FD35F|Raffensperger}}
+|{{legend|#AAE5AA|30–40%}}
+}}
+{{collapsible list
+| title = {{legend|#AE8BB1|Tie}}
+|{{legend|#DECDE6|30–40%}}
+}}
+]]
+
+Jones won a plurality of the vote at 38.4%, winning most rural counties. Jackson came second at 32.5%, drawing strong support from the north Atlanta suburbs. Raffensperger came in third and won [[DeKalb County, Georgia|DeKalb County]]. The lack of a majority meant that a runoff was held on June 16.
+
+{{Election box begin no change
+ | title=Republican primary results}}
+{{Election box winning candidate with party link no change
+ | party=Georgia Republican Party
+ | candidate=[[Burt Jones]]
+ | votes=358,184
+ | percentage=38.4}}
+{{Election box winning candidate with party link no change
+ | party=Georgia Republican Party
+ | candidate=[[Rick Jackson (businessman)|Rick Jackson]]
+ | votes=303,621
+ | percentage=32.5}}
+{{Election box candidate with party link no change
+ | party=Georgia Republican Party
+ | candidate=[[Brad Raffensperger]]
+ | votes=140,085
+ | percentage=15.0}}
+{{Election box candidate with party link no change
+ | party=Georgia Republican Party
+ | candidate=[[Chris Carr (politician)|Chris Carr]]
+ | votes=110,720
+ | percentage=11.9}}
+{{Election box candidate with party link no change
+ | party=Georgia Republican Party
+ | candidate=Clark Dean
+ | votes=7,051
+ | percentage=0.8}}
+{{Election box candidate with party link no change
+ | party=Georgia Republican Party
+ | candidate=Gregg Kirkpatrick
+ | votes=5,537
+ | percentage=0.6}}
+{{Election box candidate with party link no change
+ | party=Georgia Republican Party
+ | candidate=Ken Yasger
+ | votes=4,770
+ | percentage=0.5}}
+{{Election box candidate with party link no change
+ | party=Georgia Republican Party
+ | candidate=Thomas Williams
+ | votes=3,849
+ | percentage=0.4}}
+{{Election box total no change
+ | votes=933,817
+ | percentage=100.00}}
+{{Election box end}}
+
+===Runoff===
+
+====Endorsements====
+{{Endorsements box
+| title=Rick Jackson
+| list=
+'''U.S. senators'''
+*[[Ted Cruz]], [[Texas]] (2013–present)<ref>{{Cite web |url=https://www.axios.com/2026/06/13/ted-cruz-trump-endorsements-2028 |title=Cruz breaks with Trump on key endorsements as 2028 looms |first=Alex |last=Isenstadt |website=Axios |date=June 13, 2026 }}</ref>
+*[[Rick Scott]], [[Florida]] (2019–present)<ref>{{Cite web |url=https://www.usatoday.com/story/news/2026/05/27/former-opponents-join-list-of-endorsements-ahead-of-ga-governors-race/90275306007/ |title=More endorsements for Georgia governor's race flow in ahead of runoff |first=Irene |last=Wright |website=USA TODAY}}</ref>
+
+'''Statewide officials'''
+*[[Chris Carr (politician)|Chris Carr]], [[attorney general of Georgia]] (2016–present) and former candidate for this race<ref name="auto"/>
+
+}}
+{{Endorsements box
+| title=Burt Jones
+| list=
+'''Statewide officials'''
+*<s>[[Brian Kemp]], [[governor of Georgia]] (2019–present)</s><ref name="KempEndorsesJones">{{cite web |title=Gov. Brian Kemp endorses Burt Jones for Georgia governor ahead of primary runoff |url=https://www.cbsnews.com/atlanta/news/gov-brian-kemp-endorses-burt-jones-for-georgia-governor-in-2026/ |website=[[CBS News]] Atlanta |date=June 14, 2026 |access-date=June 14, 2026}}</ref> ''(later endorsed Rick Jackson)''<ref name="Shockwave"/>
+}}
+
+====Polling====
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- valign=bottom
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name="Key"}}
+! Margin<br />of error
+! style="width:75px;"| Rick<br />Jackson
+! style="width:75px;"| Burt<br />Jones
+! Undecided
+|-
+|style="text-align:left;"|InsiderAdvantage (R)<ref>{{Cite web |url=https://insideradvantage.com/final-insideradvantage-georgia-gop-runoff-survey-both-races-within-margin-of-error/ |title=Final InsiderAdvantage Georgia GOP Runoff Survey; Both Races Within Margin of Error |website=InsiderAdvantage |date=June 15, 2026 |access-date=June 15, 2026}}</ref>
+|June 15, 2026
+|800 (LV)
+|±&nbsp;3.5%
+|{{party shading/Republican}} |'''48%'''
+|47%
+|5%
+|-
+|style="text-align:left;"|InsiderAdvantage (R)<ref>{{Cite web |url=https://insideradvantage.com/note-due-to-brian-kemps-endorsement-in-the-governors-race-and-donald-trumps-endorsement-in-the-senate-contest-we-will-post-another-georgia-gop-survey-tomorrow-evening-races-narrow-jackson-l/ |title=(Note: Due to Brian Kemp's Endorsement in the Governor's Race and Donald Trump's Endorsement in the Senate Contest, We Will Post Another Georgia GOP Survey Tomorrow Evening) Races Narrow; Jackson Leads by Three Points; Collins Moves Ahead of Dooley By Two Points; Both Contests Within the Margin of Error |website=InsiderAdvantage |date=June 15, 2026 |access-date=June 15, 2026}}</ref>
+|June 13–14, 2026
+|800 (LV)
+|±&nbsp;3.31%
+|{{party shading/Republican}} |'''49%'''
+|46%
+|5%
+|-
+|style="text-align:left;"|Cygnal (R)<ref name="CygnalJune2026">{{Cite tweet|user=bluestein|first=Greg|last=Bluestein|number=2064443326057660923|title=A @cygnal analysis suggests that Chris Carr and Brad Raffensperger voters are moving toward billionaire Rick Jackson in next week's GOP runoff for governor against Lt. Gov. Burt Jones. #gapol|access-date=June 10, 2026}}</ref>
+|June 5–7, 2026
+|– (LV)
+|–
+|{{party shading/Republican}} |'''56%'''
+|44%
+|–
+|-
+|style="text-align:left;"|JMC Analytics (R)<ref>{{Cite web |url=https://winwithjmc.com/wp-content/uploads/2026/05/Toplines-Georgia-GOP-Runoff-May-26-27-2026.pdf |title=Georgia Statewide Runoff Election – Republican Runoff Election |website=JMC Analytics |date=May 28, 2026 |access-date=May 28, 2026}}</ref>
+|May 26–27, 2026
+|600 (LV)
+|±&nbsp;4.0%
+|{{party shading/Republican}} |'''45%'''
+|43%
+|12%
+|-
+|style="text-align:left;"|Cygnal (R)<ref name="CygnalJune2026"/>
+|May 21–24, 2026
+|– (LV)
+|–
+|{{party shading/Republican}} |'''50%'''
+|{{party shading/Republican}} |'''50%'''
+|–
+|-
+|style="text-align:left;"|InsiderAdvantage (R)<ref>{{Cite web |url=https://insideradvantage.com/insideradvantage-georgia-runoff-survey-jones-and-collins-lead-respective-races/ |title=InsiderAdvantage Georgia Runoff Survey: Jones and Collins Lead Respective Races |website=InsiderAdvantage |date=May 22, 2026 |access-date=May 22, 2026}}</ref>
+|May 20–21, 2026
+|800 (LV)
+|±&nbsp;3.5%
+|42%
+|{{party shading/Republican}} |'''48%'''
+|10%
+|-
+|style="text-align:left;"|Quantus Insights (R)<ref>{{Cite web|url=https://quantusinsights.org/f/georgia-gop-runoffs-begin-collins-opens-strong-jones-leads-1|title=Georgia GOP Runoffs Begin: Collins Opens Strong, Jones Leads|website=Quantus Insights|date=May 20, 2026|access-date=May 21, 2026}}</ref>
+|May 20, 2026
+|782 (LV)
+|±&nbsp;3.9%
+|44%
+|{{party shading/Republican}} |'''46%'''
+|9%
+|}
+
+====Results====
+[[File:2026 Georgia Republican gubernatorial primary runoff election results map by county.svg|thumb|250px|Runoff results by county:
+{{collapsible list
+| title = {{legend|#E27F7F|Jackson}}
+|{{legend|#E27F7F|50–60%}}
+|{{legend|#D75D5D|60–70%}}
+}}
+{{collapsible list
+| title = {{legend|#FF9A50|Jones}}
+|{{legend|#FF9A50|50–60%}}
+|{{legend|#EE8E50|60–70%}}
+|{{legend|#D69850|70–80%}}
+|{{legend|#B98A35|80–90%}}
+}}
+]]
+
+Jackson won the runoff by a 5-point margin, despite Kemp endorsing Jones two days before the vote. With the Democratic primary already over, focus shifted to the candidates' ability to counter Keisha Lance Bottoms. Jackson had consistently attacked Bottoms's record as mayor since he launched his campaign.
+
+In the previous two occasions ([[2018 Georgia gubernatorial election|2018]] and [[2010 Georgia gubernatorial election|2010]]) where the Republican primary did not feature an incumbent governor, the plurality-winner in the primary went on to lose the primary runoff. This trend repeated itself in 2026. 
+
+{{Election box begin no change
+ | title=Republican primary runoff results}}
+{{Election box winning candidate with party link no change
+ | party=Georgia Republican Party
+ | candidate=[[Rick Jackson (businessman)|Rick Jackson]]
+ | votes=373,543
+ | percentage=52.6}}
+{{Election box candidate with party link no change
+ | party=Georgia Republican Party
+ | candidate=[[Burt Jones]]
+ | votes=336,011
+ | percentage=47.4}}
+{{Election box total no change
+ | votes=709,554
+ | percentage=100.0}}
+{{Election box end}}
+
+== Democratic primary ==
+
+=== Candidates ===
+
+==== Nominee ====
+*[[Keisha Lance Bottoms]], former director of the [[White House Office of Public Liaison|Office of Public Engagement]] (2022–2023) and former [[mayor of Atlanta]] (2018–2022)<ref>{{Cite news |last=Bluestein |first=Greg |title=Bottoms enters race for Georgia governor with pledge to fight Trumpism |url=https://www.ajc.com/politics/2025/05/bottoms-enters-race-for-georgia-governor-with-pledge-to-fight-trumpism/ |access-date=May 20, 2025 |date=May 20, 2025 |work=[[The Atlanta Journal-Constitution]] |language=English |issn=1539-7459}}</ref>
+
+==== Eliminated in primary ====
+*Olujimi Brown, church founder<ref>{{Cite web |last=Poole |first=Shelia |date=August 29, 2024 |title=Impact Church's former pastor, Olu Brown, announces bid for Georgia governor |url=https://www.ajc.com/news/impact-churchs-former-pastor-olu-brown-announces-bid-for-georgia-governor/KWIGNX5IJRGNNC7JTZA5LTPK2Y/ |url-status=live |archive-url=https://web.archive.org/web/20240829230901/https://www.ajc.com/news/impact-churchs-former-pastor-olu-brown-announces-bid-for-georgia-governor/KWIGNX5IJRGNNC7JTZA5LTPK2Y/ |archive-date=August 29, 2024 |access-date=August 30, 2024 |website=[[The Atlanta Journal-Constitution]]}}</ref>
+*Amanda Duffy, accountant<ref name=":0" />
+*[[Geoff Duncan]], former Republican [[lieutenant governor of Georgia]] (2019–2023)<ref>{{cite news |work=[[Politico]] |access-date=September 16, 2025 |title=Former Lt. Gov. Geoff Duncan runs for Georgia governor — as a Democrat |url=https://www.politico.com/news/2025/09/16/former-lt-gov-geoff-duncan-runs-for-georgia-governor-as-a-democrat-00564859 |last1=Schneider |first1=Elena}}</ref>
+*[[Jason Esteves]], former [[Georgia State Senate|state senator]] from the [[Georgia's 35th Senate district|35th district]] (2023–2025)<ref name=esteves>{{Cite web |last=Amy |first=Jeff |date=2025-04-21 |title=Georgia Democrat Jason Esteves says he's running for governor in 2026 |url=https://apnews.com/article/jason-esteves-governor-democrat-georgia-2026-b9cfa30b2fab7f5de5ef749a1db4c0de# |access-date=2025-04-21 |website=[[Associated Press]] |language=en}}</ref>
+*[[Derrick Jackson (politician)|Derrick Jackson]], [[Georgia House of Representatives|state representative]] (2017–2023, 2023–present) and candidate for lieutenant governor in [[2022 Georgia lieutenant gubernatorial election|2022]]<ref>{{cite news |last1=Mitchell |first1=Tia |title=State Rep. Derrick Jackson is latest Democrat to launch bid for governor |url=https://www.ajc.com/politics/2025/06/state-rep-derrick-jackson-is-latest-democrat-to-launch-bid-for-governor/ |access-date=June 3, 2025 |work=[[The Atlanta Journal-Constitution]] |date=June 3, 2025 |language=English}}</ref>
+*[[Mike Thurmond]], former [[DeKalb County, Georgia|DeKalb County]] CEO (2017–2025), former [[Georgia Department of Labor|Georgia Labor Commissioner]] (1999–2011), and nominee for U.S. Senate in [[2010 United States Senate election in Georgia|2010]]<ref>{{Cite web |last=Darnell |first=Tim |date=2025-08-06 |title=Michael Thurmond announces 2026 Georgia governor's bid |url=https://www.atlantanewsfirst.com/2025/08/06/michael-thurmond-announces-2026-georgia-governors-bid/ |access-date=2025-08-06 |website=[[WANF]] |language=en}}</ref>
+
+==== Withdrawn ====
+*[[Ruwa Romman]], [[Georgia House of Representatives|state representative]] from the 97th district (2023–present) ''([[2026 Georgia State Senate election|running for state senate]])''<ref>{{cite news |work=[[The Atlanta Journal-Constitution]] |access-date=February 26, 2026 |author=Bluestein, Greg |url=https://www.ajc.com/politics/2026/02/democratic-lawmaker-quits-race-for-georgia-governor/ |date=February 26, 2026 |title=Democratic lawmaker quits race for Georgia governor}}</ref>
+
+==== Declined ====
+*[[Stacey Abrams]], former minority leader of the [[Georgia House of Representatives]] (2011–2017) and nominee for governor in [[2018 Georgia gubernatorial election|2018]] and [[2022 Georgia gubernatorial election|2022]]<ref>{{Cite web |last=Bluestein |first=Greg |date=2026-01-08 |title=Stacey Abrams rules out 2026 bid for Georgia governor |url=https://www.ajc.com/politics/2026/01/stacey-abrams-rules-out-2026-bid-for-georgia-governor/ |access-date=2026-01-08 |website=[[The Atlanta Journal-Constitution]] |language=en}}</ref>
+*[[Jason Carter (politician)|Jason Carter]], former [[Georgia State Senate|state senator]] from the [[Georgia's 42nd Senate district|42nd district]] (2010–2015), grandson of former governor and president [[Jimmy Carter]], and nominee for governor in [[2014 Georgia gubernatorial election|2014]]<ref name="esteves" /> ''(endorsed Esteves)''<ref name="CartJsn">{{cite web |last1=Vakil |first1=Caroline |title=Jason Carter endorses Jason Esteves in Democratic primary for Georgia governor |url=https://thehill.com/homenews/campaign/5556119-jason-carter-endorses-jason-esteves-georgia-governor/ |website=[[The Hill (newspaper)|The Hill]] |date=October 15, 2025 |access-date=October 15, 2025}}</ref>
+*[[Lucy McBath]], [[United States House of Representatives|U.S. representative]] from {{ushr|GA|6}} (2019–present)<ref>{{Cite web |date=2025-07-16 |title=Rep. Lucy McBath says she will not campaign for governor |url=https://www.11alive.com/video/news/local/rep-lucy-mcbath-will-not-run-for-governor/85-57e80822-dc01-4d5a-8b1e-cb7b1da24816 |access-date=2025-07-21 |website=[[WXIA-TV]] |language=en-US}}</ref>
+
+===Endorsements===
+{{Endorsements box
+|title=Geoff Duncan
+|list=
+'''State legislators'''
+*2 state representatives{{Efn|
+*[[Michelle Au]], [[Georgia's 50th House of Representatives district|HD-50]] (2023–present)<ref name="IBEW613"/>
+*[[Pat Gardner]], [[Georgia's 57th House of Representatives district|HD-57]] (2001–2021)<ref name="IBEW613"/>}}
+'''Individuals'''
+*[[James Woodall]], former president of the Georgia [[NAACP]] (2019–2021)<ref>{{cite web |last1=Suggs |first1=Donnell |title='This race is not about party labels': Duncan gets endorsed by former Georgia NAACP President Woodall |url=https://theatlantavoice.com/this-race-is-not-about-party-labels-duncan-gets-endorsed-by-former-georgia-naacp-president-woodall/ |website=The Atlanta Voice |access-date=February 17, 2026 |date=February 17, 2026}}</ref>
+'''Labor unions'''
+*[[IBEW]] Local 613<ref name="IBEW613">{{cite web |title=Georgia endorsements and fundraising: Who's in and who's out? |url=https://www.newsfromthestates.com/article/georgia-endorsements-and-fundraising-whos-and-whos-out |website=News From The States |access-date=April 18, 2026 |language=en}}</ref>
+*[[United Brotherhood of Carpenters and Joiners of America|Southern Regional Council of Carpenters]]<ref>{{cite web|title=Southern Regional Council of Carpenters Endorses Geoff Duncan for Georgia Governor|url=https://southernrcc.org/2026/02/26/southern-regional-council-of-carpenters-endorses-geoff-duncan-for-georgia-governor/|website=Southern Regional Council of Carpenters|access-date=March 27, 2026 |date=February 26, 2026}}</ref>
+}}
+{{Endorsements box
+| title = Jason Esteves
+| colwidth = 60
+| list =
+'''Executive branch officials'''
+*[[Sally Yates]], former [[United States Deputy Attorney General|deputy attorney general]] (2015–2017)<ref name="SallyYates">{{cite web |last1=Vakil |first1=Caroline |title=Sally Yates backs Jason Esteves in Georgia governor's race|url=https://thehill.com/homenews/campaign/5691393-esteves-wins-yates-endorsement/ |website=[[The Hill (newspaper)|The Hill]] |date=January 15, 2026 |access-date=January 15, 2026}}</ref>
+
+'''State legislators'''
+*8 state senators{{Efn|
+*[[Jason Carter (politician)|Jason Carter]], former [[Georgia's 42nd Senate district|SD-42]] (2010–2015)<ref name="CartJsn" />
+*[[Sally Harrell]], [[Georgia's 40th Senate district|SD-40]] (2019–present)<ref name="GARec221">{{Cite web|url=https://georgiarecorder.com/2026/02/21/georgias-most-prominent-gop-woman-lawmaker-will-retire-trump-shoutouts-and-more/|title=Georgia's most prominent GOP woman lawmaker will retire, Trump shoutouts and more|first1=Jill|last1=Nolin|first2=Ross|last2=Williams|first3=Maya|last3=Homan|website=Georgia Recorder|date=February 21, 2026|access-date=February 21, 2026}}</ref>
+*[[Kim Jackson (politician)|Kim Jackson]], [[Georgia's 41st Senate district|SD-41]] (2021–present)<ref name="GARec221"/>
+*[[Donzella James]], [[Georgia's 35th Senate district|SD-35]] (1994–2002, 2009–present)<ref name="Esteves18"/>
+*[[RaShaun Kemp]], [[Georgia's 38th Senate district|SD-38]] (2025–present)<ref name="Esteves18"/>
+*[[Nan Orrock]], [[Georgia's 36th Senate district|SD-36]] (2007–present)<ref name="Esteves18"/>
+*[[Elena Parent]], [[Georgia's 42nd Senate district|SD-42]] (2015–present)<ref name="Esteves18"/>
+*[[Freddie Powell Sims]], [[Georgia's 12th Senate district|SD-12]] (2009–present)<ref name="IBEW613"/>}}
+
+*7 state representatives{{Efn|
+*[[Bryce Berry]], [[Georgia's 56th House of Representatives district|HD-56]] (2025–present)<ref name="Esteves18">{{cite web|url=https://www.atlantanewsfirst.com/2025/05/29/esteves-picks-up-18-atlanta-endorsements-democratic-governors-primary/|title=Esteves picks up 18 Atlanta endorsements in Democratic governor's primary|last=Darnell|first=Tim|date=May 29, 2025|access-date=June 5, 2025|website=[[WANF]]}}</ref>
+*[[Saira Draper]], [[Georgia's 90th House of Representatives district|HD-90]] (2023–present)<ref name="Esteves18"/>
+*[[Scott Holcomb]], [[Georgia's 101st House of Representatives district|HD-101]] (2011–present)<ref name="GARec221"/>
+*[[Karen Lupton]], [[Georgia's 83rd House of Representatives district|HD-83]] (2023–present)<ref name="GARec221"/>
+*[[Phil Olaleye]], [[Georgia's 59th House of Representatives district|HD-59]] (2023–present)<ref name="Esteves18"/>
+*[[Shea Roberts]], [[Georgia's 52nd House of Representatives district|HD-52]] (2021–present)<ref name="GARec221"/>
+*[[Long Tran]], [[Georgia's 80th House of Representatives district|HD-80]] (2023–present)<ref name="GARec221"/>}}
+
+'''Local officials'''
+*[[Doug Shipman]], former president of the [[Atlanta City Council]] (2022–2026)<ref name="Esteves18"/>
+*[[Ted Terry (politician)|Ted Terry]], [[DeKalb County, Georgia#Government and politics|DeKalb County commissioner]] from the 6th district (2021–present)<ref name="Esteves18"/>
+
+'''Labor unions'''
+*[[AFSCME]] Local 1644<ref name="IBEW613"/>
+*[[SEIU]] Workers United Southern Region<ref name="IBEW613"/>
+*[[Teamsters]] Local 528<ref>{{cite web |title=Senator Esteves is a proud member of the Democratic Party and will also be running for governor in 2026. he is a passionate advocate for building a Georgia where families can thrive. |url=https://teamsterslocal528.org/ |website=Teamsters Local 528}}</ref>
+*[[UNITE HERE]] Local 23<ref name="IBEW613"/>
+
+'''Organizations'''
+*[[End Citizens United]]<ref>{{cite web |title=End Citizens United Endorses Jason Esteves for Georgia Governor |url=https://www.endcitizensunited.org/end-citizens-united-endorses-jason-esteves-for-georgia-governor |website=endcitizensunited.org |date=February 26, 2026 |access-date=February 27, 2026}}</ref>
+*[[League of Conservation Voters|Georgia Conservation Voters]]<ref name="GCV">{{cite web |title=Endorsements |url=https://gcvoters.org/endorsements/ |website=Georgia Conservation Voters |access-date=April 22, 2026}}</ref>
+*[[Georgia Equality]]<ref>{{cite web |last1=Burkholder |first1=Katie |title=LGBTQ+ group endorses Jason Esteves for Georgia governor |url=https://roughdraftatlanta.com/2026/04/13/georgia-lgbtq-advocacy-endorsements/ |website=Rough Draft Atlanta |access-date=April 16, 2026 |date=April 13, 2026}}</ref>
+*[[Latino Victory Fund]]<ref>{{cite web |last1=Bluestein |first1=Greg |last2=Mitchell |first2=Tia |last3=Murphy |first3=Patricia |last4=Beam |first4=Adam |title=Latino Victory Fund backs Jason Esteves in Democratic primary for governor |url=https://www.ajc.com/politics/2025/08/latino-victory-fund-backs-jason-esteves-in-democratic-primary-for-governor/ |website=[[The Atlanta Journal-Constitution]] |access-date=August 5, 2025 |language=English}}</ref>
+}}
+{{Endorsements box
+|title=Keisha Lance Bottoms
+|list=
+'''Executive branch officials'''
+*[[Joe Biden]], former [[president of the United States]] (2021–2025)<ref name="Biden1">{{cite web |last1=Ambus |first1=Destini |title=Biden endorses Keisha Lance Bottoms for Georgia governor |url=https://www.savannahnow.com/story/news/local/2026/05/01/biden-endorses-keisha-lance-bottoms-for-georgia-governor/89884064007/ |website=Savannah Morning News |access-date=May 1, 2026}}</ref>
+'''Statewide officials'''
+*[[Gavin Newsom]], [[governor of California]] (2019–present)<ref name="Biden1"/>
+'''State legislators'''
+*[[Nadine Thomas]], former [[Georgia's 10th Senate district|SD-10]] (1993–2005)<ref name="Bottoms1">{{cite web |last1=Jarrett |first1=Kim |title=Big endorsements a year before Georgia's gubernatorial election |url=https://www.thecentersquare.com/georgia/article_586325bb-3ca2-4556-b8b5-219c35ef8351.html |website=[[The Center Square]] |date=August 14, 2025 |access-date=September 11, 2025}}</ref>
+'''Local officials'''
+*[[Burrell Ellis]], former [[DeKalb County, Georgia|DeKalb County]] CEO (2009–2017)<ref name="Bottoms1"/>
+'''Labor unions'''
+*[[American Federation of Government Employees]]<ref name="Bottoms1"/>
+'''Organizations'''
+*[[EMILYs List]]<ref>{{cite web |last1=Woodall |first1=Hunter |title=EMILYs List endorses former Atlanta mayor Keisha Lance Bottoms in Georgia governor race |url=https://www.cbsnews.com/news/emilys-list-endorses-former-atlanta-mayor-keisha-lance-bottoms-in-georgia-governor-race/ |access-date=December 4, 2025 |work=[[CBS News]] |date=December 4, 2025}}</ref>
+;Individuals
+*[[Killer Mike]], rapper<ref name="USATodayGAGov"/>
+}}
+{{Endorsements box
+|title=Michael Thurmond
+|list=
+'''Statewide officials'''
+*[[Roy Barnes]], former [[governor of Georgia]] (1999–2003)<ref name=AJC>{{cite web |last=Bluestein |first=Greg |title=Roy Barnes, Andrew Young back Michael Thurmond's bid for governor|url=https://images.ajc.com/politics/2026/03/roy-barnes-andrew-young-back-michael-thurmonds-bid-for-governor/|website=The Atlanta Journal-Constitution |access-date=March 27, 2026 |date=March 27, 2026}}</ref>
+
+'''Local officials'''
+*[[Andrew Young]], former [[mayor of Atlanta]] (1982–1990)<ref name=AJC/>
+}}
+
+===Fundraising===
+{| class="wikitable sortable"
+|-
+! colspan=4 |Campaign finance reports as of April 30, 2026
+|- style="text-align:center;"
+!Candidate
+!Raised
+!Spent
+!Cash on hand
+|-
+|{{party shading/Democratic}}|Keisha Lance Bottoms (D)
+|$2,869,146
+|$2,549,686
+|$257,336
+|-
+|{{party shading/Democratic}}|Olujimi Brown (D)
+|$139,566
+|$79,939
+|$59,626
+|-
+|{{party shading/Democratic}}|Jason Esteves (D)
+|$2,907,598
+|$2,067,240
+|$773,461
+|-
+|{{party shading/Democratic}}|Derrick Jackson (D)
+|$128,504
+|$206,723
+|$83,780
+|-
+|{{party shading/Democratic}}|Mike Thurmond (D)
+|$883,112
+|$929,503
+|$421,132
+|-
+|{{party shading/Democratic}}|Geoff Duncan (D)
+|$1,739,846
+|$1,328,597
+|$867,783
+|-
+! colspan="4" |<small>Source: Georgia Campaign Finance Commission<ref name="GCFS"/></small>
+|}
+
+===Polling===
+'''Aggregate polls'''
+{| class="wikitable sortable" style="text-align:center;font-size:90%;line-height:17px"
+!Source of poll<br />aggregation
+!Dates<br />administered
+!Dates<br />updated
+! style="width:60px;"| Derrick<br />Jackson
+! style="width:60px;"| Geoff<br />Duncan
+! style="width:60px;"| Jason<br />Esteves
+! style="width:60px;"| {{nowrap|Keisha Lance}}<br />Bottoms 
+! style="width:60px;"| Michael<br />Thurmond
+! style="width:60px;"| Undecided{{Efn|name="combined"}}
+!Margin
+|-
+|[[270toWin]]<ref name="270toWin"/>
+|May 1–4, 2026
+|May 5, 2026
+|1.0%
+|8.0%
+|6.5%
+|{{party shading/Democratic}}|'''45.5%'''
+|{{party shading/Democratic}}|'''13.0%'''
+|26.0%
+|{{party shading/Democratic}}|'''Bottoms +32.5%'''
+|}
+
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- style="vertical-align:bottom"
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name="Key"}}
+! Margin<br />{{nowrap|of error}}
+! style="width:60px;"| Geoff<br />Duncan
+! style="width:60px;"| Jason<br />Esteves
+! style="width:60px;"| {{nowrap|Keisha Lance}}<br />Bottoms 
+! style="width:60px;"| Michael<br />Thurmond
+! Other
+! Undecided
+|-
+|style="text-align:left;"|[[University of Georgia School of Public and International Affairs|University of Georgia]]<ref>{{Cite web |url=https://www.ajc.com/politics/2026/05/ajc-poll-bottoms-leads-as-democratic-rivals-for-governor-hope-for-runoff/ |title=JAJC poll: Bottoms leads as Democratic rivals for governor hope for runoff |first=Greg |last=Bluestein |website=[[The Atlanta Journal-Constitution|AJC]] |date=May 4, 2026 |access-date=May 5, 2026}}</ref>{{efn-ua|name=AJC}}
+|April 23–29, 2026
+|1,000 (LV)
+|±&nbsp;3.1%
+|7%
+|8%
+|{{party shading/Democratic}} |'''39%'''
+|{{party shading/Democratic}} |'''10%'''
+|1%{{efn|name=Jackson|Jackson with 1%}}
+|{{party shading/Undecided}} |'''35%'''
+|-
+| style="text-align: left;" rowspan="4" |Concord Public Opinion Partners (D)<ref>{{Cite tweet|user=bluestein|first=Greg|last=Bluestein|number=2046935024272900130|title=It comes as a poll obtained by the AJC shows Keisha Lance Bottoms leading the Democratic field at 42%, ahead of Michael Thurmond at 12%, Geoff Duncan at 8% and Jason Esteves at 6%. About one-third remain undecided|access-date=April 22, 2026}}</ref>{{efn-ua|name=ERNA|Poll sponsored by Education Reform Now Advocacy}}
+|rowspan="4"|March 31 – April 10, 2026
+|rowspan="4"|437 (LV)
+|rowspan="4"|–
+|8%
+|6%
+|{{party shading/Democratic}} |'''42%'''
+|{{party shading/Democratic}} |'''12%'''
+|3%{{efn|name=BrownJ1}}
+|{{party shading/Undecided}} |'''29%'''
+|-
+|–
+|–
+|{{party shading/Democratic}} |'''56%'''
+|22%
+|–
+|22%
+|-
+|16%
+|–
+|{{party shading/Democratic}} |'''60%'''
+|–
+|–
+|24%
+|-
+|–
+|16%
+|{{party shading/Democratic}} |'''60%'''
+|–
+|–
+|24%
+|-
+| style="text-align: left;" |20/20 Insight<ref>{{Cite web |title=Exclusive: Georgia GOV Poll Shows Likely Runoff |url=https://www.nationaljournal.com/s/731407/exclusive-georgia-gov-poll-shows-likely-runoff/?unlock=TWDL1A41H4YODYO2 |first=Abby |last=Turner |access-date=March 31, 2026 |date=March 31, 2026 |website=National Journal}}</ref>{{efn-ua|name=Penny|Poll sponsored by Democratic secretary of state candidate Penny Brown Reynolds' campaign}}
+|March 19–24, 2026
+|575 (LV)
+|±&nbsp;4.1%
+|12%
+|{{party shading/Democratic}} |'''14%'''
+|{{party shading/Democratic}} |'''32%'''
+|11%
+|–
+| {{party shading/Undecided}} |'''30%'''
+|-
+| style="text-align:left;" |[[Emerson College]]<ref name="EmersonFeb2026" />{{efn-ua|name=Nexstar|Poll sponsored by [[Nexstar Media]]}}
+|February 28 – March 2, 2026
+|464 (LV)
+|±&nbsp;4.5%
+| {{party shading/Democratic}} |'''13%'''
+|4%
+| {{party shading/Democratic}} |'''35%'''
+|7%
+|3%{{efn|Jackson with 3%; Brown with <1%}}
+| {{party shading/Undecided}} |'''39%'''
+|-
+|style="text-align:left;"|[[University of Georgia School of Public and International Affairs|University of Georgia]]<ref name="AJCNov2025">{{cite web|url=https://www.ajc.com/politics/2025/11/keisha-lance-bottoms-burt-jones-lead-in-georgia-governors-race/|title=Keisha Lance Bottoms, Burt Jones lead in Georgia governor's race|first1=Greg|last1=Bluestein|website=[[The Atlanta Journal-Constitution]]|date=November 5, 2025|access-date=November 6, 2025|url-access=subscription}}</ref>{{efn-ua|name=AJC|Poll sponsored by ''[[The Atlanta Journal-Constitution]]''}}
+|October 13–21, 2025
+|1,000 (LV)
+|±&nbsp;3.1%
+|5%
+|3%
+|{{party shading/Democratic}}|'''40%'''
+|{{party shading/Democratic}}|'''11%'''
+|2%{{efn|Brown with 1%; Romman with 1%}}
+|{{party shading/Undecided}}|'''39%'''
+|-
+|style="text-align:left;" |Frederick Polls (D)<ref>{{cite web|url=https://strongschoolsaction.org/wp-content/uploads/2025/10/Georgia-Dem-Primary-POLL-RESULTS-MEMO-0930-1.pdf|title=Poll Results: Georgia Democratic Primary for Governor and Opinions on Education Issues|work=Frederick Polls|date=October 4, 2025|access-date=November 6, 2025}}</ref>{{efn-ua|Poll sponsored by Center for Strong Public Schools Action Fund, a center-left nonprofit organization}} 
+|September 23–25, 2025
+|1,513 (LV)
+|±&nbsp;2.5%
+|17%
+|10%
+|{{party shading/Democratic}}|'''43%'''
+|{{party shading/Democratic}}|'''25%'''
+|4%{{efn|Brown with 2%; Jackson with 2%}}
+|–
+|-
+|style="text-align:left;" |[[Public Policy Polling]] (D)<ref>{{Cite web|url=https://www.ajc.com/politics/2025/09/bottoms-up-poll-shows-why-name-recognition-matters-in-governors-race/|title=Bottoms up? Poll shows why name recognition matters in governor's race|first1=Greg|last1=Bluestein|first2=Tia|last2=Mitchell|first3=Patricia|last3=Murphy|first4=Adam|last4=Beam|website=[[Atlanta Journal-Constitution]]|date=September 25, 2025|access-date=September 25, 2025}}</ref>{{efn-ua|Poll sponsored by Bottoms's campaign}}
+|September 15–16, 2025
+|620 (LV)
+|–
+|9%
+|4%
+|{{party shading/Democratic}}|'''38%'''
+|{{party shading/Democratic}}|'''12%'''
+|3%{{efn|name=BrownJ1|Jackson with 2%; Brown with 1%}}
+|{{party shading/Undecided}}|'''43%'''
+|}
+
+{{hidden begin|titlestyle=background:#cff|title=Hypothetical polling|contentstyle=border:solid 1px silver; padding:8px; background:var(--background-color-base); color:var(--color-base);}}
+<!-- = = = don't edit the line above = = = -->
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- style="vertical-align:bottom"
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name="Key"|Key:<br />A – all adults<br />RV – registered voters<br />LV – likely voters<br />V – unclear}}
+! Margin<br />of error
+! style="width:75px;"| Stacey<br />Abrams
+! style="width:75px;"| Other
+! Undecided
+|-
+|style="text-align:left;" |20/20 Insight<ref name="20/20 Insight"/>
+|September 25–28, 2023
+|247 (LV)
+|±&nbsp;6.2%
+|{{party shading/Democratic}}|'''52%'''
+|34%
+|14%
+|}
+{{hidden end}}
+
+===Results===
+[[File:2026 Georgia Democratic gubernatorial primary election results map by county.svg|thumb|250px|Primary results by county:
+{{collapsible list
+| title = {{legend|#7996E2|Bottoms}}
+|{{legend|#BDD3FF|30–40%}}
+|{{legend|#A5B0FF|40–50%}}
+|{{legend|#7996E2|50–60%}}
+|{{legend|#6674DE|60–70%}}
+|{{legend|#584CDE|70–80%}}
+}}
+{{collapsible list
+| title = {{legend|#51C2C2|Thurmond}}
+|{{legend|#ACF2F2|30–40%}}
+}}
+]]
+{{Election box begin no change
+ | title=Democratic primary results<ref>{{cite web |url=https://results.sos.ga.gov/results/public/Georgia/elections/GeneralPrimary51926 |title=State Election Results |work=Georgia Secretary of State |access-date=May 20, 2026}}</ref>}}
+{{Election box winning candidate with party link no change
+ | party=Democratic Party of Georgia
+ | candidate=[[Keisha Lance Bottoms]]
+ | votes=608,264
+ | percentage=56.2}}
+{{Election box candidate with party link no change
+ | party=Democratic Party of Georgia
+ | candidate=[[Jason Esteves]]
+ | votes=201,852
+ | percentage=18.7}}
+{{Election box candidate with party link no change
+ | party=Democratic Party of Georgia
+ | candidate=[[Mike Thurmond]]
+ | votes=139,787
+ | percentage=12.9}}
+{{Election box candidate with party link no change
+ | party=Democratic Party of Georgia
+ | candidate=[[Geoff Duncan]]
+ | votes=75,721
+ | percentage=7.0}}
+{{Election box candidate with party link no change
+ | party=Democratic Party of Georgia
+ | candidate=[[Derrick Jackson (politician)|Derrick Jackson]]
+ | votes=25,050
+ | percentage=2.3}}
+{{Election box candidate with party link no change
+ | party=Democratic Party of Georgia
+ | candidate=Amanda Duffy
+ | votes=18,808
+ | percentage=1.7}}
+{{Election box candidate with party link no change
+ | party=Democratic Party of Georgia
+ | candidate=Olujimi Brown
+ | votes=12,329
+ | percentage=1.1}}
+{{Election box total no change
+ | votes=1,081,811
+ | percentage=100.0}}
+{{Election box end}}
+
+== Independents and minor parties ==
+
+=== Libertarian Party ===
+
+==== Candidates ====
+
+===== Withdrawn =====
+*[[Chase Oliver]], former chair of the [[Atlanta]] Libertarian Party, perennial candidate, and nominee for [[President of the United States|president]] in [[2024 United States presidential election|2024]]<ref>{{cite news |last1=Rocha |first1=Alander |title=Crowded field emerges – officially – in race to decide who will be Georgia's next governor |url=https://georgiarecorder.com/2026/03/10/crowded-field-emerges-officially-in-race-to-decide-who-will-be-georgias-next-governor/ |access-date=March 10, 2026 |work=[[Georgia Recorder]] |date=March 10, 2026}}</ref>
+
+== General election ==
+
+===Predictions===
+{| class="wikitable" style=text-align:center
+!Source
+!Ranking
+!As of
+|-
+|align=left|''[[The Cook Political Report]]''<ref>{{cite web |title=2026 CPR Governor Race ratings |url=https://www.cookpolitical.com/ratings/governor-race-ratings |website=[[The Cook Political Report]] |access-date=October 11, 2026}}</ref>
+|{{USRaceRating|Tossup}}
+|October 1, 2026
+|-
+|align=left|[[Decision Desk HQ]]<ref name="DDHQ">{{cite web |title=2026 Governor Forecast |url=https://votes.decisiondeskhq.com/forecast/2026/governor |website=[[Decision Desk HQ]] |access-date=October 11, 2026}}</ref>
+|{{USRaceRating|Tossup}}
+|October 11, 2026
+|-
+|align=left|[[Fox News]]<ref>{{Cite news |last=Numa |first=Rémy |title=Fox News Power Rankings: The biggest surprises come after October |url=https://www.foxnews.com/politics/fox-news-power-rankings-the-biggest-surprises-come-after-october |work=[[Fox News]] |date=October 6, 2026 |access-date=October 11, 2026}}</ref>
+|{{USRaceRating|Tossup}}
+|October 6, 2026
+|-
+|align=left|''[[Inside Elections]]''<ref>{{Cite web |title=Gubernatorial Ratings |url=https://insideelections.com/ratings/governor |access-date=October 11, 2026 |website=[[Inside Elections]]}}</ref>
+|{{USRaceRating|Tossup}}
+|October 1, 2026
+|-
+|align="left"|[[RealClearPolitics]]<ref>{{Cite web|url=https://www.realclearpolling.com/maps/governor/2026/toss-up |title=2026 Governor Races |website=[[RealClearPolitics]] |access-date=October 11, 2026}}</ref>
+|{{USRaceRating|Tossup}}
+|October 5, 2026
+|-
+|align=left|''[[Sabato's Crystal Ball]]''<ref>{{cite web|title=2026 Governor|url=https://centerforpolitics.org/crystalball/2026-governor/|website=[[Sabato's Crystal Ball]]|access-date=October 11, 2026}}</ref>
+|{{USRaceRating|Tossup}}
+|October 6, 2026
+|-
+|align="left"|[[Silver Bulletin]]<ref name="Silver">{{Cite web |url=https://www.natesilver.net/p/nate-silver-2026-midterm-election-polls-model |title=FLIPR 2026 midterm election forecast |last1=Silver |first1=Nate |author1-link=Nate Silver |last2=McKown-Dawson |first2=Eli |website=[[Silver Bulletin]] |via=[[Substack]] |date=October 11, 2026 |orig-date=August 11, 2026 |access-date=October 11, 2026 |url-access=subscription}}</ref>
+|{{USRaceRating|Lean|D|Flip}}
+|October 11, 2026
+|}
+
+=== Post-primary endorsements ===
+{{Endorsements box
+|title=Rick Jackson (R)
+|columns=yes
+|list=
+;Executive branch officials
+* [[Nick Ayers]], former [[Chief of Staff to the Vice President|chief of staff to the vice president]] (2017–2019)<ref name="statewidecoalition">{{cite web |last=Wittington |first=TIM |title=Republican Gubernatorial Candidate Rick Jackson Announces Statewide Coalition Leadership Team |url=https://www.theblueridgetimes.com/news/rickjacksonleadershipteam|website=The Blue Ridge Times|date=September 8, 2026 |access-date=September 28, 2026}}</ref>
+*[[Donald Trump]], [[president of the United States]] (2017–2021, 2025–present)<ref>{{Cite news|last=Wright|first=Irene|date=July 23, 2026|title=Trump endorses Georgia governor candidate who beat his previous pick|url=https://www.usatoday.com/story/news/state/georgia/atlanta/2026/07/23/did-trump-endorse-rick-jackson-for-governor-in-georgia-school-speech/91020427007/|access-date=August 16, 2026|work=[[USA Today]]}}</ref>
+*[[Sonny Perdue]], former [[U.S. Secretary of Agriculture|secretary of agriculture]] (2017–2021) and former governor of Georgia (2003–2011)<ref name="Shockwave">{{Cite web|last=Darnell|first=Tim|date=June 18, 2026|title=Runoff shockwave: Rick Jackson lands the Kemp-Deal-Perdue triple endorsement|url=https://www.wtoc.com/2026/06/18/runoff-shockwave-rick-jackson-lands-kemp-deal-perdue-triple-endorsement/|access-date=June 27, 2026|website=[[WTOC-TV]]}}</ref> 
+* [[Tom Price (American politician)|Tom Price]], former [[U.S. Secretary of Health and Human Services|secretary of health and human services]] (2017)<ref name="statewidecoalition"/>
+
+;U.S. representatives
+*[[Buddy Carter]], [[GA-01]] (2015–present)<ref>{{Cite web|last=Rodriguez|first=Grace|date=August 30, 2026|title=Rick Jackson campaigns in Savannah, highlights tax cuts and education reform|url=https://www.wjcl.com/article/rick-jackson-savannah-stop-august-29/73560519|publisher=[[WJCL (TV)|WJCL]]|access-date=September 4, 2026}}</ref>
+* [[Lynn Westmoreland]], [[Georgia's 8th congressional district|GA-08]] (2005–2007); [[Georgia's 3rd congressional district|GA-03]] (2007–2017)<ref name="statewidecoalition"/>
+
+;Statewide officials
+*[[Nathan Deal]], former [[governor of Georgia]] (2011–2019)<ref name="Shockwave"/>
+* [[Tyler Harper]], [[Georgia Department of Agriculture|agriculture commissioner of Georgia]] (2023–present)<ref name="houstonhomejournal">{{cite web |last=Moncrief |first=Don |title=Rick Jackson campaigns in Perry |url=https://hhjonline.com/rick-jackson-campaigns-in-perry/|website=Houston Home Journal|date=September 8, 2026 |access-date=September 28, 2026}}</ref>
+*[[Brian Kemp]], [[governor of Georgia]] (2019–present)<ref name="Shockwave"/>
+* [[Bárbara Rivera Holmes]], [[Georgia Department of Labor|labor commissioner of Georgia]] (2025–present)<ref name="houstonhomejournal"/>
+
+;State Legislators
+* [[Josh Bonner]], [[Georgia's 72nd House of Representatives district|HD-72]] (2017–2023), [[Georgia's 73rd House of Representatives district|HD-73]] (2023–present)<ref name="statewidecoalition"/>
+* [[David Clark (Georgia politician)|David Clark]], [[Georgia's 98th House of Representatives district|HD-98]] (2015–2023), [[Georgia's 100th House of Representatives district|HD-100]] (2023–present)<ref name="statewidecoalition"/>
+* [[Brent Cox]], [[Georgia's 28th House of Representatives district|HD-28]] (2023–present)<ref name="statewidecoalition"/>
+* [[Jaclyn Ford]], [[Georgia's 170th House of Representatives district|HD-170]] (2025–present)<ref name="statewidecoalition"/>
+* [[Lehman Franklin]], [[Georgia's 160th House of Representatives district|HD-160]] (2023–present)<ref name="statewidecoalition"/>
+* [[Scott Hilton (politician)|Scott Hilton]], [[Georgia's 95th House of Representatives district|HD-95]] (2017–2019), [[Georgia's 48th House of Representatives district|HD-48]] (2023–present)<ref name="statewidecoalition"/>
+* [[Mike Hodges (politician)|Mike Hodges]], [[Georgia's 3rd Senate district|SD-3]] (2023–present)<ref>{{cite web |last=Jackson |first=Gordon |title=Jackson makes campaign stop in St. Marys |url=https://thebrunswicknews.com/news/local_news/jackson-makes-campaign-stop-in-st-marys/article_8d147977-fadf-4f61-b4ec-e19dff2560ec.html/|website=[[The Brunswick News]]|date=July 29, 2026 |access-date=September 28, 2026}}</ref>
+* [[Eric Johnson (Georgia politician)|Eric Johnson]], [[Georgia's 153rd House of Representatives district|HD-153]] (1993–1995), [[Georgia's 1st Senate district|SD-1]] (1995–2009)<ref name="statewidecoalition"/>
+* [[John F. Kennedy (Georgia politician)|John Kennedy]], [[Georgia's 18th Senate district|SD-18]] (2015–2025)<ref name="statewidecoalition"/>
+* [[Trey Kelley]], [[Georgia's 16th House of Representatives district|HD-16]] (2013–present)<ref name="statewidecoalition"/>
+* [[Lauren McDonald]], [[Georgia's 26th House of Representatives district|HD-26]] (2021–present)<ref name="statewidecoalition"/>
+* [[Butch Miller (politician)|Butch Miller]], [[Georgia's 49th Senate district|SD-49]] (2010–2023)<ref name="statewidecoalition"/>
+* [[Chuck Payne]], [[Georgia's 54th Senate district|SD-54]] (2017–present)<ref name="statewidecoalition"/>
+* [[Rick Townsend]], [[Georgia's 179th House of Representatives district|HD-179]] (2023–present)<ref name="statewidecoalition"/>
+
+;Local officials
+*[[Mary Norwood]], member of the [[Atlanta City Council]] (2022–present) ''(Independent)''<ref>{{cite news|last=Ritchie|first=Logan|title=Atlanta City Council member Mary Norwood endorses Rick Jackson for governor|url=https://roughdraftatlanta.com/2026/09/16/norwood-endorses-jackson/|access-date=September 28, 2026 |date=September 16, 2026}}</ref>
+
+;Organizations
+* [[Americans for Prosperity]]<ref>{{cite web |title=AFP State PAC Announces Endorsement of Rick Jackson for Governor |url=https://afpstatepac.com/2026/09/09/afp-state-pac-announces-endorsement-of-rick-jackson-for-governor/ |website=AFP State PAC |date=September 9, 2026 |access-date=September 28, 2026}}</ref>
+*[[Georgia Chamber of Commerce]]<ref>{{cite news |last1= |first1= |title=Hispanic political group endorses Rick Jackson in Georgia governor's race |url=https://www.wtoc.com/2026/09/09/hispanic-political-group-endorses-rick-jackson-georgia-governors-race/ |access-date=September 28, 2026 |work=[[WTOC-TV]] |date=September 9, 2026}}</ref>
+* [[National Rifle Association]]<ref>{{cite web |title=Georgia |url=https://www.nrapvf.org/grades/georgia/ |website=[[NRA Political Victory Fund]] |access-date=September 28, 2026}}</ref>
+}}
+{{Endorsements box
+|title=Keisha Lance Bottoms (D)
+|list=
+;Executive branch officials
+*[[Eric Holder]], former [[U.S. Attorney General|attorney general]] (2001, 2009–2015)<ref>{{Cite web|last=Mehta|first=Rohit|date=August 3, 2026|title=Eric Holder Jumps Into Georgia Map Wars, Backs Atlanta's Keisha Lance Bottoms for Governor|url=https://hoodline.com/2026/08/eric-holder-jumps-into-georgia-map-wars-backs-atlanta-s-keisha-lance-bottoms-for-governor/|access-date=August 16, 2026|work=Hoodline Atlanta}}</ref>
+*[[Barack Obama]], former [[president of the United States]] (2009–2017)<ref>{{cite news |last1=Jackson |first1=Reeves |title=Barack Obama endorses Keisha Lance Bottoms for Georgia governor |url=https://www.11alive.com/article/news/politics/barack-obama-endorses-keisha-lance-bottoms-georgia-governor/85-f76310a0-9b82-4cb6-9434-c207b6700ae6 |access-date=October 8, 2026 |work=[[11Alive.com]] |date=October 8, 2026}}</ref>
+
+;U.S. senators
+*[[Jon Ossoff]], [[Georgia (U.S. state)|Georgia]] (2021–present)<ref name="Ossoff1">{{cite web |last1=Murphy |first1=Patricia |title=Bottoms and Ossoff plan campaign as 'partners' at top of Democratic ticket |url=https://www.ajc.com/politics/2026/05/bottoms-and-ossoff-plan-campaign-as-partners-at-top-of-democratic-ticket/|publisher=The Atlanta Journal-Constitution |access-date=May 25, 2026 |language=en |date=May 22, 2026}}</ref>
+*[[Raphael Warnock]], [[Georgia (U.S. state)|Georgia]] (2021–present)<ref name="USATodayGAGov"/>
+
+;Statewide officials
+*[[Wes Moore]], [[governor of Maryland]] (2023–present)<ref>{{cite news |last1=Bluestein |first1=Greg |last2=Mitchell |first2=Tia |last3=Murphy |first3=Patricia |last4=Beam |first4=Adam |title=Jon Ossoff targets Mike Collins over Epstein files in new ad |url=https://www.ajc.com/politics/2026/07/jon-ossoff-targets-mike-collins-over-epstein-files-in-new-ad/ |access-date=July 14, 2026 |work=[[The Atlanta Journal-Constitution]] |date=July 14, 2026 |language=en}}</ref>
+*[[Gretchen Whitmer]], [[governor of Michigan]] (2019–present)<ref>{{Cite web|last=Kallis|first=Sarah|date=August 14, 2026|title=Keisha Lance Bottoms campaigns with Michigan Gov. Gretchen Whitmer in Cobb|url=https://www.gpb.org/news/2026/08/14/keisha-lance-bottoms-campaigns-michigan-gov-gretchen-whitmer-in-cobb|access-date=August 16, 2026|work=GPB NPR}}</ref>
+
+;State legislators
+*[[Jason Esteves]], former [[Georgia's 35th Senate district|SD-35]] (2023–2025) and former gubernatorial candidate<ref name="USATodayGAGov"/>
+*[[Harold V. Jones II]], minority leader of the [[Georgia Senate]] (2025–present) from [[Georgia's 22nd Senate district|SD-22]] (2015–present)<ref>{{cite news|last=Lenon|first=Rakiyah|date=June 25, 2026|title=Local Democrats speak out against Rick Jackson|newspaper=WJBF|url=https://www.wjbf.com/top-stories/local-democrats-speak-out-against-rick-jackson/|access-date=June 27, 2026}}</ref>
+
+;Individuals
+*[[Matthew Yglesias]], journalist<ref>{{Cite web|url=https://www.slowboring.com/p/the-midterm-candidates-who-deserve|title=The midterm candidates who deserve your money|date=July 13, 2026|access-date=September 22, 2026|last=Yglesias|first=Matthew|website=Slow Boring}}</ref>
+
+;Organizations
+*[[Everytown for Gun Safety]]<ref>{{cite web |title=Everytown for Gun Safety Action Fund Announces New Round of Statewide Endorsements, Backing 40 Statewide Candidates in 15 States |url=https://momsdemandaction.org/press/everytown-for-gun-safety-action-fund-announces-new-round-of-statewide-endorsements-backing-40-statewide-candidates-in-15-states/ |website=Moms Demand Action |access-date=September 15, 2026 |language=en-us}}</ref>
+*[[Giffords]]<ref>{{cite web |title=GIFFORDS PAC endorses slate of top gubernatorial candidates in key races |url=https://giffords.org/press-release/2026/08/giffords-pac-endorses-slate-of-top-gubernatorial-candidates-in-key-races/ |website=giffords.org |date=August 7, 2026 |access-date=August 7, 2026}}</ref>
+*[[Human Rights Campaign]]<ref name="HRCAugust">{{cite web |title=Human Rights Campaign PAC Endorses Slate of Pro-Equality Candidates |url=https://www.hrc.org/press-releases/human-rights-campaign-pac-endorses-slate-of-pro-equality-candidates-for-governor-in-key-states |website=HRC |access-date=August 30, 2026 |date=August 27, 2026}}</ref>
+*[[Jewish Democratic Council of America]]<ref>{{cite web |title=Jewish Dems Endorsed Candidates |url=https://jewishdems.org/endorsements/ |website=Jewish Democratic Council of America |access-date=September 25, 2026}}</ref>
+}}
+
+===Debates===
+{| class="wikitable" style="text-align:center;"
+|+ 2026 Georgia gubernatorial election debates
+|-
+! scope="col" | {{abbr|No.|Number}}
+! scope="col" | Date
+! scope="col" | Host
+! scope="col" | Moderator
+! scope="col" | Link
+! scope="col" | <small>[[Republican Party (United States)|Republican]]</small>
+! scope="col" | <small>[[Democratic Party (US)|Democratic]]</small>
+|-
+! colspan="5" rowspan="2" |Key:<br />{{Colors|black|#90ff90|&nbsp;P&nbsp;}} <small>Participant&nbsp;</small> {{Colors|black|#FFFFDD|&nbsp;A&nbsp;}} <small>Absent&nbsp;</small> {{Colors|black|#ff9090|&nbsp;N&nbsp;}} <small>Not invited&nbsp;</small> {{Colors|black|#CCFFCC|&nbsp;I&nbsp;}} <small>Invited {{color box|#f0e68c|W}} Withdrawn</small>
+! scope="col" style="background:{{party color|Republican Party (US)}}" |
+! scope="col" style="background:{{party color|Democratic Party (US)}}" |
+|-
+! scope="col" | Jackson
+! scope="col" | Bottoms
+|-
+!1<ref name="anf-debate-26">{{cite web|access-date=2026-10-07|title=From grocery taxes to Flock cameras: Biggest moments in Georgia governor debate|url=https://www.atlantanewsfirst.com/2026/10/07/grocery-tax-flock-cameras-biggest-moments-georgia-governor-debate/|date=7 October 2026|website=[[Atlanta News First]]}}</ref>
+| style="white-space:nowrap;" | October 6, 2026
+| style="white-space:nowrap;" | [[Atlanta News First]]<br>[[Gray Media]]
+| style="white-space:nowrap;" | Rick Folbaum
+| [https://www.youtube.com/watch?v=j7CnmPxFCdw YouTube]
+| {{D-P|'''P'''}}
+| {{D-P|'''P'''}}
+|}
+
+===Fundraising===
+{| class="wikitable sortable"
+|-
+! colspan=4 |Campaign finance reports as of July 31, 2026
+|- style="text-align:center;"
+!Candidate
+!Raised
+!Spent
+!Cash on hand
+|-
+|{{party shading/Republican}}|Rick Jackson (R)
+|$118,914,891
+|$114,023,757
+|$4,319,290
+|-
+|{{party shading/Democratic}}|Keisha Lance Bottoms (D)
+|$5,777,898
+|$5,254,893
+|$772,079
+|-
+! colspan="4" |<small>Source: Georgia Campaign Finance Commission<ref name="GCFS"/></small>
+|}
+
+===Polling===
+'''Aggregate polls'''
+{| class="wikitable sortable" style="text-align:center;font-size:90%;line-height:17px"
+!Source of poll<br />aggregation
+!Dates<br />administered
+!Dates<br />updated
+! style="width:100px;"| Rick<br />Jackson (R)
+! style="width:100px;"| Keisha<br />Lance<br />Bottoms (D)
+! style="width:100px;"| Other/Undecided<br />{{Efn|Calculated by taking the difference of 100% and all other candidates combined.|name=|group=}}
+! Margin
+|-
+|[[270toWin]]<ref>{{cite web |title=2026 Polls: Georgia Governor |url=https://www.270towin.com/2026-governor-polls/georgia |website=[[270toWin]] |access-date=October 11, 2026}}</ref>
+|September 15 – October 3, 2026<!--Remember that dates listed on 270toWin are poll *publication dates*, not the dates when the polls were *administered*. Dates listed here should be dates *administered*-->
+|October 4, 2026
+|{{party shading/Republican}}|'''48.3%'''
+|46.3%
+|5.4%
+|{{party shading/Republican}}|'''Jackson +2.0%'''
+|-
+|[[Decision Desk HQ]]<ref>{{cite web |title=2026 Georgia Governor Polling |url=https://votes.decisiondeskhq.com/races/2026-11-03/georgia-governor-general-election/polling |website=[[Decision Desk HQ]] |access-date=September 27, 2026}}</ref>
+|through October 13, 2026
+|October 14, 2026
+|{{party shading/Republican}}|'''49.3%'''
+|47.2%
+|3.5%
+|{{party shading/Republican}}|'''Jackson +2.1%'''
+|-
+|[[FiftyPlusOne]]<ref name="FPOGeneral">{{cite web |title=Georgia General Governor Election |url=https://fiftyplusone.news/polls/governor/general/georgia |website=FiftyPlusOne |access-date=August 16, 2026}}</ref>
+|through October 13, 2026
+|October 14, 2026
+|{{party shading/Republican}}|'''48.2%'''
+|46.5%
+|5.3%
+|{{party shading/Republican}}|'''Jackson +1.7%'''
+|-
+|[[RealClearPolitics]]<ref>{{Cite web|title=2026 Georgia Governor - Jackson vs. Lance Bottoms|url=https://www.realclearpolling.com/polls/governor/general/2026/georgia/lance-bottoms-vs-jackson|access-date=August 16, 2026|website=[[RealClearPolitics]]}}</ref>
+|September 14 – October 13, 2026
+|October 14, 2026
+|{{party shading/Republican}}|'''48.3%'''
+|46.5%
+|5.2%
+|{{party shading/Republican}}|'''Jackson +1.8%'''
+|-
+|''[[Silver Bulletin]]''<ref>{{Cite web|title=FLIPR 2026 midterm election forecast|url=https://www.natesilver.net/p/nate-silver-2026-midterm-election-polls-model|access-date=September 11, 2026|website=[[Silver Bulletin]]}}</ref>
+|through October 3, 2026
+|October 14, 2026
+|{{party shading/Republican}}|'''47.8%'''
+|46.8%
+|5.4%
+|{{party shading/Republican}}|'''Jackson +1.0%'''
+|-
+|colspan="3"|'''Average'''
+|{{party shading/Republican}}|'''48.4%'''
+|46.7%
+|4.9%
+|{{party shading/Republican}}|'''Jackson +1.7%'''
+|}
+
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- style="vertical-align:bottom"
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name="Key"}}
+! Margin<br />{{nowrap|of error}}
+! style="width:100px;"| Rick<br />Jackson (R)
+! style="width:100px;"| Keisha Lance<br />Bottoms (D)
+! Other
+! Undecided
+|-
+|style="text-align:left;"|InsiderAdvantage (R)<ref>{{cite web |title=InsiderAdvantage Georgia governor poll: Jackson maintains slight edge |url=https://jamesmagazinega.com/2026/10/14/georgia-governors-poll-from-insideradvantage-jackson-maintains-slight-edge/ |website=InsiderAdvantage |access-date=14 October 2026 |date=October 14, 2026}}</ref>
+|October 12–13, 2026
+|800 (LV)
+|±&nbsp;3.5%
+|{{party shading/Republican}}|'''49%'''
+|47%
+|{{sdash}}
+|4%
+|-
+|style="text-align:left;"|Wedgewood Polls<ref>{{cite web |title=Senate & Governor:Toplines & Crosstabs|url=https://drive.google.com/file/d/1-Qoij2YeWwq-EFaTY_W0iTf1fotSrKHI/view |website=Wedgewood Polls|date=October 3, 2026 |access-date=October 4, 2026}}</ref>
+|October 2–3, 2026
+|600 (LV)
+|±&nbsp;4.0%
+|{{party shading/Republican}}|'''51%'''
+|49%
+|{{sdash}}
+|{{sdash}}
+|-
+|style="text-align:left;"|InsiderAdvantage (R)<ref>{{cite web |title=InsiderAdvantage Georgia Survey: Jackson Leads by Two in Race for Governor; Ossoff Leads by Eight in Senate Contest |url=https://insideradvantage.com/insideradvantage-georgia-survey-jackson-leads-by-two-in-race-for-governor-ossoff-leads-by-eight-in-senate-contest/ |website=InsiderAdvantage|date=September 25, 2026 |access-date=September 25, 2026}}</ref>
+|September 22–23, 2026
+|1,200 (LV)
+|±&nbsp;4.0%
+|{{party shading/Republican}}|'''48%'''
+|46%
+|{{sdash}}
+|6%
+|-
+|style="text-align:left;" rowspan="4"|Big Data Poll (R)<ref>{{cite web |title=Peach State Poll: Jon Ossoff Opens Up Lead Over Mike Collins in Georgia |url=https://www.bigdatapoll.com/blog/peach-state-poll-jon-ossoff-opens-up-lead-over-mike-collins-in-georgia/ |website=BIG DATA POLL |access-date=September 24, 2026 |date=September 24, 2026}}</ref>{{Efn-ua|Poll sponsored by the Public Polling Project}}
+|rowspan="4"|September 21–23, 2026
+|rowspan="2"|712 (RV)
+|rowspan="4"|±&nbsp;4.0%
+|'''50%'''{{efn|name=lean}}
+|'''50%'''
+|{{sdash}}
+|{{sdash}}
+|-
+|{{party shading/Republican}}|'''48%'''
+|46%
+|{{sdash}}
+|7%
+|-
+|rowspan="2"|678 (LV)
+|{{party shading/Republican}}|'''50.5%'''{{efn|name=lean|With voters who lean towards a given candidate}}
+|49.5%
+|{{sdash}}
+|{{sdash}}
+|-
+|{{party shading/Republican}}|'''49%'''
+|47%
+|{{sdash}}
+|5%
+|-
+|style="text-align:left;" rowspan="3"|[[YouGov]]<ref>{{cite web|url=https://d3nkl3psvxxpe9.cloudfront.net/documents/ttw_ga_20260915.pdf|title=Georgia General Election 2026|work=[[YouGov]]|date=September 23, 2026|access-date=September 23, 2026}}</ref>
+|rowspan="3"|September 15–18, 2026
+|3,414 (RV)
+|±&nbsp;2.7%
+|{{party shading/Republican}}|'''45%'''
+|44%
+|2%{{efn|name="SEWNV1"|Someone else" & "I will not vote in this race" with 1%}}
+|9%
+|-
+|3,299 (LV){{Efn|Loose likely voters.}}
+|±&nbsp;2.8%
+|{{party shading/Republican}}|'''46%'''
+|44%
+|2%{{efn|name="SEWNV1"}}
+|8%
+|-
+|3,069 (LV){{Efn|Strict likely voters.}}
+|±&nbsp;2.9%
+|{{party shading/Republican}}|'''47%'''
+|44%
+|2%{{efn|name="SEWNV1"}}
+|8%
+|-
+|style="text-align:left;"|[[Rasmussen Reports]] (R)<ref>{{cite web |title=Election 2026: Georgia Governor |url=https://www.rasmussenreports.com/public_content/politics/elections/election_2026/election_2026_georgia_governor |website=[[Rasmussen Reports]] |date=September 16, 2026 |access-date=September 16, 2026}}</ref>
+|September 14, 2026
+|1,019 (LV)
+|±&nbsp;3%
+|{{party shading/Republican}}|'''48%'''
+|45%
+|{{sdash}}
+|7%
+|-
+|style="text-align:left;"|InsiderAdvantage (R)<ref>{{cite web |title=Georgia Survey of Likely Voters |url=https://jamesmagazinega.com/wp-content/uploads/2026/08/InsiderAdvantage-Poll-8.18.26-Crosstabs.jpg |website=James Magazine|date=August 18, 2026 |access-date=August 18, 2026}}</ref>
+|August 16–17, 2026
+|800 (LV)
+|±&nbsp;3.4%
+|'''46%'''
+|'''46%'''
+|{{sdash}}
+|8%
+|-
+|style="text-align:left;"|Quantus Insights (R)<ref>{{cite web |title=Georgia Voters Put Affordability First as 2026 Races Tighten |url=https://quantusinsights.org/polling/f/georgia-voters-put-affordability-first-as-2026-races-tighten |website=Quantus Insights|date=August 10, 2026 |access-date=August 10, 2026}}</ref>{{Efn-ua|name=NGAG|Poll sponsored by the Natural Gas Association of Georgia}}
+|July 29 – August 1, 2026
+|815 (LV)
+|±&nbsp;3.6%
+|45%
+|{{party shading/Democratic}}|'''46%'''
+|1%{{efn|name="AC1"|"Another candidate" with 1%}}
+|8%
+|-
+|style="text-align:left;"|Fabrizio Ward (R)/Impact Research (D)<ref>{{cite web |title=Georgia Voter Survey |url=https://www.aarp.org/content/dam/aarp/research/topics/voter-opinion-research/politics/2026-midterm-election-poll-georgia.doi.10.26419-2fres.01065.004.pdf |publisher=[[AARP]] |date=July 23, 2026 |access-date=July 23, 2026}}</ref>{{Efn-ua|name=AARP|Poll commissioned by [[AARP]]}}
+|July 13–16, 2026
+|1,060 (LV)
+|±&nbsp;3.0%
+|46%
+|{{party shading/Democratic}}|'''48%'''
+|{{sdash}}
+|5%
+|-
+|style="text-align:left;" rowspan="2"|''[[State Navigate]]''<ref>{{cite web |title=State Navigate Poll Shows Lance Bottoms With 7-Point Lead in Georgia Governor Race |url=https://statenavigate.org/ga/state-navigate-poll-shows-lance-bottoms-with-7-point-lead-in-georgia-governor-race/ |website=State Navigate |access-date=July 17, 2026 |date=July 17, 2026}}</ref>
+|rowspan="2"|July 10–13, 2026
+|rowspan="2"|448 (LV)
+|rowspan="2"|±&nbsp;4.6%
+|44%{{efn|name=lean|With voters who lean towards a given candidate}}
+|{{party shading/Democratic}}|'''51%'''
+|{{sdash}}
+|4%
+|-
+|43%
+|{{party shading/Democratic}}|'''50%'''
+|{{sdash}}
+|7%
+|-
+|style="text-align:left;"|Wick<ref>{{cite web|url=https://wick.io/research-georgia-election-survey-june-2026|title=What 1,175 likely Georgia voters told us in June|website=Wick|date=July 8, 2026|access-date=July 8, 2026}}</ref>
+|June 27–30, 2026
+|1,175 (LV)
+|±&nbsp;2.9%
+|'''43%'''
+|'''43%'''
+|{{sdash}}
+|14%
+|-
+|style="text-align:left;"|Beacon Research (D)/Shaw & Co. Research (R)<ref>{{cite news |title=GEORGIA SENATE AND GOVERNOR |url=https://static.foxnews.com/foxnews.com/content/uploads/2026/07/fox_june-23-27-2026_complete_georgia_topline_july-1-release.pdf |access-date=July 1, 2026 |publisher=Fox News |date=July 1, 2026}}</ref>{{Efn-ua|name=Fox|Poll conducted for [[Fox News]]}}
+|June 23–27, 2026
+|1,002 (RV)
+|±&nbsp;3.0%
+|47%
+|{{party shading/Democratic}}|'''52%'''
+|{{sdash}}
+|1%
+|-
+|- style="background:lightyellow;"
+| style="border-right-style:hidden; background:lightyellow;" |
+| style="border-right-style:hidden; " |June 16, 2026
+| colspan="6" | Republican primary runoff
+|-
+|style="text-align: left;" |Concord Public Opinion Partners (D)<ref name="ConcordJune2026">{{cite web |title=Georgia Gubernatorial Election Poll Results |url=https://acrobat.adobe.com/id/urn:aaid:sc:US:29f66864-4f32-47fe-b5e2-85322b2a761b |work=Education Reform Now Advocacy |via=[[Adobe Acrobat]] |date=June 12, 2026 |access-date=June 16, 2026}}</ref>{{efn-ua|name=ERNA|Poll sponsored by Education Reform Now Advocacy}}
+|May 30 – June 2, 2026
+|510 (LV)
+|±&nbsp;4.3%
+|38%
+|{{party shading/Democratic}}|'''53%'''
+|{{sdash}}
+|9%
+|-
+|- style="background:lightyellow;"
+| style="border-right-style:hidden; background:lightyellow;" |
+| style="border-right-style:hidden; " |May 19, 2026
+| colspan="6" | Primary elections
+|-
+|style="text-align: left;" |Echelon Insights (R)<ref name="EchelonApr2026">{{Cite web |url=https://netchoice.org/wp-content/uploads/2026/04/NetChoice-Apr-2026-National-Antitrust-Survey-Topline.pdf |title=NetChoice — April 2026 Antitrust Survey — Topline |work=Echelon Insights |date=April 21, 2026 |access-date=April 21, 2026}}</ref>{{efn-ua|name=Net|Poll commissioned by [[NetChoice]]}}
+|April 3–9, 2026
+|407 (LV)
+|±&nbsp;6.5%
+|43%
+|{{party shading/Democratic}}|'''49%'''
+|{{sdash}}
+|8%
+|}
+<!-- = = = don't edit the line below = = = -->
+{{hidden begin|titlestyle=background:#cff|title=Hypothetical polling|contentstyle=border:solid 1px silver; padding:8px; background:var(--background-color-base); color:var(--color-base);}}
+<!-- = = = don't edit the line above = = = -->
+
+'''Burt Jones vs. Keisha Lance Bottoms'''
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- style="vertical-align:bottom"
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name="Key"}}
+! Margin<br />{{nowrap|of error}}
+! style="width:100px;"| Burt<br />Jones (R)
+! style="width:100px;"| Keisha Lance<br />Bottoms (D)
+! Undecided
+|-
+|style="text-align: left;" |Concord Public Opinion Partners (D)<ref name="ConcordJune2026"/>{{efn-ua|name=ERNA}}
+|May 30 – June 2, 2026
+|510 (LV)
+|±&nbsp;4.3%
+|42%
+|{{party shading/Democratic}}|'''52%'''
+|6%
+|-
+|style="text-align: left;" |Echelon Insights<ref name="EchelonApr2026"/>{{efn-ua|name=Net}}
+|April 3–9, 2026
+|407 (LV)
+|±&nbsp;6.5%
+|43%
+|{{party shading/Democratic}}|'''49%'''
+|8%
+|}
+
+'''Brad Raffensperger vs. Keisha Lance Bottoms'''
+{| class="wikitable" style="font-size:90%;text-align:center;"
+|- style="vertical-align:bottom"
+! Poll source
+! Date(s)<br />administered
+! Sample<br />size{{efn|name="Key"}}
+! Margin<br />{{nowrap|of error}}
+! style="width:100px;"| Brad<br />{{nowrap|Raffensperger (R)}}
+! style="width:100px;"| Keisha Lance<br />Bottoms (D)
+! Undecided
+|-
+|style="text-align: left;" |Echelon Insights<ref name="EchelonApr2026"/>{{efn-ua|name=Net}}
+|April 3–9, 2026
+|407 (LV)
+|±&nbsp;6.5%
+|44%
+|{{party shading/Democratic}}|'''46%'''
+|10%
+|}
+{{hidden end}}
+
+===Results===
+{{Election box begin
+ | title=2026 Georgia gubernatorial election}}
+{{Election box candidate with party link 
+ | party=Republican Party (United States)
+ | candidate=[[Rick Jackson (businessman)|Rick Jackson]]
+ | votes=
+ | percentage=
+ | change=
+}}
+{{Election box candidate with party link
+ | party=Democratic Party (United States)
+ | candidate=[[Keisha Lance Bottoms]]
+ | votes= 
+ | percentage=
+ | change=
+}}
+{{Election box total no change
+ | votes= 
+ | percentage= 100.0
+ | change=
+}}
+{{Election box end}}
+
+== Notes ==
+{{notelist}}
+'''Partisan clients'''<br />
+{{notelist-ua}}
+
+== See also ==
+*[[2026 United States gubernatorial elections]]
+*[[2026 United States Senate election in Georgia]]
+*[[2026 Georgia state elections]]
+
+==References==
+{{reflist}}
+
+==External links==
+'''Official campaign websites'''
+*[https://www.keishaforgovernor.com/ Keisha Lance Bottoms (D)]
+*[https://rickjackson.com/ Rick Jackson (R)]
+
+{{2026 United States elections}}
+
+[[Category:Georgia (U.S. state) gubernatorial elections]]
+[[Category:2026 Georgia (U.S. state) elections|Gubernatorial]]
+[[Category:2026 United States gubernatorial elections|Georgia]]

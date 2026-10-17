@@ -20,7 +20,7 @@ export function Avatar({ src, name, party, size = 72 }) {
   )
 }
 
-export default function CandidateCard({ cand, image, incumbent, money, leading, result }) {
+export default function CandidateCard({ cand, image, incumbent, money, leading, result, mate, endorsements }) {
   const [sum, setSum] = useState(null)
   const [pos, setPos] = useState(undefined)
   const [open, setOpen] = useState(false)
@@ -61,6 +61,8 @@ export default function CandidateCard({ cand, image, incumbent, money, leading, 
             <PartySprite party={cand.party} size={22} />
           </div>
           <div className="cand-desc">{sum?.description || (cand.link ? 'DECRYPTING…' : 'NO PUBLIC DOSSIER ON FILE')}</div>
+          {mate && <div className="cand-mate">RUNNING MATE: <b>{mate}</b></div>}
+          {endorsements > 0 && <div className="cand-mate">ENDORSEMENTS: <b>{endorsements}</b></div>}
         </div>
       </div>
 

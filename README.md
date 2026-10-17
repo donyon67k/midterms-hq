@@ -41,6 +41,26 @@ What the desktop build adds over the browser version (`src/lib/desktop.js`, `src
 - External links open in your default browser; window size/position is remembered;
   opening it again focuses the running copy
 
+## Live updates without a new version (HQ Admin)
+
+Content changes don't need an app update. `npm run admin` opens a local admin page
+(dev server only, never shipped) for the **live control file**:
+
+- broadcast banner (info / alert, optional link)
+- HQ picks: featured races at the top of the Situation Room
+- HQ notes: your analysis on any race's file
+- rating overrides and election-night result overrides (backup if Wikipedia lags)
+- minimum version: older copies show an "update required" banner
+
+**SAVE DRAFT** writes `live/control.json` (gitignored) and the dev app previews it right away.
+**PUBLISH TO EVERYONE** pushes it as `control.json` to the repo's `live` branch, so it never
+touches code on `main`. Installed apps read it on every refresh (raw.githubusercontent.com
+caches ~5 min). The app treats the file as data only: unknown fields, bad labels and
+non-https links are dropped.
+
+Code changes (layout, features) still ship as a release (below). Installed copies download the
+new version in the background and show **RESTART TO UPDATE**.
+
 ## Releasing (installers)
 
 | Platform | Installer | How it's built |
@@ -67,6 +87,7 @@ listed at the top of the workflow file.
 | Live federal finance totals | OpenFEC API (`⟳ PULL LIVE FEC TOTALS`) | On demand, cached 1 h |
 | Congressional district boundaries (2026 / 120th Congress lines, incl. mid-decade redraws) | U.S. Census TIGERweb ArcGIS service | When a state's district map opens, cached 7 days |
 | County boundaries | `us-atlas` (bundled, loaded on first zoom) | Static |
+| City labels (places with 10K+ people) | U.S. Census Gazetteer + Vintage 2024 population estimates → `src/data/cities.json` | Static; rebuild with `npm run data:cities` (needs `unzip`) |
 | 2024 presidential results by county | [tonmcg/US_County_Level_Election_Results_08-24](https://github.com/tonmcg/US_County_Level_Election_Results_08-24) → `src/data/county2024.json` | Static; rebuild with `npm run data:counties`. Connecticut's 2024 data uses planning regions, so its counties show "no data" |
 
 `src/data/snapshot.json` is a bundled fallback so the app loads instantly and still works offline.

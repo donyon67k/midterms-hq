@@ -3,10 +3,10 @@ import { ratingClass, raceTitle, resultColor, tally, tallyResults, timeAgo } fro
 import { Icon } from './Sprites.jsx'
 
 // Seats held by each caucus before the election (Senate caucus counts independents with Dems).
-const SENATE_NOW = { D: 47, R: 53 }
-const GOV_NOW = { D: 24, R: 26 }
+export const SENATE_NOW = { D: 47, R: 53 }
+export const GOV_NOW = { D: 24, R: 26 }
 
-function PowerBar({ label, icon, d, r, toss, total, control, leanD = 0, leanR = 0, middle = 'TOSSUP' }) {
+export function PowerBar({ label, icon, d, r, toss, total, control, leanD = 0, leanR = 0, middle = 'TOSSUP' }) {
   const pct = (n) => `${(n / total) * 100}%`
   return (
     <div className="power">
@@ -32,7 +32,7 @@ function PowerBar({ label, icon, d, r, toss, total, control, leanD = 0, leanR = 
 }
 
 // Seats not up this cycle + projected/called seats among those that are.
-function chamber(races, now, results) {
+export function chamber(races, now, results) {
   const upR = races.filter((r) => r.incumbent.party === 'R').length
   const upD = races.length - upR
   if (results) {
@@ -43,7 +43,7 @@ function chamber(races, now, results) {
   return { d: now.D - upD + t.D, r: now.R - upR + t.R, toss: t.toss, leanD: t.leanD, leanR: t.leanR }
 }
 
-export default function Overview({ data, onPick, log, results, watch }) {
+export default function Overview({ data, onPick, log, results, watch, featured = [] }) {
   const senRaces = Object.values(data.senate)
   const govRaces = Object.values(data.governor)
   const houseRaces = Object.values(data.house).flat()
@@ -62,6 +62,7 @@ export default function Overview({ data, onPick, log, results, watch }) {
     .filter((r) => r.consensus && Math.abs(r.consensus.score) < 1.0)
     .sort((a, b) => Math.abs(a.consensus.score) - Math.abs(b.consensus.score))
   const watched = allRaces.filter((r) => watch.ids.includes(r.id))
+  const picks = featured.map((id) => allRaces.find((r) => r.id === id)).filter(Boolean)
   const flips = results ? allRaces.filter((r) => r.result?.flip) : []
 
   const RaceRow = ({ r }) => (
@@ -94,6 +95,13 @@ export default function Overview({ data, onPick, log, results, watch }) {
             HOUSE <span className="party-d">D +{house.flipD}</span> / <span className="party-r">R +{house.flipR}</span> ·
             GOV <span className="party-d">D +{gov.flipD}</span> / <span className="party-r">R +{gov.flipR}</span>
           </div>
+        )}
+
+        {picks.length > 0 && (
+          <section className="intel-block">
+            <h4 className="pixel">◆ HQ PICKS · RACES TO WATCH</h4>
+            <div className="watchlist">{picks.map((r) => <RaceRow key={r.id} r={r} />)}</div>
+          </section>
         )}
 
         <section className="intel-block">

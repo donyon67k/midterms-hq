@@ -21,6 +21,9 @@
         },
         {
           "url": "https://tigerweb.geo.census.gov/*"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/donyon67k/midterms-hq/*"
         }
       ]
     },

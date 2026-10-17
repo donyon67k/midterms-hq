@@ -48,9 +48,9 @@ a { color: var(--green); }
 .sync-dot.error { background: var(--rep); }
 
 .btn-mini {
-  font-family: var(--font-pixel); font-size: 8px;
+  font-family: var(--font-pixel); font-size: 9px;
   border: 1px solid var(--green-dim); color: var(--green);
-  padding: 5px 8px; background: rgba(0, 255, 65, 0.05);
+  padding: 7px 10px; background: rgba(0, 255, 65, 0.05);
   text-decoration: none; display: inline-block;
   transition: background 0.1s, color 0.1s;
 }
@@ -70,7 +70,7 @@ a { color: var(--green); }
 }
 .mode:hover { border-color: var(--green); }
 .mode.on { background: var(--green); color: var(--bg-primary); border-color: var(--green); box-shadow: 3px 3px 0 var(--green-dim); }
-.mode.small { font-size: 8px; padding: 6px 10px; }
+.mode.small { font-size: 9px; padding: 8px 12px; }
 .mode:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #002a0d; }
 
 /* ---------- main layout ---------- */
@@ -325,19 +325,27 @@ td.lead { color: var(--amber); font-weight: bold; }
 @keyframes outlinePulse { 0%, 100% { stroke: #fff; } 50% { stroke: #00ff41; } }
 .sm-label { font-family: var(--font-pixel); fill: #fff; paint-order: stroke; stroke: #000; pointer-events: none; }
 .sm-err { color: var(--amber); }
+.city-dot { fill: #fff; stroke: #000; stroke-width: 1px; vector-effect: non-scaling-stroke; }
+.city-dot.big { fill: var(--amber); }
+.city-label { font-family: var(--font-mono); fill: #e8f4ff; paint-order: stroke; stroke: rgba(0, 0, 0, 0.9); stroke-linejoin: round; }
+.city-label.big { fill: #fff; font-weight: bold; }
+.tip-more { color: var(--amber); margin-top: 2px; }
 
 .zoom-hud {
   position: absolute; top: 8px; right: 8px; z-index: 4;
-  display: flex; gap: 8px; align-items: center;
-  background: rgba(0, 0, 0, 0.75); border: 1px solid var(--green-dim); padding: 4px;
+  display: flex; gap: 10px; align-items: center;
+  background: rgba(0, 0, 0, 0.8); border: 2px solid var(--green-dim); padding: 6px;
+  box-shadow: 3px 3px 0 #002a0d;
 }
+.zoom-hud .btn-mini, .zoom-hud .sm-toggle button { font-size: 11px; padding: 10px 14px; }
+.zoom-hud .sm-toggle button { border-width: 2px; }
 .zoom-status {
   position: absolute; left: 8px; bottom: 6px; z-index: 4; pointer-events: none;
-  font-size: 10px; color: var(--text-data); background: rgba(0, 0, 0, 0.7); padding: 2px 6px;
+  font-size: 12px; color: var(--text-data); background: rgba(0, 0, 0, 0.75); padding: 4px 8px;
 }
 .sm-toggle { display: inline-flex; }
 .sm-toggle button {
-  font-family: var(--font-pixel); font-size: 7px; padding: 5px 7px;
+  font-family: var(--font-pixel); font-size: 8px; padding: 6px 9px;
   border: 1px solid var(--green-dim); color: var(--green);
 }
 .sm-toggle button + button { border-left: none; }
@@ -351,7 +359,7 @@ td.lead { color: var(--amber); font-weight: bold; }
 /* ---------- open seats, watchlist, results ---------- */
 .open-seat { color: var(--amber); font-family: var(--font-pixel); font-size: 8px; letter-spacing: 0.5px; }
 .race-head-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-.star { font-family: var(--font-pixel); font-size: 7px; padding: 4px 6px; border: 1px solid var(--amber); color: var(--amber); white-space: nowrap; }
+.star { font-family: var(--font-pixel); font-size: 8px; padding: 6px 8px; border: 1px solid var(--amber); color: var(--amber); white-space: nowrap; }
 .star.on { background: var(--amber); color: #000; }
 .result-banner {
   display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; justify-content: space-between;
@@ -370,7 +378,7 @@ td.lead { color: var(--amber); font-weight: bold; }
 .county { stroke: none; cursor: crosshair; }
 .county.hov { filter: brightness(1.3); }
 .lens { margin-left: 4px; }
-.lens button { font-size: 8px; padding: 7px 8px; }
+.lens button { font-size: 9px; padding: 9px 11px; border-width: 2px; }
 kbd {
   font-family: var(--font-pixel); font-size: 6px; padding: 2px 4px; margin-left: 4px;
   border: 1px solid var(--green-dim); color: var(--text-dim); vertical-align: middle;
@@ -427,9 +435,68 @@ kbd {
 
 /* ---------- update banner (desktop) ---------- */
 .update-banner {
-  position: fixed; left: 50%; bottom: 44px; translate: -50% 0; z-index: 40;
+  position: fixed; right: 16px; bottom: 44px; z-index: 40;
   display: flex; align-items: center; gap: 12px; padding: 8px 10px;
   background: #03080f; border: 2px solid var(--amber); box-shadow: 0 0 16px rgba(255, 215, 0, 0.35);
-  font-size: 12px; max-width: calc(100vw - 32px);
+  font-size: 12px; max-width: min(560px, calc(100vw - 32px));
 }
 .update-banner .pixel { color: var(--amber); font-size: 8px; white-space: nowrap; }
+
+/* ---------- gameday ---------- */
+.gameday h2 { font-size: 18px; }
+.wave { border-left: 3px solid var(--green-dim); padding: 6px 0 8px 10px; margin-bottom: 10px; }
+.wave.closed { border-left-color: var(--green); }
+.wave.next { border-left-color: var(--amber); }
+.wave.next .wave-head .pixel { color: var(--amber); }
+.wave-head { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; margin-bottom: 6px; }
+.wave-head .pixel { font-size: 10px; }
+.wave-head .dim { font-size: 11px; text-align: right; }
+.wave-states { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
+.wave-st { font-family: var(--font-pixel); font-size: 8px; padding: 5px 6px; border: 1px solid var(--green-dim); color: var(--text-dim); }
+.wave-st.hot { color: var(--green); border-color: var(--green); }
+.wave.closed .wave-st { background: rgba(0, 255, 65, 0.08); }
+.wave-st:hover { background: var(--green); color: var(--bg-primary); }
+
+/* ---------- race extras: primaries, debates, endorsements ---------- */
+.cand-mate { font-size: 11px; color: var(--text-data); margin-top: 3px; }
+.cand-mate b { color: #fff; }
+.endorse-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.endorse { border: 1px solid var(--green-dim); padding: 8px 10px; font-size: 12px; }
+.endorse-head { margin-bottom: 6px; display: flex; justify-content: space-between; gap: 8px; }
+.endorse-row { margin-bottom: 4px; line-height: 1.4; }
+.debate-row { display: grid; grid-template-columns: 34px 150px 1fr auto; gap: 8px; align-items: center; font-size: 12px; margin-bottom: 6px; }
+.debate-row .pixel { font-size: 8px; color: var(--amber); }
+details.primary { margin-bottom: 8px; border-left: 2px solid var(--green-dim); padding-left: 8px; }
+details.primary summary { cursor: pointer; display: flex; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+details.primary summary .pixel { font-size: 8px; }
+.prim-row { display: grid; grid-template-columns: 150px 1fr 48px 74px; gap: 8px; align-items: center; font-size: 11px; margin-bottom: 4px; }
+.prim-row.won .bar-name { color: #fff; }
+.prim-votes { text-align: right; font-size: 10px; }
+
+/* ---------- region bar ---------- */
+.region-bar {
+  position: absolute; top: 8px; left: 8px; right: 8px; z-index: 4;
+  display: flex; flex-wrap: wrap; gap: 4px; pointer-events: none;
+}
+.region-btn {
+  pointer-events: auto; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.5px;
+  padding: 6px 9px; border: 1px solid var(--green-dim); color: var(--green); background: rgba(0, 0, 0, 0.75);
+}
+.region-btn:hover { border-color: var(--green); }
+.region-btn.on { background: var(--green); color: var(--bg-primary); border-color: var(--green); }
+.region-btn.back { color: var(--amber); border-color: var(--amber); }
+
+/* ---------- HQ broadcast (live control file) ---------- */
+.hq-banner {
+  position: fixed; left: 16px; bottom: 44px; z-index: 39;
+  display: flex; align-items: center; gap: 12px; padding: 8px 10px; max-width: min(620px, calc(100vw - 32px));
+  background: #03080f; border: 2px solid var(--green); box-shadow: 0 0 16px rgba(0, 255, 65, 0.3); font-size: 13px;
+}
+.hq-banner .pixel { color: var(--green); font-size: 8px; white-space: nowrap; }
+.hq-banner.alert { border-color: var(--rep); box-shadow: 0 0 16px rgba(255, 68, 68, 0.35); }
+.hq-banner.alert .pixel { color: var(--rep); }
+.hq-banner + .hq-banner { bottom: 96px; }
+.hq-note { border: 2px solid var(--green); background: rgba(0, 255, 65, 0.06); padding: 8px 12px; margin: 0 0 12px; font-size: 13px; }
+.hq-note .pixel { font-size: 8px; color: var(--green); }
+.hq-note p { margin: 6px 0 0; line-height: 1.45; }
+.hq-flag { font-size: 12px; color: var(--green); margin-bottom: 8px; }

@@ -17,6 +17,10 @@ function sameCandidate(a = '', b = '') {
   const y = parse(b)
   return x.last === y.last && (!x.first || !y.first || x.first === y.first)
 }
+const primaryParty = (title) => (/democrat/i.test(title) ? 'D' : /republican/i.test(title) ? 'R' : /libertarian/i.test(title) ? 'L' : /green/i.test(title) ? 'G' : 'I')
+// Expand only the deciding round of the Democratic and Republican primaries.
+const finalMajorRound = (p, all) => ['D', 'R'].includes(primaryParty(p.title))
+  && (p.runoff || !all.some((q) => q.runoff && primaryParty(q.title) === primaryParty(p.title)))
 const matchBy = (list, cand, key = 'name') => list?.find((x) => sameCandidate(x[key], cand.name))
 
 // Poll end date from strings like "October 9–12, 2026" or "Sep 30 – Oct 2, 2026".
@@ -128,6 +132,9 @@ export default function RaceView({ race, stateName, results, watch }) {
   const minors = sorted.filter((c) => !majors.includes(c))
   const incNames = (race.incumbents || [race.incumbent]).filter((i) => i?.name).map((i) => lastName(i.name))
 
+  const mateOf = (c) => Object.entries(intel?.runningMates || {}).find(([n]) => sameCandidate(n, c.name))?.[1]
+  const endorsementsOf = (c) => intel?.endorsements?.find((e) => sameCandidate(e.title.replace(/\s*\(.*\)\s*$/, ''), c.name))
+
   const ratingEntries = Object.entries(race.ratings || {})
   const cons = race.consensus
 
@@ -142,6 +149,13 @@ export default function RaceView({ race, stateName, results, watch }) {
             {race.incumbent?.name && race.incumbent?.party && ` (${race.incumbent.party})`}
           </div>
           <div className="race-status">STATUS: {race.status || '—'}</div>
+          {race.type === 'governor' && (
+            <div className="race-status">
+              {race.firstElected ? `IN OFFICE SINCE ${+race.firstElected + 1} · ` : ''}
+              {race.lastRace ? `LAST WON WITH ${race.lastRace} · ` : ''}
+              {['NH', 'VT'].includes(race.state) ? '2-YEAR TERM' : '4-YEAR TERM'}
+            </div>
+          )}
         </div>
         <div className="race-head-right">
           {watch && (
@@ -162,9 +176,17 @@ export default function RaceView({ race, stateName, results, watch }) {
       )}
       {results && !race.result && <div className="result-banner awaiting"><span className="pixel">◌ AWAITING CALL</span><span>Forecast shown below until the race is called.</span></div>}
 
+      {race.hqNote && (
+        <div className="hq-note">
+          <span className="pixel">◆ HQ NOTE</span>
+          {race.hqNote.split(/\n+/).map((p, i) => <p key={i}>{p}</p>)}
+        </div>
+      )}
+
       {/* FORECAST */}
       <section className="intel-block">
         <h4 className="pixel">▣ FORECAST CONSENSUS</h4>
+        {cons?.hq && <div className="hq-flag">◆ HQ rating: <b>{cons.label}</b> (set by Midterms HQ; forecasters below)</div>}
         {cons ? (
           <>
             <div className="meter" role="img" aria-label={`Consensus ${cons.label}, score ${cons.score}`}>
@@ -304,6 +326,8 @@ export default function RaceView({ race, stateName, results, watch }) {
                 result={c.won ? 'won' : race.result ? 'lost' : null}
                 leading={!race.result && leaderName && sameCandidate(leaderName, c.name)}
                 money={f ? { raised: fmtMoney(f.raised), spent: fmtMoney(f.spent), cash: fmtMoney(f.cash) } : null}
+                mate={mateOf(c)}
+                endorsements={endorsementsOf(c)?.count}
               />
             )
           })}
@@ -318,10 +342,72 @@ export default function RaceView({ race, stateName, results, watch }) {
         )}
       </section>
 
+      {intel?.endorsements?.length > 0 && (
+        <section className="intel-block">
+          <h4 className="pixel">▣ KEY ENDORSEMENTS</h4>
+          <div className="endorse-grid">
+            {intel.endorsements.map((e) => (
+              <div key={e.title} className="endorse">
+                <div className="endorse-head"><b>{e.title}</b> <span className="dim">{e.count} total</span></div>
+                {e.groups.slice(0, 5).map((g) => (
+                  <div key={g.cat} className="endorse-row"><span className="dim">{g.cat} ({g.n}):</span> {g.names.join(', ')}{g.n > g.names.length ? ', …' : ''}</div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {intel?.debates?.length > 0 && (
+        <section className="intel-block">
+          <h4 className="pixel">▣ DEBATES ({intel.debates.length})</h4>
+          {intel.debates.map((d, i) => (
+            <div key={i} className="debate-row">
+              <span className="pixel">#{i + 1}</span>
+              <span>{d.date}</span>
+              <span className="dim">{d.host}</span>
+              {d.url && <a className="btn-mini" href={d.url} target="_blank" rel="noreferrer">▶ WATCH</a>}
+            </div>
+          ))}
+        </section>
+      )}
+
+      {intel?.primaries?.length > 0 && (
+        <section className="intel-block">
+          <h4 className="pixel">▣ THE ROAD HERE · PRIMARIES</h4>
+          {intel.primaries.map((p) => (
+            <details key={p.title} className="primary" open={finalMajorRound(p, intel.primaries)}>
+              <summary>
+                <span className="pixel">{p.title.toUpperCase()}</span>
+                <span className="dim">{p.cands.length === 1 ? 'unopposed' : `${p.cands.length} candidates`}</span>
+              </summary>
+              {p.cands.slice(0, 6).map((c) => (
+                <div key={c.name} className={`prim-row ${c.won ? 'won' : ''}`}>
+                  <span className="bar-name">{c.won ? '✓ ' : ''}{c.name}</span>
+                  <div className="bar-track"><div className="bar-fill" style={{ width: `${c.pct || 0}%`, background: partyColor(c.party || primaryParty(p.title)) }} /></div>
+                  <span className="bar-val">{c.pct != null ? `${c.pct}%` : '—'}</span>
+                  <span className="dim prim-votes">{c.votes ? c.votes.toLocaleString() : ''}</span>
+                </div>
+              ))}
+              {p.cands.length > 6 && <div className="dim">+{p.cands.length - 6} more</div>}
+            </details>
+          ))}
+        </section>
+      )}
+
       {race.summary && (
         <section className="intel-block">
           <h4 className="pixel">▣ FIELD REPORT</h4>
           {race.summary.split('\n\n').map((p, i) => <p key={i} className="brief">{p}</p>)}
+        </section>
+      )}
+
+      {intel?.background && (
+        <section className="intel-block">
+          <details>
+            <summary className="pixel">▣ STATE BACKGROUND</summary>
+            {intel.background.split(/\n\n+/).map((p, i) => <p key={i} className="brief">{p}</p>)}
+          </details>
         </section>
       )}
 

@@ -134,8 +134,11 @@ async function cached(key, fn, ttl = TTL) {
   return v
 }
 
+// Bump when parseRacePage gains fields so stale cached copies are ignored.
+const RACE_PARSER = 2
+
 export function raceIntel(page, district = null) {
-  return cached(`race:${page}:${district}`, async () => {
+  return cached(`race${RACE_PARSER}:${page}:${district}`, async () => {
     let { text, timestamp } = await fetchWikitext(page)
     // Big delegations (CA, TX...) split districts into sub-articles like "(districts 1–26)".
     if (district != null && !new RegExp(`^==\\s*District ${district}\\s*==`, 'm').test(text)) {

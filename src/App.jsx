@@ -1,18 +1,22 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import snapshot from './data/snapshot.json'
 import { fetchAll, healthCheck } from './data/live.js'
+import { applyControl, fetchControl } from './data/control.js'
 import { STATES, labelFor } from './data/wiki.js'
 import {
-  AWAITING, RATING_COLORS, RESULT_COLORS, countdown, isElectionWindow, pad, raceTitle, ratingColor, resultColor, timeAgo,
+  AWAITING, RATING_COLORS, RESULT_COLORS, countdown, isElectionWindow, pad, pollCloseFor, raceTitle, ratingColor, resultColor, timeAgo,
 } from './lib/util.js'
 import { resolveView } from './lib/view.js'
 import { IS_DESKTOP, cacheGet, cacheSet, notify } from './lib/desktop.js'
 import UsMap from './components/UsMap.jsx'
 import Dossier from './components/Dossier.jsx'
 import Overview from './components/Overview.jsx'
+import Gameday from './components/Gameday.jsx'
+import RegionBrief from './components/RegionBrief.jsx'
 import CommandBar from './components/CommandBar.jsx'
 import About from './components/About.jsx'
 import UpdateBanner from './components/UpdateBanner.jsx'
+import HqBanner from './components/HqBanner.jsx'
 import { Icon } from './components/Sprites.jsx'
 import './App.css'
 
@@ -144,10 +148,15 @@ function simulateResults(d) {
 
 export default function App() {
   const [booted, setBooted] = useState(() => { try { return localStorage.getItem('mhq:booted') === '1' } catch { return false } })
-  const [data, setData] = useState(snapshot)
+  const [liveData, setData] = useState(snapshot)
+  const [control, setControl] = useState(null)
+  // Live control file (rating/result corrections, HQ notes) layered over the Wikipedia data.
+  const data = useMemo(() => applyControl(liveData, control), [liveData, control])
   const [mode, setMode] = useState('senate')
   const [selected, setSelectedRaw] = useState(null)
   const [view, setView] = useState({})
+  const [region, setRegion] = useState(null)
+  const regionRef = useRef(null)
   const [lensPick, setLensPick] = useState(null)
   const [cmdOpen, setCmdOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)
@@ -159,6 +168,9 @@ export default function App() {
   const watchRef = useRef(watchIds)
   const healthRef = useRef('')
   useEffect(() => { viewRef.current = view }, [view])
+  useEffect(() => { regionRef.current = region }, [region])
+  const selectedRef = useRef(null)
+  useEffect(() => { selectedRef.current = selected }, [selected])
   useEffect(() => { watchRef.current = watchIds }, [watchIds])
 
   const setSelected = useCallback((st) => { setSelectedRaw(st); setView({}) }, [])
@@ -197,6 +209,7 @@ export default function App() {
     busy.current = true
     setSync((s) => ({ ...s, status: 'syncing' }))
     try {
+      fetchControl().then(setControl) // independent of Wikipedia; never throws
       const next = await fetchAll()
       if (next) applyData(next, `Live uplink synced (${next.changed} source page${next.changed > 1 ? 's' : ''} updated). No rating shifts.`)
       setSync({ status: 'live', at: new Date().toISOString() })
@@ -225,9 +238,10 @@ export default function App() {
       if (/input|textarea/i.test(e.target.tagName)) return
       if (e.key === '/') { e.preventDefault(); setCmdOpen(true); return }
       if (e.key !== 'Escape' || document.querySelector('.cmd-backdrop')) return
-      // Esc backs out one level: district → state → nation.
+      // Esc backs out one level: district → state → region → nation.
       if (viewRef.current.district) setView((v) => ({ ...v, district: null }))
-      else setSelected(null)
+      else if (selectedRef.current) setSelected(null)
+      else if (regionRef.current) setRegion(null)
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
@@ -269,7 +283,7 @@ export default function App() {
             fills[r.state] = resultColor(r.result)
             labels[r.state] = r.result
               ? `${r.result.party} ${r.result.flip ? 'GAIN' : 'HOLD'} · ${r.result.winner}${r.result.pct ? ` ${r.result.pct}%` : ''}`
-              : `AWAITING CALL · forecast ${l || '—'} · ${vs(r)}`
+              : `AWAITING CALL · polls close ${pollCloseFor(r.state)?.label || '—'} · forecast ${l || '—'} · ${vs(r)}`
           }
           if (r.result?.flip) blips[r.state] = true
           continue
@@ -287,7 +301,7 @@ export default function App() {
           const rr = list.filter((r) => r.result?.party === 'R').length
           const open = list.length - d - rr
           fills[st] = d === rr ? AWAITING : RESULT_COLORS[d > rr ? 'D' : 'R']
-          labels[st] = `${list.length} SEATS · D ${d} · R ${rr}${open ? ` · ${open} UNCALLED` : ''}`
+          labels[st] = `${list.length} SEATS · D ${d} · R ${rr}${open ? ` · ${open} UNCALLED · polls close ${pollCloseFor(st)?.label || '—'}` : ''}`
           if (list.some((r) => r.result?.flip)) blips[st] = true
           continue
         }
@@ -350,6 +364,7 @@ export default function App() {
       <CommandBar data={data} open={cmdOpen} onClose={() => setCmdOpen(false)} onGo={go} />
       <About open={aboutOpen} onClose={() => setAboutOpen(false)} />
       <UpdateBanner />
+      <HqBanner control={control} />
 
       <header className="topbar">
         <div className="brand">
@@ -377,8 +392,8 @@ export default function App() {
         <button type="button" className="mode small" onClick={() => setCmdOpen(true)} title="Search (⌘K or /)">⌕ SEARCH <kbd>⌘K</kbd></button>
         <span className="sm-toggle lens" role="group" aria-label="Map lens">
           <button type="button" className={!results ? 'on' : ''} aria-pressed={!results} onClick={() => setLensPick('forecast')}>FORECAST</button>
-          <button type="button" className={results ? 'on' : ''} aria-pressed={results} onClick={() => setLensPick('results')} title={hasResults ? '' : 'Results appear as races are called after polls close on Nov 3'}>
-            RESULTS{hasResults ? '' : ' (NOV 3)'}
+          <button type="button" className={results ? 'on' : ''} aria-pressed={results} onClick={() => setLensPick('results')} title="Election night: poll closings, live calls and results">
+            GAMEDAY{hasResults ? '' : ' (NOV 3)'}
           </button>
         </span>
         {selected && <button type="button" className="mode small" onClick={() => setSelected(null)}>◀ SITUATION ROOM</button>}
@@ -387,10 +402,10 @@ export default function App() {
       <main className="main">
         <section className="map-panel pixel-border">
           <div className="panel-label">
-            <span className="pixel">TACTICAL MAP · {mode.toUpperCase()} · {results ? 'RESULTS' : 'FORECAST'}</span>
+            <span className="pixel">TACTICAL MAP · {mode.toUpperCase()} · {results ? 'GAMEDAY' : 'FORECAST'}</span>
             <span className="dim">{selected ? `TARGET LOCKED: ${STATES[selected].toUpperCase()}` : 'SELECT A STATE · ⌘K TO SEARCH'}</span>
           </div>
-          <UsMap fills={fills} blips={blips} labels={labels} selected={selected} onSelect={setSelected} zoom={zoom} results={results} />
+          <UsMap fills={fills} blips={blips} labels={labels} selected={selected} onSelect={setSelected} zoom={zoom} results={results} region={region} onRegion={setRegion} />
           <div className="legend" aria-label="Legend">
             {legend.map(([k, c]) => (
               <span key={k} className="lg"><i style={{ background: c }} />{k}</span>
@@ -402,7 +417,11 @@ export default function App() {
 
         {selected
           ? <Dossier key={selected} abbr={selected} data={data} mode={mode} view={view} setView={setView} onClose={() => setSelected(null)} results={results} watch={watch} />
-          : <Overview data={data} onPick={pickRace} log={log} results={results} watch={watch} />}
+          : region
+            ? <RegionBrief region={region} data={data} onPick={pickRace} onPickState={setSelected} onClose={() => setRegion(null)} results={results} watch={watch} />
+            : results
+            ? <Gameday data={data} onPick={pickRace} onPickState={setSelected} log={log} watch={watch} />
+            : <Overview data={data} onPick={pickRace} log={log} results={results} watch={watch} featured={control?.featured} />}
       </main>
 
       <footer className="ticker" aria-label="News ticker">

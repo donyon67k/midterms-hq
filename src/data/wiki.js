@@ -29,7 +29,7 @@ export const PAGES = {
 function stripRefs(s) {
   return s
     .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/<ref[^>/]*\/>/gi, '')
+    .replace(/<ref\b[^>]*\/>/gi, '') // self-closing, even when the name has a slash ("20/20 Insight")
     .replace(/<ref[^>]*>[\s\S]*?<\/ref>/gi, '')
 }
 
@@ -617,7 +617,147 @@ export function parseRacePage(text, district = null) {
   const polls = parsePolls(pollSec)
   const fundraising = parseFundraising(finSec)
   const predSec = section(gen, 'Predictions', district != null ? 4 : 3)
-  return { ...polls, fundraising, hasPredictions: !!predSec }
+  const out = { ...polls, fundraising, hasPredictions: !!predSec }
+  // Statewide pages (Senate, governor) carry the whole campaign story.
+  if (district == null) {
+    out.primaries = parsePrimaries(text)
+    out.runningMates = parseTickets(text)
+    out.debates = parseDebates(section(gen, 'Debates', 3) || section(gen, 'Debate', 3))
+    out.endorsements = parseEndorsements(section(gen, 'Post-primary endorsements', 3) || section(gen, 'Endorsements', 3))
+    const bg = section(text, 'Background', 2)
+    out.background = bg ? prose(bg) : ''
+  }
+  return out
+}
+
+// Split on "|" at the top level only (not inside [[links]] or {{templates}}).
+function splitTop(body) {
+  const parts = []
+  let depth = 0
+  let cur = ''
+  for (let i = 0; i < body.length; i++) {
+    const two = body.slice(i, i + 2)
+    if (two === '[[' || two === '{{') { depth++; cur += two; i++; continue }
+    if ((two === ']]' || two === '}}') && depth > 0) { depth--; cur += two; i++; continue }
+    if (body[i] === '|' && depth === 0) { parts.push(cur); cur = ''; continue }
+    cur += body[i]
+  }
+  parts.push(cur)
+  return parts
+}
+
+// Bodies of every {{template}} whose name matches, with nested templates kept intact.
+function templateBodies(text, nameRe) {
+  const out = []
+  for (let i = text.indexOf('{{'); i >= 0; i = text.indexOf('{{', i + 2)) {
+    if (!nameRe.test(text.slice(i + 2, i + 80))) continue
+    let depth = 0
+    for (let j = i; j < text.length - 1; j++) {
+      if (text[j] === '{' && text[j + 1] === '{') { depth++; j++ } else if (text[j] === '}' && text[j + 1] === '}') {
+        depth--; j++
+        if (!depth) { out.push({ at: i, body: text.slice(i + 2, j - 1) }); break }
+      }
+    }
+  }
+  return out
+}
+
+function templateParams(body) {
+  const params = {}
+  const parts = splitTop(body)
+  for (const part of parts.slice(1)) {
+    const eq = part.indexOf('=')
+    if (eq > 0) params[part.slice(0, eq).trim().toLowerCase()] = part.slice(eq + 1).trim()
+  }
+  return { name: parts[0].trim(), params }
+}
+
+// candidate=[[A]] or {{ubl|[[Governor]]|[[Running mate]]}}
+function ticket(raw = '') {
+  const ubl = raw.match(/^\{\{\s*(?:ubl|unbulleted list|plainlist)\s*\|([\s\S]*)\}\}$/i)
+  const [name, mate] = ubl ? splitTop(ubl[1]).map((x) => clean(x)) : [clean(raw)]
+  return { name: name.replace(/\s*\((incumbent|write-in)\)$/i, ''), mate: mate || null }
+}
+
+// Every results box on the page: primaries/runoffs, plus the general-election ticket.
+function resultBoxes(text) {
+  const plain = stripRefs(text)
+  const begins = templateBodies(plain, /^\s*Election box begin/i)
+  const cands = templateBodies(plain, /^\s*Election box (winning )?candidate/i)
+  return begins.map((b, i) => {
+    const next = begins[i + 1]?.at ?? Infinity
+    const title = clean(templateParams(b.body).params.title || '')
+    const list = cands.filter((c) => c.at > b.at && c.at < next).map((c) => {
+      const { name, params: p } = templateParams(c.body)
+      const t = ticket(p.candidate)
+      return {
+        ...t,
+        votes: +String(p.votes || '').replace(/[^\d]/g, '') || null,
+        pct: p.percentage ? +p.percentage.replace(/[^\d.]/g, '') || null : null,
+        won: /winning/i.test(name),
+        party: partyCode(clean(p.party || '')),
+      }
+    }).filter((c) => c.name && !/^(write-?ins?|none of these|other|blank)/i.test(c.name))
+    return { title, cands: list }
+  })
+}
+
+export function parsePrimaries(text) {
+  return resultBoxes(text).filter((b) => /primary|caucus|convention/i.test(b.title) && b.cands.length).map(({ title, cands }) => {
+    const total = cands.reduce((n, c) => n + (c.votes || 0), 0)
+    for (const c of cands) if (c.pct == null && c.votes && total) c.pct = +((c.votes / total) * 100).toFixed(1)
+    cands.sort((a, b) => (b.votes || b.pct || 0) - (a.votes || a.pct || 0))
+    return { title: title.replace(/\s*results?$/i, ''), runoff: /runoff/i.test(title), cands }
+  })
+}
+
+// Running mates listed on the general-election ballot: { "Katie Hobbs": "John Giles" }
+export function parseTickets(text) {
+  const general = resultBoxes(text).filter((b) => !/primary|caucus|convention/i.test(b.title))
+  return Object.fromEntries(general.flatMap((b) => b.cands).filter((c) => c.mate).map((c) => [c.name, c.mate]))
+}
+
+// General-election debates: date, host and video link per row.
+export function parseDebates(sec) {
+  if (!sec) return []
+  const out = []
+  for (const t of tables(sec)) {
+    const g = gridify(t)
+    const head = (g.find((r) => r.every((c) => c.header)) || []).map((c) => clean(c.raw).toLowerCase())
+    const di = head.findIndex((h) => /date/.test(h))
+    const hi = head.findIndex((h) => /host|sponsor|organi[sz]er/.test(h))
+    const li = head.findIndex((h) => /link/.test(h))
+    if (di < 0) continue
+    for (const r of g) {
+      const date = clean(r[di]?.raw || '')
+      if (!/\d{4}/.test(date) || r[di]?.header) continue
+      const url = ((r[li]?.raw || '').match(/\[(https?:\/\/[^\s\]]+)/) || [])[1] || null
+      out.push({ date, host: hi >= 0 ? clean(r[hi]?.raw || '').replace(/\s+/g, ' ') : '', url })
+    }
+  }
+  return out
+}
+
+// Endorsements boxes: per candidate, a count plus the first few names by category.
+export function parseEndorsements(sec) {
+  if (!sec) return []
+  return stripRefs(sec).split(/\{\{\s*Endorsements box/i).slice(1).map((box) => {
+    const title = clean((box.match(/\|\s*title\s*=\s*([^\n|]*)/) || [])[1] || '')
+    const groups = []
+    let cur = null
+    let count = 0
+    for (const line of box.split('\n')) {
+      const cat = line.match(/^;\s*(.+)/)
+      if (cat) { cur = { cat: clean(cat[1]), names: [] }; groups.push(cur); continue }
+      if (!/^\*/.test(line)) continue
+      count++
+      const name = clean(line.replace(/^\*+/, '')).split(/,|\(/)[0].trim()
+      if (!cur) { cur = { cat: 'Endorsements', names: [] }; groups.push(cur) }
+      if (name && cur.names.length < 4) cur.names.push(name)
+      cur.n = (cur.n || 0) + 1
+    }
+    return { title, count, groups: groups.filter((x) => x.n) }
+  }).filter((e) => e.title && e.count)
 }
 
 function pct(s) {

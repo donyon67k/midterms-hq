@@ -12,6 +12,7 @@ const SOURCES = [
   ['Live federal campaign finance', 'Federal Election Commission — OpenFEC API', 'https://api.open.fec.gov/developers/', 'public domain'],
   ['2026 congressional district boundaries', 'U.S. Census Bureau — TIGERweb', 'https://tigerweb.geo.census.gov/', 'public domain'],
   ['State and county shapes', 'us-atlas (Mike Bostock), from Census cartographic boundaries', 'https://github.com/topojson/us-atlas', 'ISC'],
+  ['City locations and populations', 'U.S. Census Bureau — Gazetteer & Vintage 2024 population estimates', 'https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html', 'public domain'],
   ['2024 presidential results by county', 'tonmcg/US_County_Level_Election_Results_08-24', 'https://github.com/tonmcg/US_County_Level_Election_Results_08-24', 'see source'],
 ]
 

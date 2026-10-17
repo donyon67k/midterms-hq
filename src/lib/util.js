@@ -120,3 +120,23 @@ export const fmtMargin = (dem, gop) => {
 export const raceTitle = (r, states) => (r.type === 'house'
   ? districtLabel(r.state, r.district)
   : `${states[r.state]} ${r.type === 'senate' ? `Senate${r.special ? ' (special)' : ''}` : 'Governor'}`)
+
+// When the last polls close in each state on Nov 3, in minutes after midnight ET
+// (DST has ended, so ET = UTC-5). Some states close earlier in most counties.
+const CLOSE_WAVES = {
+  1140: 'GA IN KY SC VA VT',
+  1170: 'NC OH WV',
+  1200: 'AL CT DE FL IL ME MD MA MS MO NH NJ OK PA RI TN',
+  1230: 'AR',
+  1260: 'AZ CO IA KS LA MI MN NE NM NY ND SD TX WI WY',
+  1320: 'MT NV UT',
+  1380: 'CA ID OR WA',
+  1440: 'HI',
+  1500: 'AK',
+}
+const NOV3_ET = Date.parse('2026-11-03T00:00:00-05:00')
+export const POLL_WAVES = Object.entries(CLOSE_WAVES).map(([min, states]) => {
+  const h = Math.floor(min / 60) % 24
+  return { at: new Date(NOV3_ET + min * 6e4), label: `${h % 12 || 12}:${pad(min % 60)} ${h >= 12 ? 'PM' : 'AM'} ET`, states: states.split(' ') }
+})
+export const pollCloseFor = (st) => POLL_WAVES.find((w) => w.states.includes(st))

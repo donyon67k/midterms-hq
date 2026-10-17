@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { geoAlbersUsa, geoArea, geoPath } from 'd3-geo'
+import { geoAlbersUsa, geoArea, geoContains, geoPath } from 'd3-geo'
 import { feature, mesh } from 'topojson-client'
 import states from 'us-atlas/states-albers-10m.json'
 import { NAME_TO_ABBR } from '../data/wiki.js'
@@ -10,7 +10,8 @@ import { districtLabel, fmtMargin, hash, incLabel, marginColor, ratingColor, res
 // as the national map. District boundaries come back in lon/lat, so we project
 // them with identical settings and everything overlays exactly.
 const planar = geoPath()
-const projected = geoPath(geoAlbersUsa().scale(1300).translate([487.5, 305]))
+const albers = geoAlbersUsa().scale(1300).translate([487.5, 305])
+const projected = geoPath(albers)
 
 export const STATE_GEO = Object.fromEntries(
   feature(states, states.objects.states).features
@@ -24,6 +25,10 @@ const loadCounties = () => (countyData ||= Promise.all([
   import('us-atlas/counties-albers-10m.json'),
   import('../data/county2024.json'),
 ]).then(([t, r]) => ({ topo: t.default, features: feature(t.default, t.default.objects.counties).features, results: r.default })))
+
+// Census places with 10K+ people (scripts/build-cities.mjs), also loaded on first zoom.
+let cityData
+const loadCities = () => (cityData ||= import('../data/cities.json').then((m) => m.default))
 
 // ArcGIS emits RFC 7946 (counter-clockwise) rings; d3 wants clockwise on the sphere.
 function rewind(f) {
@@ -41,6 +46,7 @@ const fmtVotes = (n) => (n >= 1e6 ? `${(n / 1e6).toFixed(2)}M` : n >= 1e3 ? `${M
 export function useStateDetail(abbr, layer, house) {
   const geo = abbr ? STATE_GEO[abbr] : null
   const [counties, setCounties] = useState(null)
+  const [cityList, setCityList] = useState(null)
   const [fetched, setFetched] = useState({ fips: null, list: null, error: null })
   const wantDistricts = layer === 'districts' && !!geo
 
@@ -50,6 +56,18 @@ export function useStateDetail(abbr, layer, house) {
     loadCounties().then((c) => live && setCounties(c))
     return () => { live = false }
   }, [geo, counties])
+
+  useEffect(() => {
+    if (!geo || cityList) return
+    let live = true
+    loadCities().then((c) => live && setCityList(c))
+    return () => { live = false }
+  }, [geo, cityList])
+
+  const cities = useMemo(() => (abbr && cityList?.[abbr] || []).flatMap(([name, lon, lat, pop]) => {
+    const p = albers([lon, lat])
+    return p ? [{ name, lon, lat, pop, x: p[0], y: p[1] }] : []
+  }), [abbr, cityList])
 
   useEffect(() => {
     if (!wantDistricts || fetched.fips === geo.fips) return
@@ -87,14 +105,17 @@ export function useStateDetail(abbr, layer, house) {
   const districts = useMemo(() => (list || []).map((f) => {
     const g = rewind(f)
     const n = districtNum(f.properties.CD120)
-    return { n, d: projected(g), c: projected.centroid(g), area: projected.area(g), bounds: projected.bounds(g), race: byDistrict[String(n)] }
-  }), [list, byDistrict])
+    // biggest places whose center point falls inside this district
+    const places = cities.filter((c) => geoContains(g, [c.lon, c.lat])).slice(0, 4).map((c) => c.name)
+    return { n, d: projected(g), c: projected.centroid(g), area: projected.area(g), bounds: projected.bounds(g), race: byDistrict[String(n)], places }
+  }), [list, byDistrict, cities])
 
   return {
     geo,
     countyShapes,
     countyLines,
     districts,
+    cities,
     showDistricts: wantDistricts && districts.length > 0,
     loading: (!!geo && !counties) || (wantDistricts && !list && !(fetched.fips === geo?.fips && fetched.error)),
     error: wantDistricts && fetched.fips === geo?.fips ? fetched.error : null,
@@ -109,8 +130,8 @@ function districtSub(race, results) {
 
 // SVG layer drawn inside the national map, on top of the selected state.
 // k = map units per screen pixel (shrinks as we zoom in) so text stays readable.
-export function StateDetailLayer({ abbr, detail, k, results, district, onPickDistrict, setHover, hoverId }) {
-  const { geo, countyShapes, countyLines, districts, showDistricts } = detail
+export function StateDetailLayer({ abbr, detail, k, results, district, onPickDistrict, setHover, hoverId, showCities }) {
+  const { geo, countyShapes, countyLines, districts, showDistricts, cities } = detail
   if (!geo) return null
 
   return (
@@ -143,7 +164,7 @@ export function StateDetailLayer({ abbr, detail, k, results, district, onPickDis
                 d={s.d}
                 fill={results ? resultColor(s.race?.result) : ratingColor(s.race?.consensus?.label)}
                 className={`sm-district ${district === s.race?.key ? 'sel' : ''} ${hoverId === s.n ? 'hov' : ''}`}
-                onMouseEnter={() => setHover({ id: s.n, title: districtLabel(abbr, s.n), sub: districtSub(s.race, results) })}
+                onMouseEnter={() => setHover({ id: s.n, title: districtLabel(abbr, s.n), sub: districtSub(s.race, results), more: s.places.length ? `INCLUDES: ${s.places.join(', ')}` : null })}
                 onMouseLeave={() => setHover(null)}
                 onClick={pick}
                 tabIndex={s.race ? 0 : -1}
@@ -165,6 +186,63 @@ export function StateDetailLayer({ abbr, detail, k, results, district, onPickDis
         </g>
       )}
       <path d={geo.d} className="sm-outline" pointerEvents="none" />
+      {showCities && <CityLabels cities={cities} k={k} districts={showDistricts && districts.length > 1 ? districts : []} />}
+    </g>
+  )
+}
+
+const BIG_CITY = 250000
+const MAX_LABELS = 70
+
+// Greedy label placement in screen pixels: biggest places first, and anything
+// that would overlap an earlier label (or a district number) is skipped. Zooming
+// in frees up room, so smaller towns appear as you get closer.
+function placeLabels(cities, k, districts) {
+  const taken = districts
+    .filter((s) => (s.bounds[1][0] - s.bounds[0][0]) / k > 22 && (s.bounds[1][1] - s.bounds[0][1]) / k > 14)
+    .map((s) => [s.c[0] / k - 10, s.c[1] / k - 9, s.c[0] / k + 10, s.c[1] / k + 9])
+  const hit = (b) => taken.some((t) => b[0] < t[2] && b[2] > t[0] && b[1] < t[3] && b[3] > t[1])
+  const out = []
+  for (const c of cities) {
+    const big = c.pop >= BIG_CITY
+    const fs = big ? 12 : 10
+    const x = c.x / k
+    const y = c.y / k
+    const w = c.name.length * fs * 0.55 + 8
+    // try the label right of the dot, then left of it
+    for (const side of [1, -1]) {
+      const box = side > 0 ? [x - 3, y - fs / 2 - 2, x + w, y + fs / 2 + 2] : [x - w, y - fs / 2 - 2, x + 3, y + fs / 2 + 2]
+      if (hit(box)) continue
+      taken.push(box)
+      out.push({ ...c, big, fs, side })
+      break
+    }
+    if (out.length >= MAX_LABELS) break
+  }
+  return out
+}
+
+function CityLabels({ cities, k, districts }) {
+  // re-place labels only when zoom changes noticeably, not on every animation frame
+  const kq = 2 ** (Math.round(Math.log2(k) * 4) / 4)
+  const placed = useMemo(() => placeLabels(cities, kq, districts), [cities, kq, districts])
+  return (
+    <g className="city-layer" pointerEvents="none">
+      {placed.map((c) => (
+        <g key={c.name + c.x}>
+          <rect x={c.x - 2 * k} y={c.y - 2 * k} width={4 * k} height={4 * k} className={`city-dot ${c.big ? 'big' : ''}`} />
+          <text
+            x={c.x + c.side * 6 * k}
+            y={c.y}
+            textAnchor={c.side > 0 ? 'start' : 'end'}
+            dominantBaseline="middle"
+            className={`city-label ${c.big ? 'big' : ''}`}
+            style={{ fontSize: c.fs * k, strokeWidth: 3 * k }}
+          >
+            {c.name}
+          </text>
+        </g>
+      ))}
     </g>
   )
 }
