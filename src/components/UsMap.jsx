@@ -4,7 +4,7 @@ import { feature } from 'topojson-client'
 import topo from 'us-atlas/states-albers-10m.json'
 import { NAME_TO_ABBR, STATES } from '../data/wiki.js'
 import { districtLabel } from '../lib/util.js'
-import { REGIONS, REGION_BY_KEY } from '../lib/regions.js'
+import { REGIONS, REGION_BY_KEY, regionOf } from '../lib/regions.js'
 import { StateDetailLayer, focusBox, useStateDetail } from './StateMap.jsx'
 
 const geo = feature(topo, topo.objects.states)
@@ -67,6 +67,8 @@ function useSize(ref) {
 }
 
 export default function UsMap({ fills, blips = {}, selected, onSelect, labels = {}, zoom, results, region, onRegion }) {
+  const [regionsOpen, setRegionsOpen] = useState(false)
+  useEffect(() => { setRegionsOpen(false) }, [selected])
   const [hover, setHover] = useState(null)
   const [detailHover, setDetailHover] = useState(null)
   const [mouse, setMouse] = useState([0, 0])
@@ -176,17 +178,34 @@ export default function UsMap({ fills, blips = {}, selected, onSelect, labels = 
         </svg>
 
       {zoomed && (
-        <div className="zoom-hud">
-          <button type="button" className="btn-mini" onClick={() => onSelect(null)} title="Zoom back out (Esc)">◀ {region ? REGION_BY_KEY[region].label : 'USA'}</button>
-          <span className="sm-toggle" role="group" aria-label="Map layer">
-            <button type="button" className={zoom.layer === 'counties' ? 'on' : ''} aria-pressed={zoom.layer === 'counties'} onClick={() => zoom.setLayer('counties')}>COUNTIES</button>
-            <button type="button" className={zoom.layer === 'districts' ? 'on' : ''} aria-pressed={zoom.layer === 'districts'} disabled={!zoom.house?.length} onClick={() => zoom.setLayer('districts')}>
-              {zoom.house?.length > 1 ? 'DISTRICTS' : 'AT-LARGE'}
+        <div className="map-top">
+          {/* Regions stay one click away from a state: a collapsed REGIONS menu. */}
+          <div className="region-bar" role="group" aria-label="Regions">
+            <button type="button" className={`region-btn menu ${regionsOpen ? 'on' : ''}`} aria-expanded={regionsOpen} onClick={() => setRegionsOpen(!regionsOpen)}>
+              REGIONS {regionsOpen ? '▴' : '▾'}
             </button>
-          </span>
-          <span className="sm-toggle" role="group" aria-label="Map labels">
-            <button type="button" className={showCities ? 'on' : ''} aria-pressed={showCities} onClick={toggleCities} title="Show city names">CITIES</button>
-          </span>
+            {/* Always rendered so the list can slide open and closed. */}
+            <span className={`region-items ${regionsOpen ? 'open' : ''}`} aria-hidden={!regionsOpen}>
+              <button type="button" className="region-btn back" style={{ '--i': 0 }} tabIndex={regionsOpen ? 0 : -1} onClick={() => { onSelect(null); onRegion(null) }} title="Back to the whole map">◀ USA</button>
+              {REGIONS.map((r, i) => (
+                <button key={r.key} type="button" style={{ '--i': i + 1 }} tabIndex={regionsOpen ? 0 : -1} className={`region-btn ${(region || regionOf(selected)?.key) === r.key ? 'here' : ''}`} onClick={() => { onSelect(null); onRegion(r.key) }} title={`Zoom out to ${r.label}`}>
+                  {r.label}
+                </button>
+              ))}
+            </span>
+          </div>
+          <div className="zoom-hud">
+            <button type="button" className="btn-mini" onClick={() => onSelect(null)} title="Zoom back out (Esc)">◀ {region ? REGION_BY_KEY[region].label : 'USA'}</button>
+            <span className="sm-toggle" role="group" aria-label="Map layer">
+              <button type="button" className={zoom.layer === 'counties' ? 'on' : ''} aria-pressed={zoom.layer === 'counties'} onClick={() => zoom.setLayer('counties')}>COUNTIES</button>
+              <button type="button" className={zoom.layer === 'districts' ? 'on' : ''} aria-pressed={zoom.layer === 'districts'} disabled={!zoom.house?.length} onClick={() => zoom.setLayer('districts')}>
+                {zoom.house?.length > 1 ? 'DISTRICTS' : 'AT-LARGE'}
+              </button>
+            </span>
+            <span className="sm-toggle" role="group" aria-label="Map labels">
+              <button type="button" className={showCities ? 'on' : ''} aria-pressed={showCities} onClick={toggleCities} title="Show city names">CITIES</button>
+            </span>
+          </div>
         </div>
       )}
       {zoomed && (

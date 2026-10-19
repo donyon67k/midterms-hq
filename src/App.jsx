@@ -159,7 +159,9 @@ export default function App() {
   const [view, setView] = useState({})
   const [region, setRegion] = useState(null)
   const regionRef = useRef(null)
-  const [lensPick, setLensPick] = useState(null)
+  // Gameday is its own page (election-night results), never mixed with the forecast pages.
+  const [gamedayOpen, setGamedayOpen] = useState(false)
+  const gamedayRef = useRef(false)
   const [newsOpen, setNewsOpen] = useState(false)
   const [newsQuery, setNewsQuery] = useState('')
   const newsRef = useRef(false)
@@ -176,6 +178,7 @@ export default function App() {
   useEffect(() => { viewRef.current = view }, [view])
   useEffect(() => { regionRef.current = region }, [region])
   useEffect(() => { newsRef.current = newsOpen }, [newsOpen])
+  useEffect(() => { gamedayRef.current = gamedayOpen }, [gamedayOpen])
   const selectedRef = useRef(null)
   useEffect(() => { selectedRef.current = selected }, [selected])
   useEffect(() => { watchRef.current = watchIds }, [watchIds])
@@ -252,11 +255,12 @@ export default function App() {
       if (/input|textarea/i.test(e.target.tagName)) return
       if (e.key === '/') { e.preventDefault(); setCmdOpen(true); return }
       if (e.key !== 'Escape' || document.querySelector('.cmd-backdrop')) return
-      // Esc backs out one level: news desk / district → state → region → nation.
+      // Esc backs out one level: news desk / district → state → region → gameday → nation.
       if (newsRef.current) setNewsOpen(false)
       else if (viewRef.current.district) setView((v) => ({ ...v, district: null }))
       else if (selectedRef.current) setSelected(null)
       else if (regionRef.current) setRegion(null)
+      else if (gamedayRef.current) setGamedayOpen(false)
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
@@ -265,7 +269,7 @@ export default function App() {
   // Dev helper: window.mhqSimulateResults() previews results mode with fake calls.
   useEffect(() => {
     if (!import.meta.env.DEV) return
-    window.mhqSimulateResults = () => { applyData(simulateResults(dataRef.current)); setLensPick('results') }
+    window.mhqSimulateResults = () => { applyData(simulateResults(dataRef.current)); setGamedayOpen(true) }
     return () => { delete window.mhqSimulateResults }
   }, [applyData])
 
@@ -275,16 +279,23 @@ export default function App() {
   }, [])
 
   const go = useCallback(({ state, mode: m, tab, district, news: q }) => {
-    if (q) { setNewsQuery(q); setNewsOpen(true); return }
+    if (q) { setNewsQuery(q); setNewsOpen(true); setGamedayOpen(false); return }
     setNewsOpen(false)
     if (m) setMode(m)
     setSelectedRaw(state)
     setView({ tab: tab || null, district: district || null })
   }, [])
 
-  // ---------- results lens ----------
+  // ---------- gameday page ----------
   const hasResults = useMemo(() => allRaces(data).some((r) => r.result), [data])
-  const results = (lensPick || (hasResults ? 'results' : 'forecast')) === 'results'
+  const results = gamedayOpen
+  // Switching pages starts fresh at that page's national view.
+  const openPage = (page) => {
+    setNewsOpen(page === 'news')
+    setGamedayOpen(page === 'gameday')
+    if (page === 'gameday' || gamedayOpen) { setSelected(null); setRegion(null); setView({}) }
+    if (page === 'gameday' && mode === 'measures') setMode('senate')
+  }
 
   const { fills, blips, labels } = useMemo(() => {
     const fills = {}
@@ -402,31 +413,35 @@ export default function App() {
 
       <nav className="modes" aria-label="Race type">
         {MODES.map((m) => (
-          <button key={m.key} type="button" className={`mode ${mode === m.key && !newsOpen ? 'on' : ''}`} onClick={() => { setMode(m.key); setView({}); setNewsOpen(false) }} aria-pressed={mode === m.key && !newsOpen}>
-            <Icon name={m.icon} size={16} color={mode === m.key && !newsOpen ? '#050510' : '#00ff41'} />
+          <button key={m.key} type="button" className={`mode ${mode === m.key && !newsOpen && !gamedayOpen ? 'on' : ''}`} onClick={() => { openPage('map'); setMode(m.key); setView({}) }} aria-pressed={mode === m.key && !newsOpen && !gamedayOpen}>
+            <Icon name={m.icon} size={16} color={mode === m.key && !newsOpen && !gamedayOpen ? '#050510' : '#00ff41'} />
             {m.label}
           </button>
         ))}
-        <button type="button" className={`mode news-mode ${newsOpen ? 'on' : ''}`} onClick={() => setNewsOpen((o) => !o)} aria-pressed={newsOpen} title="Top stories and news for each race">
+        <button type="button" className={`mode news-mode ${newsOpen ? 'on' : ''}`} onClick={() => openPage(newsOpen ? 'map' : 'news')} aria-pressed={newsOpen} title="Top stories and news for each race">
           <Icon name="news" size={16} color={newsOpen ? '#050510' : '#ffd700'} />
           NEWS
         </button>
+        <button type="button" className={`mode gameday-mode ${gamedayOpen ? 'on' : ''} ${hasResults || isElectionWindow() ? 'live' : ''}`} onClick={() => openPage(gamedayOpen ? 'map' : 'gameday')} aria-pressed={gamedayOpen} title="Election night: poll closings, live calls and results">
+          <span className="gd-dot" aria-hidden="true">●</span> GAMEDAY{hasResults || isElectionWindow() ? ' · LIVE' : ''}
+        </button>
         <div className="spacer" />
         <button type="button" className="mode small" onClick={() => setCmdOpen(true)} title="Search (⌘K or /)">⌕ SEARCH <kbd>⌘K</kbd></button>
-        <span className="sm-toggle lens" role="group" aria-label="Map lens">
-          <button type="button" className={!results ? 'on' : ''} aria-pressed={!results} onClick={() => setLensPick('forecast')}>FORECAST</button>
-          <button type="button" className={results ? 'on' : ''} aria-pressed={results} onClick={() => setLensPick('results')} title="Election night: poll closings, live calls and results">
-            GAMEDAY{hasResults ? '' : ' (NOV 3)'}
-          </button>
-        </span>
         {selected && <button type="button" className="mode small" onClick={() => setSelected(null)}>◀ SITUATION ROOM</button>}
       </nav>
 
-      <main className={`main ${newsOpen ? 'news-on' : ''}`}>
+      <main className={`main ${newsOpen ? 'news-on' : ''} ${gamedayOpen ? 'gameday-on' : ''}`}>
         {newsOpen && <NewsDesk data={data} news={news} onRefresh={refreshNews} control={control} watch={watch} onPick={pickRace} onClose={() => setNewsOpen(false)} query={newsQuery} onQuery={setNewsQuery} />}
         <section className="map-panel pixel-border" hidden={newsOpen}>
           <div className="panel-label">
-            <span className="pixel">TACTICAL MAP · {mode.toUpperCase()} · {results ? 'GAMEDAY' : 'FORECAST'}</span>
+            {results ? (
+              <span className="gd-map-head">
+                <span className="pixel">● GAMEDAY RESULTS MAP</span>
+                <span className="sm-toggle" role="group" aria-label="Results map">
+                  {MODES.map((m) => <button key={m.key} type="button" className={mode === m.key ? 'on' : ''} aria-pressed={mode === m.key} onClick={() => { setMode(m.key); setView({}) }}>{m.label}</button>)}
+                </span>
+              </span>
+            ) : <span className="pixel">TACTICAL MAP · {mode.toUpperCase()} · FORECAST</span>}
             <span className="dim">{selected ? `TARGET LOCKED: ${STATES[selected].toUpperCase()}` : 'SELECT A STATE · ⌘K TO SEARCH'}</span>
           </div>
           <UsMap fills={fills} blips={blips} labels={labels} selected={selected} onSelect={setSelected} zoom={zoom} results={results} region={region} onRegion={setRegion} />

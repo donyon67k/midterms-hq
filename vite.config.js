@@ -6,7 +6,7 @@ import feedProxy from './scripts/feed-proxy.mjs'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // adminPlugin and feedProxy only exist on the dev server; builds never include them
+  // adminPlugin (dev) and feedProxy (dev + preview) are server middleware; builds never include them
   plugins: [react(), adminPlugin(), feedProxy()],
   define: { __APP_VERSION__: JSON.stringify(pkg.version) },
 })

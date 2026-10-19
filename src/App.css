@@ -673,3 +673,38 @@ details.explain table { font-size: 12px; }
 .seat-legend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
 @media (max-width: 520px) { .seat-charts { grid-template-columns: 1fr; } }
 .seat-chart.wide { max-width: 480px; margin-left: auto; margin-right: auto; }
+
+/* gameday page */
+.mode.gameday-mode { border-color: var(--rep-dark); color: #ff6a6a; }
+.mode.gameday-mode:hover { border-color: var(--rep); }
+.mode.gameday-mode.on { background: var(--rep); border-color: var(--rep); color: var(--bg-primary); box-shadow: 3px 3px 0 var(--rep-dark); }
+.mode.gameday-mode .gd-dot { font-size: 10px; }
+.mode.gameday-mode.live:not(.on) .gd-dot { animation: blink 1s steps(2) infinite; }
+.main.gameday-on .map-panel, .main.gameday-on .dossier { border-color: var(--rep-dark); }
+.gd-map-head { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.gd-map-head .pixel { color: #ff6a6a; }
+.gd-map-head .sm-toggle button { font-size: 7px; }
+
+/* state view: region bar above the zoom controls */
+.map-top { position: absolute; top: 8px; left: 8px; right: 8px; z-index: 4; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; pointer-events: none; }
+.map-top .region-bar { position: static; align-self: stretch; }
+.map-top .region-btn { font-size: 11px; padding: 5px 8px; }
+.map-top .zoom-hud { position: static; pointer-events: auto; }
+.map-top .region-btn.menu { font-family: var(--font-pixel); font-size: 8px; padding: 7px 10px; color: var(--amber); border-color: var(--amber-dim); }
+.map-top .region-btn.menu.on { background: var(--amber); color: var(--bg-primary); border-color: var(--amber); }
+.map-top .region-btn.here { border-color: var(--green); box-shadow: inset 0 0 0 1px var(--green); }
+/* REGIONS menu: buttons pop out one after another, 8-bit style, and fold back in reverse */
+.region-items { display: contents; }
+.region-items .region-btn {
+  max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0; visibility: hidden;
+  padding-left: 0; padding-right: 0; border-width: 0; margin-left: -4px;
+  transition: max-width 0.18s steps(4), opacity 0.18s steps(3), padding 0.18s steps(4), margin 0.18s steps(4), visibility 0s linear 0.18s;
+  transition-delay: calc((10 - var(--i)) * 18ms);
+}
+.region-items.open .region-btn {
+  max-width: 180px; opacity: 1; visibility: visible; padding-left: 8px; padding-right: 8px; border-width: 1px; margin-left: 0;
+  transition: max-width 0.18s steps(4), opacity 0.18s steps(3), padding 0.18s steps(4), margin 0.18s steps(4), visibility 0s;
+  transition-delay: calc(var(--i) * 28ms);
+}
+.region-btn.menu { transition: background 0.12s steps(2), color 0.12s steps(2); }
+@media (prefers-reduced-motion: reduce) { .region-items .region-btn { transition: none !important; } }

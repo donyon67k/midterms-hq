@@ -1,7 +1,7 @@
 {
   "name": "midterms-hq",
   "private": true,
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,6 +9,7 @@
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
+    "web": "vite build && vite preview --host --port 4173",
     "data": "node scripts/build-data.mjs",
     "tauri": "tauri",
     "app": "tauri dev",

@@ -11,11 +11,10 @@ const GAP_MS = 1200 // one search at a time, politely spaced
 const POOL_TTL = 4 * 60 * 1000 // feeds update within minutes of publishing
 const RACE_TTL = 15 * 60 * 1000
 const RETRY_TTL = 2 * 60 * 1000 // a race feed missing its search half tries again sooner
-const DEV = typeof import.meta !== 'undefined' && import.meta.env?.DEV
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
-// The dev server proxies feeds for the browser preview (publishers don't send CORS headers).
-const feedFetch = (url, init) => (DEV && !IS_DESKTOP ? fetch(`/__feed?u=${encodeURIComponent(url)}`, init) : netFetch(url, init))
+// On the web, feeds come through the site's /api/feed (publishers don't send CORS headers).
+const feedFetch = (url, init) => (IS_DESKTOP ? netFetch(url, init) : fetch(`/api/feed?u=${encodeURIComponent(url)}`, init))
 
 // ---------- RSS / Atom ----------
 const ENT = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', ndash: '–', mdash: '—', lsquo: '‘', rsquo: '’', ldquo: '“', rdquo: '”', hellip: '…' }
