@@ -71,12 +71,12 @@ jobs:
           # APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         with:
           tagName: ${{ github.ref_type == 'tag' && github.ref_name || format('v{0}', '__VERSION__') }}
-          releaseName: 'Midterms HQ v__VERSION__'
+          releaseName: 'Project: Midterm v__VERSION__'
           releaseBody: |
             **Download:** Mac → the `.dmg` · Windows → the `-setup.exe`
 
             First launch (until the app is code-signed):
-            - **Mac:** open the .dmg, drag Midterms HQ to Applications, open it. If macOS blocks it, go to System Settings → Privacy & Security → "Open Anyway".
+            - **Mac:** open the .dmg, drag Project Midterm to Applications, open it. If macOS blocks it, go to System Settings → Privacy & Security → "Open Anyway".
             - **Windows:** if SmartScreen appears, click "More info" → "Run anyway".
           releaseDraft: true
           includeUpdaterJson: true

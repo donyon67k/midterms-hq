@@ -91,7 +91,7 @@ export function SeatChart({ label, icon, races, now, results, need, onPick, wide
           <tspan className="party-r-fill" dx="6">{r}</tspan>
         </text>
       </svg>
-      <div className="seat-hover">{hover != null && seats[hover] ? seats[hover].label : <span className="dim">Hover a seat · click to open its race</span>}</div>
+      <div className="seat-hover">{hover != null && seats[hover] ? seats[hover].label : <span className="dim"><span className="hover-only">Hover a seat · click to open its race</span><span className="touch-only">Tap a seat to open its race</span></span>}</div>
     </div>
   )
 }

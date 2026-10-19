@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { getFecKey, setFecKey } from '../data/live.js'
+import { getFecKey, isOwner, setFecKey } from '../data/live.js'
 import { IS_DESKTOP, REPO_URL } from '../lib/desktop.js'
 import { Icon } from './Sprites.jsx'
 
@@ -20,19 +20,87 @@ const SOURCES = [
   ['2024 presidential results by county', 'tonmcg/US_County_Level_Election_Results_08-24', 'https://github.com/tonmcg/US_County_Level_Election_Results_08-24', 'see source'],
 ]
 
+const RELEASES = `${REPO_URL}/releases/latest`
+const PLATFORMS = [
+  { key: 'mac', label: 'MAC', file: /universal\.dmg$/, note: 'macOS 12+ · Apple Silicon and Intel', steps: [
+    'Download the .dmg and open it.',
+    'Drag Project Midterm into Applications.',
+    'First launch: macOS blocks unsigned apps. Open System Settings → Privacy & Security, scroll down and click “Open Anyway”. You only do this once.',
+  ] },
+  { key: 'win', label: 'WINDOWS', file: /x64-setup\.exe$/, alt: /\.msi$/, note: 'Windows 10 and 11 · 64-bit', steps: [
+    'Download the setup .exe and run it.',
+    'If SmartScreen says “Windows protected your PC”, click “More info” → “Run anyway”. The app isn’t code-signed yet; that’s the only reason for the warning.',
+    'Project Midterm installs to your Start menu.',
+  ] },
+]
+
+// Installer links from the newest published GitHub release (falls back to the releases page).
+function useLatestRelease(open) {
+  const [rel, setRel] = useState(null)
+  useEffect(() => {
+    if (!open || rel) return
+    fetch('https://api.github.com/repos/donyon67k/midterms-hq/releases/latest')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => j && setRel({ tag: j.tag_name, assets: j.assets.map((a) => ({ name: a.name, url: a.browser_download_url, size: a.size })) }))
+      .catch(() => {})
+  }, [open, rel])
+  return rel
+}
+
+const mb = (n) => `${Math.round(n / 1e6)} MB`
+
+function DesktopApp({ open }) {
+  const rel = useLatestRelease(open)
+  const guess = /Win/i.test(navigator.userAgent) ? 'win' : 'mac'
+  const [pick, setPick] = useState(guess)
+  const p = PLATFORMS.find((x) => x.key === pick)
+  const main = rel?.assets.find((a) => p.file.test(a.name))
+  const alt = p.alt && rel?.assets.find((a) => p.alt.test(a.name))
+  return (
+    <section className="intel-block" id="desktop-app">
+      <h4 className="pixel">▣ GET THE DESKTOP APP</h4>
+      <p className="brief">
+        The desktop app is the full-power version: it reads every source directly (no web relay), keeps a bigger offline
+        cache, sends alerts when a rating shifts or a race is called, and updates itself. Free, no account.
+      </p>
+      <div className="dl-tabs" role="tablist" aria-label="Platform">
+        {PLATFORMS.map((x) => (
+          <button key={x.key} type="button" role="tab" aria-selected={pick === x.key} className={`mode small ${pick === x.key ? 'on' : ''}`} onClick={() => setPick(x.key)}>{x.label}</button>
+        ))}
+      </div>
+      <div className="dl-card">
+        <a className="dl-btn pixel" href={main?.url || RELEASES} target="_blank" rel="noreferrer">
+          ⬇ DOWNLOAD FOR {p.label}{main ? ` · ${rel.tag}` : ''}
+        </a>
+        <div className="dim">{p.note}{main ? ` · ${mb(main.size)}` : ''}{alt && <> · or the <a href={alt.url} target="_blank" rel="noreferrer">.msi installer</a></>}</div>
+        <ol className="dl-steps">{p.steps.map((s) => <li key={s}>{s}</li>)}</ol>
+      </div>
+      <p className="brief dim">
+        On a phone? Use this website: add it to your home screen from the browser’s Share menu. All versions and release notes:{' '}
+        <a href={`${REPO_URL}/releases`} target="_blank" rel="noreferrer">GitHub releases</a>.
+      </p>
+    </section>
+  )
+}
+
 const OPEN_SOURCE = 'React (MIT) · d3-geo (ISC) · topojson-client (ISC) · Tauri (MIT/Apache-2.0) · Vite (MIT) · pixelarticons (MIT) · Press Start 2P & Share Tech Mono fonts (OFL, bundled)'
 
-export default function About({ open, onClose }) {
+export default function About({ open, onClose, section }) {
   const [key, setKey] = useState('')
   const [saved, setSaved] = useState(null)
+  const [owner, setOwner] = useState(false)
   const panel = useRef(null)
 
   useEffect(() => {
     if (!open) return
     setSaved(null)
-    getFecKey().then((k) => setKey(k === 'DEMO_KEY' ? '' : k))
+    isOwner().then((o) => {
+      setOwner(o)
+      if (o) getFecKey().then((k) => setKey(k === 'DEMO_KEY' ? '' : k))
+    })
     panel.current?.focus()
-  }, [open])
+    if (section) requestAnimationFrame(() => document.getElementById(section)?.scrollIntoView({ block: 'start' }))
+  }, [open, section])
 
   if (!open) return null
 
@@ -49,7 +117,7 @@ export default function About({ open, onClose }) {
         <div className="about-head">
           <Icon name="radar" size={36} />
           <div>
-            <h2 className="pixel glow">MIDTERMS HQ</h2>
+            <h2 className="pixel glow">PROJECT: MIDTERM</h2>
             <div className="dim">
               v{VERSION}{IS_DESKTOP ? ' · desktop' : ' · web'} · <a href={REPO_URL} target="_blank" rel="noreferrer">github.com/donyon67k/midterms-hq</a>
             </div>
@@ -57,8 +125,12 @@ export default function About({ open, onClose }) {
           <button type="button" className="btn-close" onClick={onClose} aria-label="Close">✕</button>
         </div>
 
-        <section className="intel-block">
-          <h4 className="pixel">▣ SETTINGS</h4>
+        {IS_DESKTOP
+          ? <p className="brief dim">You’re on the desktop app. It updates itself when a new version is published.</p>
+          : <DesktopApp open={open} />}
+
+        {owner && <section className="intel-block">
+          <h4 className="pixel">▣ SETTINGS <span className="dim">· owner build only</span></h4>
           <form className="setting" onSubmit={save}>
             <label htmlFor="fec-key">FEC API key <span className="dim">(optional, free)</span></label>
             <div className="setting-row">
@@ -71,12 +143,12 @@ export default function About({ open, onClose }) {
             </div>
             {saved && <div className="setting-ok">{saved}</div>}
           </form>
-        </section>
+        </section>}
 
         <section className="intel-block">
           <h4 className="pixel">▣ DISCLAIMER</h4>
           <p className="brief">
-            Midterms HQ is an independent project. It is not affiliated with any campaign, party, forecaster, news organization
+            Project: Midterm (and its Midterms HQ dashboard) is an independent project. It is not affiliated with any campaign, party, forecaster, news organization
             or government agency. Ratings and polls are other organizations’ published views, shown as reported on Wikipedia.
             Results come from Wikipedia’s volunteer-maintained pages and are <b>not official</b>; official results come from each
             state’s election office. Data can be incomplete or wrong; check the linked sources.

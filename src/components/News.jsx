@@ -13,6 +13,7 @@ import { cachedNews, fetchRaceNews, raceIndex, raceKey, searchNews, storyScore, 
 import { FEEDS, LEAN_LABEL, LEAN_SHORT, STATE_FEEDS, VERDICT, leanOf, outletName, tilt } from '../data/sources.js'
 import { raceTitle, ratingClass, timeAgo } from '../lib/util.js'
 import { Icon } from './Sprites.jsx'
+import Block from './Block.jsx'
 
 const host = (url) => { try { return new URL(url).hostname.replace(/^www\./, '') } catch { return '' } }
 const leanClass = (l) => (l === 'local' ? 'lean-local' : l == null ? 'lean-none' : `lean-${['l2', 'l1', 'c', 'r1', 'r2'][l + 2]}`)
@@ -240,8 +241,7 @@ export function RaceNews({ race, wire, id }) {
   const stories = feed?.stories || []
   const shown = all ? stories : stories.slice(0, 4)
   return (
-    <section className="intel-block news-block" id={id}>
-      <h4 className="pixel">▣ NEWS WIRE · CONTEXT{feed ? ` · ${timeAgo(feed.at)}` : ''}</h4>
+    <Block title={<>▣ NEWS WIRE · CONTEXT{feed ? ` · ${timeAgo(feed.at)}` : ''}</>} closed className="news-block" id={id}>
       <p className="dim news-explain">
         Headlines add context to the data above, they don&apos;t replace it. Ratings, polls and money come from forecasters,
         pollsters and official filings; news coverage is shown with its lean so you can weigh it.
@@ -253,7 +253,7 @@ export function RaceNews({ race, wire, id }) {
         <button type="button" className="btn-mini" onClick={() => setAll(!all)}>{all ? 'SHOW FEWER' : `+${stories.length - 4} MORE`}</button>
       )}
       {!mine.length && <FeedStatus feed={feed} err={err} empty={RACE_EMPTY} />}
-    </section>
+    </Block>
   )
 }
 
@@ -380,10 +380,9 @@ export default function NewsDesk({ data, news, onRefresh, control, watch, onPick
           )}
 
           {!query && general.length > 0 && (
-            <section className="intel-block">
-              <h4 className="pixel">◆ HQ BRIEFING</h4>
+            <Block title="◆ HQ BRIEFING">
               <Pinned items={general} />
-            </section>
+            </Block>
           )}
           <div className="news-controls">
             <span className="sm-toggle" role="group" aria-label="Sort stories">

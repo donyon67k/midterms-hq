@@ -1,4 +1,6 @@
-# MIDTERMS HQ
+# PROJECT: MIDTERM
+
+The app and website are **Project: Midterm**; its dashboard (the HUD) is **Midterms HQ**.
 
 8-bit spy-HQ intelligence dashboard for the 2026 U.S. midterms: Senate (incl. FL/OH specials),
 governor, all 435 House seats, and statewide ballot measures on an interactive map.
@@ -25,7 +27,7 @@ governor, all 435 House seats, and statewide ballot measures on an interactive m
 ## Desktop app (Tauri)
 
     npm run app        # native window with hot reload: save a file, the window updates
-    npm run app:ship   # release build -> replaces "CLAUDE HOME/Midterms HQ.app" and relaunches it
+    npm run app:ship   # release build -> replaces "CLAUDE HOME/Project Midterm.app" and relaunches it
     DEST=/Applications npm run app:ship   # install somewhere else
 
 The workflow: tweak things live in `npm run app`, then `npm run app:ship` when you want the
@@ -65,9 +67,9 @@ new version in the background and show **RESTART TO UPDATE**.
 
 | Platform | Installer | How it's built |
 |---|---|---|
-| Mac (Apple Silicon) | `release/Midterms HQ_<ver>_aarch64.dmg` | `npm run app:dmg` on this Mac |
-| Mac (universal: Apple Silicon + Intel) | `Midterms.HQ_<ver>_universal.dmg` | GitHub Actions (`.github/workflows/release.yml`) |
-| Windows 10/11 | `Midterms.HQ_<ver>_x64-setup.exe` (+ `.msi`) | GitHub Actions |
+| Mac (Apple Silicon) | `release/Project Midterm_<ver>_aarch64.dmg` | `npm run app:dmg` on this Mac |
+| Mac (universal: Apple Silicon + Intel) | `Project.Midterm_<ver>_universal.dmg` | GitHub Actions (`.github/workflows/release.yml`) |
+| Windows 10/11 | `Project.Midterm_<ver>_x64-setup.exe` (+ `.msi`) | GitHub Actions |
 
 Release steps once the project is on GitHub: bump `version` in `package.json` and
 `src-tauri/tauri.conf.json`, then `git tag v1.0.1 && git push origin v1.0.1`. The workflow runs the
@@ -99,10 +101,14 @@ After every refresh a **data health check** compares what was parsed against wha
 (33+ Senate, 36 governor, 435 House races, no leftover wiki markup in names). Problems show up
 as `DATA HEALTH` lines in the intel log, so a Wikipedia page restructure can't silently drop races.
 
-**FEC rate limits:** the app uses the shared `DEMO_KEY` by default (about 30 requests/hour).
-Get a free key at https://api.data.gov/signup and put it in `.env.local`:
+**FEC rate limits / owner builds:** public builds (CI releases and the website) always use the
+shared `DEMO_KEY` (about 30 requests/hour) and have no key setting. Owner builds, made on the
+maintainer's machine, read a gitignored `.env.local`:
 
-    VITE_FEC_API_KEY=your_key_here
+    VITE_OWNER=1
+    VITE_FEC_API_KEY=your_key_here   # optional; the key can also be pasted in About & Settings
+
+An installed owner build marks its device, so the app keeps owner mode after auto-updates.
 
 ## Layout
 

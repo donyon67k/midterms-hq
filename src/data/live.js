@@ -10,18 +10,32 @@ import {
   parseRacePage,
   parsePositions,
 } from './wiki.js'
-import { cacheGet, cacheSet, netFetch } from '../lib/desktop.js'
+import { IS_DESKTOP, cacheGet, cacheSet, netFetch } from '../lib/desktop.js'
 
 const WIKI_API = 'https://en.wikipedia.org/w/api.php'
 const WIKI_REST = 'https://en.wikipedia.org/api/rest_v1'
 const FEC_API = 'https://api.open.fec.gov/v1'
-const ENV_FEC_KEY = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_FEC_API_KEY) || null
+const ENV = (typeof import.meta !== 'undefined' && import.meta.env) || {}
 
-// A user's own free api.data.gov key (set in About & Settings) beats the shared DEMO_KEY.
+// Owner mode: only the maintainer's own builds (VITE_OWNER=1 in the gitignored .env.local)
+// get the FEC key setting and a personal key. Public builds (CI releases, the website) always
+// use the shared DEMO_KEY, so no copy out there is stronger than the maintainer's. A desktop
+// owner build marks its device, so the installed app stays in owner mode after auto-updates.
+const OWNER_BUILD = ENV.VITE_OWNER === '1'
+let owner
+export async function isOwner() {
+  if (owner === undefined) {
+    owner = OWNER_BUILD || (IS_DESKTOP && (await cacheGet('owner')) === true)
+    if (OWNER_BUILD && IS_DESKTOP) await cacheSet('owner', true)
+  }
+  return owner
+}
+
 let userFecKey
 export async function getFecKey() {
+  if (!(await isOwner())) return 'DEMO_KEY'
   if (userFecKey === undefined) userFecKey = (await cacheGet('fecKey')) || null
-  return userFecKey || ENV_FEC_KEY || 'DEMO_KEY'
+  return userFecKey || ENV.VITE_FEC_API_KEY || 'DEMO_KEY'
 }
 export async function setFecKey(key) {
   userFecKey = key.trim() || null

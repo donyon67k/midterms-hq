@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { STATES } from '../data/wiki.js'
 import { ELECTION_DAY, POLL_WAVES, isElectionWindow, ratingClass, raceTitle, resultColor, tallyResults } from '../lib/util.js'
 import { GOV_NOW, PowerBar, SENATE_NOW, chamber } from './Overview.jsx'
+import Block from './Block.jsx'
 
 // Election-night command center: poll closings, live scoreboard, call feed,
 // and which battlegrounds report in each wave.
@@ -74,8 +75,7 @@ export default function Gameday({ data, onPick, onPickState, log, watch }) {
         <PowerBar label="HOUSE" icon="house" total={435} control="218 FOR CONTROL" middle="UNCALLED" {...house} />
         <PowerBar label="GOVERNORS" icon="governor" total={50} middle="UNCALLED" {...gov} />
 
-        <section className="intel-block">
-          <h4 className="pixel">▣ CALL FEED</h4>
+        <Block title="▣ CALL FEED">
           {calls.length
             ? <div className="log">{calls.map((l, i) => (
               <div key={i} className="log-line call"><span className="dim">[{new Date(l.t).toLocaleTimeString()}]</span> {l.msg}</div>
@@ -83,17 +83,15 @@ export default function Gameday({ data, onPick, onPickState, log, watch }) {
             : <div className="dim">{called
               ? `${called} races already called before this session. New calls will stream in here.`
               : 'No races called yet. Calls stream in here (and as desktop alerts) as Wikipedia marks winners after polls close.'}</div>}
-        </section>
+        </Block>
 
         {flips.length > 0 && (
-          <section className="intel-block">
-            <h4 className="pixel">⚑ SEATS THAT FLIPPED ({flips.length})</h4>
+          <Block title={<>⚑ SEATS THAT FLIPPED ({flips.length})</>}>
             <div className="watchlist">{flips.map((r) => <RaceRow key={r.id} r={r} />)}</div>
-          </section>
+          </Block>
         )}
 
-        <section className="intel-block">
-          <h4 className="pixel">▣ POLL CLOSINGS · WHAT TO WATCH</h4>
+        <Block title="▣ POLL CLOSINGS · WHAT TO WATCH">
           <div className="dim" style={{ marginBottom: 8 }}>When the last polls close in each state (ET). Battleground and starred races listed under their wave.</div>
           {POLL_WAVES.map((w) => {
             const closed = w.at <= now
@@ -116,7 +114,7 @@ export default function Gameday({ data, onPick, onPickState, log, watch }) {
               </div>
             )
           })}
-        </section>
+        </Block>
       </div>
     </aside>
   )

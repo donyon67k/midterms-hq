@@ -4,6 +4,7 @@ import { feature } from 'topojson-client'
 import topo from 'us-atlas/states-albers-10m.json'
 import { NAME_TO_ABBR, STATES } from '../data/wiki.js'
 import { districtLabel } from '../lib/util.js'
+import { usePhone } from '../lib/phone.js'
 import { REGIONS, REGION_BY_KEY, regionOf } from '../lib/regions.js'
 import { StateDetailLayer, focusBox, useStateDetail } from './StateMap.jsx'
 
@@ -68,17 +69,19 @@ function useSize(ref) {
 
 export default function UsMap({ fills, blips = {}, selected, onSelect, labels = {}, zoom, results, region, onRegion }) {
   const [regionsOpen, setRegionsOpen] = useState(false)
-  useEffect(() => { setRegionsOpen(false) }, [selected])
+  useEffect(() => { setRegionsOpen(false) }, [selected, region])
   const [hover, setHover] = useState(null)
   const [detailHover, setDetailHover] = useState(null)
   const [mouse, setMouse] = useState([0, 0])
-  const wrap = useRef(null)
+  const svg = useRef(null)
   const [showCities, setShowCities] = useState(() => { try { return localStorage.getItem('mhq:cities') !== 'off' } catch { return true } })
   const toggleCities = () => setShowCities((on) => {
     try { localStorage.setItem('mhq:cities', on ? 'off' : 'on') } catch { /* private mode */ }
     return !on
   })
-  const [w, h] = useSize(wrap)
+  const [w, h] = useSize(svg)
+  const phone = usePhone()
+  const hud = phone ? 0 : HUD_PX
 
   const zoomed = !!selected && !!zoom
   const detail = useStateDetail(zoomed ? selected : null, zoom?.layer, zoom?.house)
@@ -89,12 +92,12 @@ export default function UsMap({ fills, blips = {}, selected, onSelect, labels = 
   const box = zoomed ? focusBox(detail, zoom.district) : region ? regionBox(region) : null
   const inRegion = new Set(region ? REGION_BY_KEY[region]?.states : [])
   const [[x0, y0], [x1, y1]] = box || HOME_BOX
-  const fh = Math.max(100, h - HUD_PX)
+  const fh = Math.max(100, h - hud)
   let bw = (x1 - x0) * (box ? 1.15 : 1)
   let bh = (y1 - y0) * (box ? 1.15 : 1)
   if (bw / bh > w / fh) bh = bw * (fh / w)
   else bw = bh * (w / fh)
-  const pad = HUD_PX * (bw / w)
+  const pad = hud * (bw / w)
   const target = [(x0 + x1) / 2 - bw / 2, (y0 + y1) / 2 - bh / 2 - pad, bw, bh + pad]
   const vb = useCamera(target)
   const k = Math.max(vb[2] / w, vb[3] / h) // map units per screen pixel
@@ -120,11 +123,30 @@ export default function UsMap({ fills, blips = {}, selected, onSelect, labels = 
     setMouse([e.clientX - r.left, e.clientY - r.top])
   }
 
+  // Regions stay one tap away from a state (and on phones, from the whole map): a collapsed
+  // REGIONS menu that slides open.
+  const regionMenu = (
+    <div className="region-bar" role="group" aria-label="Regions">
+      <button type="button" className={`region-btn menu ${regionsOpen ? 'on' : ''}`} aria-expanded={regionsOpen} onClick={() => setRegionsOpen(!regionsOpen)}>
+        {!zoomed && region ? REGION_BY_KEY[region].label : 'REGIONS'} {regionsOpen ? '▴' : '▾'}
+      </button>
+      {/* Always rendered so the list can slide open and closed. */}
+      <span className={`region-items ${regionsOpen ? 'open' : ''}`} aria-hidden={!regionsOpen}>
+        <button type="button" className="region-btn back" style={{ '--i': 0 }} tabIndex={regionsOpen ? 0 : -1} onClick={() => { onSelect(null); onRegion(null) }} title="Back to the whole map">◀ USA</button>
+        {REGIONS.map((r, i) => (
+          <button key={r.key} type="button" style={{ '--i': i + 1 }} tabIndex={regionsOpen ? 0 : -1} className={`region-btn ${(region || regionOf(selected)?.key) === r.key ? 'here' : ''}`} onClick={() => { onSelect(null); onRegion(r.key) }} title={`Zoom out to ${r.label}`}>
+            {r.label}
+          </button>
+        ))}
+      </span>
+    </div>
+  )
+
   const focusedDistrict = zoomed && zoom.district && detail.districts.find((s) => s.race?.key === zoom.district)
 
   return (
-    <div className="map-wrap" onMouseMove={onMove} ref={wrap}>
-        <svg viewBox={vb.join(' ')} className={`map-svg ${zoomed ? 'zoomed' : ''}`} preserveAspectRatio="xMidYMid meet">
+    <div className={`map-wrap ${zoomed ? 'zoomed' : ''}`} onMouseMove={onMove}>
+        <svg ref={svg} viewBox={vb.join(' ')} className={`map-svg ${zoomed ? 'zoomed' : ''}`} preserveAspectRatio="xMidYMid meet">
           <defs>
             <pattern id="pixgrid" width={6 * Math.min(1, k * 1.2)} height={6 * Math.min(1, k * 1.2)} patternUnits="userSpaceOnUse">
               <rect width={6 * Math.min(1, k * 1.2)} height={6 * Math.min(1, k * 1.2)} fill="none" stroke="rgba(0,0,0,0.35)" strokeWidth={k} />
@@ -179,21 +201,7 @@ export default function UsMap({ fills, blips = {}, selected, onSelect, labels = 
 
       {zoomed && (
         <div className="map-top">
-          {/* Regions stay one click away from a state: a collapsed REGIONS menu. */}
-          <div className="region-bar" role="group" aria-label="Regions">
-            <button type="button" className={`region-btn menu ${regionsOpen ? 'on' : ''}`} aria-expanded={regionsOpen} onClick={() => setRegionsOpen(!regionsOpen)}>
-              REGIONS {regionsOpen ? '▴' : '▾'}
-            </button>
-            {/* Always rendered so the list can slide open and closed. */}
-            <span className={`region-items ${regionsOpen ? 'open' : ''}`} aria-hidden={!regionsOpen}>
-              <button type="button" className="region-btn back" style={{ '--i': 0 }} tabIndex={regionsOpen ? 0 : -1} onClick={() => { onSelect(null); onRegion(null) }} title="Back to the whole map">◀ USA</button>
-              {REGIONS.map((r, i) => (
-                <button key={r.key} type="button" style={{ '--i': i + 1 }} tabIndex={regionsOpen ? 0 : -1} className={`region-btn ${(region || regionOf(selected)?.key) === r.key ? 'here' : ''}`} onClick={() => { onSelect(null); onRegion(r.key) }} title={`Zoom out to ${r.label}`}>
-                  {r.label}
-                </button>
-              ))}
-            </span>
-          </div>
+          {regionMenu}
           <div className="zoom-hud">
             <button type="button" className="btn-mini" onClick={() => onSelect(null)} title="Zoom back out (Esc)">◀ {region ? REGION_BY_KEY[region].label : 'USA'}</button>
             <span className="sm-toggle" role="group" aria-label="Map layer">
@@ -217,7 +225,8 @@ export default function UsMap({ fills, blips = {}, selected, onSelect, labels = 
           {detail.error && <span className="sm-err"> · DISTRICT FEED DOWN ({detail.error})</span>}
         </div>
       )}
-      {!zoomed && (
+      {!zoomed && phone && <div className="map-top">{regionMenu}</div>}
+      {!zoomed && !phone && (
         <div className="region-bar" role="group" aria-label="Regions">
           {region && <button type="button" className="region-btn back" onClick={() => onRegion(null)} title="Back to the whole map (Esc)">◀ USA</button>}
           {REGIONS.map((r) => (

@@ -3,6 +3,7 @@ import { genericAverage, ratingClass, raceTitle, resultColor, tally, tallyResult
 import { useState } from 'react'
 import { Icon } from './Sprites.jsx'
 import { SeatChart, SeatLegend } from './SeatChart.jsx'
+import Block from './Block.jsx'
 
 // Seats held by each caucus before the election (Senate caucus counts independents with Dems).
 export const SENATE_NOW = { D: 47, R: 53 }
@@ -124,29 +125,25 @@ export default function Overview({ data, onPick, log, results, watch, featured =
         )}
 
         {picks.length > 0 && (
-          <section className="intel-block">
-            <h4 className="pixel">◆ HQ PICKS · RACES TO WATCH</h4>
+          <Block title="◆ HQ PICKS · RACES TO WATCH">
             <div className="watchlist">{picks.map((r) => <RaceRow key={r.id} r={r} />)}</div>
-          </section>
+          </Block>
         )}
 
-        <section className="intel-block">
-          <h4 className="pixel">★ MY WATCHLIST ({watched.length})</h4>
+        <Block title={<>★ MY WATCHLIST ({watched.length})</>} closed={!watched.length}>
           {watched.length
             ? <div className="watchlist">{watched.map((r) => <RaceRow key={r.id} r={r} />)}</div>
             : <div className="dim">Star (☆) any race in its file to pin it here. Starred races get desktop alerts for rating shifts and calls.</div>}
-        </section>
+        </Block>
 
         {results && flips.length > 0 && (
-          <section className="intel-block">
-            <h4 className="pixel">▣ SEATS THAT FLIPPED ({flips.length})</h4>
+          <Block title={<>▣ SEATS THAT FLIPPED ({flips.length})</>}>
             <div className="watchlist">{flips.map((r) => <RaceRow key={r.id} r={r} />)}</div>
-          </section>
+          </Block>
         )}
 
         {gb && !results && (
-          <section className="intel-block">
-            <h4 className="pixel">▣ GENERIC BALLOT</h4>
+          <Block title="▣ GENERIC BALLOT" closed>
             <div className="gb">
               <div className="gb-bar">
                 <div className="pb-d" style={{ width: `${gb.D}%` }}><span>D {gb.D}%</span></div>
@@ -189,18 +186,16 @@ export default function Overview({ data, onPick, log, results, watch, featured =
                 </div>
               </details>
             )}
-          </section>
+          </Block>
         )}
 
-        <section className="intel-block">
-          <h4 className="pixel">▣ BATTLEGROUNDS ({battle.length})</h4>
+        <Block title={<>▣ BATTLEGROUNDS ({battle.length})</>} closed>
           <div className="watchlist">
             {battle.slice(0, 60).map((r) => <RaceRow key={r.id} r={r} />)}
           </div>
-        </section>
+        </Block>
 
-        <section className="intel-block">
-          <h4 className="pixel">▣ INTEL LOG</h4>
+        <Block title="▣ INTEL LOG" closed>
           <div className="log">
             {log.map((l, i) => (
               <div key={i} className={`log-line ${l.kind || ''}`}>
@@ -211,7 +206,7 @@ export default function Overview({ data, onPick, log, results, watch, featured =
           <div className="dim" style={{ marginTop: 6 }}>
             Source revisions: {Object.entries(data.revisions || {}).map(([k, v]) => `${k} ${timeAgo(v.timestamp)}`).join(' · ')}
           </div>
-        </section>
+        </Block>
       </div>
     </aside>
   )

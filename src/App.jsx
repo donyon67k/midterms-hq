@@ -9,6 +9,7 @@ import {
 } from './lib/util.js'
 import { resolveView } from './lib/view.js'
 import { IS_DESKTOP, cacheGet, cacheSet, notify } from './lib/desktop.js'
+import { usePhone } from './lib/phone.js'
 import UsMap from './components/UsMap.jsx'
 import Dossier from './components/Dossier.jsx'
 import Overview from './components/Overview.jsx'
@@ -33,12 +34,12 @@ const MODES = [
 const MEASURE_SCALE = ['#0c3a1c', '#0f6a2c', '#14a03c', '#00ff41']
 
 const BOOT = [
-  'INITIALIZING MIDTERMS HQ v2.6…',
+  'INITIALIZING PROJECT: MIDTERM…',
   'ESTABLISHING SECURE UPLINK…………… OK',
   'DECRYPTING FORECAST CHANNELS (10)… OK',
   'SYNCING 35 SENATE · 36 GOVERNOR · 435 HOUSE FILES… OK',
   'LOADING BALLOT MEASURE ARCHIVE…… OK',
-  'WELCOME, AGENT.',
+  'OPENING MIDTERMS HQ… WELCOME, AGENT.',
 ]
 
 function Boot({ onDone }) {
@@ -52,7 +53,7 @@ function Boot({ onDone }) {
     <div className="boot" onClick={onDone} onKeyDown={onDone} role="button" tabIndex={0} aria-label="Skip intro">
       <div className="boot-inner">
         <Icon name="radar" size={64} />
-        <h1 className="pixel glow">MIDTERMS HQ</h1>
+        <h1 className="pixel glow">PROJECT: MIDTERM</h1>
         {BOOT.slice(0, n).map((l) => <div key={l} className="boot-line">&gt; {l}</div>)}
         <div className="boot-line"><span className="blink">█</span></div>
         <div className="dim boot-skip">[CLICK OR PRESS ANY KEY TO SKIP]</div>
@@ -167,7 +168,9 @@ export default function App() {
   const newsRef = useRef(false)
   const [news, setNews] = useState(null)
   const [cmdOpen, setCmdOpen] = useState(false)
-  const [aboutOpen, setAboutOpen] = useState(false)
+  const phone = usePhone()
+  const [keyOpen, setKeyOpen] = useState(false) // phones fold the map key away
+  const [aboutOpen, setAboutOpen] = useState(false) // false | true | a section id to scroll to
   const [watchIds, setWatchIds] = useState([])
   const [sync, setSync] = useState({ status: 'snapshot', at: snapshot.generatedAt })
   const [log, setLog] = useState([{ t: Date.now(), msg: `Snapshot loaded (built ${timeAgo(snapshot.generatedAt)}). Requesting live uplink…` }])
@@ -181,6 +184,14 @@ export default function App() {
   useEffect(() => { gamedayRef.current = gamedayOpen }, [gamedayOpen])
   const selectedRef = useRef(null)
   useEffect(() => { selectedRef.current = selected }, [selected])
+  // Phones stack the race file under the map, so jump to it once there's a race to read.
+  // (A state in House mode waits for a district pick: the map is the menu.)
+  useEffect(() => {
+    if (!selected || !window.matchMedia('(max-width: 980px)').matches) return
+    if (mode === 'house' && !view.district) return
+    const t = setTimeout(() => document.querySelector('.dossier')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 350)
+    return () => clearTimeout(t)
+  }, [selected, view.district, view.tab, mode])
   useEffect(() => { watchRef.current = watchIds }, [watchIds])
 
   const setSelected = useCallback((st) => { setSelectedRaw(st); setView({}) }, [])
@@ -388,11 +399,21 @@ export default function App() {
       ? [['D WIN', RESULT_COLORS.D], ['R WIN', RESULT_COLORS.R], ['IND WIN', RESULT_COLORS.I], ['AWAITING CALL', AWAITING]]
       : Object.entries(RATING_COLORS)
 
+  const legendEl = (
+    <div className="legend" aria-label="Legend">
+      {legend.map(([k, c]) => (
+        <span key={k} className="lg"><i style={{ background: c }} />{k}</span>
+      ))}
+      {mode !== 'measures' && <span className="lg"><i className="blip-legend" />{results ? 'SEAT FLIPPED' : 'TOSSUP / FLIP WATCH'}</span>}
+      <span className="lg"><i style={{ background: '#0c1626', border: '1px solid #1a4d1a' }} />NO RACE</span>
+    </div>
+  )
+
   return (
     <div className="hq">
       {!booted && <Boot onDone={finishBoot} />}
       <CommandBar data={data} open={cmdOpen} onClose={() => setCmdOpen(false)} onGo={go} />
-      <About open={aboutOpen} onClose={() => setAboutOpen(false)} />
+      <About open={!!aboutOpen} section={typeof aboutOpen === 'string' ? aboutOpen : null} onClose={() => setAboutOpen(false)} />
       <UpdateBanner />
       <HqBanner control={control} />
 
@@ -407,6 +428,7 @@ export default function App() {
         <Countdown />
         <div className="top-right">
           <SyncStatus sync={sync} onSync={refresh} />
+          {!IS_DESKTOP && <button type="button" className="btn-mini about-btn get-app-btn" onClick={() => setAboutOpen('desktop-app')} title="Download Project: Midterm for Mac or Windows">⬇ DESKTOP APP</button>}
           <button type="button" className="btn-mini about-btn" onClick={() => setAboutOpen(true)} title="About, credits and settings">ⓘ ABOUT</button>
         </div>
       </header>
@@ -445,13 +467,16 @@ export default function App() {
             <span className="dim">{selected ? `TARGET LOCKED: ${STATES[selected].toUpperCase()}` : 'SELECT A STATE · ⌘K TO SEARCH'}</span>
           </div>
           <UsMap fills={fills} blips={blips} labels={labels} selected={selected} onSelect={setSelected} zoom={zoom} results={results} region={region} onRegion={setRegion} />
-          <div className="legend" aria-label="Legend">
-            {legend.map(([k, c]) => (
-              <span key={k} className="lg"><i style={{ background: c }} />{k}</span>
-            ))}
-            {mode !== 'measures' && <span className="lg"><i className="blip-legend" />{results ? 'SEAT FLIPPED' : 'TOSSUP / FLIP WATCH'}</span>}
-            <span className="lg"><i style={{ background: '#0c1626', border: '1px solid #1a4d1a' }} />NO RACE</span>
-          </div>
+          {phone
+            ? (
+              <div className={`fold key-fold ${keyOpen ? 'open' : ''}`}>
+                <button type="button" className="fold-head" aria-expanded={keyOpen} onClick={() => setKeyOpen(!keyOpen)}>
+                  <span className="pixel">MAP KEY</span><span className="fold-caret" aria-hidden="true">▾</span>
+                </button>
+                <div className="fold-body" inert={!keyOpen}><div className="fold-inner">{legendEl}</div></div>
+              </div>
+            )
+            : legendEl}
         </section>
 
         {newsOpen ? null : selected

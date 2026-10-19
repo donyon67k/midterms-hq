@@ -1,6 +1,7 @@
 import { STATES } from '../data/wiki.js'
 import { REGION_BY_KEY } from '../lib/regions.js'
 import { ratingClass, raceTitle, resultColor, tally, tallyResults } from '../lib/util.js'
+import Block from './Block.jsx'
 
 // Side panel for a regional zoom: every Senate/governor race in the area plus
 // the competitive House seats, so a cluster of small states reads at a glance.
@@ -49,22 +50,19 @@ export default function RegionBrief({ region, data, onPick, onPickState, onClose
           ))}
         </div>
 
-        <section className="intel-block">
-          <h4 className="pixel">▣ SENATE ({sen.length}) <span className="dim">{sen.length ? count(sen) : 'no races here'}</span></h4>
+        <Block title={<>▣ SENATE ({sen.length}) <span className="dim">{sen.length ? count(sen) : 'no races here'}</span></>}>
           <div className="watchlist">{sen.map((x) => <Row key={x.id} x={x} />)}</div>
-        </section>
+        </Block>
 
-        <section className="intel-block">
-          <h4 className="pixel">▣ GOVERNOR ({gov.length}) <span className="dim">{gov.length ? count(gov) : 'no races here'}</span></h4>
+        <Block title={<>▣ GOVERNOR ({gov.length}) <span className="dim">{gov.length ? count(gov) : 'no races here'}</span></>}>
           <div className="watchlist">{gov.map((x) => <Row key={x.id} x={x} />)}</div>
-        </section>
+        </Block>
 
-        <section className="intel-block">
-          <h4 className="pixel">▣ HOUSE ({house.length} SEATS) <span className="dim">{count(house)}</span></h4>
+        <Block title={<>▣ HOUSE ({house.length} SEATS) <span className="dim">{count(house)}</span></>}>
           {houseKey.length
             ? <div className="watchlist">{houseKey.map((x) => <Row key={x.id} x={x} />)}</div>
             : <div className="dim">No competitive House seats in this region.</div>}
-        </section>
+        </Block>
       </div>
     </aside>
   )

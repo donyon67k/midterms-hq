@@ -82,9 +82,10 @@ a { color: var(--green); }
   min-height: 0;
 }
 @media (max-width: 980px) {
-  html, body, #root { overflow: auto; height: auto; }
+  html { overflow: auto; height: auto; }
+  body, #root { overflow: visible; height: auto; } /* no inner scroller, so the nav can stick */
   .hq { height: auto; min-height: 100%; }
-  .main { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .main { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; }
   .dossier { max-height: none !important; }
 }
 
@@ -708,3 +709,118 @@ details.explain table { font-size: 12px; }
 }
 .region-btn.menu { transition: background 0.12s steps(2), color 0.12s steps(2); }
 @media (prefers-reduced-motion: reduce) { .region-items .region-btn { transition: none !important; } }
+
+/* ---------- phones ---------- */
+/* Touch screens have no hover: hide hover-only tips and swap the hint text. */
+.touch-only { display: none; }
+@media (hover: none) {
+  .map-tip { display: none; }
+  .hover-only { display: none; }
+  .touch-only { display: inline; }
+}
+
+@media (max-width: 640px) {
+  /* Compact header: brand + countdown on one line, sync and about on the next. */
+  .topbar { padding: 8px 12px; gap: 6px 10px; }
+  .brand { gap: 8px; }
+  .brand h1 { font-size: 14px; letter-spacing: 1px; margin: 0; }
+  .brand .sub { display: none; }
+  .brand svg { width: 20px; height: 20px; }
+  .countdown { text-align: left; display: flex; align-items: baseline; gap: 8px; }
+  .cd-label { font-size: 7px; letter-spacing: 1px; }
+  .cd-digits { font-size: 11px; }
+  .top-right { width: 100%; justify-content: space-between; gap: 8px; }
+  .sync { font-size: 10px; gap: 8px; }
+  .top-right .btn-mini { padding: 8px 10px; }
+  .get-app-btn { display: none; }
+
+  /* Nav: one swipeable row that stays pinned while the page scrolls. */
+  .modes {
+    position: sticky; top: 0; z-index: 20;
+    flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
+    padding: 8px 12px; gap: 6px;
+    background: rgba(2, 8, 4, 0.96); border-bottom: 1px solid var(--green-dim);
+  }
+  .modes::-webkit-scrollbar { display: none; }
+  .modes { mask-image: linear-gradient(90deg, #000 88%, transparent); } /* hints that the row swipes */
+  .modes .spacer { display: none; }
+  .mode { flex: none; font-size: 8px; padding: 9px 9px; gap: 6px; box-shadow: 2px 2px 0 #002a0d; white-space: nowrap; }
+  .mode.small { font-size: 8px; padding: 9px 9px; }
+  .mode kbd { display: none; }
+
+  .main { padding: 8px 8px 10px; gap: 10px; }
+  .map-panel { padding: 6px; }
+  .panel-label .dim { display: none; }
+
+  /* Map: region chips and zoom controls sit above the map instead of covering it. */
+  .map-wrap { display: flex; flex-direction: column; flex: none; height: max(250px, 68vw); min-height: 0; }
+  .map-wrap.zoomed { height: max(420px, 120vw); }
+  .map-svg { flex: 1; min-height: 0; height: auto; }
+  .map-wrap > .region-bar, .map-top { order: -1; position: static; }
+  .region-bar { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 6px; }
+  .region-bar::-webkit-scrollbar { display: none; }
+  .region-btn { flex: none; white-space: nowrap; font-size: 11px; padding: 7px 9px; }
+  .map-top { align-items: stretch; margin-bottom: 4px; pointer-events: auto; }
+  .map-top .region-bar { padding-bottom: 0; }
+  .zoom-hud { position: static; flex-wrap: nowrap; gap: 6px; padding: 4px; box-shadow: none; overflow-x: auto; }
+  .zoom-hud .btn-mini, .zoom-hud .sm-toggle button { font-size: 8px; padding: 8px 7px; white-space: nowrap; }
+  .zoom-status { position: static; order: 2; margin-top: 4px; font-size: 10px; }
+  .legend { font-size: 9px; gap: 3px 8px; }
+
+  /* Panels: tighter padding, wide tables scroll sideways instead of the page. */
+  .dossier { animation: none; scroll-margin-top: 56px; }
+  .dossier-head { padding: 8px 10px; }
+  .dossier-head h2 { font-size: 15px; }
+  .intel-block table { display: block; overflow-x: auto; max-width: 100%; }
+  .story.lead .story-title { font-size: 18px; }
+  .story.lead .story-img { height: 170px; }
+  .story-title { font-size: 14px; }
+
+  /* iOS zooms into any input under 16px when it's focused. */
+  input, select, textarea, .cmd-input input { font-size: 16px; }
+  .cmd-backdrop { padding-top: 8px; }
+  .cmd { max-height: 80vh; }
+  .cmd-hit { grid-template-columns: 16px minmax(0, 1fr) auto; }
+  .cmd-hit .cmd-sub { grid-column: 2 / -1; grid-row: 2; }
+  .about { max-height: calc(100vh - 16px); padding: 0 10px 10px; }
+
+  .ticker { height: 26px; }
+}
+
+/* desktop download (About) */
+.dl-tabs { display: flex; gap: 6px; margin: 8px 0; }
+.dl-card { border: 1px dashed var(--green-dim); padding: 10px 12px; font-size: 12px; }
+.dl-btn {
+  display: inline-block; font-size: 10px; padding: 12px 14px; margin-bottom: 6px;
+  background: var(--green); color: var(--bg-primary); text-decoration: none; box-shadow: 3px 3px 0 var(--green-dim);
+}
+.dl-btn:hover { background: var(--amber); }
+.dl-steps { margin: 8px 0 0; padding-left: 20px; color: var(--text-data); line-height: 1.5; }
+.dl-steps li + li { margin-top: 4px; }
+
+/* ---------- phone dropdowns (Block + MAP KEY; only rendered on phones) ---------- */
+.fold-head {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  text-align: left; font: inherit; color: inherit; padding: 8px 0 4px; min-height: 36px;
+}
+.fold-head:active { color: var(--amber); }
+.fold-caret { color: var(--amber); transition: transform 0.2s steps(3); }
+.fold.open .fold-caret { transform: rotate(180deg); }
+/* the body slides open in a few hard steps, 8-bit style */
+.fold-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.24s steps(6); }
+.fold.open .fold-body { grid-template-rows: 1fr; }
+.fold-inner { min-height: 0; overflow: hidden; }
+.fold.open .fold-inner { animation: foldIn 0.24s steps(4); }
+@keyframes foldIn { from { opacity: 0; transform: translateY(-6px); } }
+.intel-block.fold { margin: 4px 0 6px; }
+.intel-block.fold h4 { margin-bottom: 0; }
+.intel-block.fold.open h4 { margin-bottom: 8px; }
+.key-fold { border-top: 1px dashed var(--border-dim); margin-top: 4px; }
+.key-fold .fold-head { font-size: 8px; color: var(--green); padding: 8px 4px 4px; min-height: 32px; }
+@media (max-width: 640px) {
+  .map-top .region-bar { flex-wrap: wrap; overflow: visible; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fold-body, .fold-caret { transition: none; }
+  .fold.open .fold-inner { animation: none; }
+}

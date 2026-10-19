@@ -3,6 +3,7 @@ import { fecRace, raceIntel } from '../data/live.js'
 import { districtLabel, fmtMoney, incLabel, partyColor, ratingClass, ratingColor, resultColor, timeAgo, wikiUrl } from '../lib/util.js'
 import CandidateCard from './CandidateCard.jsx'
 import { NewsBar, RaceNews, useRaceNews } from './News.jsx'
+import Block, { openBlock } from './Block.jsx'
 
 const lastName = (n = '') => n.replace(/\(.*?\)/g, '').replace(/,.*$/, '').trim().split(/\s+/).filter((w) => !/^(jr\.?|sr\.?|ii|iii|iv)$/i.test(w)).pop()?.toLowerCase()
 
@@ -156,7 +157,10 @@ export default function RaceView({ race, stateName, results, watch }) {
   const cons = race.consensus
   const wire = useRaceNews(race)
   const report = race.summary || intel?.summary
-  const openWire = () => document.getElementById(`wire-${race.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  const openWire = () => {
+    openBlock(`wire-${race.id}`) // unfold it first on phones
+    setTimeout(() => document.getElementById(`wire-${race.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
+  }
 
   return (
     <div className="race-view">
@@ -206,8 +210,7 @@ export default function RaceView({ race, stateName, results, watch }) {
       )}
 
       {/* FORECAST */}
-      <section className="intel-block">
-        <h4 className="pixel">▣ FORECAST CONSENSUS</h4>
+      <Block title="▣ FORECAST CONSENSUS">
         {cons?.hq && <div className="hq-flag">◆ HQ rating: <b>{cons.label}</b> (set by Midterms HQ; forecasters below)</div>}
         {cons ? (
           <>
@@ -234,11 +237,10 @@ export default function RaceView({ race, stateName, results, watch }) {
             {cons.flipVotes > 0 && <div className="alert-line">⚑ {cons.flipVotes}/{cons.n} FORECASTERS PROJECT A SEAT FLIP</div>}
           </>
         ) : <div className="dim">No forecaster ratings on file.</div>}
-      </section>
+      </Block>
 
       {/* POLLS */}
-      <section className="intel-block">
-        <h4 className="pixel">▣ POLL PROJECTION</h4>
+      <Block title="▣ POLL PROJECTION" closed>
         {!intel && !err && page && <div className="loading">INTERCEPTING POLL DATA<span className="blink">_</span></div>}
         {err && <div className="dim">Poll feed unavailable ({err}).</div>}
         {intel && !projection && !intel.polls.length && <div className="dim">No public general-election polling on file for this race.</div>}
@@ -288,11 +290,10 @@ export default function RaceView({ race, stateName, results, watch }) {
             </div>
           </details>
         )}
-      </section>
+      </Block>
 
       {/* FINANCE */}
-      <section className="intel-block">
-        <h4 className="pixel">▣ CAMPAIGN FINANCE</h4>
+      <Block title="▣ CAMPAIGN FINANCE" closed>
         {finance ? (
           <div className="bars">
             <div className="bars-cap">{finance.asOf ? `As of ${finance.asOf} · ` : ''}{finance.src}</div>
@@ -331,11 +332,10 @@ export default function RaceView({ race, stateName, results, watch }) {
             )}
           </div>
         )}
-      </section>
+      </Block>
 
       {/* CANDIDATES */}
-      <section className="intel-block">
-        <h4 className="pixel">▣ CANDIDATE DOSSIERS</h4>
+      <Block title="▣ CANDIDATE DOSSIERS" closed>
         <div className="cand-grid">
           {majors.map((c) => {
             const f = finance && matchBy(finance.rows, c)
@@ -362,11 +362,10 @@ export default function RaceView({ race, stateName, results, watch }) {
             ))}
           </div>
         )}
-      </section>
+      </Block>
 
       {intel?.endorsements?.length > 0 && (
-        <section className="intel-block">
-          <h4 className="pixel">▣ KEY ENDORSEMENTS</h4>
+        <Block title="▣ KEY ENDORSEMENTS" closed>
           <div className="endorse-grid">
             {intel.endorsements.map((e) => (
               <div key={e.title} className="endorse">
@@ -377,12 +376,11 @@ export default function RaceView({ race, stateName, results, watch }) {
               </div>
             ))}
           </div>
-        </section>
+        </Block>
       )}
 
       {intel?.debates?.length > 0 && (
-        <section className="intel-block">
-          <h4 className="pixel">▣ DEBATES ({intel.debates.length})</h4>
+        <Block title={<>▣ DEBATES ({intel.debates.length})</>} closed>
           {intel.debates.map((d, i) => (
             <div key={i} className="debate-row">
               <span className="pixel">#{i + 1}</span>
@@ -391,12 +389,11 @@ export default function RaceView({ race, stateName, results, watch }) {
               {d.url && <a className="btn-mini" href={d.url} target="_blank" rel="noreferrer">▶ WATCH</a>}
             </div>
           ))}
-        </section>
+        </Block>
       )}
 
       {intel?.primaries?.length > 0 && (
-        <section className="intel-block">
-          <h4 className="pixel">▣ THE ROAD HERE · PRIMARIES</h4>
+        <Block title="▣ THE ROAD HERE · PRIMARIES" closed>
           {intel.primaries.map((p) => (
             <details key={p.title} className="primary" open={finalMajorRound(p, intel.primaries)}>
               <summary>
@@ -414,12 +411,11 @@ export default function RaceView({ race, stateName, results, watch }) {
               {p.cands.length > 6 && <div className="dim">+{p.cands.length - 6} more</div>}
             </details>
           ))}
-        </section>
+        </Block>
       )}
 
       {/* FIELD REPORT: Wikipedia's write-up (House districts come with the race intel), else HQ's data brief */}
-      <section className="intel-block">
-        <h4 className="pixel">▣ FIELD REPORT</h4>
+      <Block title="▣ FIELD REPORT" closed>
         {report
           ? report.split('\n\n').map((p, i) => <p key={i} className="brief">{p}</p>)
           : (
@@ -428,7 +424,7 @@ export default function RaceView({ race, stateName, results, watch }) {
               <div className="source-line">{intel || err || !page ? 'Built from the ratings and race data on this page; no Wikipedia write-up for this race yet.' : 'Scanning for a write-up…'}</div>
             </>
           )}
-      </section>
+      </Block>
 
       {intel?.background && (
         <section className="intel-block">
