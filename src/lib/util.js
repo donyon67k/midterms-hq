@@ -140,3 +140,17 @@ export const POLL_WAVES = Object.entries(CLOSE_WAVES).map(([min, states]) => {
   return { at: new Date(NOV3_ET + min * 6e4), label: `${h % 12 || 12}:${pad(min % 60)} ${h >= 12 ? 'PM' : 'AM'} ET`, states: states.split(' ') }
 })
 export const pollCloseFor = (st) => POLL_WAVES.find((w) => w.states.includes(st))
+
+// Generic-ballot average across the listed aggregators (a listed "Average" row is used
+// as-is; otherwise HQ averages the sources itself).
+export function genericAverage(list = []) {
+  const listed = list.find((g) => g.source === 'Average')
+  const rows = list.filter((g) => g.source !== 'Average' && Number.isFinite(g.D) && Number.isFinite(g.R))
+  if (listed) return { ...listed, n: rows.length }
+  if (!rows.length) return null
+  const avg = (k) => Math.round((rows.reduce((t, g) => t + g[k], 0) / rows.length) * 10) / 10
+  const D = avg('D')
+  const R = avg('R')
+  const m = Math.round((D - R) * 10) / 10
+  return { source: 'Average', D, R, n: rows.length, margin: m === 0 ? 'Tied' : `${m > 0 ? 'Democrats' : 'Republicans'} +${Math.abs(m).toFixed(1)}%` }
+}

@@ -11,7 +11,8 @@ BUILT="$ROOT/src-tauri/target/release/bundle/macos/$APP"
 
 echo "▶ building release app…"
 cd "$ROOT"
-npx tauri build --bundles app
+# Local installs skip the signed updater bundle (that needs the release key; CI makes it).
+npx tauri build --bundles app --config '{"bundle":{"createUpdaterArtifacts":false}}'
 
 if pgrep -xq "midterms-hq"; then
   echo "▶ closing running copy…"

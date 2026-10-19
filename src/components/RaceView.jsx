@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { fecRace, raceIntel } from '../data/live.js'
 import { districtLabel, fmtMoney, incLabel, partyColor, ratingClass, ratingColor, resultColor, timeAgo, wikiUrl } from '../lib/util.js'
 import CandidateCard from './CandidateCard.jsx'
+import { NewsBar, RaceNews, useRaceNews } from './News.jsx'
 
 const lastName = (n = '') => n.replace(/\(.*?\)/g, '').replace(/,.*$/, '').trim().split(/\s+/).filter((w) => !/^(jr\.?|sr\.?|ii|iii|iv)$/i.test(w)).pop()?.toLowerCase()
 
@@ -50,6 +51,22 @@ function Sparkline({ points, color }) {
       <circle cx={X(last.t)} cy={Y(last.v)} r="2" fill={color} />
     </svg>
   )
+}
+
+// Fallback field report when Wikipedia has no write-up: plain facts from this race's data.
+function dataBrief(race, title) {
+  const inc = race.incumbent
+  const cons = race.consensus
+  const field = race.candidates.filter((c) => c.party === 'D' || c.party === 'R').map((c) => `${c.name} (${c.party})`)
+  const lines = [
+    inc?.name ? `${title} is held by ${inc.name}${inc.party ? ` (${inc.party})` : ''}.${race.status ? ` Status: ${race.status}.` : ''}` : `${title} is an open seat.${race.status ? ` Status: ${race.status}.` : ''}`,
+    race.pvi && `Partisan lean (Cook PVI): ${race.pvi}.`,
+    field.length > 0 && `On the ballot: ${field.join(' vs. ')}.`,
+    cons && (cons.implied
+      ? `No forecaster lists it as competitive; it's rated ${cons.label} from its partisan lean.`
+      : `Forecaster consensus: ${cons.label} across ${cons.n} rating${cons.n === 1 ? '' : 's'}${cons.flipVotes ? `, with ${cons.flipVotes} projecting a flip` : ''}.`),
+  ]
+  return lines.filter(Boolean).join(' ')
 }
 
 export default function RaceView({ race, stateName, results, watch }) {
@@ -137,6 +154,9 @@ export default function RaceView({ race, stateName, results, watch }) {
 
   const ratingEntries = Object.entries(race.ratings || {})
   const cons = race.consensus
+  const wire = useRaceNews(race)
+  const report = race.summary || intel?.summary
+  const openWire = () => document.getElementById(`wire-${race.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
   return (
     <div className="race-view">
@@ -166,6 +186,8 @@ export default function RaceView({ race, stateName, results, watch }) {
           {cons && <div className={ratingClass(cons.label)} style={{ fontSize: 9 }}>{cons.label.toUpperCase()}</div>}
         </div>
       </div>
+
+      <NewsBar wire={wire} onOpen={openWire} />
 
       {race.result && (
         <div className="result-banner" style={{ '--rc': resultColor(race.result) }}>
@@ -395,12 +417,18 @@ export default function RaceView({ race, stateName, results, watch }) {
         </section>
       )}
 
-      {race.summary && (
-        <section className="intel-block">
-          <h4 className="pixel">▣ FIELD REPORT</h4>
-          {race.summary.split('\n\n').map((p, i) => <p key={i} className="brief">{p}</p>)}
-        </section>
-      )}
+      {/* FIELD REPORT: Wikipedia's write-up (House districts come with the race intel), else HQ's data brief */}
+      <section className="intel-block">
+        <h4 className="pixel">▣ FIELD REPORT</h4>
+        {report
+          ? report.split('\n\n').map((p, i) => <p key={i} className="brief">{p}</p>)
+          : (
+            <>
+              <p className="brief">{dataBrief(race, isHouse ? districtLabel(race.state, race.district) : race.type === 'senate' ? `This ${stateName} Senate seat` : `The ${stateName} governorship`)}</p>
+              <div className="source-line">{intel || err || !page ? 'Built from the ratings and race data on this page; no Wikipedia write-up for this race yet.' : 'Scanning for a write-up…'}</div>
+            </>
+          )}
+      </section>
 
       {intel?.background && (
         <section className="intel-block">
@@ -410,6 +438,9 @@ export default function RaceView({ race, stateName, results, watch }) {
           </details>
         </section>
       )}
+
+      {/* NEWS: context, last */}
+      <RaceNews race={race} wire={wire} id={`wire-${race.id}`} />
 
       {page && (
         <div className="source-line">

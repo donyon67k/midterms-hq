@@ -618,6 +618,8 @@ export function parseRacePage(text, district = null) {
   const fundraising = parseFundraising(finSec)
   const predSec = section(gen, 'Predictions', district != null ? 4 : 3)
   const out = { ...polls, fundraising, hasPredictions: !!predSec }
+  // A district's section opens with a few paragraphs on the seat and its incumbent.
+  if (district != null && scope !== text) out.summary = prose(scope.split(/\n===/)[0])
   // Statewide pages (Senate, governor) carry the whole campaign story.
   if (district == null) {
     out.primaries = parsePrimaries(text)

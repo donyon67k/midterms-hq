@@ -1,7 +1,7 @@
 {
   "name": "midterms-hq",
   "private": true,
-  "version": "1.0.1",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -31,6 +31,7 @@
     "@tauri-apps/plugin-updater": "^2.14.0",
     "@tauri-apps/plugin-window-state": "^2.5.0",
     "d3-geo": "^3.1.1",
+    "pixelarticons": "^2.4.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "topojson-client": "^3.1.0",

@@ -70,7 +70,14 @@ export default function CommandBar({ data, open, onClose, onGo }) {
   const [cursor, setCursor] = useState(0)
   const input = useRef(null)
   const list = useRef(null)
-  const hits = useMemo(() => search(index, q), [index, q])
+  const hits = useMemo(() => {
+    const found = search(index, q)
+    const t = q.trim()
+    if (t.length < 2) return found
+    // Searching the news desk sits right under the best direct match.
+    const news = { id: 'news-search', icon: 'news', label: `Search news for “${t}”`, sub: 'Every outlet, left to right, with HQ TILT', go: { news: t } }
+    return [...found.slice(0, 1), news, ...found.slice(1)]
+  }, [index, q])
 
   useEffect(() => { if (open) { setQ(''); setCursor(0); setTimeout(() => input.current?.focus(), 0) } }, [open])
   useEffect(() => { list.current?.querySelector('.on')?.scrollIntoView({ block: 'nearest' }) }, [cursor])
@@ -95,7 +102,7 @@ export default function CommandBar({ data, open, onClose, onGo }) {
             value={q}
             onChange={(e) => { setQ(e.target.value); setCursor(0) }}
             onKeyDown={onKey}
-            placeholder="Search states, races, districts (TX-28), candidates, measures…"
+            placeholder="Search states, races, districts (TX-28), candidates, measures, news…"
             aria-label="Search"
             role="combobox"
             aria-expanded={hits.length > 0}

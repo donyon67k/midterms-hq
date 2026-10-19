@@ -75,6 +75,8 @@ export default function Admin() {
   const [rateId, setRateId] = useState(null)
   const [resId, setResId] = useState(null)
   const [featId, setFeatId] = useState(null)
+  const [head, setHead] = useState({ title: '', url: '' })
+  const [headRace, setHeadRace] = useState(null)
   const [pickerKey, setPickerKey] = useState(0)
   const resetPickers = () => setPickerKey((k) => k + 1)
 
@@ -131,6 +133,30 @@ export default function Admin() {
         <div className="row" key={`f${pickerKey}`}>
           <RacePicker onChange={setFeatId} />
           <button type="button" disabled={!featId || ctl.featured.includes(featId)} onClick={() => { set({ featured: [...ctl.featured, featId] }); resetPickers() }}>ADD</button>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="pixel">◆ PINNED HEADLINES</h2>
+        <p className="dim">Top of the News Desk (HQ BRIEFING), or at the top of one race's news wire if you pick a race.</p>
+        <ol className="list">
+          {ctl.news.map((n, i) => (
+            <li key={n.url}>
+              <span style={{ display: 'block' }}>{n.title} <span className="dim">· {n.race ? titleOf(n.race) : 'News Desk'}</span></span>
+              <span>
+                <button type="button" disabled={!i} onClick={() => { const f = [...ctl.news]; [f[i - 1], f[i]] = [f[i], f[i - 1]]; set({ news: f }) }}>▲</button>
+                <button type="button" onClick={() => set({ news: ctl.news.filter((x) => x !== n) })}>✕</button>
+              </span>
+            </li>
+          ))}
+        </ol>
+        <div className="row" key={`h${pickerKey}`}>
+          <input value={head.title} maxLength={200} placeholder="Headline" onChange={(e) => setHead({ ...head, title: e.target.value })} />
+          <input value={head.url} placeholder="https://… article link" className={head.url && !/^https:\/\/\S+$/.test(head.url) ? 'bad' : ''} onChange={(e) => setHead({ ...head, url: e.target.value.trim() })} />
+          <RacePicker onChange={setHeadRace} placeholder="Optional race (blank = News Desk)" />
+          <button type="button" disabled={!head.title.trim() || !/^https:\/\/\S+$/.test(head.url) || ctl.news.some((n) => n.url === head.url) || ctl.news.length >= 12} onClick={() => {
+            set({ news: [...ctl.news, { title: head.title.trim(), url: head.url, race: headRace }] }); setHead({ title: '', url: '' }); resetPickers()
+          }}>PIN</button>
         </div>
       </section>
 

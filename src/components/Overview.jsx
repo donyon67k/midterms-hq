@@ -1,6 +1,8 @@
 import { STATES } from '../data/wiki.js'
-import { ratingClass, raceTitle, resultColor, tally, tallyResults, timeAgo } from '../lib/util.js'
+import { genericAverage, ratingClass, raceTitle, resultColor, tally, tallyResults, timeAgo } from '../lib/util.js'
+import { useState } from 'react'
 import { Icon } from './Sprites.jsx'
+import { SeatChart, SeatLegend } from './SeatChart.jsx'
 
 // Seats held by each caucus before the election (Senate caucus counts independents with Dems).
 export const SENATE_NOW = { D: 47, R: 53 }
@@ -56,7 +58,12 @@ export default function Overview({ data, onPick, log, results, watch, featured =
     : (() => { const t = tally(houseRaces); return { d: t.D, r: t.R, toss: t.toss, leanD: t.leanD, leanR: t.leanR } })()
   const middle = results ? 'UNCALLED' : 'TOSSUP'
 
-  const gb = data.genericBallot.find((g) => g.source === 'Average') || data.genericBallot[0]
+  // Balance of power as bars or as a seat-by-seat dot chart (remembered per viewer).
+  const [dots, setDotsRaw] = useState(() => { try { return localStorage.getItem('mhq:power') !== 'bars' } catch { return true } })
+  const setDots = (v) => { setDotsRaw(v); try { localStorage.setItem('mhq:power', v ? 'dots' : 'bars') } catch { /* ignore */ } }
+
+  const gb = genericAverage(data.genericBallot)
+  const gbRows = data.genericBallot.filter((g) => g.source !== 'Average')
 
   const battle = allRaces
     .filter((r) => r.consensus && Math.abs(r.consensus.score) < 1.0)
@@ -86,9 +93,28 @@ export default function Overview({ data, onPick, log, results, watch, featured =
         </div>
       </div>
       <div className="dossier-body">
-        <PowerBar label="SENATE" icon="senate" total={100} control="D NEEDS 51 · R NEEDS 50 (VP TIEBREAK)" middle={middle} {...sen} />
-        <PowerBar label="HOUSE" icon="house" total={435} control="218 FOR CONTROL" middle={middle} {...house} />
-        <PowerBar label="GOVERNORS" icon="governor" total={50} middle={middle} {...gov} />
+        <div className="power-toggle">
+          <span className="sm-toggle" role="group" aria-label="Balance of power view">
+            <button type="button" className={dots ? 'on' : ''} aria-pressed={dots} onClick={() => setDots(true)}>● DOTS</button>
+            <button type="button" className={dots ? '' : 'on'} aria-pressed={!dots} onClick={() => setDots(false)}>▬ BARS</button>
+          </span>
+        </div>
+        {dots ? (
+          <>
+            <div className="seat-charts">
+              <SeatChart label="SENATE" icon="senate" races={senRaces} now={SENATE_NOW} results={results} need="51 FOR CONTROL" onPick={onPick} />
+              <SeatChart label="GOVERNORS" icon="governor" races={govRaces} now={GOV_NOW} results={results} need="50 STATES" onPick={onPick} />
+            </div>
+            <SeatChart wide label="HOUSE" icon="house" races={houseRaces} results={results} need="218 FOR CONTROL" onPick={onPick} />
+            <SeatLegend results={results} />
+          </>
+        ) : (
+          <>
+            <PowerBar label="SENATE" icon="senate" total={100} control="D NEEDS 51 · R NEEDS 50 (VP TIEBREAK)" middle={middle} {...sen} />
+            <PowerBar label="HOUSE" icon="house" total={435} control="218 FOR CONTROL" middle={middle} {...house} />
+            <PowerBar label="GOVERNORS" icon="governor" total={50} middle={middle} {...gov} />
+          </>
+        )}
         {results && (sen.flipD + sen.flipR + house.flipD + house.flipR + gov.flipD + gov.flipR > 0) && (
           <div className="flip-sum">
             ⚑ FLIPS — SEN <span className="party-d">D +{sen.flipD}</span> / <span className="party-r">R +{sen.flipR}</span> ·
@@ -126,8 +152,43 @@ export default function Overview({ data, onPick, log, results, watch, featured =
                 <div className="pb-d" style={{ width: `${gb.D}%` }}><span>D {gb.D}%</span></div>
                 <div className="pb-r" style={{ width: `${gb.R}%` }}><span>R {gb.R}%</span></div>
               </div>
-              <div className="margin-call">{gb.margin} · avg of {data.genericBallot.length - 1} aggregators</div>
+              <div className="margin-call">{gb.margin} · average of {gb.n} poll average{gb.n === 1 ? '' : 's'}</div>
             </div>
+            <details className="explain">
+              <summary>WHAT IS THE GENERIC BALLOT?</summary>
+              <p className="brief">
+                A national poll question that names no candidates: <i>&ldquo;If the election for Congress were held today, would you vote
+                for the Democratic or the Republican candidate in your district?&rdquo;</i> It&apos;s the main read on the national mood in a
+                midterm, and matters most for the House, where every seat is up and many voters don&apos;t know their candidates well.
+              </p>
+              <p className="brief">
+                <b>How to read it:</b> the number is one party&apos;s lead nationwide. It isn&apos;t a seat count: district lines mean a
+                party can win the national vote narrowly and still lose seats, and a D+8 environment won&apos;t flip a deep-red district.
+                Use it as the tide; the race ratings show which boats it can lift.
+              </p>
+              <p className="brief">
+                <b>Where it comes from:</b> each source below averages many individual polls. HQ takes the plain mean of those averages,
+                so no single pollster drives the number.
+              </p>
+            </details>
+            {gbRows.length > 0 && (
+              <details className="explain">
+                <summary>SOURCES ({gbRows.length})</summary>
+                <div className="table-scroll">
+                  <table>
+                    <thead><tr><th>Average</th><th>D</th><th>R</th><th>Margin</th><th>Updated</th></tr></thead>
+                    <tbody>
+                      {gbRows.map((g) => (
+                        <tr key={g.source}>
+                          <td>{g.source}</td><td className="party-d">{g.D}%</td><td className="party-r">{g.R}%</td>
+                          <td>{g.margin.replace(/^Democrats/, 'D').replace(/^Republicans/, 'R')}</td><td className="dim">{g.updated}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </details>
+            )}
           </section>
         )}
 

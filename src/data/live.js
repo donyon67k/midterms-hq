@@ -135,7 +135,7 @@ async function cached(key, fn, ttl = TTL) {
 }
 
 // Bump when parseRacePage gains fields so stale cached copies are ignored.
-const RACE_PARSER = 2
+const RACE_PARSER = 3
 
 export function raceIntel(page, district = null) {
   return cached(`race${RACE_PARSER}:${page}:${district}`, async () => {

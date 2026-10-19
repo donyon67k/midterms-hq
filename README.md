@@ -87,6 +87,8 @@ listed at the top of the workflow file.
 | Live federal finance totals | OpenFEC API (`⟳ PULL LIVE FEC TOTALS`) | On demand, cached 1 h |
 | Congressional district boundaries (2026 / 120th Congress lines, incl. mid-decade redraws) | U.S. Census TIGERweb ArcGIS service | When a state's district map opens, cached 7 days |
 | County boundaries | `us-atlas` (bundled, loaded on first zoom) | Static |
+| News Desk top stories | 34 national outlets' public RSS feeds, picked for an even left/center/right spread, plus 50 statehouse newsrooms and Google News searches for Senate, governor and House coverage (`src/data/sources.js`) | Every 4 min; kept as a 14-day archive on disk |
+| Race-file news wire and news search | Feed archive + Google News RSS search (local papers and TV) | 15 min per race, 4 min per search; searches are queued one at a time |
 | City labels (places with 10K+ people) | U.S. Census Gazetteer + Vintage 2024 population estimates → `src/data/cities.json` | Static; rebuild with `npm run data:cities` (needs `unzip`) |
 | 2024 presidential results by county | [tonmcg/US_County_Level_Election_Results_08-24](https://github.com/tonmcg/US_County_Level_Election_Results_08-24) → `src/data/county2024.json` | Static; rebuild with `npm run data:counties`. Connecticut's 2024 data uses planning regions, so its counties show "no data" |
 

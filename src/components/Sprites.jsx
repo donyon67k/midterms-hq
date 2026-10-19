@@ -108,6 +108,17 @@ g..........g.
 g.ggggg....g.
 g..........g.
 .gggggggggg..`,
+  news: `
+gggggggggggg..
+g..........ggg
+g.gggg.ggg.g.g
+g.gggg.....g.g
+g.gggg.ggg.g.g
+g..........g.g
+g.ggggggggggg.
+g..........g.g
+g.ggggggg..g.g
+gggggggggggg..`,
   radar: `
 ....gggggg....
 ..gg......gg..

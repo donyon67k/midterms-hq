@@ -10,7 +10,7 @@ const DEV = typeof import.meta !== 'undefined' && import.meta.env?.DEV
 const LABELS = ['Safe D', 'Likely D', 'Lean D', 'Tilt D', 'Tossup', 'Tilt R', 'Lean R', 'Likely R', 'Safe R']
 const SCORE = { 'Safe D': -3, 'Likely D': -2, 'Lean D': -1, 'Tilt D': -0.5, Tossup: 0, 'Tilt R': 0.5, 'Lean R': 1, 'Likely R': 2, 'Safe R': 3 }
 
-export const EMPTY_CONTROL = { banner: null, notes: {}, featured: [], ratings: {}, results: {}, minVersion: null }
+export const EMPTY_CONTROL = { banner: null, notes: {}, featured: [], ratings: {}, results: {}, news: [], minVersion: null }
 
 const str = (v, max = 600) => (typeof v === 'string' ? v.trim().slice(0, max) : '')
 const https = (v) => (typeof v === 'string' && /^https:\/\/[^\s"<>]+$/.test(v) ? v : null)
@@ -28,8 +28,13 @@ export function sanitizeControl(raw) {
     const x = obj(v)
     return [k, str(x.winner, 80) && ['D', 'R', 'I'].includes(x.party) ? { winner: str(x.winner, 80), party: x.party, pct: Number.isFinite(+x.pct) && x.pct !== '' && x.pct != null ? +x.pct : null, flip: !!x.flip } : null]
   }).filter(([, v]) => v))
+  // Pinned headlines: { title, url, race (optional race id) }
+  const news = (Array.isArray(r.news) ? r.news : []).map((n) => {
+    const x = obj(n)
+    return { title: str(x.title, 200), url: https(x.url), race: str(x.race, 40) || null }
+  }).filter((n) => n.title && n.url).slice(0, 12)
   const minVersion = /^\d+\.\d+\.\d+$/.test(r.minVersion || '') ? r.minVersion : null
-  return { banner, notes, featured, ratings, results, minVersion, updatedAt: str(r.updatedAt, 40) || null }
+  return { banner, notes, featured, ratings, results, news, minVersion, updatedAt: str(r.updatedAt, 40) || null }
 }
 
 export async function fetchControl() {
@@ -45,19 +50,21 @@ export async function fetchControl() {
   }
 }
 
-// Layer the control file over the live dataset: rating/result corrections and HQ notes.
+// Layer the control file over the live dataset: rating/result corrections, HQ notes and pinned headlines.
 export function applyControl(data, ctl) {
   if (!ctl) return data
   const touch = (r) => {
     const rating = ctl.ratings[r.id]
     const result = ctl.results[r.id]
     const note = ctl.notes[r.id]
-    if (!rating && !result && !note) return r
+    const news = ctl.news.filter((n) => n.race === r.id)
+    if (!rating && !result && !note && !news.length) return r
     return {
       ...r,
       ...(rating && { consensus: { ...r.consensus, label: rating, score: SCORE[rating], hq: true } }),
       ...(result && { result: { ...result, hq: true } }),
       ...(note && { hqNote: note }),
+      ...(news.length && { hqNews: news }),
     }
   }
   const map = (o) => Object.fromEntries(Object.entries(o).map(([k, r]) => [k, touch(r)]))

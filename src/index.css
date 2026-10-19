@@ -67,10 +67,14 @@ body::after {
 
 .pixel-border-dim { border: 2px solid var(--border-dim); }
 
-.glow { text-shadow: 0 0 10px var(--green), 0 0 20px var(--green); }
-.glow-amber { text-shadow: 0 0 10px var(--amber), 0 0 20px var(--amber); }
-.glow-dem { text-shadow: 0 0 10px var(--dem), 0 0 20px var(--dem); }
-.glow-rep { text-shadow: 0 0 10px var(--rep), 0 0 20px var(--rep); }
+/* Soft glow: a dark edge keeps the letters crisp, and a faint halo gives the CRT feel. */
+.glow, .glow-amber, .glow-dem, .glow-rep {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.9), 0 0 4px color-mix(in srgb, var(--gc) 45%, transparent), 0 0 12px color-mix(in srgb, var(--gc) 18%, transparent);
+}
+.glow { --gc: var(--green); }
+.glow-amber { --gc: var(--amber); }
+.glow-dem { --gc: var(--dem); }
+.glow-rep { --gc: var(--rep); }
 
 @keyframes blink {
   0%, 100% { opacity: 1; }

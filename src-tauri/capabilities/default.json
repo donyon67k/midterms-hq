@@ -24,6 +24,261 @@
         },
         {
           "url": "https://raw.githubusercontent.com/donyon67k/midterms-hq/*"
+        },
+        {
+          "url": "https://dailycaller.com/*"
+        },
+        {
+          "url": "https://feeds.bbci.co.uk/*"
+        },
+        {
+          "url": "https://feeds.feedburner.com/*"
+        },
+        {
+          "url": "https://feeds.nbcnews.com/*"
+        },
+        {
+          "url": "https://feeds.npr.org/*"
+        },
+        {
+          "url": "https://freebeacon.com/*"
+        },
+        {
+          "url": "https://moxie.foxnews.com/*"
+        },
+        {
+          "url": "https://nypost.com/*"
+        },
+        {
+          "url": "https://pjmedia.com/*"
+        },
+        {
+          "url": "https://rollcall.com/*"
+        },
+        {
+          "url": "https://rss.csmonitor.com/*"
+        },
+        {
+          "url": "https://rss.nytimes.com/*"
+        },
+        {
+          "url": "https://rss.politico.com/*"
+        },
+        {
+          "url": "https://san.com/*"
+        },
+        {
+          "url": "https://slate.com/*"
+        },
+        {
+          "url": "https://talkingpointsmemo.com/*"
+        },
+        {
+          "url": "https://thedispatch.com/*"
+        },
+        {
+          "url": "https://thefederalist.com/*"
+        },
+        {
+          "url": "https://thehill.com/*"
+        },
+        {
+          "url": "https://www.cbsnews.com/*"
+        },
+        {
+          "url": "https://www.dailywire.com/*"
+        },
+        {
+          "url": "https://www.latimes.com/*"
+        },
+        {
+          "url": "https://www.motherjones.com/*"
+        },
+        {
+          "url": "https://www.nationalreview.com/*"
+        },
+        {
+          "url": "https://www.newsnationnow.com/*"
+        },
+        {
+          "url": "https://www.realclearpolitics.com/*"
+        },
+        {
+          "url": "https://www.theblaze.com/*"
+        },
+        {
+          "url": "https://www.theguardian.com/*"
+        },
+        {
+          "url": "https://www.thenation.com/*"
+        },
+        {
+          "url": "https://www.vox.com/*"
+        },
+        {
+          "url": "https://www.washingtonexaminer.com/*"
+        },
+        {
+          "url": "https://www.washingtontimes.com/*"
+        },
+        {
+          "url": "https://abcnews.com/*"
+        },
+        {
+          "url": "https://chaski.huffpost.com/*"
+        },
+        {
+          "url": "https://alabamareflector.com/*"
+        },
+        {
+          "url": "https://alaskabeacon.com/*"
+        },
+        {
+          "url": "https://arkansasadvocate.com/*"
+        },
+        {
+          "url": "https://azmirror.com/*"
+        },
+        {
+          "url": "https://calmatters.org/*"
+        },
+        {
+          "url": "https://capitolnewsillinois.com/*"
+        },
+        {
+          "url": "https://coloradonewsline.com/*"
+        },
+        {
+          "url": "https://commonwealthbeacon.org/*"
+        },
+        {
+          "url": "https://ctmirror.org/*"
+        },
+        {
+          "url": "https://dailymontanan.com/*"
+        },
+        {
+          "url": "https://feeds.texastribune.org/*"
+        },
+        {
+          "url": "https://floridaphoenix.com/*"
+        },
+        {
+          "url": "https://georgiarecorder.com/*"
+        },
+        {
+          "url": "https://idahocapitalsun.com/*"
+        },
+        {
+          "url": "https://indianacapitalchronicle.com/*"
+        },
+        {
+          "url": "https://iowacapitaldispatch.com/*"
+        },
+        {
+          "url": "https://kansasreflector.com/*"
+        },
+        {
+          "url": "https://kentuckylantern.com/*"
+        },
+        {
+          "url": "https://lailluminator.com/*"
+        },
+        {
+          "url": "https://mainemorningstar.com/*"
+        },
+        {
+          "url": "https://marylandmatters.org/*"
+        },
+        {
+          "url": "https://michiganadvance.com/*"
+        },
+        {
+          "url": "https://minnesotareformer.com/*"
+        },
+        {
+          "url": "https://mississippitoday.org/*"
+        },
+        {
+          "url": "https://missouriindependent.com/*"
+        },
+        {
+          "url": "https://ncnewsline.com/*"
+        },
+        {
+          "url": "https://nebraskaexaminer.com/*"
+        },
+        {
+          "url": "https://nevadacurrent.com/*"
+        },
+        {
+          "url": "https://newhampshirebulletin.com/*"
+        },
+        {
+          "url": "https://newjerseymonitor.com/*"
+        },
+        {
+          "url": "https://news.google.com/*"
+        },
+        {
+          "url": "https://northdakotamonitor.com/*"
+        },
+        {
+          "url": "https://nysfocus.com/*"
+        },
+        {
+          "url": "https://ohiocapitaljournal.com/*"
+        },
+        {
+          "url": "https://oklahomavoice.com/*"
+        },
+        {
+          "url": "https://oregoncapitalchronicle.com/*"
+        },
+        {
+          "url": "https://penncapital-star.com/*"
+        },
+        {
+          "url": "https://rhodeislandcurrent.com/*"
+        },
+        {
+          "url": "https://scdailygazette.com/*"
+        },
+        {
+          "url": "https://sourcenm.com/*"
+        },
+        {
+          "url": "https://southdakotasearchlight.com/*"
+        },
+        {
+          "url": "https://spotlightdelaware.org/*"
+        },
+        {
+          "url": "https://tennesseelookout.com/*"
+        },
+        {
+          "url": "https://utahnewsdispatch.com/*"
+        },
+        {
+          "url": "https://virginiamercury.com/*"
+        },
+        {
+          "url": "https://vtdigger.org/*"
+        },
+        {
+          "url": "https://washingtonstatestandard.com/*"
+        },
+        {
+          "url": "https://westvirginiawatch.com/*"
+        },
+        {
+          "url": "https://wisconsinexaminer.com/*"
+        },
+        {
+          "url": "https://www.civilbeat.org/*"
+        },
+        {
+          "url": "https://wyofile.com/*"
         }
       ]
     },

@@ -12,11 +12,15 @@ const SOURCES = [
   ['Live federal campaign finance', 'Federal Election Commission — OpenFEC API', 'https://api.open.fec.gov/developers/', 'public domain'],
   ['2026 congressional district boundaries', 'U.S. Census Bureau — TIGERweb', 'https://tigerweb.geo.census.gov/', 'public domain'],
   ['State and county shapes', 'us-atlas (Mike Bostock), from Census cartographic boundaries', 'https://github.com/topojson/us-atlas', 'ISC'],
+  ['News headlines', 'Each outlet’s public RSS feed (34 outlets; headlines link to the original story)', 'https://github.com/donyon67k/midterms-hq/blob/main/src/data/sources.js', 'headline + link'],
+  ['Statehouse news', 'One statehouse newsroom per state, most from the nonprofit States Newsroom network (RSS)', 'https://statesnewsroom.org/', 'headline + link'],
+  ['Local and wider news search', 'Google News RSS search (each result links to the original outlet)', 'https://news.google.com/', 'headline + link'],
+  ['Outlet logos', 'DuckDuckGo favicon service (only the outlet’s domain is sent)', 'https://duckduckgo.com/', 'each outlet’s own mark'],
   ['City locations and populations', 'U.S. Census Bureau — Gazetteer & Vintage 2024 population estimates', 'https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html', 'public domain'],
   ['2024 presidential results by county', 'tonmcg/US_County_Level_Election_Results_08-24', 'https://github.com/tonmcg/US_County_Level_Election_Results_08-24', 'see source'],
 ]
 
-const OPEN_SOURCE = 'React (MIT) · d3-geo (ISC) · topojson-client (ISC) · Tauri (MIT/Apache-2.0) · Vite (MIT) · Press Start 2P & Share Tech Mono fonts (OFL, bundled)'
+const OPEN_SOURCE = 'React (MIT) · d3-geo (ISC) · topojson-client (ISC) · Tauri (MIT/Apache-2.0) · Vite (MIT) · pixelarticons (MIT) · Press Start 2P & Share Tech Mono fonts (OFL, bundled)'
 
 export default function About({ open, onClose }) {
   const [key, setKey] = useState('')

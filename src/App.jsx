@@ -2,9 +2,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import snapshot from './data/snapshot.json'
 import { fetchAll, healthCheck } from './data/live.js'
 import { applyControl, fetchControl } from './data/control.js'
+import { cachedNews, fetchTopNews, TOP_KEY } from './data/news.js'
 import { STATES, labelFor } from './data/wiki.js'
 import {
-  AWAITING, RATING_COLORS, RESULT_COLORS, countdown, isElectionWindow, pad, pollCloseFor, raceTitle, ratingColor, resultColor, timeAgo,
+  AWAITING, RATING_COLORS, RESULT_COLORS, countdown, genericAverage, isElectionWindow, pad, pollCloseFor, raceTitle, ratingColor, resultColor, timeAgo,
 } from './lib/util.js'
 import { resolveView } from './lib/view.js'
 import { IS_DESKTOP, cacheGet, cacheSet, notify } from './lib/desktop.js'
@@ -17,6 +18,7 @@ import CommandBar from './components/CommandBar.jsx'
 import About from './components/About.jsx'
 import UpdateBanner from './components/UpdateBanner.jsx'
 import HqBanner from './components/HqBanner.jsx'
+import NewsDesk from './components/News.jsx'
 import { Icon } from './components/Sprites.jsx'
 import './App.css'
 
@@ -158,6 +160,10 @@ export default function App() {
   const [region, setRegion] = useState(null)
   const regionRef = useRef(null)
   const [lensPick, setLensPick] = useState(null)
+  const [newsOpen, setNewsOpen] = useState(false)
+  const [newsQuery, setNewsQuery] = useState('')
+  const newsRef = useRef(false)
+  const [news, setNews] = useState(null)
   const [cmdOpen, setCmdOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)
   const [watchIds, setWatchIds] = useState([])
@@ -169,6 +175,7 @@ export default function App() {
   const healthRef = useRef('')
   useEffect(() => { viewRef.current = view }, [view])
   useEffect(() => { regionRef.current = region }, [region])
+  useEffect(() => { newsRef.current = newsOpen }, [newsOpen])
   const selectedRef = useRef(null)
   useEffect(() => { selectedRef.current = selected }, [selected])
   useEffect(() => { watchRef.current = watchIds }, [watchIds])
@@ -210,6 +217,7 @@ export default function App() {
     setSync((s) => ({ ...s, status: 'syncing' }))
     try {
       fetchControl().then(setControl) // independent of Wikipedia; never throws
+      fetchTopNews({ races: allRaces(dataRef.current) }).then(setNews).catch((e) => setNews((n) => ({ at: null, stories: [], ...n, error: e.message }))) // feeds cached 4 min
       const next = await fetchAll()
       if (next) applyData(next, `Live uplink synced (${next.changed} source page${next.changed > 1 ? 's' : ''} updated). No rating shifts.`)
       setSync({ status: 'live', at: new Date().toISOString() })
@@ -220,6 +228,12 @@ export default function App() {
       busy.current = false
     }
   }, [applyData])
+
+  useEffect(() => { cachedNews(TOP_KEY).then((c) => c && setNews((n) => n || c)) }, [])
+  const refreshNews = useCallback(() => {
+    setNews((n) => (n && { ...n, error: null }))
+    fetchTopNews({ force: true, races: allRaces(dataRef.current) }).then(setNews).catch((e) => setNews((n) => ({ at: null, stories: [], ...n, error: e.message })))
+  }, [])
 
   useEffect(() => {
     let t
@@ -238,8 +252,9 @@ export default function App() {
       if (/input|textarea/i.test(e.target.tagName)) return
       if (e.key === '/') { e.preventDefault(); setCmdOpen(true); return }
       if (e.key !== 'Escape' || document.querySelector('.cmd-backdrop')) return
-      // Esc backs out one level: district → state → region → nation.
-      if (viewRef.current.district) setView((v) => ({ ...v, district: null }))
+      // Esc backs out one level: news desk / district → state → region → nation.
+      if (newsRef.current) setNewsOpen(false)
+      else if (viewRef.current.district) setView((v) => ({ ...v, district: null }))
       else if (selectedRef.current) setSelected(null)
       else if (regionRef.current) setRegion(null)
     }
@@ -259,7 +274,9 @@ export default function App() {
     try { localStorage.setItem('mhq:booted', '1') } catch { /* ignore */ }
   }, [])
 
-  const go = useCallback(({ state, mode: m, tab, district }) => {
+  const go = useCallback(({ state, mode: m, tab, district, news: q }) => {
+    if (q) { setNewsQuery(q); setNewsOpen(true); return }
+    setNewsOpen(false)
     if (m) setMode(m)
     setSelectedRaw(state)
     setView({ tab: tab || null, district: district || null })
@@ -341,16 +358,18 @@ export default function App() {
   const pickRace = (r) => go({ state: r.state, mode: r.type, tab: r.type === 'house' ? 'house' : r.id, district: r.type === 'house' ? r.key : null })
 
   const tickerItems = useMemo(() => {
-    const gb = data.genericBallot.find((g) => g.source === 'Average')
+    const gb = genericAverage(data.genericBallot)
     const calls = log.filter((l) => l.kind === 'call').slice(0, 12).map((l) => `✓ ${l.msg.toUpperCase()}`)
     const toss = [...Object.values(data.senate), ...Object.values(data.governor)].filter((r) => r.consensus?.label === 'Tossup' && !r.result)
+    const heads = (news?.stories || []).slice(0, 6).map((s) => `NEWS ▸ ${s.title.toUpperCase()}`)
     return [
       ...calls,
+      ...heads,
       gb && !results && `GENERIC BALLOT: ${gb.margin.toUpperCase()}`,
       ...toss.map((r) => `TOSSUP ▸ ${STATES[r.state].toUpperCase()} ${r.type.toUpperCase()}: ${r.candidates.filter((c) => c.party === 'D' || c.party === 'R').map((c) => c.name.toUpperCase()).join(' VS ')}`),
       ...log.filter((l) => l.kind === 'alert').slice(0, 5).map((l) => `⚠ ${l.msg.toUpperCase()}`),
     ].filter(Boolean)
-  }, [data, log, results])
+  }, [data, log, results, news])
 
   const legend = mode === 'measures'
     ? [['1–2', MEASURE_SCALE[0]], ['3–4', MEASURE_SCALE[1]], ['5–6', MEASURE_SCALE[2]], ['7+', MEASURE_SCALE[3]]]
@@ -383,11 +402,15 @@ export default function App() {
 
       <nav className="modes" aria-label="Race type">
         {MODES.map((m) => (
-          <button key={m.key} type="button" className={`mode ${mode === m.key ? 'on' : ''}`} onClick={() => { setMode(m.key); setView({}) }} aria-pressed={mode === m.key}>
-            <Icon name={m.icon} size={16} color={mode === m.key ? '#050510' : '#00ff41'} />
+          <button key={m.key} type="button" className={`mode ${mode === m.key && !newsOpen ? 'on' : ''}`} onClick={() => { setMode(m.key); setView({}); setNewsOpen(false) }} aria-pressed={mode === m.key && !newsOpen}>
+            <Icon name={m.icon} size={16} color={mode === m.key && !newsOpen ? '#050510' : '#00ff41'} />
             {m.label}
           </button>
         ))}
+        <button type="button" className={`mode news-mode ${newsOpen ? 'on' : ''}`} onClick={() => setNewsOpen((o) => !o)} aria-pressed={newsOpen} title="Top stories and news for each race">
+          <Icon name="news" size={16} color={newsOpen ? '#050510' : '#ffd700'} />
+          NEWS
+        </button>
         <div className="spacer" />
         <button type="button" className="mode small" onClick={() => setCmdOpen(true)} title="Search (⌘K or /)">⌕ SEARCH <kbd>⌘K</kbd></button>
         <span className="sm-toggle lens" role="group" aria-label="Map lens">
@@ -399,8 +422,9 @@ export default function App() {
         {selected && <button type="button" className="mode small" onClick={() => setSelected(null)}>◀ SITUATION ROOM</button>}
       </nav>
 
-      <main className="main">
-        <section className="map-panel pixel-border">
+      <main className={`main ${newsOpen ? 'news-on' : ''}`}>
+        {newsOpen && <NewsDesk data={data} news={news} onRefresh={refreshNews} control={control} watch={watch} onPick={pickRace} onClose={() => setNewsOpen(false)} query={newsQuery} onQuery={setNewsQuery} />}
+        <section className="map-panel pixel-border" hidden={newsOpen}>
           <div className="panel-label">
             <span className="pixel">TACTICAL MAP · {mode.toUpperCase()} · {results ? 'GAMEDAY' : 'FORECAST'}</span>
             <span className="dim">{selected ? `TARGET LOCKED: ${STATES[selected].toUpperCase()}` : 'SELECT A STATE · ⌘K TO SEARCH'}</span>
@@ -415,7 +439,7 @@ export default function App() {
           </div>
         </section>
 
-        {selected
+        {newsOpen ? null : selected
           ? <Dossier key={selected} abbr={selected} data={data} mode={mode} view={view} setView={setView} onClose={() => setSelected(null)} results={results} watch={watch} />
           : region
             ? <RegionBrief region={region} data={data} onPick={pickRace} onPickState={setSelected} onClose={() => setRegion(null)} results={results} watch={watch} />
