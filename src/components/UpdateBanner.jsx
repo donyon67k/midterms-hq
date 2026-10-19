@@ -49,7 +49,7 @@ export default function UpdateBanner() {
   return (
     <div className="update-banner" role="status">
       <span className="pixel">▲ v{update.version} READY</span>
-      <span className="dim">{update.body?.split('\n').find((l) => l.trim() && !/^\*\*download/i.test(l)) || 'A new version of Project: Midterm has been downloaded.'}</span>
+      <span className="dim">{update.body?.split('\n').find((l) => l.trim() && !/^\*\*download/i.test(l)) || 'A new version of Project: Midterms has been downloaded.'}</span>
       {state === 'ready' && <button type="button" className="btn-mini" onClick={restart}>RESTART TO UPDATE</button>}
       {state === 'installing' && <span className="blink">INSTALLING…</span>}
       {state === 'error' && <span className="err">Update failed. Try again later.</span>}

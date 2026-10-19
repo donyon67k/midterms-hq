@@ -24,13 +24,13 @@ const RELEASES = `${REPO_URL}/releases/latest`
 const PLATFORMS = [
   { key: 'mac', label: 'MAC', file: /universal\.dmg$/, note: 'macOS 12+ · Apple Silicon and Intel', steps: [
     'Download the .dmg and open it.',
-    'Drag Project Midterm into Applications.',
+    'Drag Project Midterms into Applications.',
     'First launch: macOS blocks unsigned apps. Open System Settings → Privacy & Security, scroll down and click “Open Anyway”. You only do this once.',
   ] },
   { key: 'win', label: 'WINDOWS', file: /x64-setup\.exe$/, alt: /\.msi$/, note: 'Windows 10 and 11 · 64-bit', steps: [
     'Download the setup .exe and run it.',
     'If SmartScreen says “Windows protected your PC”, click “More info” → “Run anyway”. The app isn’t code-signed yet; that’s the only reason for the warning.',
-    'Project Midterm installs to your Start menu.',
+    'Project Midterms installs to your Start menu.',
   ] },
 ]
 
@@ -117,7 +117,7 @@ export default function About({ open, onClose, section }) {
         <div className="about-head">
           <Icon name="radar" size={36} />
           <div>
-            <h2 className="pixel glow">PROJECT: MIDTERM</h2>
+            <h2 className="pixel glow">PROJECT: MIDTERMS</h2>
             <div className="dim">
               v{VERSION}{IS_DESKTOP ? ' · desktop' : ' · web'} · <a href={REPO_URL} target="_blank" rel="noreferrer">github.com/donyon67k/midterms-hq</a>
             </div>
@@ -148,7 +148,7 @@ export default function About({ open, onClose, section }) {
         <section className="intel-block">
           <h4 className="pixel">▣ DISCLAIMER</h4>
           <p className="brief">
-            Project: Midterm (and its Midterms HQ dashboard) is an independent project. It is not affiliated with any campaign, party, forecaster, news organization
+            Project: Midterms (and its Midterms HQ dashboard) is an independent project. It is not affiliated with any campaign, party, forecaster, news organization
             or government agency. Ratings and polls are other organizations’ published views, shown as reported on Wikipedia.
             Results come from Wikipedia’s volunteer-maintained pages and are <b>not official</b>; official results come from each
             state’s election office. Data can be incomplete or wrong; check the linked sources.

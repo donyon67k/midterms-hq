@@ -1,6 +1,6 @@
-# PROJECT: MIDTERM
+# PROJECT: MIDTERMS
 
-The app and website are **Project: Midterm**; its dashboard (the HUD) is **Midterms HQ**.
+The app and website are **Project: Midterms**; its dashboard (the HUD) is **Midterms HQ**.
 
 8-bit spy-HQ intelligence dashboard for the 2026 U.S. midterms: Senate (incl. FL/OH specials),
 governor, all 435 House seats, and statewide ballot measures on an interactive map.
@@ -27,7 +27,7 @@ governor, all 435 House seats, and statewide ballot measures on an interactive m
 ## Desktop app (Tauri)
 
     npm run app        # native window with hot reload: save a file, the window updates
-    npm run app:ship   # release build -> replaces "CLAUDE HOME/Project Midterm.app" and relaunches it
+    npm run app:ship   # release build -> replaces "CLAUDE HOME/Project Midterms.app" and relaunches it
     DEST=/Applications npm run app:ship   # install somewhere else
 
 The workflow: tweak things live in `npm run app`, then `npm run app:ship` when you want the
@@ -67,7 +67,7 @@ new version in the background and show **RESTART TO UPDATE**.
 
 | Platform | Installer | How it's built |
 |---|---|---|
-| Mac (Apple Silicon) | `release/Project Midterm_<ver>_aarch64.dmg` | `npm run app:dmg` on this Mac |
+| Mac (Apple Silicon) | `release/Project Midterms_<ver>_aarch64.dmg` | `npm run app:dmg` on this Mac |
 | Mac (universal: Apple Silicon + Intel) | `Project.Midterm_<ver>_universal.dmg` | GitHub Actions (`.github/workflows/release.yml`) |
 | Windows 10/11 | `Project.Midterm_<ver>_x64-setup.exe` (+ `.msi`) | GitHub Actions |
 

@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Build the desktop app and replace the installed copy with it.
-#   npm run app:ship                 -> installs to "CLAUDE HOME/Project Midterm.app"
+#   npm run app:ship                 -> installs to "CLAUDE HOME/Project Midterms.app"
 #   DEST=/Applications npm run app:ship  -> installs somewhere else
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 DEST="${DEST:-$(dirname "$ROOT")}"
-APP="Project Midterm.app"
-OLD_APP="Midterms HQ.app" # name before the rename; removed on install
+APP="Project Midterms.app"
+OLD_APPS=("Midterms HQ.app" "Project Midterm.app") # earlier names; removed on install
 BUILT="$ROOT/src-tauri/target/release/bundle/macos/$APP"
 
 echo "▶ building release app…"
@@ -17,13 +17,15 @@ npx tauri build --bundles app --config '{"bundle":{"createUpdaterArtifacts":fals
 
 if pgrep -xq "midterms-hq"; then
   echo "▶ closing running copy…"
-  osascript -e 'quit app "Project Midterm"' >/dev/null 2>&1 || true
-  osascript -e 'quit app "Midterms HQ"' >/dev/null 2>&1 || true
+  for name in "Project Midterms" "Project Midterm" "Midterms HQ"; do
+    osascript -e "quit app \"$name\"" >/dev/null 2>&1 || true
+  done
   sleep 1
 fi
 
 echo "▶ installing to $DEST/$APP"
-rm -rf "${DEST:?}/$APP" "${DEST:?}/$OLD_APP"
+rm -rf "${DEST:?}/$APP"
+for old in "${OLD_APPS[@]}"; do rm -rf "${DEST:?}/$old"; done
 cp -R "$BUILT" "$DEST/"
 
 echo "▶ launching"

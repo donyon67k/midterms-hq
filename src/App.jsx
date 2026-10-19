@@ -34,7 +34,7 @@ const MODES = [
 const MEASURE_SCALE = ['#0c3a1c', '#0f6a2c', '#14a03c', '#00ff41']
 
 const BOOT = [
-  'INITIALIZING PROJECT: MIDTERM…',
+  'INITIALIZING PROJECT: MIDTERMS…',
   'ESTABLISHING SECURE UPLINK…………… OK',
   'DECRYPTING FORECAST CHANNELS (10)… OK',
   'SYNCING 35 SENATE · 36 GOVERNOR · 435 HOUSE FILES… OK',
@@ -53,7 +53,7 @@ function Boot({ onDone }) {
     <div className="boot" onClick={onDone} onKeyDown={onDone} role="button" tabIndex={0} aria-label="Skip intro">
       <div className="boot-inner">
         <Icon name="radar" size={64} />
-        <h1 className="pixel glow">PROJECT: MIDTERM</h1>
+        <h1 className="pixel glow">PROJECT: MIDTERMS</h1>
         {BOOT.slice(0, n).map((l) => <div key={l} className="boot-line">&gt; {l}</div>)}
         <div className="boot-line"><span className="blink">█</span></div>
         <div className="dim boot-skip">[CLICK OR PRESS ANY KEY TO SKIP]</div>
@@ -425,7 +425,7 @@ export default function App() {
         <Countdown />
         <div className="top-right">
           <SyncStatus sync={sync} onSync={refresh} />
-          {!IS_DESKTOP && <button type="button" className="btn-mini about-btn get-app-btn" onClick={() => setAboutOpen('desktop-app')} title="Download Project: Midterm for Mac or Windows">⬇ DESKTOP APP</button>}
+          {!IS_DESKTOP && <button type="button" className="btn-mini about-btn get-app-btn" onClick={() => setAboutOpen('desktop-app')} title="Download Project: Midterms for Mac or Windows">⬇ DESKTOP APP</button>}
           <button type="button" className="btn-mini about-btn" onClick={() => setAboutOpen(true)} title="About, credits and settings">ⓘ ABOUT</button>
         </div>
       </header>

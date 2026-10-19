@@ -1,7 +1,7 @@
 [package]
 name = "midterms-hq"
-version = "2.0.2"
-description = "Project: Midterm desktop app (Midterms HQ)"
+version = "2.0.3"
+description = "Project: Midterms desktop app (Midterms HQ)"
 authors = ["Donovan"]
 license = ""
 repository = ""

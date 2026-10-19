@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "Project Midterm",
-  "version": "2.0.2",
+  "productName": "Project Midterms",
+  "version": "2.0.3",
   "identifier": "local.donovan.midtermshq",
   "build": {
     "frontendDist": "../dist",
@@ -13,7 +13,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "PROJECT: MIDTERM",
+        "title": "PROJECT: MIDTERMS",
         "width": 1480,
         "height": 920,
         "minWidth": 1024,
@@ -58,8 +58,8 @@
         }
       }
     },
-    "publisher": "Project Midterm",
-    "copyright": "\u00a9 2026 Project: Midterm. Data: Wikipedia (CC BY-SA 4.0), U.S. Census, FEC.",
+    "publisher": "Project Midterms",
+    "copyright": "\u00a9 2026 Project: Midterms. Data: Wikipedia (CC BY-SA 4.0), U.S. Census, FEC.",
     "longDescription": "An 8-bit spy-HQ dashboard for the 2026 U.S. midterm elections: live forecaster ratings, polls, campaign finance, candidate dossiers, district and county maps, and election-night results.",
     "windows": {
       "nsis": {
