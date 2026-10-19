@@ -150,7 +150,7 @@ function simulateResults(d) {
 }
 
 export default function App() {
-  const [booted, setBooted] = useState(() => { try { return localStorage.getItem('mhq:booted') === '1' } catch { return false } })
+  const [booted, setBooted] = useState(false) // the boot sequence plays on every launch
   const [liveData, setData] = useState(snapshot)
   const [control, setControl] = useState(null)
   // Live control file (rating/result corrections, HQ notes) layered over the Wikipedia data.
@@ -284,10 +284,7 @@ export default function App() {
     return () => { delete window.mhqSimulateResults }
   }, [applyData])
 
-  const finishBoot = useCallback(() => {
-    setBooted(true)
-    try { localStorage.setItem('mhq:booted', '1') } catch { /* ignore */ }
-  }, [])
+  const finishBoot = useCallback(() => setBooted(true), [])
 
   const go = useCallback(({ state, mode: m, tab, district, news: q }) => {
     if (q) { setNewsQuery(q); setNewsOpen(true); setGamedayOpen(false); return }
