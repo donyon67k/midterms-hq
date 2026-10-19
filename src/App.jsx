@@ -26,8 +26,8 @@ import './App.css'
 const REFRESH_MS = 3 * 60 * 1000
 const NIGHT_REFRESH_MS = 60 * 1000 // election week: revision checks are ~2 KB, so poll faster
 const MODES = [
-  { key: 'senate', label: 'SENATE', icon: 'senate' },
   { key: 'governor', label: 'GOVERNOR', icon: 'governor' },
+  { key: 'senate', label: 'SENATE', icon: 'senate' },
   { key: 'house', label: 'HOUSE', icon: 'house' },
   { key: 'measures', label: 'MEASURES', icon: 'measures' },
 ]
