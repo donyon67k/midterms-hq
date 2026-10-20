@@ -75,7 +75,7 @@ function displayName(fecName, race) {
   return [...words.filter((w) => !SUFFIX.test(w)), last, ...suffix].map(title).join(' ') || fecName
 }
 
-const PARTY = (p = '') => (p.startsWith('DEM') ? 'D' : p.startsWith('REP') ? 'R' : p.startsWith('LIB') ? 'L' : p.startsWith('GRE') ? 'G' : 'I')
+const PARTY = (raw) => { const p = String(raw || '').toUpperCase(); return (p.startsWith('DEM') ? 'D' : p.startsWith('REP') ? 'R' : p.startsWith('LIB') ? 'L' : p.startsWith('GRE') ? 'G' : 'I') }
 
 async function main() {
   const snap = JSON.parse(readFileSync(join(ROOT, 'src/data/snapshot.json'), 'utf8'))
