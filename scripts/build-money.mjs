@@ -58,7 +58,7 @@ const TYPE = (full = '') =>
     : /party/i.test(full) ? 'Party committee'
     : /pac/i.test(full) ? 'PAC'
     : /communication cost/i.test(full) ? 'Internal communication'
-    : /single.?candidate|independent expenditor/i.test(full) ? 'Group or person'
+    : /single.?candidate|independent expend/i.test(full) ? 'Group or person'
     : full ? full.replace(/\s*\(.*\)\s*$/, '') : 'Group or person'
 
 // "COLLINS, MICHAEL A JR" -> the race's own spelling ("Mike Collins") when we have the
@@ -75,7 +75,7 @@ function displayName(fecName, race) {
   return [...words.filter((w) => !SUFFIX.test(w)), last, ...suffix].map(title).join(' ') || fecName
 }
 
-const PARTY = (raw) => { const p = String(raw || '').toUpperCase(); return (p.startsWith('DEM') ? 'D' : p.startsWith('REP') ? 'R' : p.startsWith('LIB') ? 'L' : p.startsWith('GRE') ? 'G' : 'I') }
+const PARTY = (raw) => { const p = String(raw || '').toUpperCase(); return !p ? null : (p.startsWith('DEM') ? 'D' : p.startsWith('REP') ? 'R' : p.startsWith('LIB') ? 'L' : p.startsWith('GRE') ? 'G' : 'I') }
 
 async function main() {
   const snap = JSON.parse(readFileSync(join(ROOT, 'src/data/snapshot.json'), 'utf8'))
@@ -120,6 +120,37 @@ async function main() {
       })
     }
   }
+  // The bulk list can miss a candidate (e.g. a stale "has raised funds" flag). Look up any
+  // Democrat or Republican on the ballot that it didn't return, by name, one at a time.
+  const norm = (x = '') => x.normalize('NFD').replace(/[^a-z ]/gi, '').toLowerCase()
+  const lastOf = (n) => norm(n).split(' ').filter((w) => !/^(jr|sr|ii|iii|iv)$/.test(w)).pop() || ''
+  const ballot = [
+    ...Object.values(snap.senate).filter((r) => senateStates.includes(r.state)).map((r) => ['S', r]),
+    ...Object.values(snap.house).flat().filter((r) => houseStates.includes(r.state)).map((r) => ['H', r]),
+  ]
+  let lookups = 0
+  for (const [office, r] of ballot) {
+    for (const c of r.candidates || []) {
+      if (!['D', 'R'].includes(c.party) || lookups >= 200) continue
+      if (totals[r.id]?.candidates.some((x) => lastOf(x.name) === lastOf(c.name))) continue
+      lookups++
+      const found = (await fec('/candidates/', { q: c.name, state: r.state, office, cycle: 2026, per_page: 5 })).results
+        .find((x) => lastOf(displayName(x.name)) === lastOf(c.name))
+      if (!found) continue
+      const t = (await fec('/candidates/totals/', { candidate_id: found.candidate_id, cycle: 2026, election_full: true })).results[0]
+      where[found.candidate_id] = { id: r.id, party: PARTY(found.party_full) }
+      if (!(t?.receipts > 0)) continue
+      ;(totals[r.id] ||= { through: '', candidates: [] }).candidates.push({
+        id: found.candidate_id, name: c.name, party: PARTY(found.party_full),
+        raised: Math.round(t.receipts), spent: Math.round(t.disbursements || 0),
+        cash: t.cash_on_hand_end_period == null ? null : Math.round(t.cash_on_hand_end_period),
+        through: t.coverage_end_date?.slice(0, 10) || '',
+      })
+      console.log(`  added ${c.name} (${r.id}) from a direct lookup`)
+    }
+  }
+  console.log(`${lookups} direct lookups for candidates the bulk list missed`)
+
   for (const race of Object.values(totals)) {
     race.candidates.sort((a, b) => b.raised - a.raised)
     race.candidates = race.candidates.slice(0, 8)
@@ -154,8 +185,17 @@ async function main() {
     for (const r of (await fec('/committees/', { committee_id: ids.slice(i, i + 100), per_page: 100 })).results) committees[r.committee_id] = r
   }
 
+  // Parties for candidates who only appear in outside spending (e.g. lost a primary)
+  const noParty = [...new Set(rows.map((r) => r.candidate_id).filter((id) => id && !where[id]))]
+  for (let i = 0; i < noParty.length; i += 100) {
+    for (const c of (await fec('/candidates/', { candidate_id: noParty.slice(i, i + 100), per_page: 100 })).results) {
+      where[c.candidate_id] = { id: null, party: PARTY(c.party_full) }
+    }
+  }
+
   const outside = {}
   for (const r of rows) {
+    if (!(r.total > 0)) continue // net refunds and corrections
     const id = r.race
     const race = (outside[id] ||= { total: 0, candidates: {}, spenders: [] })
     const name = displayName(r.candidate_name || r.candidate_id, snapRaceOf(id))
