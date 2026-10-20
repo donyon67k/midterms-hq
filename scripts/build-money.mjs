@@ -73,7 +73,8 @@ function displayName(fecName, race) {
   const words = rest.split(/\s+/).filter((w) => w && !/^(SEN|SENATOR|REP|HON|MR|MRS|MS|DR|GOV|REV)\.?$/i.test(w))
   const suffix = words.filter((w) => SUFFIX.test(w))
   const title = (w) => w.toLowerCase().replace(/(^|[-' ])\p{L}/gu, (m) => m.toUpperCase()).replace(/^Mc(\p{L})/u, (m, c) => `Mc${c.toUpperCase()}`)
-  return [...words.filter((w) => !SUFFIX.test(w)), last, ...suffix].map(title).join(' ') || fecName
+  const fix = (w) => (/^(II|III|IV)$/i.test(w) ? w.toUpperCase() : title(w))
+  return [...words.filter((w) => !SUFFIX.test(w)), last, ...suffix].map(fix).join(' ') || fecName
 }
 
 const PARTY = (raw) => { const p = String(raw || '').toUpperCase(); return !p ? null : (p.startsWith('DEM') ? 'D' : p.startsWith('REP') ? 'R' : p.startsWith('LIB') ? 'L' : p.startsWith('GRE') ? 'G' : 'I') }
