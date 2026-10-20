@@ -101,7 +101,8 @@ async function main() {
   const where = {}
   const totals = {}
   for (const office of ['S', 'H']) {
-    const list = await allPages('/candidates/totals/', { cycle: 2026, election_full: true, office, has_raised_funds: true, sort: '-receipts' })
+    const base = { cycle: 2026, election_full: true, office, has_raised_funds: true, sort: '-receipts' }
+    const list = only ? (await Promise.all(only.map((state) => allPages('/candidates/totals/', { ...base, state })))).flat() : await allPages('/candidates/totals/', base)
     console.log(`${list.length} ${office === 'S' ? 'Senate' : 'House'} candidates with money raised`)
     for (const c of list) {
       const id = raceOf(office, c.state, c.district)
@@ -202,4 +203,8 @@ async function main() {
   else console.log('Preview it with `npm run dev`; publish with `npm run money -- --publish` or the admin page.')
 }
 
-main().catch((e) => { console.error(e.message); process.exit(1) })
+main().catch((e) => {
+  // in Actions, surface the reason as an annotation on the run page
+  console.error(process.env.GITHUB_ACTIONS ? `::error::${String(e.stack || e.message).replace(/\n/g, '%0A')}` : e.message)
+  process.exit(1)
+})
