@@ -153,7 +153,11 @@ export default function About({ open, onClose, section }) {
             Results come from Wikipedia’s volunteer-maintained pages and are <b>not official</b>; official results come from each
             state’s election office. Data can be incomplete or wrong; check the linked sources.
           </p>
-          <p className="brief dim">Privacy: the app has no accounts, analytics or tracking. Settings and cached data stay on your device.</p>
+          <p className="brief dim">
+            {IS_DESKTOP
+              ? 'Privacy: the app has no accounts, analytics or tracking. Settings and cached data stay on your device.'
+              : 'Privacy: no accounts and no cookies. The website counts anonymous page views (Vercel Web Analytics) so we know how many people visit; nothing identifies you. Settings stay in your browser. The desktop app counts nothing.'}
+          </p>
         </section>
 
         <section className="intel-block">
