@@ -31,10 +31,11 @@ async function fec(path, params) {
   for (let attempt = 0; ; attempt++) {
     const res = await fetch(`${API}${path}?${q}`, { headers: { 'User-Agent': UA } })
     if (res.ok) return res.json()
-    if (res.status === 429 && attempt < 3) {
+    // a personal key allows 1,000 requests an hour: wait out the window instead of failing
+    if (res.status === 429 && attempt < 14) {
       if (KEY === 'DEMO_KEY') throw new Error('FEC DEMO_KEY limit hit. Save your FEC key to CLAUDE HOME/.secrets/fec.key and run again.')
-      console.log('  rate limited, waiting a minute…')
-      await sleep(60_000)
+      console.log('  FEC hourly limit reached, waiting 5 minutes…')
+      await sleep(300_000)
       continue
     }
     if (res.status >= 500 && attempt < 3) { await sleep(3000); continue }
