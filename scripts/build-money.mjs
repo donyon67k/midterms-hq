@@ -69,9 +69,10 @@ function displayName(fecName, race) {
   const norm = (x) => x.normalize('NFD').replace(/[^a-z ]/gi, '').toLowerCase()
   const hit = race?.candidates?.find((c) => norm(c.name).split(' ').includes(norm(last).split(' ').pop()))
   if (hit) return hit.name
-  const words = rest.split(/\s+/).filter(Boolean)
+  // FEC names can carry titles: "CORNYN, JOHN SEN", "TILLIS, THOM R SEN", "MCCOLUMN, JONATHAN MR"
+  const words = rest.split(/\s+/).filter((w) => w && !/^(SEN|SENATOR|REP|HON|MR|MRS|MS|DR|GOV|REV)\.?$/i.test(w))
   const suffix = words.filter((w) => SUFFIX.test(w))
-  const title = (w) => w.toLowerCase().replace(/(^|[-' ])\p{L}/gu, (m) => m.toUpperCase())
+  const title = (w) => w.toLowerCase().replace(/(^|[-' ])\p{L}/gu, (m) => m.toUpperCase()).replace(/^Mc(\p{L})/u, (m, c) => `Mc${c.toUpperCase()}`)
   return [...words.filter((w) => !SUFFIX.test(w)), last, ...suffix].map(title).join(' ') || fecName
 }
 
@@ -195,7 +196,7 @@ async function main() {
 
   const outside = {}
   for (const r of rows) {
-    if (!(r.total > 0)) continue // net refunds and corrections
+    if (!(r.total >= 1)) continue // net refunds and corrections
     const id = r.race
     const race = (outside[id] ||= { total: 0, candidates: {}, spenders: [] })
     const name = displayName(r.candidate_name || r.candidate_id, snapRaceOf(id))

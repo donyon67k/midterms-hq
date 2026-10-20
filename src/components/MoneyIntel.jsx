@@ -120,7 +120,7 @@ export function OutsideMoney({ race, money }) {
   return (
     <div className="outside">
       <div className="outside-total">
-        <span className="pixel">{fmtMoney(o.total)}</span> spent by outside groups so far
+        <span className="pixel">{fmtMoney(o.total)}</span> spent by outside groups this cycle, primaries included
       </div>
       <div className="bars">
         {o.candidates.slice(0, 6).map((c) => (
