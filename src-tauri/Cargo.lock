@@ -2274,7 +2274,7 @@ dependencies = [
 
 [[package]]
 name = "midterms-hq"
-version = "2.0.4"
+version = "2.0.5"
 dependencies = [
  "log",
  "serde",
