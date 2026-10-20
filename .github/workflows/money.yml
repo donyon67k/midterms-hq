@@ -1,5 +1,5 @@
-# Refreshes the FEC money data every 6 hours and publishes it as money.json on the
-# `live` branch, where every installed app and the website read it. The FEC key stays
+# Refreshes the money data every 6 hours (FEC for Senate/House, the states' own data for
+# governors) and publishes it as money.json on the `live` branch, where every installed app and the website read it. The FEC key stays
 # here as a secret, so no copy of the app ever ships a key or needs one from its user.
 #
 # Required repo secret:
@@ -15,7 +15,7 @@ on:
   # also right after the builder itself changes
   push:
     branches: [main]
-    paths: ['scripts/build-money.mjs', '.github/workflows/money.yml']
+    paths: ['scripts/build-money.mjs', 'scripts/build-gov-money.mjs', '.github/workflows/money.yml']
 
 permissions:
   contents: write
@@ -27,19 +27,24 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 100
+    timeout-minutes: 130
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Build and publish money.json
+      - name: FEC totals and outside spending
         env:
           FEC_API_KEY: ${{ secrets.FEC_API_KEY }}
+        run: |
+          if [ -z "$FEC_API_KEY" ]; then echo "::error::Add the FEC_API_KEY repo secret first"; exit 1; fi
+          node scripts/build-money.mjs
+      # runs even if the FEC step failed: it then builds on the last published copy
+      - name: Governor money from state data, then publish money.json
+        if: ${{ !cancelled() }}
+        env:
           GIT_AUTHOR_NAME: midterms-hq bot
           GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
           GIT_COMMITTER_NAME: midterms-hq bot
           GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-        run: |
-          if [ -z "$FEC_API_KEY" ]; then echo "::error::Add the FEC_API_KEY repo secret first"; exit 1; fi
-          node scripts/build-money.mjs --publish
+        run: node scripts/build-gov-money.mjs --publish

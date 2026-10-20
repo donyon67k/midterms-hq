@@ -144,8 +144,12 @@ export default function RaceView({ race, stateName, results, watch }) {
   const fecPub = money?.totals?.[race.id]
   // after the primaries, show the people still on the ballot (losers' war chests confuse)
   const onBallot = fecPub?.candidates.filter((r) => race.candidates.some((c) => sameCandidate(c.name, r.name)))
+  // governors: the state's own data where the state publishes it (build-gov-money.mjs)
+  const govPub = race.type === 'governor' ? money?.governor?.[race.state] : null
   const finance = fecPub
     ? { rows: onBallot.length ? onBallot : fecPub.candidates, asOf: fecPub.through ? `FEC reports through ${fecPub.through}` : '', src: 'FEC filings' }
+    : govPub
+    ? { rows: govPub.candidates, asOf: govPub.asOf ? `State reports through ${govPub.asOf}` : '', src: 'State filings', label: govPub.source, url: govPub.url }
     : intel?.fundraising?.candidates?.length
     ? { rows: intel.fundraising.candidates, asOf: intel.fundraising.asOf, src: 'Filings as reported on the race page' }
     : fec?.length ? { rows: fec.filter((r) => r.raised > 0).slice(0, 6), asOf: `FEC through ${fec[0]?.through || '—'}`, src: 'OpenFEC live API' } : null
@@ -308,6 +312,8 @@ export default function RaceView({ race, stateName, results, watch }) {
             <div className="bars-cap">
               {finance.src === 'FEC filings'
                 ? <>{finance.asOf} · Source: <a href={fecCandidateUrl(finance.rows[0].id)} target="_blank" rel="noreferrer">FEC.gov</a> (each campaign&apos;s own reports)</>
+                : finance.src === 'State filings'
+                ? <>{finance.asOf} · Source: {finance.url ? <a href={finance.url} target="_blank" rel="noreferrer">{finance.label}</a> : finance.label}</>
                 : <>
                   {finance.asOf ? `As of ${finance.asOf} · ` : ''}
                   {finance.src === 'OpenFEC live API' || !page ? finance.src : <>Campaign reports as listed on <a href={wikiUrl(page)} target="_blank" rel="noreferrer">Wikipedia</a>, which cites the {race.type === 'governor' ? 'state' : 'FEC'} filings</>}

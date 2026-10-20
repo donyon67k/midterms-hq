@@ -19,7 +19,8 @@
     "data:counties": "node scripts/build-counties.mjs",
     "data:cities": "node scripts/build-cities.mjs",
     "app:dmg": "bash scripts/build-installer.sh",
-    "money": "node scripts/build-money.mjs"
+    "money": "node scripts/build-money.mjs",
+    "gov-money": "node scripts/build-gov-money.mjs"
   },
   "dependencies": {
     "@fontsource/press-start-2p": "^5.3.0",
