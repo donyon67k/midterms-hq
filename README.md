@@ -62,8 +62,9 @@ non-https links are dropped.
 
 **Outside money:** `npm run money` pulls every outside group's spending on each Senate and House
 race from the FEC (Schedule E independent expenditures: super PACs, PACs, party committees) into
-`live/money.json`; `npm run money -- --publish` (or the admin page's publish button) pushes it to
-the `live` branch next to `control.json`. It needs your FEC key in `CLAUDE HOME/.secrets/fec.key`
+`live/money.json`; `npm run money -- --publish` pushes it to the `live` branch next to `control.json`
+(the admin page's publish never touches it). GitHub Actions does this every 6 hours
+(`.github/workflows/money.yml`, repo secret `FEC_API_KEY`), so normally you don't run it. It needs your FEC key in `CLAUDE HOME/.secrets/fec.key`
 (DEMO_KEY runs out after a few requests). Run it every few days; daily in the last weeks.
 
 Code changes (layout, features) still ship as a release (below). Installed copies download the

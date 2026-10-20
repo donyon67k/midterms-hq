@@ -92,7 +92,9 @@ let pending
 export function fetchMoney() {
   pending ||= (async () => {
     try {
-      const res = DEV ? await fetch(`/live/money.json?t=${Date.now()}`) : await netFetch(MONEY_URL)
+      // dev previews a local live/money.json if there is one, else the published copy
+      let res = DEV ? await fetch(`/live/money.json?t=${Date.now()}`) : null
+      if (!res?.ok || !/json/.test(res.headers.get('content-type') || '')) res = await netFetch(MONEY_URL)
       if (!res.ok) throw new Error(String(res.status))
       const m = sanitizeMoney(await res.json())
       cacheSet('money', m)

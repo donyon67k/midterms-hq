@@ -242,8 +242,8 @@ async function main() {
   const ie = Object.values(outside).reduce((a, r) => a + r.total, 0)
   console.log(`Wrote live/money.json: totals for ${Object.keys(totals).length} races, outside money in ${Object.keys(outside).length} ($${(ie / 1e6).toFixed(1)}M)`)
 
-  if (process.argv.includes('--publish')) console.log(await publishLive(ROOT))
-  else console.log('Preview it with `npm run dev`; publish with `npm run money -- --publish` or the admin page.')
+  if (process.argv.includes('--publish')) console.log(await publishLive(ROOT, ['money.json']))
+  else console.log('Preview it with `npm run dev`; publish with `npm run money -- --publish`.')
 }
 
 main().catch((e) => {

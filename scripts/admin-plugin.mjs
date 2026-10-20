@@ -2,7 +2,7 @@
 // Never part of a build: Vite only runs `configureServer` for `vite dev`.
 //   GET  /__admin/control   -> live/control.json
 //   POST /__admin/control   -> overwrite live/control.json
-//   POST /__admin/publish   -> push live/ (control.json, money.json) to the `live` branch
+//   POST /__admin/publish   -> push live/control.json to the `live` branch (money.json untouched)
 // The control file lives on its own branch so publishing never touches code on main.
 import { spawn } from 'node:child_process'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -23,20 +23,23 @@ const git = (root, args, input) => new Promise((resolve, reject) => {
   else p.stdin.end()
 })
 
-// Files on the `live` branch. A file with no local draft keeps its published copy.
+// Files on the `live` branch. Each publisher sends only its own file and every other
+// file keeps its published copy (the admin page never overwrites the money data that
+// GitHub Actions refreshes, and vice versa).
 const LIVE_FILES = ['control.json', 'money.json']
 
-// Commit the live/ drafts onto the `live` branch without checking it out, then push.
-export async function publishLive(root) {
+// Commit live/<files> onto the `live` branch without checking it out, then push.
+export async function publishLive(root, files = ['control.json']) {
   await git(root, ['fetch', 'origin', BRANCH]).catch(() => {}) // branch may not exist yet
   const parent = await git(root, ['rev-parse', '--verify', '--quiet', `origin/${BRANCH}`]).catch(() => '')
   let entries = ''
   for (const name of LIVE_FILES) {
     const local = join(root, 'live', name)
-    let blob
-    try { readFileSync(local); blob = await git(root, ['hash-object', '-w', local]) } catch {
-      blob = parent ? await git(root, ['rev-parse', '--verify', '--quiet', `${parent}:${name}`]).catch(() => '') : ''
+    let blob = ''
+    if (files.includes(name)) {
+      try { readFileSync(local); blob = await git(root, ['hash-object', '-w', local]) } catch { /* no draft */ }
     }
+    if (!blob && parent) blob = await git(root, ['rev-parse', '--verify', '--quiet', `${parent}:${name}`]).catch(() => '')
     if (blob) entries += `100644 blob ${blob}\t${name}\n`
   }
   const tree = await git(root, ['mktree'], entries)
