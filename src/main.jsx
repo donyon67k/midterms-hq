@@ -5,6 +5,7 @@ import '@fontsource/share-tech-mono/400.css'
 import './index.css'
 import App from './App.jsx'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { IS_DESKTOP, routeExternalLinks } from './lib/desktop.js'
 
 routeExternalLinks()
@@ -14,5 +15,6 @@ createRoot(document.getElementById('root')).render(
     <App />
     {/* visitor counts for the website only (Vercel Web Analytics); the desktop app sends nothing */}
     {!IS_DESKTOP && <Analytics />}
+    {!IS_DESKTOP && <SpeedInsights />}
   </StrictMode>,
 )
