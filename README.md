@@ -60,6 +60,12 @@ touches code on `main`. Installed apps read it on every refresh (raw.githubuserc
 caches ~5 min). The app treats the file as data only: unknown fields, bad labels and
 non-https links are dropped.
 
+**Outside money:** `npm run money` pulls every outside group's spending on each Senate and House
+race from the FEC (Schedule E independent expenditures: super PACs, PACs, party committees) into
+`live/money.json`; `npm run money -- --publish` (or the admin page's publish button) pushes it to
+the `live` branch next to `control.json`. It needs your FEC key in `CLAUDE HOME/.secrets/fec.key`
+(DEMO_KEY runs out after a few requests). Run it every few days; daily in the last weeks.
+
 Code changes (layout, features) still ship as a release (below). Installed copies download the
 new version in the background and show **RESTART TO UPDATE**.
 
@@ -87,6 +93,8 @@ listed at the top of the workflow file.
 | Per-race polls, polling averages, fundraising | The individual race article for that race | Fetched when you open a race, cached 10 min |
 | Candidate bios, photos, platform/issue positions | Wikipedia candidate articles | On demand, cached 6 h |
 | Live federal finance totals | OpenFEC API (`⟳ PULL LIVE FEC TOTALS`) | On demand, cached 1 h |
+| Outside money (super PAC / PAC / party spending for and against each federal candidate) | FEC Schedule E via `npm run money` → `money.json` on the `live` branch | When you run it |
+| Governor filing links | Each state's official campaign-finance site (`STATE_PORTALS` in `src/data/money.js`) | Static |
 | Congressional district boundaries (2026 / 120th Congress lines, incl. mid-decade redraws) | U.S. Census TIGERweb ArcGIS service | When a state's district map opens, cached 7 days |
 | County boundaries | `us-atlas` (bundled, loaded on first zoom) | Static |
 | News Desk top stories | 34 national outlets' public RSS feeds, picked for an even left/center/right spread, plus 50 statehouse newsrooms and Google News searches for Senate, governor and House coverage (`src/data/sources.js`) | Every 4 min; kept as a 14-day archive on disk |

@@ -2,7 +2,7 @@
 // Never part of a build: Vite only runs `configureServer` for `vite dev`.
 //   GET  /__admin/control   -> live/control.json
 //   POST /__admin/control   -> overwrite live/control.json
-//   POST /__admin/publish   -> push it to the repo's `live` branch (as control.json)
+//   POST /__admin/publish   -> push live/ (control.json, money.json) to the `live` branch
 // The control file lives on its own branch so publishing never touches code on main.
 import { spawn } from 'node:child_process'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -23,12 +23,23 @@ const git = (root, args, input) => new Promise((resolve, reject) => {
   else p.stdin.end()
 })
 
-// Commit live/control.json onto the `live` branch without checking it out, then push.
-async function publish(root) {
+// Files on the `live` branch. A file with no local draft keeps its published copy.
+const LIVE_FILES = ['control.json', 'money.json']
+
+// Commit the live/ drafts onto the `live` branch without checking it out, then push.
+export async function publishLive(root) {
   await git(root, ['fetch', 'origin', BRANCH]).catch(() => {}) // branch may not exist yet
   const parent = await git(root, ['rev-parse', '--verify', '--quiet', `origin/${BRANCH}`]).catch(() => '')
-  const blob = await git(root, ['hash-object', '-w', FILE])
-  const tree = await git(root, ['mktree'], `100644 blob ${blob}\tcontrol.json\n`)
+  let entries = ''
+  for (const name of LIVE_FILES) {
+    const local = join(root, 'live', name)
+    let blob
+    try { readFileSync(local); blob = await git(root, ['hash-object', '-w', local]) } catch {
+      blob = parent ? await git(root, ['rev-parse', '--verify', '--quiet', `${parent}:${name}`]).catch(() => '') : ''
+    }
+    if (blob) entries += `100644 blob ${blob}\t${name}\n`
+  }
+  const tree = await git(root, ['mktree'], entries)
   if (parent) {
     const prevTree = await git(root, ['rev-parse', `${parent}^{tree}`])
     if (prevTree === tree) return 'Nothing new to publish — GitHub already has this version.'
@@ -72,7 +83,7 @@ export default function adminPlugin() {
             return send(200, { ok: true, updatedAt: data.updatedAt })
           }
           if (req.method === 'POST' && req.url === '/publish') {
-            return send(200, { ok: true, output: await publish(root) })
+            return send(200, { ok: true, output: await publishLive(root) })
           }
           send(404, { error: 'not found' })
         } catch (e) {

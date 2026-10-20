@@ -4,6 +4,8 @@ import { districtLabel, fmtMoney, incLabel, partyColor, ratingClass, ratingColor
 import CandidateCard from './CandidateCard.jsx'
 import { NewsBar, RaceNews, useRaceNews } from './News.jsx'
 import Block, { openBlock } from './Block.jsx'
+import { FinanceExplainer, OutsideMoney, StatePortal } from './MoneyIntel.jsx'
+import { fecCandidateUrl, useMoney } from '../data/money.js'
 
 const lastName = (n = '') => n.replace(/\(.*?\)/g, '').replace(/,.*$/, '').trim().split(/\s+/).filter((w) => !/^(jr\.?|sr\.?|ii|iii|iv)$/i.test(w)).pop()?.toLowerCase()
 
@@ -75,6 +77,7 @@ export default function RaceView({ race, stateName, results, watch }) {
   const [err, setErr] = useState(null)
   const [fec, setFec] = useState(null)
   const [fecErr, setFecErr] = useState(null)
+  const money = useMoney()
 
   const isHouse = race.type === 'house'
   const page = race.page
@@ -137,7 +140,13 @@ export default function RaceView({ race, stateName, results, watch }) {
 
   const leaderName = projection?.length ? [...projection].sort((a, b) => b.value - a.value)[0].name : null
 
-  const finance = intel?.fundraising?.candidates?.length
+  // FEC filings first for federal races (published every 6 h), then the race page's table
+  const fecPub = money?.totals?.[race.id]
+  // after the primaries, show the people still on the ballot (losers' war chests confuse)
+  const onBallot = fecPub?.candidates.filter((r) => race.candidates.some((c) => sameCandidate(c.name, r.name)))
+  const finance = fecPub
+    ? { rows: onBallot.length ? onBallot : fecPub.candidates, asOf: fecPub.through ? `FEC reports through ${fecPub.through}` : '', src: 'FEC filings' }
+    : intel?.fundraising?.candidates?.length
     ? { rows: intel.fundraising.candidates, asOf: intel.fundraising.asOf, src: 'Filings as reported on the race page' }
     : fec?.length ? { rows: fec.filter((r) => r.raised > 0).slice(0, 6), asOf: `FEC through ${fec[0]?.through || '—'}`, src: 'OpenFEC live API' } : null
   const maxRaised = finance ? Math.max(...finance.rows.map((r) => r.raised || 0), 1) : 1
@@ -296,7 +305,14 @@ export default function RaceView({ race, stateName, results, watch }) {
       <Block title="▣ CAMPAIGN FINANCE" closed>
         {finance ? (
           <div className="bars">
-            <div className="bars-cap">{finance.asOf ? `As of ${finance.asOf} · ` : ''}{finance.src}</div>
+            <div className="bars-cap">
+              {finance.src === 'FEC filings'
+                ? <>{finance.asOf} · Source: <a href={fecCandidateUrl(finance.rows[0].id)} target="_blank" rel="noreferrer">FEC.gov</a> (each campaign&apos;s own reports)</>
+                : <>
+                  {finance.asOf ? `As of ${finance.asOf} · ` : ''}
+                  {finance.src === 'OpenFEC live API' || !page ? finance.src : <>Campaign reports as listed on <a href={wikiUrl(page)} target="_blank" rel="noreferrer">Wikipedia</a>, which cites the {race.type === 'governor' ? 'state' : 'FEC'} filings</>}
+                </>}
+            </div>
             {finance.rows.map((r) => (
               <div key={r.name} className="fin-row" title={`${r.name}: raised ${fmtMoney(r.raised)}, spent ${fmtMoney(r.spent)}, cash ${fmtMoney(r.cash)}`}>
                 <span className="bar-name">{r.name}</span>
@@ -310,11 +326,11 @@ export default function RaceView({ race, stateName, results, watch }) {
             <div className="legend-row"><span><i className="sw raised" /> Raised</span><span><i className="sw spent" /> Spent (overlay)</span></div>
           </div>
         ) : race.type === 'governor' ? (
-          <div className="dim">{intel ? 'No fundraising table on file — governor races report to state agencies, not the FEC.' : 'Scanning state filings…'}</div>
+          <div className="dim">{intel ? 'No fundraising table on file yet. Governor candidates report to their state, not the FEC; the official filings are linked below.' : 'Scanning state filings…'}</div>
         ) : (
           <div className="dim">{intel ? 'No fundraising table on the race page.' : 'Scanning…'}</div>
         )}
-        {race.type !== 'governor' && (
+        {race.type !== 'governor' && !fecPub && (
           <div className="fec-row">
             <button type="button" className="btn-mini" onClick={loadFec}>⟳ PULL LIVE FEC TOTALS</button>
             {fecErr && <span className="err">{fecErr}</span>}
@@ -332,6 +348,13 @@ export default function RaceView({ race, stateName, results, watch }) {
             )}
           </div>
         )}
+        <StatePortal race={race} />
+        <FinanceExplainer race={race} />
+      </Block>
+
+      {/* OUTSIDE MONEY */}
+      <Block title="▣ OUTSIDE MONEY" closed>
+        <OutsideMoney race={race} money={money} />
       </Block>
 
       {/* CANDIDATES */}

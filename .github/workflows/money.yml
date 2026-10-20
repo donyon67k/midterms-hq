@@ -1,0 +1,45 @@
+# Refreshes the FEC money data every 6 hours and publishes it as money.json on the
+# `live` branch, where every installed app and the website read it. The FEC key stays
+# here as a secret, so no copy of the app ever ships a key or needs one from its user.
+#
+# Required repo secret:
+#   FEC_API_KEY — a free api.data.gov key (https://api.data.gov/signup/)
+#
+# Run it by hand from the Actions tab ("money" → Run workflow) after big filing deadlines.
+name: money
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+  # also right after the builder itself changes
+  push:
+    branches: [main]
+    paths: ['scripts/build-money.mjs', '.github/workflows/money.yml']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: money
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build and publish money.json
+        env:
+          FEC_API_KEY: ${{ secrets.FEC_API_KEY }}
+          GIT_AUTHOR_NAME: midterms-hq bot
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: midterms-hq bot
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          if [ -z "$FEC_API_KEY" ]; then echo "::error::Add the FEC_API_KEY repo secret first"; exit 1; fi
+          node scripts/build-money.mjs --publish
