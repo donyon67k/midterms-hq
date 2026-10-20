@@ -45,19 +45,28 @@ function layout(n, rows) {
   pts.sort((p, q) => q.a - p.a || p.r - q.r)
   const gap = (R - r0) / Math.max(1, rows - 1)
   const arc = (Math.PI * R) / per[rows - 1]
-  return { pts, dot: Math.min(gap, arc) * 0.42 }
+  return { pts, dot: Math.min(gap, arc) * 0.42, r0 }
 }
 
 const ROWS = (n) => (n > 300 ? 11 : n > 80 ? 6 : 4)
+const GAP = 6 // dx between the three tallies, in SVG units
+
+// Largest font (max 9 units) that keeps the three tallies inside the arc's empty middle.
+// Press Start 2P glyphs are 1em wide, so the width is just digits + gaps.
+function tallySize(text, r0, dot) {
+  const room = 2 * (r0 - dot * 1.6) * 0.92
+  return Math.min(9, (room - 2 * GAP) / text.length)
+}
 
 export function SeatChart({ label, icon, races, now, results, need, onPick, wide }) {
   const seats = useMemo(() => seatsFor(races, now, results), [races, now, results])
-  const { pts, dot } = useMemo(() => layout(seats.length, ROWS(seats.length)), [seats.length])
+  const { pts, dot, r0 } = useMemo(() => layout(seats.length, ROWS(seats.length)), [seats.length])
   const [hover, setHover] = useState(null)
   const count = (pred) => seats.filter(pred).length
   const d = count((s) => (results ? s.color === resultColor({ party: 'D' }) || (s.notUp && s.order < 0) : s.order < -0.35))
   const r = count((s) => (results ? s.color === resultColor({ party: 'R' }) || (s.notUp && s.order > 0) : s.order > 0.35))
   const mid = seats.length - d - r
+  const size = tallySize(`${d}${mid}${r}`, r0, dot)
   return (
     <div className={`seat-chart ${wide ? 'wide' : ''}`}>
       <div className="power-head">
@@ -85,10 +94,10 @@ export function SeatChart({ label, icon, races, now, results, need, onPick, wide
             </circle>
           )
         })}
-        <text x="110" y="100" textAnchor="middle" className="seat-big">
+        <text x="110" y="104" textAnchor="middle" className="seat-big" style={{ fontSize: size }}>
           <tspan className="party-d-fill">{d}</tspan>
-          <tspan className="seat-mid-fill" dx="6">{mid}</tspan>
-          <tspan className="party-r-fill" dx="6">{r}</tspan>
+          <tspan className="seat-mid-fill" dx={GAP}>{mid}</tspan>
+          <tspan className="party-r-fill" dx={GAP}>{r}</tspan>
         </text>
       </svg>
       <div className="seat-hover">{hover != null && seats[hover] ? seats[hover].label : <span className="dim"><span className="hover-only">Hover a seat · click to open its race</span><span className="touch-only">Tap a seat to open its race</span></span>}</div>

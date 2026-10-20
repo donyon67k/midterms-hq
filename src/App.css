@@ -664,7 +664,7 @@ details.explain table { font-size: 12px; }
 .seat.live { cursor: pointer; }
 .seat.not-up { opacity: 0.85; }
 .seat-majority { stroke: #fff; stroke-width: 0.5; stroke-dasharray: 1.5 1.5; opacity: 0.55; }
-.seat-big { font-family: var(--font-pixel); font-size: 9px; }
+.seat-big { font-family: var(--font-pixel); font-size: 9px; paint-order: stroke; stroke: #03080f; stroke-width: 2px; stroke-linejoin: round; }
 .party-d-fill { fill: #4a80ff; }
 .party-r-fill { fill: #ff5a5a; }
 .seat-mid-fill { fill: var(--tossup); }
