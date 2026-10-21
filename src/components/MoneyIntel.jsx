@@ -3,6 +3,11 @@
 import { fmtMoney, partyColor } from '../lib/util.js'
 import { STATE_PORTALS, fecCommitteeUrl, fecOutsideUrl } from '../data/money.js'
 
+// Where a state's own search can filter for independent expenditures (outside spending)
+const STATE_IE_SEARCH = {
+  MI: ['Michigan expenditure search (Schedule: Independent Expenditures)', 'https://mi-boe.entellitrak.com/etk-mi-boe-prod/page.request.do?page=page.miboeCommitteeExpenditureAnalysisPublicSearch'],
+}
+
 const FEC_IE_GUIDE = 'https://www.fec.gov/help-candidates-and-committees/making-independent-expenditures/'
 const FEC_LIMITS = 'https://www.fec.gov/help-candidates-and-committees/candidate-taking-receipts/contribution-limits/'
 const NCSL_LIMITS = 'https://www.ncsl.org/elections-and-campaigns/state-limits-on-contributions-to-candidates'
@@ -83,11 +88,18 @@ export function OutsideMoney({ race, money }) {
   const gov = race.type === 'governor'
   if (gov) {
     const p = STATE_PORTALS[race.state]
+    const ie = STATE_IE_SEARCH[race.state]
     return (
       <>
-        <div className="dim">
-          The FEC doesn&apos;t cover governor races, so outside spending here is reported to the state
-          {p ? <> (<a href={p[1]} target="_blank" rel="noreferrer">{p[0]} ↗</a>)</> : ''}.
+        <p className="brief">
+          <b>Outside groups do spend here, often heavily</b>: the Republican and Democratic Governors Associations, their
+          state-level PACs, unions, business groups and super PACs. But they report that spending to the state, not to the
+          federal FEC, so it isn&apos;t in the federal data this section uses for Senate and House races.
+        </p>
+        <div className="money-src">
+          SEE IT IN THE STATE&apos;S RECORDS:{' '}
+          {ie ? <><a href={ie[1]} target="_blank" rel="noreferrer">{ie[0]} ↗</a>{p ? <> · </> : null}</> : null}
+          {p ? <a href={p[1]} target="_blank" rel="noreferrer">{p[0]} ↗</a> : 'the state campaign-finance office'}
         </div>
         <OutsideExplainer gov />
       </>
