@@ -28,6 +28,8 @@ const git = (root, args, input) => new Promise((resolve, reject) => {
 // GitHub Actions refreshes, and vice versa).
 const LIVE_FILES = ['control.json', 'money.json']
 
+const NO_DEPLOY = '{ "git": { "deploymentEnabled": false } }\n'
+
 // Commit live/<files> onto the `live` branch without checking it out, then push.
 export async function publishLive(root, files = ['control.json']) {
   await git(root, ['fetch', 'origin', BRANCH]).catch(() => {}) // branch may not exist yet
@@ -42,6 +44,8 @@ export async function publishLive(root, files = ['control.json']) {
     if (!blob && parent) blob = await git(root, ['rev-parse', '--verify', '--quiet', `${parent}:${name}`]).catch(() => '')
     if (blob) entries += `100644 blob ${blob}\t${name}\n`
   }
+  // the live branch is data only: tell Vercel not to build it as the website
+  entries += `100644 blob ${await git(root, ['hash-object', '-w', '--stdin'], NO_DEPLOY)}\tvercel.json\n`
   const tree = await git(root, ['mktree'], entries)
   if (parent) {
     const prevTree = await git(root, ['rev-parse', `${parent}^{tree}`])
