@@ -38,3 +38,11 @@ test('every 2026 governor race has an official state filing link', () => {
   const states = 'AL AK AZ AR CA CO CT FL GA HI ID IL IA KS ME MD MA MI MN NE NV NH NM NY OH OK OR PA RI SC SD TN TX VT WI WY'.split(' ')
   for (const st of states) assert.match(STATE_PORTALS[st]?.[1] || '', /^https:\/\//, st)
 })
+
+test('displayName keeps two same-surname candidates apart (Alaska 2026 Sullivans)', async () => {
+  const { displayName } = await import('../scripts/build-money.mjs')
+  const race = { candidates: [{ name: 'Gerald Heikes' }, { name: 'Mary Peltola', link: 'Mary Peltola' }, { name: 'Dan J. Sullivan', link: null }, { name: 'Dan S. Sullivan', link: 'Dan Sullivan (U.S. senator)' }] }
+  assert.equal(displayName('SULLIVAN, DAN', race, true), 'Dan S. Sullivan')
+  assert.equal(displayName('SULLIVAN, DANIEL J', race, false), 'Dan J. Sullivan')
+  assert.equal(displayName('PELTOLA, MARY', race), 'Mary Peltola')
+})

@@ -65,11 +65,23 @@ const TYPE = (full = '') =>
 // "COLLINS, MICHAEL A JR" -> the race's own spelling ("Mike Collins") when we have the
 // candidate, otherwise "Michael A Collins Jr"
 const SUFFIX = /^(JR|SR|II|III|IV)\.?$/i
-function displayName(fecName, race) {
+export function displayName(fecName, race, incumbent = false) {
   const [last = '', rest = ''] = fecName.split(',').map((x) => x.trim())
   const norm = (x) => x.normalize('NFD').replace(/[^a-z ]/gi, '').toLowerCase()
-  const hit = race?.candidates?.find((c) => norm(c.name).split(' ').includes(norm(last).split(' ').pop()))
-  if (hit) return hit.name
+  const hits = race?.candidates?.filter((c) => norm(c.name).split(' ').includes(norm(last).split(' ').pop())) || []
+  if (hits.length === 1) return hits[0].name
+  if (hits.length > 1) {
+    // Same surname twice on one ballot (Alaska 2026: Sen. Dan S. Sullivan and Dan J. Sullivan):
+    // match the middle initial, and an incumbent with no initial to the one with a Wikipedia article.
+    const mid = rest.split(/\s+/).filter((w) => w && !SUFFIX.test(w) && !/^(SEN|SENATOR|REP|HON|MR|MRS|MS|DR)\.?$/i.test(w))[1]?.[0]?.toLowerCase()
+    const midOf = (n) => n.replace(/\(.*?\)/g, '').trim().split(/\s+/).slice(1, -1).find((w) => !/^(jr|sr|ii|iii|iv)\.?$/i.test(w))?.[0]?.toLowerCase()
+    const byMid = mid && hits.find((c) => midOf(c.name) === mid)
+    if (byMid) return byMid.name
+    if (incumbent) {
+      const linked = hits.filter((c) => c.link)
+      if (linked.length === 1) return linked[0].name
+    }
+  }
   // FEC names can carry titles: "CORNYN, JOHN SEN", "TILLIS, THOM R SEN", "MCCOLUMN, JONATHAN MR"
   const words = rest.split(/\s+/).filter((w) => w && !/^(SEN|SENATOR|REP|HON|MR|MRS|MS|DR|GOV|REV)\.?$/i.test(w))
   const suffix = words.filter((w) => SUFFIX.test(w))
@@ -109,12 +121,13 @@ async function main() {
     console.log(`${list.length} ${office === 'S' ? 'Senate' : 'House'} candidates with money raised`)
     for (const c of list) {
       const id = raceOf(office, c.state, c.district)
-      where[c.candidate_id] = { id, party: PARTY(c.party_full || c.party) }
+      const name = displayName(c.name, snapRaceOf(id), c.incumbent_challenge === 'I' || /^incumbent/i.test(c.incumbent_challenge_full || ''))
+      where[c.candidate_id] = { id, party: PARTY(c.party_full || c.party), name }
       if (!id || !(c.receipts > 0)) continue
       const race = (totals[id] ||= { through: '', candidates: [] })
       race.candidates.push({
         id: c.candidate_id,
-        name: displayName(c.name, snapRaceOf(id)),
+        name,
         party: PARTY(c.party_full || c.party),
         raised: Math.round(c.receipts),
         spent: Math.round(c.disbursements || 0),
@@ -201,7 +214,7 @@ async function main() {
     if (!(r.total >= 1)) continue // net refunds and corrections
     const id = r.race
     const race = (outside[id] ||= { total: 0, candidates: {}, spenders: [] })
-    const name = displayName(r.candidate_name || r.candidate_id, snapRaceOf(id))
+    const name = where[r.candidate_id]?.name || displayName(r.candidate_name || r.candidate_id, snapRaceOf(id))
     const c = (race.candidates[r.candidate_id] ||= { id: r.candidate_id, name, party: where[r.candidate_id]?.party || null, support: 0, oppose: 0 })
     c[r.support_oppose_indicator === 'O' ? 'oppose' : 'support'] += r.total
     race.total += r.total
@@ -246,7 +259,8 @@ async function main() {
   else console.log('Preview it with `npm run dev`; publish with `npm run money -- --publish`.')
 }
 
-main().catch((e) => {
+// run only as a script, so tests can import displayName
+if (process.argv[1] === fileURLToPath(import.meta.url)) main().catch((e) => {
   // in Actions, surface the reason as an annotation on the run page
   console.error(process.env.GITHUB_ACTIONS ? `::error::${String(e.stack || e.message).replace(/\n/g, '%0A')}` : e.message)
   process.exit(1)

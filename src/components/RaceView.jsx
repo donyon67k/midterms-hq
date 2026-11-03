@@ -11,21 +11,29 @@ const lastName = (n = '') => n.replace(/\(.*?\)/g, '').replace(/,.*$/, '').trim(
 
 const firstInitial = (n = '') => n.replace(/\(.*?\)/g, '').trim()[0]?.toLowerCase()
 
-// Same last name AND first initial, so two candidates sharing a surname don't cross-wire.
-// FEC names are "LAST, FIRST"; race-page tables are "First Last".
+// Same last name AND first initial (and middle initial when both have one), so candidates
+// sharing a name don't cross-wire (Alaska 2026: Dan S. Sullivan and Dan J. Sullivan).
+// FEC names are "LAST, FIRST M"; race-page tables are "First M. Last".
+const SFX = /^(jr|sr|ii|iii|iv)\.?$/i
 function sameCandidate(a = '', b = '') {
-  const parse = (n) => (n.includes(',')
-    ? { last: n.split(',')[0].trim().toLowerCase(), first: n.split(',')[1]?.trim()[0]?.toLowerCase() }
-    : { last: lastName(n), first: firstInitial(n) })
+  if (a === b) return true
+  const parse = (n) => {
+    if (n.includes(',')) {
+      const rest = n.split(',')[1]?.trim().split(/\s+/).filter((w) => w && !SFX.test(w)) || []
+      return { last: n.split(',')[0].trim().toLowerCase(), first: rest[0]?.[0]?.toLowerCase(), mid: rest[1]?.[0]?.toLowerCase() }
+    }
+    const words = n.replace(/\(.*?\)/g, '').trim().split(/\s+/).filter((w) => !SFX.test(w))
+    return { last: lastName(n), first: firstInitial(n), mid: words.length > 2 ? words[1][0]?.toLowerCase() : undefined }
+  }
   const x = parse(a)
   const y = parse(b)
-  return x.last === y.last && (!x.first || !y.first || x.first === y.first)
+  return x.last === y.last && (!x.first || !y.first || x.first === y.first) && (!x.mid || !y.mid || x.mid === y.mid)
 }
 const primaryParty = (title) => (/democrat/i.test(title) ? 'D' : /republican/i.test(title) ? 'R' : /libertarian/i.test(title) ? 'L' : /green/i.test(title) ? 'G' : 'I')
 // Expand only the deciding round of the Democratic and Republican primaries.
 const finalMajorRound = (p, all) => ['D', 'R'].includes(primaryParty(p.title))
   && (p.runoff || !all.some((q) => q.runoff && primaryParty(q.title) === primaryParty(p.title)))
-const matchBy = (list, cand, key = 'name') => list?.find((x) => sameCandidate(x[key], cand.name))
+const matchBy = (list, cand, key = 'name') => list?.find((x) => x[key] === cand.name) || list?.find((x) => sameCandidate(x[key], cand.name))
 
 // Poll end date from strings like "October 9–12, 2026" or "Sep 30 – Oct 2, 2026".
 const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
