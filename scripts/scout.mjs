@@ -5,6 +5,8 @@
 // It only searches when something suggests a race may have been called (free signals):
 //   - a headline says a candidate won/was projected/conceded (news feeds, every 60 s)
 //   - a slow backup sweep of the closest races (SCOUT_FALLBACK minutes, default 40; 0 = off)
+//   - safe House seats: one search per state for up to 12 seats at once, 45 min after its
+//     polls close and every 2 h while any are uncalled
 // Each check, Claude searches the web for an explicit call by a decision desk (AP, Decision
 // Desk HQ, NBC, CNN, ABC, CBS, Fox News) and for the latest vote count (official state/county
 // results first). The scout then decides:
@@ -31,7 +33,7 @@ import { pollCloseFor, raceTitle } from '../src/lib/util.js'
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const OUT = join(ROOT, 'live/scout.json')
 const STATE_FILE = join(ROOT, 'live/scout-state.json') // local only: review queue, decisions
-const PORT = 5299
+const PORT = +process.env.SCOUT_PORT || 5299
 const MODEL = 'claude-opus-5-5'
 const BUDGET = +process.env.SCOUT_BUDGET || 75
 const WORKERS = +process.env.SCOUT_WORKERS || 8
@@ -84,7 +86,7 @@ const closed = (r) => { const w = pollCloseFor(r.state); return w && w.at <= new
 const nextAt = {}
 const lastTrigger = {}
 function trigger(r, why) {
-  if (!inScope(r) || !closed(r) || st.ignored.includes(r.id) || pub.calls[r.id]) return
+  if (!closed(r) || st.ignored.includes(r.id) || pub.calls[r.id]) return // any race, even a safe seat
   if (Date.now() - (lastTrigger[r.id] || 0) < 5 * 60 * 1000) return // one trigger per race per 5 min
   lastTrigger[r.id] = Date.now()
   nextAt[r.id] = 0
@@ -96,7 +98,7 @@ function pick() {
   for (const r of Object.values(races)) {
     if (nextAt[r.id] === undefined && !(r.id in lastCheck) && FALLBACK && isHot(r) && inScope(r) && closed(r)) nextAt[r.id] = pollCloseFor(r.state).at.getTime() + FALLBACK / 4 + Math.random() * FALLBACK / 2
   }
-  const ready = Object.values(races).filter((r) => nextAt[r.id] !== undefined && nextAt[r.id] <= now && inScope(r) && closed(r) && !st.ignored.includes(r.id) && !busy.has(r.id))
+  const ready = Object.values(races).filter((r) => nextAt[r.id] !== undefined && nextAt[r.id] <= now && (inScope(r) || lastTrigger[r.id]) && closed(r) && !st.ignored.includes(r.id) && !busy.has(r.id))
   ready.sort((a, b) => nextAt[a.id] - nextAt[b.id] || (isHot(b) - isHot(a)) || score(a) - score(b))
   return ready[0]
 }
@@ -114,7 +116,7 @@ const CALL_WORDS = /\b(wins?|won|winner|projected|projects|defeats?|defeated|re-
 const seenHeads = new Set()
 const decode = (t) => t.replace(/<!\[CDATA\[|\]\]>/g, '').replace(/&amp;/g, '&').replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"').trim()
 async function scanHeadlines() {
-  const open = Object.values(races).filter((r) => inScope(r) && closed(r) && !pub.calls[r.id] && !st.ignored.includes(r.id))
+  const open = Object.values(races).filter((r) => closed(r) && !pub.calls[r.id] && !st.ignored.includes(r.id))
   if (!open.length) return
   // surname -> races (a surname in several open races also needs the state named)
   const bySur = {}
@@ -269,7 +271,15 @@ async function check(r) {
   const off = https(rep.official_results_url)
   if (off && /\.(gov|us)(\/|$)/.test(new URL(off).hostname + '/') && !pub.official[r.state]) { pub.official[r.state] = off; dirty = true }
 
-  const claims = (rep.calls || []).filter((c) => https(c.url) && c.winner && c.desk !== 'Other')
+  if (FALLBACK && isHot(r)) nextAt[r.id] = now + FALLBACK // backup sweep for the closest races
+  await decide(r, rep.calls, count, rep.notes)
+}
+
+// Apply the calling rule to one race's desk claims. quiet: don't take a lone desk call to HQ
+// (safe seats, which the next state sweep looks at again anyway).
+async function decide(r, rawClaims, count, notes, { quiet = false } = {}) {
+  const now = Date.now()
+  const claims = (rawClaims || []).filter((c) => https(c.url) && c.winner && c.desk !== 'Other')
   for (const c of claims) c.verified = await verify(c)
   for (const c of claims) c.cand = matchCand(r, c.winner)
   const winners = [...new Set(claims.map((c) => (c.cand ? c.cand.name : `?${c.winner}`)))]
@@ -278,10 +288,9 @@ async function check(r) {
   const margin = lead?.length > 1 ? lead[0].pct - lead[1].pct : null
   const ask_ = (why) => {
     if (!st.review[r.id]) { notify('Midterms HQ scout: needs you', `${raceTitle(r, STATES)}: ${why}`); say(`ASK HQ · ${raceTitle(r, STATES)} · ${why}`) }
-    st.review[r.id] = { why, claims: claims.map(({ cand, ...c }) => ({ ...c, party: cand?.party || null })), count, notes: rep.notes, at: now }
+    st.review[r.id] = { why, claims: claims.map(({ cand, ...c }) => ({ ...c, party: cand?.party || null })), count, notes, at: now }
     saveState()
   }
-  if (FALLBACK && isHot(r)) nextAt[r.id] = now + FALLBACK // backup sweep for the closest races
 
   const existing = pub.calls[r.id]
   if (!claims.length) {
@@ -308,6 +317,7 @@ async function check(r) {
   }
   if (desks.length >= 2) return ask_(margin != null && margin < CLOSE_MARGIN ? `${desks.join(' + ')} call it for ${winner.name}, but the count shows a ${margin.toFixed(2)}-pt margin` : `${desks.join(' + ')} call it for ${winner.name}, but the pages couldn't be confirmed automatically`)
   // one desk so far: give the others a few minutes before asking
+  if (quiet) return
   st.firstLone[r.id] ||= now
   if (now - st.firstLone[r.id] >= LONE_DESK_ASK) return ask_(`only ${desks[0]} has called it (for ${winner.name}) after ${Math.round((now - st.firstLone[r.id]) / 60000)} min`)
   nextAt[r.id] = now + LONE_RECHECK // look again soon for a second desk
@@ -326,6 +336,90 @@ function publishCall(r, cand, claims, by) {
   saveState()
   dirty = true
   say(`CALLED (${by}) · ${raceTitle(r, STATES)}: ${cand.name} · ${pub.calls[r.id].sources.map((s) => s.desk).join(', ') || 'HQ'}`)
+}
+
+// ---------- safe House seats: one search per state ----------
+// Seats every forecaster rates Safe aren't scouted one by one. Instead, 45 minutes after a
+// state's polls close (then every 2 hours while any are uncalled) one search covers up to 12
+// of them at once, and the same two-desk rule applies to each.
+const SWEEP_FIRST = 45 * 60 * 1000
+const SWEEP_EVERY = 2 * 60 * 60 * 1000
+const sweepAt = {}
+const isSafeSeat = (r) => r.type === 'house' && !inScope(r)
+
+const BATCH_TOOL = {
+  name: 'report',
+  description: 'Report the calls you found for these House districts. Call it exactly once, at the end.',
+  strict: true,
+  input_schema: {
+    type: 'object',
+    additionalProperties: false,
+    required: ['districts', 'notes'],
+    properties: {
+      districts: {
+        type: 'array',
+        description: 'Only districts where at least one desk has made a call',
+        items: {
+          type: 'object',
+          additionalProperties: false,
+          required: ['district', 'calls'],
+          properties: {
+            district: { type: 'string', description: 'Exactly as given, e.g. "TX-12"' },
+            calls: REPORT_TOOL.input_schema.properties.calls,
+          },
+        },
+      },
+      notes: { type: 'string' },
+    },
+  },
+}
+
+async function sweepState(state, list) {
+  usage.checks++
+  const lines = list.map((r) => `${raceTitle(r, STATES)}: ${r.candidates.slice(0, 4).map((c) => `${c.name} (${c.party})`).join(', ')}`).join('\n')
+  const messages = [{ role: 'user', content: `${STATES[state]} U.S. House races, 2026 general election. For each district below, find which decision desks (AP, Decision Desk HQ, NBC News, CNN, ABC News, CBS News, Fox News) have called the winner. Results pages that list many races at once (AP's state results page, a network's state results page) are the fastest way; try to confirm each call with two different desks.\n\n${lines}` }]
+  let input = null
+  for (let turn = 0; turn < 4 && !input; turn++) {
+    const res = await client.beta.messages.create({
+      model: MODEL, max_tokens: 16000,
+      betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default',
+      output_config: { effort: 'low' },
+      system: SYSTEM.replace('For the race you are given', 'For the races you are given').replace('2. The latest vote count, preferring the state\'s official election-night results site or a county election office, otherwise AP numbers as shown by an outlet.\n', ''),
+      tools: [{ type: 'web_search_20260209', name: 'web_search', max_uses: 5 }, BATCH_TOOL],
+      messages,
+    })
+    usage.inTok += res.usage?.input_tokens || 0
+    usage.outTok += res.usage?.output_tokens || 0
+    usage.searches += res.usage?.server_tool_use?.web_search_requests || 0
+    if (res.stop_reason === 'refusal') throw new Error('declined by the model')
+    input = res.content.find((b) => b.type === 'tool_use' && b.name === 'report')?.input || null
+    if (input) break
+    messages.push({ role: 'assistant', content: res.content })
+    if (res.stop_reason !== 'pause_turn') messages.push({ role: 'user', content: 'Now call the report tool with what you found.' })
+  }
+  if (!input) throw new Error('no report returned')
+  const byLabel = Object.fromEntries(list.map((r) => [raceTitle(r, STATES), r]))
+  for (const d of input.districts || []) {
+    const r = byLabel[d.district]
+    if (r && !pub.calls[r.id]) await decide(r, d.calls, pub.counts[r.id] || null, input.notes, { quiet: true })
+  }
+}
+
+let sweeping = false
+async function sweeps() {
+  if (sweeping || paused || spent() >= BUDGET) return
+  const now = Date.now()
+  const byState = {}
+  for (const r of Object.values(races)) if (isSafeSeat(r) && closed(r) && !pub.calls[r.id] && !st.ignored.includes(r.id)) (byState[r.state] ||= []).push(r)
+  const due = Object.entries(byState).find(([state]) => now >= (sweepAt[state] ??= pollCloseFor(state).at.getTime() + SWEEP_FIRST))
+  if (!due) return
+  const [state, list] = due
+  sweeping = true
+  sweepAt[state] = now + SWEEP_EVERY
+  try {
+    for (let i = 0; i < list.length; i += 12) await sweepState(state, list.slice(i, i + 12))
+    say(`SWEEP · ${STATES[state]}: ${list.filter((r) => pub.calls[r.id]).length}/${list.length} safe House seats now called`)
+  } catch (e) { usage.errors++; say(`sweep failed for ${STATES[state]}: ${e.message}`) } finally { sweeping = false }
 }
 
 // ---------- publishing ----------
@@ -424,4 +518,5 @@ say(`${Object.values(races).filter(inScope).length} races in scope. Searching on
 setInterval(() => refreshRaces().catch((e) => say(`race list refresh failed: ${e.message}`)), 10 * 60 * 1000)
 setInterval(() => scanHeadlines().catch((e) => say(`headline scan failed: ${e.message}`)), 60 * 1000)
 setInterval(publish, 5000)
+setInterval(() => sweeps(), 15 * 1000)
 for (let i = 0; i < WORKERS; i++) worker()
