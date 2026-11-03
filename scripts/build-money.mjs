@@ -121,7 +121,7 @@ async function main() {
     console.log(`${list.length} ${office === 'S' ? 'Senate' : 'House'} candidates with money raised`)
     for (const c of list) {
       const id = raceOf(office, c.state, c.district)
-      const name = displayName(c.name, snapRaceOf(id), c.incumbent_challenge === 'I' || /^incumbent/i.test(c.incumbent_challenge_full || ''))
+      const name = id ? displayName(c.name, snapRaceOf(id), c.incumbent_challenge === 'I' || /^incumbent/i.test(c.incumbent_challenge_full || '')) : null
       where[c.candidate_id] = { id, party: PARTY(c.party_full || c.party), name }
       if (!id || !(c.receipts > 0)) continue
       const race = (totals[id] ||= { through: '', candidates: [] })
