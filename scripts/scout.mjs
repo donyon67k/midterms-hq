@@ -2,9 +2,12 @@
 //   npm run scout          (key in .secrets/anthropic-api-key.txt, or ANTHROPIC_API_KEY)
 //   review page:           http://localhost:5299
 //
-// For every key race whose polls have closed, Claude searches the web for an explicit
-// call by a decision desk (AP, Decision Desk HQ, NBC, CNN, ABC, CBS, Fox News) and for the
-// latest vote count (official state/county results first). The scout then decides:
+// It only searches when something suggests a race may have been called (free signals):
+//   - a headline says a candidate won/was projected/conceded (news feeds, every 60 s)
+//   - a slow backup sweep of the closest races (SCOUT_FALLBACK minutes, default 40; 0 = off)
+// Each check, Claude searches the web for an explicit call by a decision desk (AP, Decision
+// Desk HQ, NBC, CNN, ABC, CBS, Fox News) and for the latest vote count (official state/county
+// results first). The scout then decides:
 //   AUTO-CALL   2+ desks name the same winner, at least one claim is confirmed by reading
 //               the cited page here, no desk disagrees, and the count isn't razor-close
 //   ASK HQ      desks disagree, a lone desk call stays alone for 10+ minutes, the winner
@@ -12,6 +15,7 @@
 // Calls and counts go to live/scout.json on the `live` branch, which every copy reads.
 //
 // Env: SCOUT_BUDGET (US$ estimate the scout stops at, default 75), SCOUT_WORKERS (default 8),
+//      SCOUT_FALLBACK (minutes between backup checks of the closest races, default 40),
 //      SCOUT_ALL=1 (also safe House seats)
 import Anthropic from '@anthropic-ai/sdk'
 import { execFile } from 'node:child_process'
@@ -33,8 +37,8 @@ const BUDGET = +process.env.SCOUT_BUDGET || 75
 const WORKERS = +process.env.SCOUT_WORKERS || 8
 // Spend estimate: Claude Opus 5.5 tokens ($4 in / $20 out per million) plus web searches (~$10 per 1,000).
 const spent = () => (usage.inTok * 4 + usage.outTok * 20) / 1e6 + usage.searches * 0.01
-const HOT_EVERY = 2 * 60 * 1000 // tossup-ish and Senate/Governor races
-const KEY_EVERY = 6 * 60 * 1000
+const FALLBACK = (process.env.SCOUT_FALLBACK != null ? +process.env.SCOUT_FALLBACK : 40) * 60 * 1000
+const LONE_RECHECK = 3 * 60 * 1000 // one desk has called it: look for a second
 const RECHECK_CALLED = 10 * 60 * 1000 // one more look after a call, to catch a retraction
 const LONE_DESK_ASK = 10 * 60 * 1000
 const CLOSE_MARGIN = 0.5 // points; tighter than this always goes to HQ
@@ -54,7 +58,7 @@ const client = new Anthropic({ apiKey: apiKey(), maxRetries: 3 })
 const load = (f, d) => { try { return JSON.parse(readFileSync(f, 'utf8')) } catch { return d } }
 const pub = load(OUT, { calls: {}, counts: {}, official: {} }) // what viewers see
 const st = load(STATE_FILE, { review: {}, ignored: [], firstLone: {} })
-const usage = { searches: 0, inTok: 0, outTok: 0, checks: 0, errors: 0 }
+const usage = { searches: 0, inTok: 0, outTok: 0, checks: 0, errors: 0, triggers: 0 }
 const log = []
 const say = (msg) => { const line = `[${new Date().toLocaleTimeString()}] ${msg}`; console.log(line); log.unshift(line); log.length = Math.min(log.length, 200) }
 const saveState = () => { mkdirSync(dirname(STATE_FILE), { recursive: true }); writeFileSync(STATE_FILE, JSON.stringify(st, null, 2)) }
@@ -75,12 +79,70 @@ const inScope = (r) => r.type !== 'house' || process.env.SCOUT_ALL === '1' || sc
 const isHot = (r) => r.type !== 'house' || score(r) <= 1
 const closed = (r) => { const w = pollCloseFor(r.state); return w && w.at <= new Date() }
 
+// nextAt[id]: when to check a race next (undefined = only when a trigger fires).
+// The closest races get a backup check FALLBACK after their polls close, and then every FALLBACK.
 const nextAt = {}
+const lastTrigger = {}
+function trigger(r, why) {
+  if (!inScope(r) || !closed(r) || st.ignored.includes(r.id) || pub.calls[r.id]) return
+  if (Date.now() - (lastTrigger[r.id] || 0) < 5 * 60 * 1000) return // one trigger per race per 5 min
+  lastTrigger[r.id] = Date.now()
+  nextAt[r.id] = 0
+  usage.triggers++
+  say(`TRIGGER · ${raceTitle(r, STATES)} · ${why}`)
+}
 function pick() {
   const now = Date.now()
-  const ready = Object.values(races).filter((r) => inScope(r) && closed(r) && !st.ignored.includes(r.id) && !busy.has(r.id) && (nextAt[r.id] ?? 0) <= now)
-  ready.sort((a, b) => (nextAt[a.id] ?? 0) - (nextAt[b.id] ?? 0) || (isHot(b) - isHot(a)) || score(a) - score(b))
+  for (const r of Object.values(races)) {
+    if (nextAt[r.id] === undefined && !(r.id in lastCheck) && FALLBACK && isHot(r) && inScope(r) && closed(r)) nextAt[r.id] = pollCloseFor(r.state).at.getTime() + FALLBACK / 4 + Math.random() * FALLBACK / 2
+  }
+  const ready = Object.values(races).filter((r) => nextAt[r.id] !== undefined && nextAt[r.id] <= now && inScope(r) && closed(r) && !st.ignored.includes(r.id) && !busy.has(r.id))
+  ready.sort((a, b) => nextAt[a.id] - nextAt[b.id] || (isHot(b) - isHot(a)) || score(a) - score(b))
   return ready[0]
+}
+const lastCheck = {}
+
+// ---------- free triggers: headlines ----------
+const FEEDS = [
+  ...['"projected winner"', '"wins" Senate race', '"wins" governor race', '"wins" House seat', '"race call"', 'concedes election', '"defeats" election'].map((q) => `https://news.google.com/rss/search?q=${encodeURIComponent(`${q} when:1d`)}&hl=en-US&gl=US&ceid=US:en`),
+  'https://feeds.npr.org/1014/rss.xml',
+  'https://feeds.nbcnews.com/nbcnews/public/politics',
+  'https://www.cbsnews.com/latest/rss/politics',
+  'https://moxie.foxnews.com/google-publisher/politics.xml',
+]
+const CALL_WORDS = /\b(wins?|won|winner|projected|projects|defeats?|defeated|re-?elected|elected|concedes?|conceded|victory|holds? (?:on|off)|flips?)\b/i
+const seenHeads = new Set()
+const decode = (t) => t.replace(/<!\[CDATA\[|\]\]>/g, '').replace(/&amp;/g, '&').replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"').trim()
+async function scanHeadlines() {
+  const open = Object.values(races).filter((r) => inScope(r) && closed(r) && !pub.calls[r.id] && !st.ignored.includes(r.id))
+  if (!open.length) return
+  // surname -> races (a surname in several open races also needs the state named)
+  const bySur = {}
+  for (const r of open) for (const c of r.candidates.slice(0, 6)) { const k = surname(c.name); if (k.length >= 4) (bySur[k] ||= new Set()).add(r) }
+  const titles = []
+  await Promise.all(FEEDS.map(async (u) => {
+    try {
+      const res = await fetch(u, { headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh) MidtermsHQ-scout' }, signal: AbortSignal.timeout(10000) })
+      if (!res.ok) return
+      const xml = await res.text()
+      for (const [item] of xml.matchAll(/<item>[\s\S]*?<\/item>/g)) {
+        const t = decode(item.match(/<title>([\s\S]*?)<\/title>/)?.[1] || '')
+        const at = Date.parse(item.match(/<pubDate>([\s\S]*?)<\/pubDate>/)?.[1] || '')
+        if (Number.isFinite(at) && Date.now() - at > 6 * 3600 * 1000) continue // only tonight's news
+        titles.push(t)
+      }
+    } catch { /* a feed being down is fine */ }
+  }))
+  for (const t of titles) {
+    if (seenHeads.has(t)) continue
+    seenHeads.add(t)
+    if (!CALL_WORDS.test(t)) continue
+    const lower = t.toLowerCase()
+    for (const [sur, set] of Object.entries(bySur)) {
+      if (!new RegExp(`\\b${sur}\\b`).test(lower)) continue
+      for (const r of set) if (set.size === 1 || lower.includes(STATES[r.state].toLowerCase())) trigger(r, `headline: "${t.slice(0, 120)}"`)
+    }
+  }
 }
 
 // ---------- asking Claude ----------
@@ -198,6 +260,8 @@ function countFrom(r, c) {
 
 async function check(r) {
   usage.checks++
+  lastCheck[r.id] = Date.now()
+  nextAt[r.id] = undefined // set again below if this race needs another look
   const rep = await ask(r)
   const now = Date.now()
   const count = countFrom(r, rep.count)
@@ -217,7 +281,7 @@ async function check(r) {
     st.review[r.id] = { why, claims: claims.map(({ cand, ...c }) => ({ ...c, party: cand?.party || null })), count, notes: rep.notes, at: now }
     saveState()
   }
-  nextAt[r.id] = now + (isHot(r) ? HOT_EVERY : KEY_EVERY)
+  if (FALLBACK && isHot(r)) nextAt[r.id] = now + FALLBACK // backup sweep for the closest races
 
   const existing = pub.calls[r.id]
   if (!claims.length) {
@@ -233,7 +297,7 @@ async function check(r) {
     const have = new Set(existing.sources.map((s) => s.desk))
     const add = claims.filter((c) => !have.has(c.desk)).map((c) => ({ desk: c.desk, url: c.url }))
     if (add.length) { existing.sources.push(...add); dirty = true }
-    nextAt[r.id] = now + RECHECK_CALLED * 3
+    nextAt[r.id] = undefined
     return
   }
   const verified = claims.filter((c) => c.verified).length
@@ -246,7 +310,7 @@ async function check(r) {
   // one desk so far: give the others a few minutes before asking
   st.firstLone[r.id] ||= now
   if (now - st.firstLone[r.id] >= LONE_DESK_ASK) return ask_(`only ${desks[0]} has called it (for ${winner.name}) after ${Math.round((now - st.firstLone[r.id]) / 60000)} min`)
-  nextAt[r.id] = now + 60 * 1000 // look again soon for a second desk
+  nextAt[r.id] = now + LONE_RECHECK // look again soon for a second desk
 }
 
 function publishCall(r, cand, claims, by) {
@@ -306,7 +370,7 @@ const H={'Content-Type':'application/json','X-MHQ-Admin':'1'}
 const esc=(s)=>String(s??'').replace(/[&<>"']/g,(c)=>'&#'+c.charCodeAt(0)+';')
 async function act(body){await fetch('/decide',{method:'POST',headers:H,body:JSON.stringify(body)});load()}
 async function load(){const s=await (await fetch('/state',{headers:H})).json()
-document.getElementById('stat').textContent=(s.paused?'PAUSED · ':+s.cost>=s.budget?'BUDGET REACHED (restart with SCOUT_BUDGET=… to continue) · ':'RUNNING · ')+s.usage.checks+' checks · '+s.usage.searches+' searches · est. $'+s.cost+' of $'+s.budget+' · '+s.usage.errors+' errors'
+document.getElementById('stat').textContent=(s.paused?'PAUSED · ':+s.cost>=s.budget?'BUDGET REACHED (restart with SCOUT_BUDGET=… to continue) · ':'RUNNING · ')+s.usage.triggers+' triggers · '+s.usage.checks+' checks · '+s.usage.searches+' searches · est. $'+s.cost+' of $'+s.budget+' · '+s.usage.errors+' errors'
 let h='<button class="ghost" onclick="act({action:\\'pause\\'})">'+(s.paused?'▶ RESUME':'❚❚ PAUSE')+'</button>'
 h+='<h2>NEEDS YOU ('+s.review.length+')</h2>'+(s.review.length?'':'<div class="dim">Nothing to confirm. The scout calls races itself when 2+ desks agree.</div>')
 for(const r of s.review){h+='<div class="card"><b>'+esc(r.title)+'</b> <span class="dim">'+esc(r.rating)+'</span><div class="why">'+esc(r.why)+'</div>'
@@ -356,7 +420,8 @@ createServer(async (req, res) => {
 }).listen(PORT, '127.0.0.1', () => say(`review page: http://localhost:${PORT}`))
 
 await refreshRaces()
-say(`${Object.values(races).filter(inScope).length} races in scope; scouting each one once its polls close`)
-setInterval(() => refreshRaces().catch((e) => say(`race list refresh failed: ${e.message}`)), 5 * 60 * 1000)
+say(`${Object.values(races).filter(inScope).length} races in scope. Searching only when a headline suggests a call${FALLBACK ? ` plus a backup check of the closest races every ${FALLBACK / 60000} min` : ''}, once each state's polls close`)
+setInterval(() => refreshRaces().catch((e) => say(`race list refresh failed: ${e.message}`)), 10 * 60 * 1000)
+setInterval(() => scanHeadlines().catch((e) => say(`headline scan failed: ${e.message}`)), 60 * 1000)
 setInterval(publish, 5000)
 for (let i = 0; i < WORKERS; i++) worker()

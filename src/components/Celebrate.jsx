@@ -62,7 +62,7 @@ export function CallBurst({ queue, onDone }) {
           </>
         )}
         <div className="dim call-src">
-          {item.kind !== 'race' ? 'From called races' : item.result.hq ? 'Called by HQ' : item.result.sources?.length ? `Called by ${deskList(item.result.sources)}` : 'Projected per Wikipedia (following network/AP calls)'} · unofficial until certified
+          {item.kind !== 'race' ? 'From called races' : item.result.hq ? 'Called by HQ' : item.result.sources?.length ? `Called by ${deskList(item.result.sources)}` : 'Confirmed by HQ'} · unofficial until certified
         </div>
       </div>
     </div>

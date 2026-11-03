@@ -3,7 +3,7 @@ import { STATES } from '../data/wiki.js'
 import { ELECTION_DAY, POLL_WAVES, isElectionWindow, ratingClass, raceTitle, resultColor, tallyResults } from '../lib/util.js'
 import { GOV_NOW, PowerBar, SENATE_NOW, chamber } from './Overview.jsx'
 import Block from './Block.jsx'
-import { CONFIRM_MS, PARTY_NAME } from '../lib/calls.js'
+import { PARTY_NAME } from '../lib/calls.js'
 
 // Election-night command center: poll closings, live scoreboard, call feed,
 // and which battlegrounds report in each wave.
@@ -37,7 +37,7 @@ function leadOf(r) {
   return <span className="lead-chip" style={{ '--rc': resultColor({ party: c[0].party }) }}>{c[0].party} +{m ?? '?'}{r.count.pctIn != null ? ` · ${Math.round(r.count.pctIn)}% IN` : ''}</span>
 }
 
-export default function Gameday({ data, onPick, onPickState, log, watch, pending = [], chambers = {}, bursts }) {
+export default function Gameday({ data, onPick, onPickState, log, watch, chambers = {}, bursts }) {
   const now = useMinuteClock()
   const senRaces = Object.values(data.senate)
   const govRaces = Object.values(data.governor)
@@ -98,17 +98,6 @@ export default function Gameday({ data, onPick, onPickState, log, watch, pending
         <PowerBar label="HOUSE" icon="house" total={435} control="218 FOR CONTROL" middle="UNCALLED" {...house} />
         <PowerBar label="GOVERNORS" icon="governor" total={50} middle="UNCALLED" {...gov} />
 
-        {pending.length > 0 && (
-          <Block title={<>⧗ CONFIRMING CALLS ({pending.length})</>}>
-            <div className="dim" style={{ marginBottom: 6 }}>Being checked against other sources before going on the board.</div>
-            <div className="log">{pending.map((p) => (
-              <div key={p.race.id} className="log-line pending">
-                <span className="dim">[~{Math.max(0, Math.ceil((p.at + CONFIRM_MS - now) / 1000))}s]</span> {raceTitle(p.race, STATES)}: {p.result.winner} ({p.result.party})
-              </div>
-            ))}</div>
-          </Block>
-        )}
-
         <Block title="▣ CALL FEED">
           {calls.length
             ? <div className="log">{calls.map((l, i) => (
@@ -116,7 +105,7 @@ export default function Gameday({ data, onPick, onPickState, log, watch, pending
             ))}</div>
             : <div className="dim">{called
               ? `${called} races already called before this session. New calls will stream in here.`
-              : 'No races called yet. Calls stream in here (and as desktop alerts) as Wikipedia marks winners after polls close.'}</div>}
+              : 'No races called yet. Calls stream in here (and as desktop alerts) as the decision desks make them after polls close.'}</div>}
           <div className="dim call-source">
             HOW RACES ARE CALLED: the HQ call scout uses a strict method and never calls a race unless multiple sources agree on the result. Each call links its sources in the race file. Projections are unofficial until states certify.
           </div>

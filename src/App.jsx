@@ -11,7 +11,7 @@ import {
 import { resolveView } from './lib/view.js'
 import { IS_DESKTOP, cacheGet, cacheSet, notify } from './lib/desktop.js'
 import { usePhone } from './lib/phone.js'
-import { CONFIRM_MS, controlCalls, holdCalls } from './lib/calls.js'
+import { controlCalls, stripCalls } from './lib/calls.js'
 import UsMap from './components/UsMap.jsx'
 import Dossier from './components/Dossier.jsx'
 import Overview from './components/Overview.jsx'
@@ -181,10 +181,7 @@ export default function App() {
   const [sync, setSync] = useState({ status: 'snapshot', at: snapshot.generatedAt })
   const [log, setLog] = useState([{ t: Date.now(), msg: `Snapshot loaded (built ${timeAgo(snapshot.generatedAt)}). Requesting live uplink…` }])
   const dataRef = useRef(snapshot)
-  // Election-night call hold: latest unfiltered Wikipedia data, when each winner mark was first seen.
-  const rawRef = useRef(null)
-  const seenRef = useRef(new Map())
-  const [pending, setPending] = useState([])
+  const rawRef = useRef(null) // latest Wikipedia dataset (races, candidates, forecasts; never calls)
   const viewRef = useRef(view)
   const watchRef = useRef(watchIds)
   const healthRef = useRef('')
@@ -235,7 +232,6 @@ export default function App() {
   }, [])
 
   const busy = useRef(false)
-  const pendingKey = useRef('')
   const scoutKey = useRef('')
   const refresh = useCallback(async () => {
     if (busy.current) return
@@ -245,20 +241,13 @@ export default function App() {
       fetchControl({ fast: isElectionWindow() }).then(setControl) // independent of Wikipedia; never throws
       fetchTopNews({ races: allRaces(dataRef.current) }).then(setNews).catch((e) => setNews((n) => ({ at: null, stories: [], ...n, error: e.message }))) // feeds cached 4 min
       const [next, sc] = await Promise.all([fetchAll(), isElectionWindow() ? fetchScout() : null])
-      const first = !rawRef.current
       if (next) rawRef.current = next
       if (rawRef.current) {
-        // New winner marks wait CONFIRM_MS (re-checked every tick, even when no page changed).
-        const held = holdCalls(rawRef.current, seenRef.current, Date.now(), first)
-        const waiting = held.pending.map((p) => p.race.id).join()
-        // Desk calls from the HQ scout are already double-sourced, so they skip the hold.
+        // Calls come from the desks (scout file) and HQ only; Wikipedia's winner marks are dropped.
         const scoutAt = sc?.updatedAt || ''
-        const pend = held.pending.filter((p) => !sc?.calls[p.race.id])
-        if (next || waiting !== pendingKey.current || scoutAt !== scoutKey.current) {
-          pendingKey.current = waiting
+        if (next || scoutAt !== scoutKey.current) {
           scoutKey.current = scoutAt
-          setPending(pend)
-          applyData(applyScout(held.data, sc), next && `Live uplink synced (${next.changed} source page${next.changed > 1 ? 's' : ''} updated). No rating shifts.`)
+          applyData(applyScout(stripCalls(rawRef.current), sc), next && `Live uplink synced (${next.changed} source page${next.changed > 1 ? 's' : ''} updated). No rating shifts.`)
         }
       }
       setSync({ status: 'live', at: new Date().toISOString() })
@@ -542,7 +531,7 @@ export default function App() {
           : region
             ? <RegionBrief region={region} data={data} onPick={pickRace} onPickState={setSelected} onClose={() => setRegion(null)} results={results} watch={watch} />
             : results
-            ? <Gameday data={data} onPick={pickRace} onPickState={setSelected} log={log} watch={watch} pending={pending} chambers={chambers} bursts={{ on: burstsOn, toggle: toggleBursts }} />
+            ? <Gameday data={data} onPick={pickRace} onPickState={setSelected} log={log} watch={watch} chambers={chambers} bursts={{ on: burstsOn, toggle: toggleBursts }} />
             : <Overview data={data} onPick={pickRace} log={log} results={results} watch={watch} featured={control?.featured} />}
       </main>
 

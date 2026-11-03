@@ -901,7 +901,6 @@ table.spenders td:first-child { max-width: 220px; }
   background: var(--rc); box-shadow: 0 0 18px var(--rc); animation: eb-twinkle 1.2s steps(2) 4;
 }
 .log-line.withdraw { color: var(--rep); }
-.log-line.pending { color: var(--amber); }
 .call-source { margin-top: 8px; font-size: 11px; line-height: 1.45; }
 .result-src { flex-basis: 100%; font-size: 10px; }
 

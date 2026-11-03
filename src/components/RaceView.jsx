@@ -222,7 +222,7 @@ export default function RaceView({ race, stateName, results, watch }) {
           <span className="dim result-src">
             {race.result.hq ? '◆ CALLED BY HQ' : race.result.sources?.length
               ? <>CALLED BY {race.result.sources.map((s, i) => <span key={s.desk}>{i ? ' · ' : ''}<a href={s.url} target="_blank" rel="noreferrer">{s.desk} ↗</a></span>)}</>
-              : race.result.scout ? '◆ CONFIRMED BY HQ' : 'PROJECTED · PER WIKIPEDIA'} · UNOFFICIAL UNTIL CERTIFIED
+              : '◆ CONFIRMED BY HQ'} · UNOFFICIAL UNTIL CERTIFIED
           </span>
         </div>
       )}
