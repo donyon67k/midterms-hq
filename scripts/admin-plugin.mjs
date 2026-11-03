@@ -26,7 +26,7 @@ const git = (root, args, input) => new Promise((resolve, reject) => {
 // Files on the `live` branch. Each publisher sends only its own file and every other
 // file keeps its published copy (the admin page never overwrites the money data that
 // GitHub Actions refreshes, and vice versa).
-const LIVE_FILES = ['control.json', 'money.json']
+const LIVE_FILES = ['control.json', 'money.json', 'scout.json']
 
 const NO_DEPLOY = '{ "git": { "deploymentEnabled": false } }\n'
 
@@ -54,6 +54,8 @@ export async function publishLive(root, files = ['control.json']) {
   const msg = `HQ live update ${new Date().toISOString().slice(0, 16).replace('T', ' ')}`
   const commit = await git(root, ['commit-tree', tree, ...(parent ? ['-p', parent] : []), '-m', msg])
   const out = await git(root, ['push', 'origin', `${commit}:refs/heads/${BRANCH}`])
+  // apps read the jsDelivr mirror on election night; purge it so they see this within seconds
+  for (const name of files) await fetch(`https://purge.jsdelivr.net/gh/donyon67k/midterms-hq@${BRANCH}/${name}`).catch(() => {})
   return `Published. Every copy of the app picks this up within ~5 minutes.\n${out}`
 }
 

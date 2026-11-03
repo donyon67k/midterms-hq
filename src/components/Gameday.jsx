@@ -29,6 +29,14 @@ function nightStatus(now, called, total) {
   return { head: 'ALL POLLS CLOSED', sub: `${called}/${total} races called · counting continues` }
 }
 
+// Uncalled race with a live count: who leads, by how much, and how much is in.
+function leadOf(r) {
+  const c = r.count?.cands?.filter((x) => x.pct != null).sort((a, b) => b.pct - a.pct)
+  if (!c?.length) return null
+  const m = c.length > 1 ? (c[0].pct - c[1].pct).toFixed(1) : null
+  return <span className="lead-chip" style={{ '--rc': resultColor({ party: c[0].party }) }}>{c[0].party} +{m ?? '?'}{r.count.pctIn != null ? ` · ${Math.round(r.count.pctIn)}% IN` : ''}</span>
+}
+
 export default function Gameday({ data, onPick, onPickState, log, watch, pending = [], chambers = {}, bursts }) {
   const now = useMinuteClock()
   const senRaces = Object.values(data.senate)
@@ -56,7 +64,7 @@ export default function Gameday({ data, onPick, onPickState, log, watch, pending
       <span>{watch.ids.includes(r.id) ? '★ ' : ''}{raceTitle(r, STATES)}</span>
       {r.result
         ? <span className="result-chip" style={{ background: resultColor(r.result) }}>{r.result.party} {r.result.flip ? 'GAIN' : 'HOLD'}{r.result.pct ? ` ${r.result.pct}%` : ''}</span>
-        : <span className={ratingClass(r.consensus?.label)}>{r.consensus?.label || 'AWAITING'}</span>}
+        : leadOf(r) || <span className={ratingClass(r.consensus?.label)}>{r.consensus?.label || 'AWAITING'}</span>}
     </button>
   )
 
@@ -110,7 +118,7 @@ export default function Gameday({ data, onPick, onPickState, log, watch, pending
               ? `${called} races already called before this session. New calls will stream in here.`
               : 'No races called yet. Calls stream in here (and as desktop alerts) as Wikipedia marks winners after polls close.'}</div>}
           <div className="dim call-source">
-            SOURCE: Wikipedia editors mark winners as AP and the networks project them; HQ double-checks each new call for {CONFIRM_MS / 1000}s, and ◆ HQ can confirm, correct or hold any race. Projections are unofficial until states certify.
+            SOURCES: the HQ call scout reads the decision desks (AP, Decision Desk HQ, NBC, CNN, ABC, CBS, Fox News) and posts a call once two of them agree, with links in each race file. Wikipedia is the backup (each new Wikipedia call waits {CONFIRM_MS / 1000}s), and ◆ HQ can confirm, correct or hold any race. Projections are unofficial until states certify.
           </div>
         </Block>
 

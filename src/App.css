@@ -915,3 +915,7 @@ table.spenders td:first-child { max-width: 220px; }
   .call-big { font-size: 14px; }
   .call-title { font-size: 10px; }
 }
+.lead-chip { font-family: var(--font-pixel); font-size: 7px; padding: 3px 5px; white-space: nowrap; color: #fff; border: 1px dashed var(--rc); }
+.count-in { margin-bottom: 6px; }
+.count-src { margin-top: 6px; font-size: 11px; line-height: 1.5; }
+.result-src a { color: inherit; }

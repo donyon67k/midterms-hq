@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import snapshot from './data/snapshot.json'
 import { fetchAll, healthCheck } from './data/live.js'
 import { applyControl, fetchControl } from './data/control.js'
+import { applyScout, fetchScout } from './data/scout.js'
 import { cachedNews, fetchTopNews, TOP_KEY } from './data/news.js'
 import { STATES, labelFor } from './data/wiki.js'
 import {
@@ -235,6 +236,7 @@ export default function App() {
 
   const busy = useRef(false)
   const pendingKey = useRef('')
+  const scoutKey = useRef('')
   const refresh = useCallback(async () => {
     if (busy.current) return
     busy.current = true
@@ -242,17 +244,21 @@ export default function App() {
     try {
       fetchControl({ fast: isElectionWindow() }).then(setControl) // independent of Wikipedia; never throws
       fetchTopNews({ races: allRaces(dataRef.current) }).then(setNews).catch((e) => setNews((n) => ({ at: null, stories: [], ...n, error: e.message }))) // feeds cached 4 min
-      const next = await fetchAll()
+      const [next, sc] = await Promise.all([fetchAll(), isElectionWindow() ? fetchScout() : null])
       const first = !rawRef.current
       if (next) rawRef.current = next
       if (rawRef.current) {
         // New winner marks wait CONFIRM_MS (re-checked every tick, even when no page changed).
         const held = holdCalls(rawRef.current, seenRef.current, Date.now(), first)
         const waiting = held.pending.map((p) => p.race.id).join()
-        if (next || waiting !== pendingKey.current) {
+        // Desk calls from the HQ scout are already double-sourced, so they skip the hold.
+        const scoutAt = sc?.updatedAt || ''
+        const pend = held.pending.filter((p) => !sc?.calls[p.race.id])
+        if (next || waiting !== pendingKey.current || scoutAt !== scoutKey.current) {
           pendingKey.current = waiting
-          setPending(held.pending)
-          applyData(held.data, next && `Live uplink synced (${next.changed} source page${next.changed > 1 ? 's' : ''} updated). No rating shifts.`)
+          scoutKey.current = scoutAt
+          setPending(pend)
+          applyData(applyScout(held.data, sc), next && `Live uplink synced (${next.changed} source page${next.changed > 1 ? 's' : ''} updated). No rating shifts.`)
         }
       }
       setSync({ status: 'live', at: new Date().toISOString() })

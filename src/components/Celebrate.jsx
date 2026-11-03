@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { POLL_WAVES, isElectionWindow, resultColor } from '../lib/util.js'
 import { PARTY_NAME } from '../lib/calls.js'
+import { deskList } from '../data/scout.js'
 
 // Election-night celebrations: a pixel-confetti burst for each call, same treatment for
 // every party (HQ is a scoreboard, not a cheering section), and a bigger one when a
@@ -60,7 +61,9 @@ export function CallBurst({ queue, onDone }) {
             <div className="call-winner">See the call feed on GAMEDAY.</div>
           </>
         )}
-        <div className="dim call-src">{item.kind === 'race' && item.result.hq ? 'Called by HQ' : 'Projected per Wikipedia (following network/AP calls)'} · unofficial until certified</div>
+        <div className="dim call-src">
+          {item.kind !== 'race' ? 'From called races' : item.result.hq ? 'Called by HQ' : item.result.sources?.length ? `Called by ${deskList(item.result.sources)}` : 'Projected per Wikipedia (following network/AP calls)'} · unofficial until certified
+        </div>
       </div>
     </div>
   )

@@ -211,10 +211,33 @@ export default function RaceView({ race, stateName, results, watch }) {
           <span className="pixel">✓ CALLED</span>
           <span><b>{race.result.winner}</b> ({race.result.party}){race.result.pct ? ` · ${race.result.pct}%` : ''}</span>
           <span className="pixel">{race.result.flip ? `⚑ ${race.result.party} GAIN` : `${race.result.party} HOLD`}</span>
-          <span className="dim result-src">{race.result.hq ? '◆ CALLED BY HQ' : 'PROJECTED · PER WIKIPEDIA'} · UNOFFICIAL</span>
+          <span className="dim result-src">
+            {race.result.hq ? '◆ CALLED BY HQ' : race.result.sources?.length
+              ? <>CALLED BY {race.result.sources.map((s, i) => <span key={s.desk}>{i ? ' · ' : ''}<a href={s.url} target="_blank" rel="noreferrer">{s.desk} ↗</a></span>)}</>
+              : race.result.scout ? '◆ CONFIRMED BY HQ' : 'PROJECTED · PER WIKIPEDIA'} · UNOFFICIAL UNTIL CERTIFIED
+          </span>
         </div>
       )}
       {results && !race.result && <div className="result-banner awaiting"><span className="pixel">◌ AWAITING CALL</span><span>Forecast shown below until the race is called.</span></div>}
+
+      {race.count && (
+        <Block title="▣ LIVE COUNT">
+          <div className="dim count-in">{race.count.pctIn != null ? `${race.count.pctIn}% of expected vote counted` : 'Share of expected vote counted not reported'}</div>
+          {race.count.cands.map((c) => (
+            <div key={c.name} className="prim-row">
+              <span className="bar-name">{c.name} ({c.party})</span>
+              <div className="bar-track"><div className="bar-fill" style={{ width: `${c.pct || 0}%`, background: partyColor(c.party) }} /></div>
+              <span className="bar-val">{c.pct != null ? `${c.pct}%` : '—'}</span>
+              <span className="dim prim-votes">{c.votes != null ? c.votes.toLocaleString() : ''}</span>
+            </div>
+          ))}
+          <div className="dim count-src">
+            SOURCE: {race.count.url ? <a href={race.count.url} target="_blank" rel="noreferrer">{race.count.source || 'results page'} ↗</a> : race.count.source || 'unknown'}
+            {race.count.asOf ? ` · ${race.count.asOf}` : ''}{race.count.at ? ` · checked ${timeAgo(race.count.at)}` : ''}
+            {race.officialResults && <> · <a href={race.officialResults} target="_blank" rel="noreferrer">OFFICIAL STATE RESULTS ↗</a></>}
+          </div>
+        </Block>
+      )}
 
       {race.hqNote && (
         <div className="hq-note">

@@ -39,25 +39,19 @@ export function sanitizeControl(raw) {
 }
 
 // raw.githubusercontent.com caches for 5 minutes, too slow for election-night corrections.
-// The GitHub API serves the same file within ~1 minute but allows 60 requests an hour per
-// network, so it's asked at most every 90 s and the raw copy is the fallback.
-const CONTROL_API = `${REPO_URL.replace('github.com', 'api.github.com/repos')}/contents/control.json?ref=live`
-const API_EVERY = 90 * 1000
-let apiAt = 0
-let apiBlockedUntil = 0
+// Publishing purges the jsDelivr copy, so it is fresh within seconds (no rate limit);
+// raw stays the fallback.
+const CONTROL_FAST = `https://cdn.jsdelivr.net/gh/${REPO_URL.replace('https://github.com/', '')}@live/control.json`
 let last = null
 
 const newer = (a, b) => (!b || (a?.updatedAt || '') >= (b.updatedAt || '') ? a : b)
 
 async function fetchFresh(fast) {
   if (DEV) return fetch(`/live/control.json?t=${Date.now()}`)
-  const now = Date.now()
-  if (fast && now >= apiBlockedUntil && now - apiAt >= API_EVERY) {
-    apiAt = now
-    const res = await netFetch(CONTROL_API, { headers: { Accept: 'application/vnd.github.raw+json' }, cache: 'no-store' }).catch(() => null)
+  if (fast) {
+    const res = await netFetch(CONTROL_FAST, { cache: 'no-store' }).catch(() => null)
     if (res?.ok) return res
-    if (res && (res.status === 403 || res.status === 429)) apiBlockedUntil = now + 15 * 60 * 1000
-  } else if (fast && last) return null // between API checks: keep the copy we have
+  }
   return netFetch(CONTROL_URL)
 }
 
@@ -65,7 +59,6 @@ async function fetchFresh(fast) {
 export async function fetchControl({ fast = false } = {}) {
   try {
     const res = await fetchFresh(fast)
-    if (!res) return last
     if (!res.ok) throw new Error(String(res.status))
     const ctl = newer(sanitizeControl(await res.json()), last) // never step back to an older copy
     last = ctl
