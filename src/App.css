@@ -845,3 +845,73 @@ table.spenders td:first-child { max-width: 220px; }
   table.spenders .sp-type { display: none; }
   table.spenders td:first-child { max-width: 150px; word-break: break-word; }
 }
+
+/* ---------- election night: banner, call bursts, control stamps ---------- */
+.election-banner {
+  display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 12px;
+  padding: 7px 40px 7px 12px; position: relative; font-size: 13px; color: #fff;
+  background: linear-gradient(90deg, #12245e, #050510 30%, #050510 70%, #5e1218);
+  border-bottom: 2px solid var(--amber); box-shadow: 0 0 18px rgba(255, 215, 0, 0.25);
+}
+.election-banner .eb-head { font-size: 10px; color: var(--amber); text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); }
+.election-banner .eb-sub { color: var(--text-data); }
+.election-banner .eb-stars { color: var(--amber); letter-spacing: 4px; animation: eb-twinkle 1.6s steps(2) infinite; }
+.election-banner .eb-stars:last-of-type { animation-delay: 0.8s; }
+.election-banner .eb-go { border-color: var(--rep); color: #fff; background: rgba(255, 68, 68, 0.15); }
+.election-banner .btn-close { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); }
+@keyframes eb-twinkle { 50% { opacity: 0.35; } }
+
+.call-burst {
+  position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; pointer-events: none;
+}
+.call-card {
+  pointer-events: auto; cursor: pointer; position: relative; text-align: center; padding: 18px 26px; max-width: min(520px, calc(100vw - 32px));
+  background: #050510; border: 3px solid var(--rc); box-shadow: 0 0 0 4px #050510, 0 0 40px var(--rc);
+  animation: call-pop 4.2s steps(12) forwards;
+}
+.call-burst.control .call-card { animation-duration: 6.7s; padding: 26px 34px; }
+.call-kicker { font-size: 9px; color: var(--amber); margin-bottom: 10px; animation: eb-twinkle 0.5s steps(2) 6; }
+.call-title { font-size: 12px; color: #fff; line-height: 1.5; }
+.call-big { font-size: 20px; color: var(--rc); margin: 10px 0; text-shadow: 0 0 12px var(--rc); }
+.call-winner { margin-top: 10px; font-size: 16px; color: var(--text-data); }
+.call-tag { display: inline-block; margin-top: 10px; padding: 5px 8px; font-size: 9px; color: #fff; background: var(--rc); }
+.call-src { margin-top: 12px; font-size: 11px; }
+@keyframes call-pop {
+  0% { transform: scale(0.4); opacity: 0; }
+  6% { transform: scale(1.08); opacity: 1; }
+  10%, 88% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.96); opacity: 0; }
+}
+.confetti { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
+.confetti i {
+  position: absolute; width: 8px; height: 8px; background: var(--c); opacity: 0;
+  animation: confetti-fly 1.6s cubic-bezier(0.15, 0.7, 0.3, 1) forwards;
+}
+.call-burst.control .confetti i { width: 10px; height: 10px; animation-duration: 2.4s; }
+@keyframes confetti-fly {
+  0% { transform: translate(0, 0); opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translate(var(--dx), calc(var(--dy) + 90px)); opacity: 0; }
+}
+
+.control-calls { display: grid; gap: 6px; margin-bottom: 12px; }
+.control-call {
+  font-size: 10px; text-align: center; padding: 10px; color: #fff;
+  background: var(--rc); box-shadow: 0 0 18px var(--rc); animation: eb-twinkle 1.2s steps(2) 4;
+}
+.log-line.withdraw { color: var(--rep); }
+.log-line.pending { color: var(--amber); }
+.call-source { margin-top: 8px; font-size: 11px; line-height: 1.45; }
+.result-src { flex-basis: 100%; font-size: 10px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .confetti, .election-banner .eb-stars { display: none; }
+  .call-card, .control-call, .call-kicker { animation: none; }
+}
+@media (max-width: 640px) {
+  .election-banner { font-size: 11px; padding: 6px 34px 6px 8px; gap: 4px 8px; }
+  .election-banner .eb-stars { display: none; }
+  .election-banner .eb-head { font-size: 8px; }
+  .call-big { font-size: 14px; }
+  .call-title { font-size: 10px; }
+}

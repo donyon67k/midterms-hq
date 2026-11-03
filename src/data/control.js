@@ -26,6 +26,7 @@ export function sanitizeControl(raw) {
   const ratings = Object.fromEntries(Object.entries(obj(r.ratings)).filter(([, v]) => LABELS.includes(v)))
   const results = Object.fromEntries(Object.entries(obj(r.results)).map(([k, v]) => {
     const x = obj(v)
+    if (x.hold === true) return [k, { hold: true }] // HQ: not called yet, ignore Wikipedia's mark
     return [k, str(x.winner, 80) && ['D', 'R', 'I'].includes(x.party) ? { winner: str(x.winner, 80), party: x.party, pct: Number.isFinite(+x.pct) && x.pct !== '' && x.pct != null ? +x.pct : null, flip: !!x.flip } : null]
   }).filter(([, v]) => v))
   // Pinned headlines: { title, url, race (optional race id) }
@@ -37,16 +38,42 @@ export function sanitizeControl(raw) {
   return { banner, notes, featured, ratings, results, news, minVersion, updatedAt: str(r.updatedAt, 40) || null }
 }
 
-export async function fetchControl() {
+// raw.githubusercontent.com caches for 5 minutes, too slow for election-night corrections.
+// The GitHub API serves the same file within ~1 minute but allows 60 requests an hour per
+// network, so it's asked at most every 90 s and the raw copy is the fallback.
+const CONTROL_API = `${REPO_URL.replace('github.com', 'api.github.com/repos')}/contents/control.json?ref=live`
+const API_EVERY = 90 * 1000
+let apiAt = 0
+let apiBlockedUntil = 0
+let last = null
+
+const newer = (a, b) => (!b || (a?.updatedAt || '') >= (b.updatedAt || '') ? a : b)
+
+async function fetchFresh(fast) {
+  if (DEV) return fetch(`/live/control.json?t=${Date.now()}`)
+  const now = Date.now()
+  if (fast && now >= apiBlockedUntil && now - apiAt >= API_EVERY) {
+    apiAt = now
+    const res = await netFetch(CONTROL_API, { headers: { Accept: 'application/vnd.github.raw+json' }, cache: 'no-store' }).catch(() => null)
+    if (res?.ok) return res
+    if (res && (res.status === 403 || res.status === 429)) apiBlockedUntil = now + 15 * 60 * 1000
+  } else if (fast && last) return null // between API checks: keep the copy we have
+  return netFetch(CONTROL_URL)
+}
+
+// fast: election night, when HQ corrections should land within about a minute.
+export async function fetchControl({ fast = false } = {}) {
   try {
-    const res = DEV ? await fetch(`/live/control.json?t=${Date.now()}`) : await netFetch(CONTROL_URL)
+    const res = await fetchFresh(fast)
+    if (!res) return last
     if (!res.ok) throw new Error(String(res.status))
-    const ctl = sanitizeControl(await res.json())
+    const ctl = newer(sanitizeControl(await res.json()), last) // never step back to an older copy
+    last = ctl
     cacheSet('control', ctl)
     return ctl
   } catch {
     // offline or file missing: keep the last copy we saw
-    return sanitizeControl(await cacheGet('control'))
+    return last || sanitizeControl(await cacheGet('control'))
   }
 }
 
@@ -62,7 +89,8 @@ export function applyControl(data, ctl) {
     return {
       ...r,
       ...(rating && { consensus: { ...r.consensus, label: rating, score: SCORE[rating], hq: true } }),
-      ...(result && { result: { ...result, hq: true } }),
+      ...(result?.hold && { result: null, hqHold: true, candidates: r.candidates.map((c) => (c.won ? { ...c, won: false } : c)) }),
+      ...(result && !result.hold && { result: { ...result, hq: true } }),
       ...(note && { hqNote: note }),
       ...(news.length && { hqNews: news }),
     }

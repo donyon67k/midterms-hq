@@ -211,6 +211,7 @@ export default function RaceView({ race, stateName, results, watch }) {
           <span className="pixel">✓ CALLED</span>
           <span><b>{race.result.winner}</b> ({race.result.party}){race.result.pct ? ` · ${race.result.pct}%` : ''}</span>
           <span className="pixel">{race.result.flip ? `⚑ ${race.result.party} GAIN` : `${race.result.party} HOLD`}</span>
+          <span className="dim result-src">{race.result.hq ? '◆ CALLED BY HQ' : 'PROJECTED · PER WIKIPEDIA'} · UNOFFICIAL</span>
         </div>
       )}
       {results && !race.result && <div className="result-banner awaiting"><span className="pixel">◌ AWAITING CALL</span><span>Forecast shown below until the race is called.</span></div>}

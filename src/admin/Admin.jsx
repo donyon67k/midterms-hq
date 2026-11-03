@@ -193,8 +193,14 @@ export default function Admin() {
 
       <section>
         <h2 className="pixel">◆ RESULT OVERRIDES</h2>
-        <p className="dim">Election night backup: call a race yourself if Wikipedia is slow or wrong. Remove it once Wikipedia catches up.</p>
-        {Object.entries(ctl.results).map(([id, r]) => (
+        <p className="dim">Election night backup: call a race yourself if Wikipedia is slow or wrong, or HOLD it to hide a Wikipedia call you don't trust (bad edit, premature call). Remove it once Wikipedia is right. Reaches viewers in about a minute.</p>
+        {Object.entries(ctl.results).map(([id, r]) => r.hold ? (
+          <div key={id} className="row">
+            <b>{titleOf(id)}</b>
+            <span className="dim">HELD: shown as not called, whatever Wikipedia says</span>
+            <button type="button" onClick={() => setIn('results', id, null)}>✕</button>
+          </div>
+        ) : (
           <div key={id} className="row">
             <b>{titleOf(id)}</b>
             <select value={r.winner} onChange={(e) => {
@@ -214,6 +220,7 @@ export default function Admin() {
             const c = resultCands.find((x) => x.party === 'D' || x.party === 'R') || resultCands[0]
             setIn('results', resId, { winner: c.name, party: ['D', 'R'].includes(c.party) ? c.party : 'I', pct: null, flip: false }); resetPickers()
           }}>CALL RACE</button>
+          <button type="button" disabled={!resId || ctl.results[resId]} onClick={() => { setIn('results', resId, { hold: true }); resetPickers() }}>HOLD (NOT CALLED)</button>
         </div>
       </section>
 

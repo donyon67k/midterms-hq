@@ -3,6 +3,7 @@ import { STATES } from '../data/wiki.js'
 import { ELECTION_DAY, POLL_WAVES, isElectionWindow, ratingClass, raceTitle, resultColor, tallyResults } from '../lib/util.js'
 import { GOV_NOW, PowerBar, SENATE_NOW, chamber } from './Overview.jsx'
 import Block from './Block.jsx'
+import { CONFIRM_MS, PARTY_NAME } from '../lib/calls.js'
 
 // Election-night command center: poll closings, live scoreboard, call feed,
 // and which battlegrounds report in each wave.
@@ -28,7 +29,7 @@ function nightStatus(now, called, total) {
   return { head: 'ALL POLLS CLOSED', sub: `${called}/${total} races called · counting continues` }
 }
 
-export default function Gameday({ data, onPick, onPickState, log, watch }) {
+export default function Gameday({ data, onPick, onPickState, log, watch, pending = [], chambers = {}, bursts }) {
   const now = useMinuteClock()
   const senRaces = Object.values(data.senate)
   const govRaces = Object.values(data.governor)
@@ -47,7 +48,7 @@ export default function Gameday({ data, onPick, onPickState, log, watch }) {
   for (const r of all) if (key(r)) (byState[r.state] ||= []).push(r)
   for (const list of Object.values(byState)) list.sort((a, b) => Math.abs(a.consensus?.score ?? 9) - Math.abs(b.consensus?.score ?? 9))
 
-  const calls = log.filter((l) => l.kind === 'call')
+  const calls = log.filter((l) => l.kind === 'call' || l.kind === 'withdraw')
   const flips = all.filter((r) => r.result?.flip)
 
   const RaceRow = ({ r }) => (
@@ -66,23 +67,51 @@ export default function Gameday({ data, onPick, onPickState, log, watch }) {
           <div className="stamp">GAMEDAY // NOV 3 · ELECTION NIGHT</div>
           <h2 className="pixel glow-amber">{status.head}</h2>
           <div className="dossier-meta">
-            {status.sub}{isElectionWindow(now) ? ' · live refresh every 60s' : ''}
+            {status.sub}{isElectionWindow(now) ? ' · live refresh every 30s' : ''}
           </div>
         </div>
+        {bursts && (
+          <button type="button" className="btn-mini" onClick={bursts.toggle} aria-pressed={bursts.on} title="Celebration pop-ups when races are called">
+            {bursts.on ? '✦ CALL BURSTS ON' : '✧ CALL BURSTS OFF'}
+          </button>
+        )}
       </div>
       <div className="dossier-body">
+        {(chambers.senate || chambers.house) && (
+          <div className="control-calls">
+            {['senate', 'house'].filter((c) => chambers[c]).map((c) => (
+              <div key={c} className="control-call pixel" style={{ '--rc': resultColor({ party: chambers[c] }) }}>
+                ★ {c.toUpperCase()} CONTROL: {PARTY_NAME[chambers[c]]} ★
+              </div>
+            ))}
+          </div>
+        )}
         <PowerBar label="SENATE" icon="senate" total={100} control="D NEEDS 51 · R NEEDS 50 (VP TIEBREAK)" middle="UNCALLED" {...sen} />
         <PowerBar label="HOUSE" icon="house" total={435} control="218 FOR CONTROL" middle="UNCALLED" {...house} />
         <PowerBar label="GOVERNORS" icon="governor" total={50} middle="UNCALLED" {...gov} />
 
+        {pending.length > 0 && (
+          <Block title={<>⧗ CONFIRMING CALLS ({pending.length})</>}>
+            <div className="dim" style={{ marginBottom: 6 }}>New on Wikipedia. HQ waits {CONFIRM_MS / 1000}s before putting a call on the board, so a bad edit gets reverted before anyone sees it.</div>
+            <div className="log">{pending.map((p) => (
+              <div key={p.race.id} className="log-line pending">
+                <span className="dim">[~{Math.max(0, Math.ceil((p.at + CONFIRM_MS - now) / 1000))}s]</span> {raceTitle(p.race, STATES)}: {p.result.winner} ({p.result.party})
+              </div>
+            ))}</div>
+          </Block>
+        )}
+
         <Block title="▣ CALL FEED">
           {calls.length
             ? <div className="log">{calls.map((l, i) => (
-              <div key={i} className="log-line call"><span className="dim">[{new Date(l.t).toLocaleTimeString()}]</span> {l.msg}</div>
+              <div key={i} className={`log-line ${l.kind}`}><span className="dim">[{new Date(l.t).toLocaleTimeString()}]</span> {l.msg}</div>
             ))}</div>
             : <div className="dim">{called
               ? `${called} races already called before this session. New calls will stream in here.`
               : 'No races called yet. Calls stream in here (and as desktop alerts) as Wikipedia marks winners after polls close.'}</div>}
+          <div className="dim call-source">
+            SOURCE: Wikipedia editors mark winners as AP and the networks project them; HQ double-checks each new call for {CONFIRM_MS / 1000}s, and ◆ HQ can confirm, correct or hold any race. Projections are unofficial until states certify.
+          </div>
         </Block>
 
         {flips.length > 0 && (

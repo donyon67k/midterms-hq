@@ -5,11 +5,12 @@ import { applyControl, fetchControl } from './data/control.js'
 import { cachedNews, fetchTopNews, TOP_KEY } from './data/news.js'
 import { STATES, labelFor } from './data/wiki.js'
 import {
-  AWAITING, RATING_COLORS, RESULT_COLORS, countdown, genericAverage, isElectionWindow, pad, pollCloseFor, raceTitle, ratingColor, resultColor, timeAgo,
+  AWAITING, RATING_COLORS, RESULT_COLORS, countdown, genericAverage, isElectionWindow, pad, pollCloseFor, raceTitle, ratingColor, resultColor, tallyResults, timeAgo,
 } from './lib/util.js'
 import { resolveView } from './lib/view.js'
 import { IS_DESKTOP, cacheGet, cacheSet, notify } from './lib/desktop.js'
 import { usePhone } from './lib/phone.js'
+import { CONFIRM_MS, controlCalls, holdCalls } from './lib/calls.js'
 import UsMap from './components/UsMap.jsx'
 import Dossier from './components/Dossier.jsx'
 import Overview from './components/Overview.jsx'
@@ -19,12 +20,14 @@ import CommandBar from './components/CommandBar.jsx'
 import About from './components/About.jsx'
 import UpdateBanner from './components/UpdateBanner.jsx'
 import HqBanner from './components/HqBanner.jsx'
+import { CallBurst, ElectionBanner } from './components/Celebrate.jsx'
+import { GOV_NOW, SENATE_NOW, chamber } from './components/Overview.jsx'
 import NewsDesk from './components/News.jsx'
 import { Icon } from './components/Sprites.jsx'
 import './App.css'
 
 const REFRESH_MS = 3 * 60 * 1000
-const NIGHT_REFRESH_MS = 60 * 1000 // election week: revision checks are ~2 KB, so poll faster
+const NIGHT_REFRESH_MS = 30 * 1000 // election week: revision checks are ~2 KB, so poll faster
 const MODES = [
   { key: 'governor', label: 'GOVERNOR', icon: 'governor' },
   { key: 'senate', label: 'SENATE', icon: 'senate' },
@@ -99,7 +102,7 @@ function SyncStatus({ sync, onSync }) {
           {sync.status === 'live' ? 'LIVE UPLINK' : sync.status === 'syncing' ? 'SYNCING…' : sync.status === 'error' ? 'UPLINK LOST' : 'SNAPSHOT'}
         </div>
         <div className="dim">
-          checked {timeAgo(sync.at)} · every {isElectionWindow() ? '1m' : '3m'}{IS_DESKTOP ? ' · DESKTOP LINK' : ''}
+          checked {timeAgo(sync.at)} · every {isElectionWindow() ? '30s' : '3m'}{IS_DESKTOP ? ' · DESKTOP LINK' : ''}
         </div>
       </div>
       <button type="button" className="btn-mini" onClick={onSync} disabled={sync.status === 'syncing'}>⟳ SYNC</button>
@@ -120,6 +123,8 @@ function diffData(prev, next) {
     if (r.result && !p.result) {
       const w = r.result
       out.push({ id: r.id, type: r.type, kind: 'call', msg: `CALLED · ${name}: ${w.winner} (${w.party})${w.pct ? ` ${w.pct}%` : ''}${w.flip ? ` — ${w.party} GAIN` : ''}` })
+    } else if (p.result && !r.result) {
+      out.push({ id: r.id, type: r.type, kind: 'withdraw', msg: `CALL WITHDRAWN · ${name}: ${p.result.winner} (${p.result.party}) is no longer marked the winner by the source` })
     } else if (p.consensus?.label && r.consensus?.label && p.consensus.label !== r.consensus.label) {
       out.push({ id: r.id, type: r.type, kind: 'shift', msg: `RATING SHIFT · ${name}: ${p.consensus.label} → ${r.consensus.label}` })
     }
@@ -175,6 +180,10 @@ export default function App() {
   const [sync, setSync] = useState({ status: 'snapshot', at: snapshot.generatedAt })
   const [log, setLog] = useState([{ t: Date.now(), msg: `Snapshot loaded (built ${timeAgo(snapshot.generatedAt)}). Requesting live uplink…` }])
   const dataRef = useRef(snapshot)
+  // Election-night call hold: latest unfiltered Wikipedia data, when each winner mark was first seen.
+  const rawRef = useRef(null)
+  const seenRef = useRef(new Map())
+  const [pending, setPending] = useState([])
   const viewRef = useRef(view)
   const watchRef = useRef(watchIds)
   const healthRef = useRef('')
@@ -211,7 +220,7 @@ export default function App() {
     const changes = diffData(dataRef.current, next)
     dataRef.current = next
     setData(next)
-    for (const c of changes) pushLog(c.msg, c.kind === 'call' ? 'call' : 'alert')
+    for (const c of changes) pushLog(c.msg, c.kind === 'call' ? 'call' : c.kind === 'withdraw' ? 'withdraw' : 'alert')
     // Alerts: starred races only once you have a watchlist; otherwise Senate/Governor news.
     const w = watchRef.current
     const notable = changes.filter((c) => (w.length ? w.includes(c.id) : c.type === 'senate' || c.type === 'governor'))
@@ -225,15 +234,27 @@ export default function App() {
   }, [])
 
   const busy = useRef(false)
+  const pendingKey = useRef('')
   const refresh = useCallback(async () => {
     if (busy.current) return
     busy.current = true
     setSync((s) => ({ ...s, status: 'syncing' }))
     try {
-      fetchControl().then(setControl) // independent of Wikipedia; never throws
+      fetchControl({ fast: isElectionWindow() }).then(setControl) // independent of Wikipedia; never throws
       fetchTopNews({ races: allRaces(dataRef.current) }).then(setNews).catch((e) => setNews((n) => ({ at: null, stories: [], ...n, error: e.message }))) // feeds cached 4 min
       const next = await fetchAll()
-      if (next) applyData(next, `Live uplink synced (${next.changed} source page${next.changed > 1 ? 's' : ''} updated). No rating shifts.`)
+      const first = !rawRef.current
+      if (next) rawRef.current = next
+      if (rawRef.current) {
+        // New winner marks wait CONFIRM_MS (re-checked every tick, even when no page changed).
+        const held = holdCalls(rawRef.current, seenRef.current, Date.now(), first)
+        const waiting = held.pending.map((p) => p.race.id).join()
+        if (next || waiting !== pendingKey.current) {
+          pendingKey.current = waiting
+          setPending(held.pending)
+          applyData(held.data, next && `Live uplink synced (${next.changed} source page${next.changed > 1 ? 's' : ''} updated). No rating shifts.`)
+        }
+      }
       setSync({ status: 'live', at: new Date().toISOString() })
     } catch (e) {
       setSync((s) => ({ ...s, status: 'error' }))
@@ -296,6 +317,38 @@ export default function App() {
 
   // ---------- gameday page ----------
   const hasResults = useMemo(() => allRaces(data).some((r) => r.result), [data])
+  const callCount = useMemo(() => { const a = allRaces(data); return { called: a.filter((r) => r.result).length, total: a.length } }, [data])
+
+  // ---------- election-night celebrations ----------
+  // A burst for each Senate/Governor call (and starred House races), a bigger one when a
+  // chamber's control is decided. Calls already on the board when the app opens don't burst.
+  const [bursts, setBursts] = useState([])
+  const [burstsOn, setBurstsOn] = useState(() => { try { return localStorage.getItem('mhq:bursts') !== 'off' } catch { return true } })
+  const toggleBursts = useCallback(() => setBurstsOn((on) => {
+    try { localStorage.setItem('mhq:bursts', on ? 'off' : 'on') } catch { /* private mode */ }
+    if (on) setBursts([])
+    return !on
+  }), [])
+  const nextBurst = useCallback(() => setBursts((q) => q.slice(1)), [])
+  const chambers = useMemo(() => {
+    const ht = tallyResults(Object.values(data.house).flat())
+    return controlCalls({ sen: chamber(Object.values(data.senate), SENATE_NOW, true), house: { d: ht.D, r: ht.R } })
+  }, [data])
+  const callsRef = useRef(null)
+  useEffect(() => {
+    if (!rawRef.current || !control) return // baseline once live data and the HQ file are both in
+    const races = allRaces(data)
+    const calls = Object.fromEntries(races.filter((r) => r.result).map((r) => [r.id, `${r.result.party}|${r.result.winner}`]))
+    const prev = callsRef.current
+    callsRef.current = { calls, chambers }
+    if (!prev || !burstsOn) return
+    const fresh = races.filter((r) => r.result && prev.calls[r.id] !== calls[r.id] && (r.type !== 'house' || watchRef.current.includes(r.id)))
+    const items = [
+      ...['senate', 'house'].filter((c) => chambers[c] && prev.chambers[c] !== chambers[c]).map((c) => ({ kind: 'control', chamber: c, party: chambers[c] })),
+      ...(fresh.length > 3 ? [{ kind: 'batch', n: fresh.length }] : fresh.map((r) => ({ kind: 'race', title: raceTitle(r, STATES), result: r.result }))),
+    ]
+    if (items.length) setBursts((q) => [...q, ...items].slice(0, 8))
+  }, [data, chambers, control, burstsOn])
   const results = gamedayOpen
   // Switching pages starts fresh at that page's national view.
   const openPage = (page) => {
@@ -413,6 +466,8 @@ export default function App() {
       <About open={!!aboutOpen} section={typeof aboutOpen === 'string' ? aboutOpen : null} onClose={() => setAboutOpen(false)} />
       <UpdateBanner />
       <HqBanner control={control} />
+      <CallBurst queue={bursts} onDone={nextBurst} />
+      <ElectionBanner called={callCount.called} total={callCount.total} onGameday={() => openPage('gameday')} />
 
       <header className="topbar">
         <div className="brand">
@@ -481,7 +536,7 @@ export default function App() {
           : region
             ? <RegionBrief region={region} data={data} onPick={pickRace} onPickState={setSelected} onClose={() => setRegion(null)} results={results} watch={watch} />
             : results
-            ? <Gameday data={data} onPick={pickRace} onPickState={setSelected} log={log} watch={watch} />
+            ? <Gameday data={data} onPick={pickRace} onPickState={setSelected} log={log} watch={watch} pending={pending} chambers={chambers} bursts={{ on: burstsOn, toggle: toggleBursts }} />
             : <Overview data={data} onPick={pickRace} log={log} results={results} watch={watch} featured={control?.featured} />}
       </main>
 
