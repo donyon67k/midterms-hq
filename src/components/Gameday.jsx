@@ -100,7 +100,7 @@ export default function Gameday({ data, onPick, onPickState, log, watch, pending
 
         {pending.length > 0 && (
           <Block title={<>⧗ CONFIRMING CALLS ({pending.length})</>}>
-            <div className="dim" style={{ marginBottom: 6 }}>New on Wikipedia. HQ waits {CONFIRM_MS / 1000}s before putting a call on the board, so a bad edit gets reverted before anyone sees it.</div>
+            <div className="dim" style={{ marginBottom: 6 }}>Being checked against other sources before going on the board.</div>
             <div className="log">{pending.map((p) => (
               <div key={p.race.id} className="log-line pending">
                 <span className="dim">[~{Math.max(0, Math.ceil((p.at + CONFIRM_MS - now) / 1000))}s]</span> {raceTitle(p.race, STATES)}: {p.result.winner} ({p.result.party})
@@ -118,7 +118,7 @@ export default function Gameday({ data, onPick, onPickState, log, watch, pending
               ? `${called} races already called before this session. New calls will stream in here.`
               : 'No races called yet. Calls stream in here (and as desktop alerts) as Wikipedia marks winners after polls close.'}</div>}
           <div className="dim call-source">
-            SOURCES: the HQ call scout reads the decision desks (AP, Decision Desk HQ, NBC, CNN, ABC, CBS, Fox News) and posts a call once two of them agree, with links in each race file. Wikipedia is the backup (each new Wikipedia call waits {CONFIRM_MS / 1000}s), and ◆ HQ can confirm, correct or hold any race. Projections are unofficial until states certify.
+            HOW RACES ARE CALLED: the HQ call scout uses a strict method and never calls a race unless multiple sources agree on the result. Each call links its sources in the race file. Projections are unofficial until states certify.
           </div>
         </Block>
 
