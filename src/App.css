@@ -1,7 +1,8 @@
 .hq {
   height: 100%;
   display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  /* election banner (row 1, empty when hidden), header, nav, main, ticker */
+  grid-template-rows: auto auto auto minmax(0, 1fr) auto;
   grid-template-columns: minmax(0, 1fr);
   background:
     radial-gradient(ellipse at 30% 40%, rgba(0, 255, 65, 0.05), transparent 60%),
@@ -919,3 +920,9 @@ table.spenders td:first-child { max-width: 220px; }
 .count-in { margin-bottom: 6px; }
 .count-src { margin-top: 6px; font-size: 11px; line-height: 1.5; }
 .result-src a { color: inherit; }
+
+.hq > .election-banner { grid-row: 1; }
+.hq > .topbar { grid-row: 2; }
+.hq > .modes { grid-row: 3; }
+.hq > .main { grid-row: 4; }
+.hq > .ticker { grid-row: 5; }

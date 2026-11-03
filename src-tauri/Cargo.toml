@@ -1,6 +1,6 @@
 [package]
 name = "midterms-hq"
-version = "2.0.7"
+version = "2.0.8"
 description = "Project: Midterms desktop app (Midterms HQ)"
 authors = ["Donovan"]
 license = ""
