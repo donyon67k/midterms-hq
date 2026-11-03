@@ -1,5 +1,5 @@
 // Call scout: election-night race calls from the decision desks, with sources.
-//   npm run scout          (key in .secrets/anthropic.key, or ANTHROPIC_API_KEY)
+//   npm run scout          (key in .secrets/anthropic-api-key.txt, or ANTHROPIC_API_KEY)
 //   review page:           http://localhost:5299
 //
 // For every key race whose polls have closed, Claude searches the web for an explicit
@@ -43,9 +43,9 @@ export const DESKS = ['AP', 'Decision Desk HQ', 'NBC News', 'CNN', 'ABC News', '
 
 function apiKey() {
   if (process.env.ANTHROPIC_API_KEY) return process.env.ANTHROPIC_API_KEY
-  const f = join(ROOT, '..', '.secrets', 'anthropic.key')
+  const f = join(ROOT, '..', '.secrets', 'anthropic-api-key.txt')
   if (existsSync(f)) return readFileSync(f, 'utf8').trim()
-  console.error('No Anthropic API key. Save it to CLAUDE HOME/.secrets/anthropic.key (one line), then run npm run scout again.')
+  console.error('No Anthropic API key. Save it to CLAUDE HOME/.secrets/anthropic-api-key.txt (one line), then run npm run scout again.')
   process.exit(1)
 }
 const client = new Anthropic({ apiKey: apiKey(), maxRetries: 3 })
