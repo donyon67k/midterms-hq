@@ -975,3 +975,8 @@ table.spenders td:first-child { max-width: 220px; }
   .ballot-pick select { min-width: 0; width: 100%; }
   .ballot-pick label { flex: 1 1 140px; }
 }
+
+/* Seat-flip tracker next to the Gameday seat counts: "D 44 +2" */
+.flip-gain { display: inline-block; margin: 0 6px; padding: 2px 4px; font-size: 9px; color: #fff; vertical-align: 1px; }
+.flip-gain.gain-D { background: var(--dem); }
+.flip-gain.gain-R { background: var(--rep); }

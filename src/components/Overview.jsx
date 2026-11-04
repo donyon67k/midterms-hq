@@ -9,7 +9,10 @@ import Block from './Block.jsx'
 export const SENATE_NOW = { D: 47, R: 53 }
 export const GOV_NOW = { D: 24, R: 26 }
 
-export function PowerBar({ label, icon, d, r, toss, total, control, leanD = 0, leanR = 0, middle = 'TOSSUP' }) {
+// gainD/gainR: seats flipped to that party tonight (election-night bars only).
+const Gain = ({ n, party }) => (n > 0 ? <span className={`flip-gain gain-${party}`} title={`${n} seat${n > 1 ? 's' : ''} flipped to ${party === 'D' ? 'Democrats' : 'Republicans'}`}>+{n}</span> : null)
+
+export function PowerBar({ label, icon, d, r, toss, total, control, leanD = 0, leanR = 0, middle = 'TOSSUP', gainD, gainR }) {
   const pct = (n) => `${(n / total) * 100}%`
   return (
     <div className="power">
@@ -26,9 +29,9 @@ export function PowerBar({ label, icon, d, r, toss, total, control, leanD = 0, l
         <div className="pb-mid" style={{ left: '50%' }} />
       </div>
       <div className="power-nums">
-        <span className="party-d pixel">D {d}</span>
+        <span className="party-d pixel">D {d}<Gain n={gainD} party="D" /></span>
         <span className="pixel" style={{ color: middle === 'TOSSUP' ? 'var(--tossup)' : 'var(--text-dim)' }}>{toss} {middle}</span>
-        <span className="party-r pixel">R {r}</span>
+        <span className="party-r pixel"><Gain n={gainR} party="R" />R {r}</span>
       </div>
     </div>
   )

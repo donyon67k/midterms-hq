@@ -59,7 +59,7 @@ export default function Gameday({ data, onPick, onPickState, log, watch, chamber
   const sen = chamber(senRaces, SENATE_NOW, true)
   const gov = chamber(govRaces, GOV_NOW, true)
   const ht = tallyResults(houseRaces)
-  const house = { d: ht.D, r: ht.R, toss: ht.uncalled + ht.I }
+  const house = { d: ht.D, r: ht.R, toss: ht.uncalled + ht.I, flipD: ht.flipD, flipR: ht.flipR }
   const called = all.filter((r) => r.result).length
   const status = nightStatus(now, called, all.length)
 
@@ -113,9 +113,9 @@ export default function Gameday({ data, onPick, onPickState, log, watch, chamber
             ))}
           </div>
         )}
-        <PowerBar label="SENATE" icon="senate" total={100} control="D NEEDS 51 · R NEEDS 50 (VP TIEBREAK)" middle="UNCALLED" {...sen} />
-        <PowerBar label="HOUSE" icon="house" total={435} control="218 FOR CONTROL" middle="UNCALLED" {...house} />
-        <PowerBar label="GOVERNORS" icon="governor" total={50} middle="UNCALLED" {...gov} />
+        <PowerBar label="SENATE" icon="senate" total={100} control="D NEEDS 51 · R NEEDS 50 (VP TIEBREAK)" middle="UNCALLED" {...sen} gainD={sen.flipD} gainR={sen.flipR} />
+        <PowerBar label="HOUSE" icon="house" total={435} control="218 FOR CONTROL" middle="UNCALLED" {...house} gainD={house.flipD} gainR={house.flipR} />
+        <PowerBar label="GOVERNORS" icon="governor" total={50} middle="UNCALLED" {...gov} gainD={gov.flipD} gainR={gov.flipR} />
 
         <Block title="▣ CALL FEED">
           {calls.length
