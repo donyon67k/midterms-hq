@@ -5,18 +5,18 @@
 // It only searches when something suggests a race may have been called (free signals):
 //   - a headline says a candidate won/was projected/conceded (news feeds, every 60 s)
 //   - a slow backup sweep of the closest races (SCOUT_FALLBACK minutes, default 40; 0 = off)
-//   - safe House seats: one search per state for up to 12 seats at once, 45 min after its
-//     polls close and every 2 h while any are uncalled
-// Each check, Claude searches the web for an explicit call by a decision desk (AP, Decision
-// Desk HQ, NBC, CNN, ABC, CBS, Fox News) and for the latest vote count (official state/county
-// results first). The scout then decides:
-//   AUTO-CALL   2+ desks name the same winner, at least one claim is confirmed by reading
+//   - Senate/Governor races a minute after their polls close
+//   - safe House seats: one search per state for up to 12 seats at once, 3 min after its
+//     polls close and every 45 min while any are uncalled
+// Each check, Claude Haiku searches apnews.com and nbcnews.com only, for an explicit AP or NBC
+// call and the latest vote count. The scout then decides:
+//   AUTO-CALL   AP and NBC name the same winner, at least one claim is confirmed by reading
 //               the cited page here, no desk disagrees, and the count isn't razor-close
 //   ASK HQ      desks disagree, a lone desk call stays alone for 10+ minutes, the winner
 //               isn't a listed candidate, or nothing can be confirmed (review page + Mac alert)
 // Calls and counts go to live/scout.json on the `live` branch, which every copy reads.
 //
-// Env: SCOUT_BUDGET (US$ estimate the scout stops at, default 75), SCOUT_WORKERS (default 8),
+// Env: SCOUT_BUDGET (US$ estimate the scout stops at, default 10), SCOUT_WORKERS (default 8),
 //      SCOUT_FALLBACK (minutes between backup checks of the closest races, default 40),
 //      SCOUT_ALL=1 (also safe House seats)
 import Anthropic from '@anthropic-ai/sdk'
@@ -34,11 +34,11 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const OUT = join(ROOT, 'live/scout.json')
 const STATE_FILE = join(ROOT, 'live/scout-state.json') // local only: review queue, decisions
 const PORT = +process.env.SCOUT_PORT || 5299
-const MODEL = 'claude-opus-5-5'
-const BUDGET = +process.env.SCOUT_BUDGET || 75
+const MODEL = 'claude-haiku-5-5' // a lookup, not deep reasoning: ~1/40th of Opus' token price
+const BUDGET = +process.env.SCOUT_BUDGET || 10
 const WORKERS = +process.env.SCOUT_WORKERS || 8
 // Spend estimate: Claude Opus 5.5 tokens ($4 in / $20 out per million) plus web searches (~$10 per 1,000).
-const spent = () => (usage.inTok * 4 + usage.outTok * 20) / 1e6 + usage.searches * 0.01
+const spent = () => (usage.inTok * 0.1 + usage.outTok * 0.5) / 1e6 + usage.searches * 0.01 // Haiku 5.5 (prompts under 100K) + $10/1,000 searches
 const FALLBACK = (process.env.SCOUT_FALLBACK != null ? +process.env.SCOUT_FALLBACK : 40) * 60 * 1000
 const LONE_RECHECK = 3 * 60 * 1000 // one desk has called it: look for a second
 const RECHECK_CALLED = 10 * 60 * 1000 // one more look after a call, to catch a retraction
@@ -46,7 +46,8 @@ const AT_CLOSE = 60 * 1000 // Senate/Governor: first look a minute after polls c
 const LONE_DESK_ASK = 10 * 60 * 1000
 const CLOSE_MARGIN = 0.5 // points; tighter than this always goes to HQ
 
-export const DESKS = ['AP', 'Decision Desk HQ', 'NBC News', 'CNN', 'ABC News', 'CBS News', 'Fox News']
+export const DESKS = ['AP', 'NBC News'] // the two fastest desks; both must agree for an auto-call
+const SEARCH = { type: 'web_search_20250305', name: 'web_search', allowed_domains: ['apnews.com', 'nbcnews.com'] }
 
 function apiKey() {
   if (process.env.ANTHROPIC_API_KEY) return process.env.ANTHROPIC_API_KEY
@@ -167,7 +168,7 @@ const REPORT_TOOL = {
           additionalProperties: false,
           required: ['desk', 'outlet', 'winner', 'url', 'quote'],
           properties: {
-            desk: { type: 'string', enum: [...DESKS, 'Other'], description: 'Whose call it is. Outlets that publish AP calls (NYT, Washington Post, etc.) count as AP.' },
+            desk: { type: 'string', enum: [...DESKS, 'Other'], description: 'Whose call it is.' },
             outlet: { type: 'string', description: 'Where you read it, e.g. "AP News", "New York Times (AP call)"' },
             winner: { type: 'string', description: 'Full name of the projected winner' },
             url: { type: 'string', description: 'https URL of the page that states the call' },
@@ -200,8 +201,8 @@ const REPORT_TOOL = {
 const SYSTEM = `You are the call desk researcher for Midterms HQ, a nonpartisan election-results dashboard. Today is Tuesday, November 3, 2026, the U.S. midterm general election; results are coming in now.
 
 For the race you are given, use web search to find:
-1. Whether any decision desk has CALLED (projected) the winner of the 2026 general election: AP, Decision Desk HQ, NBC News, CNN, ABC News, CBS News, Fox News. Outlets that show AP race calls (New York Times, Washington Post, many local papers) count as AP.
-2. The latest vote count, preferring the state's official election-night results site or a county election office, otherwise AP numbers as shown by an outlet.
+1. Whether AP (apnews.com) and/or NBC News (nbcnews.com) has CALLED (projected) the winner of the 2026 general election. Their race results pages are the fastest place to look (NBC: nbcnews.com/politics/2026-elections/...-results).
+2. The latest vote count as shown on those pages.
 
 A call counts ONLY when the page explicitly says the desk projected, called or declared a winner ("AP: X wins", "NBC News projects X will win", a checkmark labeled as an AP call). These are NOT calls: a candidate leading, "expected to win", forecasts or ratings, a candidate declaring victory, a concession you cannot tie to a desk call, primary results, or 2024 results. If you are unsure whether something is a call, leave it out and say why in notes. Never guess a URL or a quote: copy the URL of the page you actually read and the sentence as written. Work quickly: a few targeted searches are enough. Finish by calling the report tool exactly once.`
 
@@ -216,14 +217,12 @@ Incumbent party: ${r.incumbent?.party || 'unknown'}.${have ? `\nAlready seen cal
 async function ask(r) {
   const messages = [{ role: 'user', content: racePrompt(r) }]
   for (let turn = 0; turn < 4; turn++) {
-    const res = await client.beta.messages.create({
+    const res = await client.messages.create({
       model: MODEL,
       max_tokens: 16000,
-      betas: ['server-side-fallback-2026-07-01'],
-      fallbacks: 'default',
       output_config: { effort: 'low' }, // a lookup, not deep reasoning: faster and cheaper
       system: SYSTEM,
-      tools: [{ type: 'web_search_20260209', name: 'web_search', max_uses: 4 }, REPORT_TOOL],
+      tools: [{ ...SEARCH, max_uses: 2 }, REPORT_TOOL],
       messages,
     })
     usage.inTok += res.usage?.input_tokens || 0
@@ -380,15 +379,14 @@ const BATCH_TOOL = {
 async function sweepState(state, list) {
   usage.checks++
   const lines = list.map((r) => `${raceTitle(r, STATES)}: ${r.candidates.slice(0, 4).map((c) => `${c.name} (${c.party})`).join(', ')}`).join('\n')
-  const messages = [{ role: 'user', content: `${STATES[state]} U.S. House races, 2026 general election. For each district below, find which decision desks (AP, Decision Desk HQ, NBC News, CNN, ABC News, CBS News, Fox News) have called the winner. Results pages that list many races at once (AP's state results page, a network's state results page) are the fastest way; try to confirm each call with two different desks.\n\n${lines}` }]
+  const messages = [{ role: 'user', content: `${STATES[state]} U.S. House races, 2026 general election. For each district below, find whether AP and/or NBC News has called the winner. Their state results pages list many races at once and are the fastest way; check both desks.\n\n${lines}` }]
   let input = null
   for (let turn = 0; turn < 4 && !input; turn++) {
-    const res = await client.beta.messages.create({
+    const res = await client.messages.create({
       model: MODEL, max_tokens: 16000,
-      betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default',
       output_config: { effort: 'low' },
       system: SYSTEM.replace('For the race you are given', 'For the races you are given').replace('2. The latest vote count, preferring the state\'s official election-night results site or a county election office, otherwise AP numbers as shown by an outlet.\n', ''),
-      tools: [{ type: 'web_search_20260209', name: 'web_search', max_uses: 5 }, BATCH_TOOL],
+      tools: [{ ...SEARCH, max_uses: 3 }, BATCH_TOOL],
       messages,
     })
     usage.inTok += res.usage?.input_tokens || 0
