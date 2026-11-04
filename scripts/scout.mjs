@@ -240,8 +240,8 @@ async function ask(r) {
 }
 
 // ---------- checking the model's claims ----------
-const surname = (n) => n.toLowerCase().replace(/[.,]/g, '').split(/\s+/).filter((w) => !/^(jr|sr|ii|iii|iv)$/.test(w)).pop() || ''
-const matchCand = (r, name) => r.candidates.find((c) => surname(c.name) === surname(name)) || r.candidates.find((c) => name.toLowerCase().includes(surname(c.name)))
+const surname = (n) => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[.,]/g, '').split(/\s+/).filter((w) => !/^(jr|sr|ii|iii|iv)$/.test(w)).pop() || ''
+const matchCand = (r, name) => r.candidates.find((c) => surname(c.name) === surname(name)) || r.candidates.find((c) => surname(name).length && name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(surname(c.name)))
 const https = (u) => (typeof u === 'string' && /^https:\/\/[^\s"<>]+$/.test(u) ? u : null)
 
 // Read the cited page ourselves: the winner's name and call language must actually be there.
@@ -466,6 +466,14 @@ async function nbcState(state) {
     ...(rr.discreteOffices || []).filter((x) => x.officeCode === 'S' || x.officeCode === 'G').map((x) => ({ x, type: x.officeCode === 'S' ? 'senate' : 'governor' })),
     ...(rr.house || []).map((x) => ({ x, type: 'house' })),
   ]
+  // Ballot measures: NBC's call (Yes/No) and count, matched to HQ's list in the app.
+  const props = (rr.ballotProps || []).map((x) => {
+    const yes = x.candidates?.find((c) => /^yes$/i.test(c.name))
+    const no = x.candidates?.find((c) => /^no$/i.test(c.name))
+    const win = x.candidates?.find((c) => c.isWinner && c.callStatus === 'P')
+    return { name: String(x.officeName || x.office || '').slice(0, 200), yes: yes?.percentVote ?? null, no: no?.percentVote ?? null, yesVotes: yes?.votes ?? null, noVotes: no?.votes ?? null, pctIn: Number.isFinite(x.percentIn) ? x.percentIn : null, result: win ? (/^yes$/i.test(win.name) ? 'Approved' : /^no$/i.test(win.name) ? 'Rejected' : null) : null, url: `${NBC}${x.href || ''}` }
+  }).filter((m) => m.name)
+  if (props.length) { (pub.measures ||= {})[state] = props; dirty = true }
   for (const { x, type } of entries) {
     const cands = (x.candidates || []).filter((c) => c.name && !/write-in/i.test(c.name))
     if (!cands.length) continue
