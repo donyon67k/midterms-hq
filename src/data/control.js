@@ -39,28 +39,27 @@ export function sanitizeControl(raw) {
 }
 
 // raw.githubusercontent.com caches for 5 minutes, too slow for election-night corrections.
-// Publishing purges the jsDelivr copy, so it is fresh within seconds (no rate limit);
-// raw stays the fallback.
+// Publishing purges the jsDelivr copy, so it is usually fresh within seconds.
 const CONTROL_FAST = `https://cdn.jsdelivr.net/gh/${REPO_URL.replace('https://github.com/', '')}@live/control.json`
 let last = null
 
 const newer = (a, b) => (!b || (a?.updatedAt || '') >= (b.updatedAt || '') ? a : b)
 
+const get = async (url, init) => { const res = await netFetch(url, init); if (!res.ok) throw new Error(String(res.status)); return sanitizeControl(await res.json()) }
+
+// fast: both mirrors at once, newest wins (jsDelivr purges can be throttled for an hour).
 async function fetchFresh(fast) {
-  if (DEV) return fetch(`/live/control.json?t=${Date.now()}`)
-  if (fast) {
-    const res = await netFetch(CONTROL_FAST, { cache: 'no-store' }).catch(() => null)
-    if (res?.ok) return res
-  }
-  return netFetch(CONTROL_URL)
+  if (DEV) return get(`/live/control.json?t=${Date.now()}`)
+  if (!fast) return get(CONTROL_URL)
+  const got = (await Promise.all([get(CONTROL_FAST, { cache: 'no-store' }), get(CONTROL_URL)].map((p) => p.catch(() => null)))).filter(Boolean)
+  if (!got.length) throw new Error('no mirror reachable')
+  return got.reduce((a, b) => newer(a, b))
 }
 
 // fast: election night, when HQ corrections should land within about a minute.
 export async function fetchControl({ fast = false } = {}) {
   try {
-    const res = await fetchFresh(fast)
-    if (!res.ok) throw new Error(String(res.status))
-    const ctl = newer(sanitizeControl(await res.json()), last) // never step back to an older copy
+    const ctl = newer(await fetchFresh(fast), last) // never step back to an older copy
     last = ctl
     cacheSet('control', ctl)
     return ctl
