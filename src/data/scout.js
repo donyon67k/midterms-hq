@@ -1,7 +1,7 @@
 // Scout file: race calls from the decision desks (AP, NBC, CNN, ...) and live vote counts,
 // found by the HQ call scout (scripts/scout.mjs) and published to the `live` branch.
-// jsDelivr is purged on every publish, so it's fresh within seconds and has no rate limit;
-// raw.githubusercontent.com (5-minute cache) is the fallback.
+// Read from jsDelivr (purged on publish, though purges get throttled) and raw.githubusercontent.com
+// (5-minute cache) together.
 import { REPO_URL, netFetch } from '../lib/desktop.js'
 
 const REPO = REPO_URL.replace('https://github.com/', '')
@@ -35,17 +35,17 @@ export function sanitizeScout(raw) {
   return { calls, counts, official, updatedAt: str(r.updatedAt, 40) || null }
 }
 
+// Both mirrors at once, newest wins: jsDelivr can lag for an hour when its purges are
+// throttled, and raw can lag 5 minutes; whichever is fresher this time is used.
 let last = null
 export async function fetchScout() {
-  for (const url of DEV ? ['/live/scout.json'] : URLS) {
+  const got = await Promise.all((DEV ? ['/live/scout.json'] : URLS).map(async (url) => {
     try {
       const res = await netFetch(`${url}${DEV ? `?t=${Date.now()}` : ''}`, { cache: 'no-store' })
-      if (!res.ok) continue
-      const sc = sanitizeScout(await res.json())
-      if (!last || (sc.updatedAt || '') >= (last.updatedAt || '')) last = sc // never step back to an older copy
-      return last
-    } catch { /* try the next mirror */ }
-  }
+      return res.ok ? sanitizeScout(await res.json()) : null
+    } catch { return null }
+  }))
+  for (const sc of got) if (sc && (!last || (sc.updatedAt || '') >= (last.updatedAt || ''))) last = sc // never step back to an older copy
   return last
 }
 
