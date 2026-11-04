@@ -925,3 +925,8 @@ table.spenders td:first-child { max-width: 220px; }
 .hq > .modes { grid-row: 3; }
 .hq > .main { grid-row: 4; }
 .hq > .ticker { grid-row: 5; }
+
+/* Seat-flip tracker next to the Gameday seat counts: "D 44 +2" */
+.flip-gain { display: inline-block; margin: 0 6px; padding: 2px 4px; font-size: 9px; color: #fff; vertical-align: 1px; }
+.flip-gain.gain-D { background: var(--dem); }
+.flip-gain.gain-R { background: var(--rep); }
