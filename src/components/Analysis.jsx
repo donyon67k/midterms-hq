@@ -6,10 +6,11 @@ import Block from './Block.jsx'
 // explainers on how election night works.
 const pvi = (s = '') => { const m = /^([DR])\+(\d+(?:\.\d+)?)/.exec(s); return m ? (m[1] === 'D' ? 1 : -1) * +m[2] : /even/i.test(s) ? 0 : null }
 
-// D-minus-R margin in points from the live count, once most of the vote is in.
-export function countMargin(r, minIn = 80) {
+// D-minus-R margin in points from the live count, only for called races that are nearly fully
+// counted (early counts are lopsided: mail ballots and Election Day votes come in at different times).
+export function countMargin(r, minIn = 95) {
   const c = r.count
-  if (!c || (c.pctIn != null && c.pctIn < minIn)) return null
+  if (!r.result || !c || c.pctIn == null || c.pctIn < minIn) return null
   const d = c.cands.find((x) => x.party === 'D')?.pct
   const rr = c.cands.find((x) => x.party === 'R')?.pct
   return d != null && rr != null ? d - rr : null
@@ -50,12 +51,12 @@ export default function Analysis({ data, onPick }) {
     <div className="analysis">
       <Block title="▣ THE NATIONAL SWING">
         {avg == null
-          ? <div className="dim">Fills in as races reach 80% of the expected vote counted.</div>
+          ? <div className="dim">Fills in as called races reach 95% of the expected vote counted.</div>
           : (
             <>
               <div className="pixel swing-big" style={{ color: avg > 0 ? 'var(--dem)' : 'var(--rep)' }}>{fmt(avg)}</div>
               <div className="dim">
-                Average result vs each seat&apos;s partisan lean across {rows.length} races with 80%+ counted. A positive D number means Democrats ran ahead of their usual lean. Early counts shift; this settles as more races finish.
+                {rows.length < 30 ? 'PRELIMINARY · ' : ''}Average result vs each seat&apos;s partisan lean across {rows.length} called races with 95%+ counted. A positive D number means Democrats ran ahead of their usual lean. It settles as more races finish counting.
               </div>
             </>
           )}

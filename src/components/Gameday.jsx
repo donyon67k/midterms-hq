@@ -45,7 +45,11 @@ function leadOf(r) {
 
 export default function Gameday({ data, onPick, onPickState, log, watch, chambers = {}, bursts }) {
   const now = useMinuteClock()
-  const [tool, setToolRaw] = useState(() => { try { return localStorage.getItem('mhq:gd-tool') || 'live' } catch { return 'live' } })
+  const [tool, setToolRaw] = useState(() => {
+    const linked = /^#gameday\/(\w+)/.exec(location.hash)?.[1]
+    if (TOOLS.some(([k]) => k === linked)) return linked
+    try { return localStorage.getItem('mhq:gd-tool') || 'live' } catch { return 'live' }
+  })
   const setTool = (t) => { setToolRaw(t); try { localStorage.setItem('mhq:gd-tool', t) } catch { /* private mode */ } }
   const senRaces = Object.values(data.senate)
   const govRaces = Object.values(data.governor)
