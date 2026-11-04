@@ -34,9 +34,19 @@ export async function cacheSet(key, value) {
   try { localStorage.setItem(`mhq:${key}`, JSON.stringify(value)) } catch { /* quota */ }
 }
 
-// Native notification (desktop only), asking for permission the first time.
+// Browsers: alerts work while the site is open in a tab, once the viewer allows them.
+export const webAlerts = () => !IS_DESKTOP && typeof Notification !== 'undefined' && Notification.permission === 'granted'
+export async function enableWebAlerts() {
+  if (IS_DESKTOP || typeof Notification === 'undefined') return false
+  return (await Notification.requestPermission()) === 'granted'
+}
+
+// Native notification on desktop; a browser notification on the web if allowed.
 export async function notify(title, body) {
-  if (!IS_DESKTOP) return
+  if (!IS_DESKTOP) {
+    try { if (webAlerts()) new Notification(title, { body }) } catch { /* some phones only notify from a service worker */ }
+    return
+  }
   try {
     const n = await import('@tauri-apps/plugin-notification')
     let ok = await n.isPermissionGranted()

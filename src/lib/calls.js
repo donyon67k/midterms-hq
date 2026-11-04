@@ -5,7 +5,9 @@ export function stripCalls(data) {
     ? { ...r, result: null, candidates: r.candidates.map((c) => (c.won ? { ...c, won: false } : c)) }
     : r)
   const map = (o) => Object.fromEntries(Object.entries(o).map(([k, v]) => [k, Array.isArray(v) ? v.map(strip) : strip(v)]))
-  return { ...data, senate: map(data.senate), governor: map(data.governor), house: map(data.house) }
+  // Tonight's ballot measures too: their results come from NBC (scout file), not Wikipedia.
+  const measures = Object.fromEntries(Object.entries(data.measures || {}).map(([st, list]) => [st, list.map((m) => (m.date === 'Nov 3' && !/on ballot/i.test(m.status) ? { ...m, status: 'On ballot', yes: null, no: null } : m))]))
+  return { ...data, senate: map(data.senate), governor: map(data.governor), house: map(data.house), measures }
 }
 
 // Which party has clinched each chamber from called seats (null until someone has).

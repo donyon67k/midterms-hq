@@ -6,6 +6,8 @@ import { NewsBar, RaceNews, useRaceNews } from './News.jsx'
 import Block, { openBlock } from './Block.jsx'
 import { FinanceExplainer, OutsideMoney, StatePortal } from './MoneyIntel.jsx'
 import { fecCandidateUrl, useMoney } from '../data/money.js'
+import ShareButton from './ShareButton.jsx'
+import { deskList } from '../data/scout.js'
 
 const lastName = (n = '') => n.replace(/\(.*?\)/g, '').replace(/,.*$/, '').trim().split(/\s+/).filter((w) => !/^(jr\.?|sr\.?|ii|iii|iv)$/i.test(w)).pop()?.toLowerCase()
 
@@ -224,6 +226,19 @@ export default function RaceView({ race, stateName, results, watch }) {
               ? <>CALLED BY {race.result.sources.map((s, i) => <span key={s.desk}>{i ? ' · ' : ''}<a href={s.url} target="_blank" rel="noreferrer">{s.desk} ↗</a></span>)}</>
               : '◆ CONFIRMED BY HQ'} · UNOFFICIAL UNTIL CERTIFIED
           </span>
+          <ShareButton
+            filename={`${race.id}-called.png`}
+            card={() => ({
+              kicker: '★ RACE CALLED ★',
+              title: `${(race.type === 'house' ? districtLabel(race.state, race.district) : `${stateName} ${race.type === 'senate' ? 'Senate' : 'Governor'}`).toUpperCase()}`,
+              big: race.result.winner.toUpperCase(),
+              color: resultColor(race.result),
+              lines: [
+                `${race.result.party === 'D' ? 'Democrat' : race.result.party === 'R' ? 'Republican' : 'Independent'}${race.result.pct ? ` · ${race.result.pct}%` : ''} · ${race.result.flip ? `${race.result.party} GAIN` : `${race.result.party} HOLD`}`,
+                race.result.hq ? 'Called by HQ' : race.result.sources?.length ? `Called by ${deskList(race.result.sources)}` : 'Confirmed by HQ',
+              ],
+            })}
+          />
         </div>
       )}
       {results && !race.result && <div className="result-banner awaiting"><span className="pixel">◌ AWAITING CALL</span><span>Forecast shown below until the race is called.</span></div>}

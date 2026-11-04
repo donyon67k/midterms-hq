@@ -31,3 +31,4 @@ release/
 
 # local draft of the live control file (published to the `live` branch by the admin page)
 live/
+shots/

@@ -167,7 +167,7 @@ export default function App() {
   const [region, setRegion] = useState(null)
   const regionRef = useRef(null)
   // Gameday is its own page (election-night results), never mixed with the forecast pages.
-  const [gamedayOpen, setGamedayOpen] = useState(false)
+  const [gamedayOpen, setGamedayOpen] = useState(() => typeof location !== 'undefined' && location.hash === '#gameday') // shareable link: …/#gameday
   const gamedayRef = useRef(false)
   const [newsOpen, setNewsOpen] = useState(false)
   const [newsQuery, setNewsQuery] = useState('')

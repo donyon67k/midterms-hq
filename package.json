@@ -21,7 +21,8 @@
     "data:cities": "node scripts/build-cities.mjs",
     "app:dmg": "bash scripts/build-installer.sh",
     "money": "node scripts/build-money.mjs",
-    "gov-money": "node scripts/build-gov-money.mjs"
+    "gov-money": "node scripts/build-gov-money.mjs",
+    "shots": "bash scripts/shots.sh"
   },
   "dependencies": {
     "@fontsource/press-start-2p": "^5.3.0",

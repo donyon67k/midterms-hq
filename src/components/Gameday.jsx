@@ -4,6 +4,12 @@ import { ELECTION_DAY, POLL_WAVES, isElectionWindow, ratingClass, raceTitle, res
 import { GOV_NOW, PowerBar, SENATE_NOW, chamber } from './Overview.jsx'
 import Block from './Block.jsx'
 import { PARTY_NAME } from '../lib/calls.js'
+import Simulator from './Simulator.jsx'
+import Picks from './Picks.jsx'
+import MyBallot from './MyBallot.jsx'
+import Analysis from './Analysis.jsx'
+
+const TOOLS = [['live', '● LIVE'], ['path', 'PATH TO MAJORITY'], ['picks', 'MY PICKS'], ['ballot', 'MY BALLOT'], ['analysis', 'ANALYSIS + LEARN']]
 
 // Election-night command center: poll closings, live scoreboard, call feed,
 // and which battlegrounds report in each wave.
@@ -39,6 +45,8 @@ function leadOf(r) {
 
 export default function Gameday({ data, onPick, onPickState, log, watch, chambers = {}, bursts }) {
   const now = useMinuteClock()
+  const [tool, setToolRaw] = useState(() => { try { return localStorage.getItem('mhq:gd-tool') || 'live' } catch { return 'live' } })
+  const setTool = (t) => { setToolRaw(t); try { localStorage.setItem('mhq:gd-tool', t) } catch { /* private mode */ } }
   const senRaces = Object.values(data.senate)
   const govRaces = Object.values(data.governor)
   const houseRaces = Object.values(data.house).flat()
@@ -84,7 +92,14 @@ export default function Gameday({ data, onPick, onPickState, log, watch, chamber
           </button>
         )}
       </div>
-      <div className="dossier-body">
+      <div className="gd-tools" role="tablist" aria-label="Gameday tools">
+        {TOOLS.map(([k, label]) => <button key={k} type="button" role="tab" aria-selected={tool === k} className={tool === k ? 'on' : ''} onClick={() => setTool(k)}>{label}</button>)}
+      </div>
+      {tool === 'path' && <div className="dossier-body"><Simulator data={data} onPick={onPick} /></div>}
+      {tool === 'picks' && <div className="dossier-body"><Picks data={data} onPick={onPick} /></div>}
+      {tool === 'ballot' && <div className="dossier-body"><MyBallot data={data} onPick={onPick} watch={watch} /></div>}
+      {tool === 'analysis' && <div className="dossier-body"><Analysis data={data} onPick={onPick} /></div>}
+      <div className="dossier-body" hidden={tool !== 'live'}>
         {(chambers.senate || chambers.house) && (
           <div className="control-calls">
             {['senate', 'house'].filter((c) => chambers[c]).map((c) => (

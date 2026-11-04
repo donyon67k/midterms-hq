@@ -78,6 +78,12 @@ export default function Dossier({ abbr, data, mode, view, setView, onClose, resu
                 </div>
                 <p>{m.description}</p>
                 {m.yes && <div className="measure-res">YES {m.yes} · NO {m.no}</div>}
+                {m.live && (
+                  <div className="dim measure-src">
+                    {/approved|rejected/i.test(m.status) ? 'CALLED BY' : 'LIVE COUNT FROM'} <a href={m.live.url} target="_blank" rel="noreferrer">{m.live.source.toUpperCase()} ↗</a>
+                    {m.live.pctIn != null ? ` · ${Math.round(m.live.pctIn)}% IN` : ''} · UNOFFICIAL UNTIL CERTIFIED
+                  </div>
+                )}
               </div>
             ))}
           </div>
