@@ -42,6 +42,7 @@ const spent = () => (usage.inTok * 4 + usage.outTok * 20) / 1e6 + usage.searches
 const FALLBACK = (process.env.SCOUT_FALLBACK != null ? +process.env.SCOUT_FALLBACK : 40) * 60 * 1000
 const LONE_RECHECK = 3 * 60 * 1000 // one desk has called it: look for a second
 const RECHECK_CALLED = 10 * 60 * 1000 // one more look after a call, to catch a retraction
+const AT_CLOSE = 60 * 1000 // Senate/Governor: first look a minute after polls close (desks call safe races right away)
 const LONE_DESK_ASK = 10 * 60 * 1000
 const CLOSE_MARGIN = 0.5 // points; tighter than this always goes to HQ
 
@@ -82,7 +83,8 @@ const isHot = (r) => r.type !== 'house' || score(r) <= 1
 const closed = (r) => { const w = pollCloseFor(r.state); return w && w.at <= new Date() }
 
 // nextAt[id]: when to check a race next (undefined = only when a trigger fires).
-// The closest races get a backup check FALLBACK after their polls close, and then every FALLBACK.
+// Senate/Governor races get a first look right after their polls close; close House races 10-30 min
+// after; then the closest races are re-checked every FALLBACK.
 const nextAt = {}
 const lastTrigger = {}
 function trigger(r, why) {
@@ -96,7 +98,7 @@ function trigger(r, why) {
 function pick() {
   const now = Date.now()
   for (const r of Object.values(races)) {
-    if (nextAt[r.id] === undefined && !(r.id in lastCheck) && FALLBACK && isHot(r) && inScope(r) && closed(r)) nextAt[r.id] = pollCloseFor(r.state).at.getTime() + FALLBACK / 4 + Math.random() * FALLBACK / 2
+    if (nextAt[r.id] === undefined && !(r.id in lastCheck) && FALLBACK && isHot(r) && inScope(r) && closed(r)) nextAt[r.id] = pollCloseFor(r.state).at.getTime() + (r.type !== 'house' ? AT_CLOSE : FALLBACK / 4 + Math.random() * FALLBACK / 2)
   }
   const ready = Object.values(races).filter((r) => nextAt[r.id] !== undefined && nextAt[r.id] <= now && (inScope(r) || lastTrigger[r.id]) && closed(r) && !st.ignored.includes(r.id) && !busy.has(r.id))
   ready.sort((a, b) => nextAt[a.id] - nextAt[b.id] || (isHot(b) - isHot(a)) || score(a) - score(b))
@@ -339,11 +341,11 @@ function publishCall(r, cand, claims, by) {
 }
 
 // ---------- safe House seats: one search per state ----------
-// Seats every forecaster rates Safe aren't scouted one by one. Instead, 45 minutes after a
-// state's polls close (then every 2 hours while any are uncalled) one search covers up to 12
+// Seats every forecaster rates Safe aren't scouted one by one. Instead, a few minutes after a
+// state's polls close (then every 45 minutes while any are uncalled) one search covers up to 12
 // of them at once, and the same two-desk rule applies to each.
-const SWEEP_FIRST = 45 * 60 * 1000
-const SWEEP_EVERY = 2 * 60 * 60 * 1000
+const SWEEP_FIRST = 3 * 60 * 1000
+const SWEEP_EVERY = 45 * 60 * 1000
 const sweepAt = {}
 const isSafeSeat = (r) => r.type === 'house' && !inScope(r)
 
