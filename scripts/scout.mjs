@@ -294,6 +294,7 @@ async function decide(r, rawClaims, count, notes, { quiet = false } = {}) {
     saveState()
   }
 
+  if (!quiet) say(`CHECK · ${raceTitle(r, STATES)} · ${claims.length ? claims.map((c) => `${c.desk}: ${c.winner}${c.verified ? ' ✓' : ''}`).join(', ') : 'no desk call yet'}`)
   const existing = pub.calls[r.id]
   if (!claims.length) {
     delete st.firstLone[r.id]
@@ -421,7 +422,7 @@ async function sweeps() {
   try {
     for (let i = 0; i < list.length; i += 12) await sweepState(state, list.slice(i, i + 12))
     say(`SWEEP · ${STATES[state]}: ${list.filter((r) => pub.calls[r.id]).length}/${list.length} safe House seats now called`)
-  } catch (e) { usage.errors++; say(`sweep failed for ${STATES[state]}: ${e.message}`) } finally { sweeping = false }
+  } catch (e) { usage.errors++; if (/credit balance/i.test(e.message)) outOfCredit(); else say(`sweep failed for ${STATES[state]}: ${e.message}`) } finally { sweeping = false }
 }
 
 // ---------- publishing ----------
@@ -438,6 +439,14 @@ async function publish() {
   } catch (e) { dirty = true; say(`publish failed (will retry): ${e.message.split('\n')[0]}`) }
 }
 
+// Out of API credit: stop (every search would fail) and say so loudly. Unpause on the review page after topping up.
+function outOfCredit() {
+  if (paused) return
+  paused = true
+  say('OUT OF API CREDIT · scout paused. Add credit at console.anthropic.com (Plans & Billing), then press PAUSE/RESUME here')
+  notify('Midterms HQ scout: out of API credit', 'Scout paused. Add credit at console.anthropic.com, then resume on localhost:5299')
+}
+
 // ---------- loop ----------
 const busy = new Set()
 async function worker() {
@@ -448,7 +457,8 @@ async function worker() {
     try { await check(r) } catch (e) {
       usage.errors++
       nextAt[r.id] = Date.now() + 90 * 1000
-      say(`error on ${raceTitle(r, STATES)}: ${e.message}`)
+      if (/credit balance/i.test(e.message)) outOfCredit()
+      else say(`error on ${raceTitle(r, STATES)}: ${e.message}`)
     } finally { busy.delete(r.id) }
   }
 }
@@ -490,6 +500,17 @@ function stateJson() {
     review: Object.entries(st.review).map(([id, v]) => ({ id, title: titleOf(id), rating: races[id]?.consensus?.label || '', cands: (races[id]?.candidates || []).slice(0, 4).map((c) => ({ name: c.name, party: ['D', 'R'].includes(c.party) ? c.party : 'I' })), ...v })),
     calls: Object.entries(pub.calls).map(([id, c]) => ({ id, title: titleOf(id), ...c })).sort((a, b) => b.at.localeCompare(a.at)),
   }
+}
+
+// SCOUT_TEST=<race id>: one check, print what was found and exit (publishes nothing)
+if (process.env.SCOUT_TEST) {
+  await refreshRaces()
+  const r = races[process.env.SCOUT_TEST]
+  if (!r) { console.log('no such race'); process.exit(1) }
+  const rep = await ask(r)
+  for (const c of rep.calls) c.verified = await verify(c)
+  console.log(JSON.stringify(rep, null, 2), `\n~$${spent().toFixed(2)}`)
+  process.exit(0)
 }
 
 createServer(async (req, res) => {
