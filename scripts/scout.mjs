@@ -65,11 +65,12 @@ const st = load(STATE_FILE, { review: {}, ignored: [], firstLone: {} })
 const usage = { searches: 0, inTok: 0, outTok: 0, checks: 0, errors: 0, triggers: 0 }
 const log = []
 const say = (msg) => { const line = `[${new Date().toLocaleTimeString()}] ${msg}`; console.log(line); log.unshift(line); log.length = Math.min(log.length, 200) }
-const saveState = () => { mkdirSync(dirname(STATE_FILE), { recursive: true }); writeFileSync(STATE_FILE, JSON.stringify(st, null, 2)) }
+const saveState = () => { if (saveState.off) return; mkdirSync(dirname(STATE_FILE), { recursive: true }); writeFileSync(STATE_FILE, JSON.stringify(st, null, 2)) }
 
 let races = {}
 let dirty = false
 let paused = false
+let noCredit = false // API credit ran out: Claude checks stop, the free NBC reader keeps going
 
 // ---------- race list ----------
 async function refreshRaces() {
@@ -408,7 +409,7 @@ async function sweepState(state, list) {
 
 let sweeping = false
 async function sweeps() {
-  if (sweeping || paused || spent() >= BUDGET) return
+  if (sweeping || paused || noCredit || process.env.SCOUT_AI === '0' || spent() >= BUDGET) return
   const now = Date.now()
   const byState = {}
   for (const r of Object.values(races)) if (isSafeSeat(r) && closed(r) && !pub.calls[r.id] && !st.ignored.includes(r.id)) (byState[r.state] ||= []).push(r)
@@ -439,17 +440,81 @@ async function publish() {
 
 // Out of API credit: stop (every search would fail) and say so loudly. Unpause on the review page after topping up.
 function outOfCredit() {
-  if (paused) return
-  paused = true
-  say('OUT OF API CREDIT · scout paused. Add credit at console.anthropic.com (Plans & Billing), then press PAUSE/RESUME here')
-  notify('Midterms HQ scout: out of API credit', 'Scout paused. Add credit at console.anthropic.com, then resume on localhost:5299')
+  if (noCredit) return
+  noCredit = true
+  say('OUT OF API CREDIT · Claude checks stopped (NBC calls still come in). Add credit at console.anthropic.com, then restart the scout')
+  notify('Midterms HQ scout: out of API credit', 'Claude checks stopped; NBC calls still come in. Add credit, then restart the scout.')
+}
+
+// ---------- NBC News results pages (free, no AI) ----------
+// Each state's NBC results page embeds every Senate/Governor/House race with NBC's own call
+// ("Projected winner") and the count. One fetch per closed state every NBC_EVERY; NBC calls
+// go up right away with an NBC source link, and AP (from the Claude checks) is added when found.
+const NBC_EVERY = 90 * 1000
+const NBC = 'https://www.nbcnews.com'
+const nbcSeen = {} // race id -> winner NBC showed last time (to notice a withdrawn call)
+async function nbcState(state) {
+  const slug = STATES[state].toLowerCase().replace(/\s+/g, '-')
+  const res = await fetch(`${NBC}/politics/2026-elections/${slug}-results`, { headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh) MidtermsHQ-scout' }, signal: AbortSignal.timeout(20000) })
+  if (!res.ok) throw new Error(`HTTP ${res.status}`)
+  const html = await res.text()
+  const json = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/)?.[1]
+  if (!json) throw new Error('no results data on the page')
+  const rr = JSON.parse(json).props?.pageProps?.stateRaceResults || {}
+  const mine = Object.values(races).filter((r) => r.state === state)
+  const entries = [
+    ...(rr.discreteOffices || []).filter((x) => x.officeCode === 'S' || x.officeCode === 'G').map((x) => ({ x, type: x.officeCode === 'S' ? 'senate' : 'governor' })),
+    ...(rr.house || []).map((x) => ({ x, type: 'house' })),
+  ]
+  for (const { x, type } of entries) {
+    const cands = (x.candidates || []).filter((c) => c.name && !/write-in/i.test(c.name))
+    if (!cands.length) continue
+    const has = (r) => cands.some((c) => r.candidates.some((k) => surname(k.name) === surname(c.name)))
+    const pool = mine.filter((r) => r.type === type && (type !== 'house' || mine.filter((m) => m.type === 'house').length === 1 || String(r.district) === String(x.district)))
+    const r = pool.length === 1 ? pool[0] : pool.find(has) // two Senate races in a state: tell them apart by candidates
+    if (!r || st.ignored.includes(r.id)) continue
+    const url = `${NBC}${x.href || ''}`
+    const tot = cands.reduce((t, c) => t + (c.votes || 0), 0)
+    if (tot > 0) {
+      pub.counts[r.id] = { pctIn: Number.isFinite(x.percentIn) ? x.percentIn : null, cands: cands.slice(0, 6).map((c) => ({ name: c.name, party: c.party === 'dem' ? 'D' : c.party === 'gop' ? 'R' : 'I', votes: c.votes ?? null, pct: c.percentVote ?? null })), source: 'NBC News', url, asOf: '', at: new Date().toISOString() }
+      dirty = true
+    }
+    const win = cands.find((c) => c.isWinner && c.callStatus === 'P')
+    const call = pub.calls[r.id]
+    if (!win) {
+      if (nbcSeen[r.id] && call?.by === 'nbc') { delete pub.calls[r.id]; dirty = true; say(`CALL WITHDRAWN by NBC · ${raceTitle(r, STATES)}`); notify('Midterms HQ scout', `NBC withdrew its call in ${raceTitle(r, STATES)}`) }
+      delete nbcSeen[r.id]
+      continue
+    }
+    nbcSeen[r.id] = win.name
+    const cand = matchCand(r, win.name)
+    if (!cand) { if (!st.review[r.id]) { st.review[r.id] = { why: `NBC calls it for "${win.name}", who isn't a listed candidate`, claims: [{ desk: 'NBC News', winner: win.name, url, verified: true }], count: pub.counts[r.id] || null, notes: '', at: Date.now() }; saveState(); say(`ASK HQ · ${raceTitle(r, STATES)} · NBC winner not on the list`) } continue }
+    if (call) {
+      if (call.winner !== cand.name) { if (!st.review[r.id]) { st.review[r.id] = { why: `NBC now calls it for ${cand.name}, but HQ shows ${call.winner}`, claims: [{ desk: 'NBC News', winner: cand.name, party: cand.party, url, verified: true }], count: pub.counts[r.id] || null, notes: '', at: Date.now() }; saveState(); notify('Midterms HQ scout: needs you', `${raceTitle(r, STATES)}: NBC and HQ disagree`) } continue }
+      if (!call.sources.some((s) => s.desk === 'NBC News')) { call.sources.push({ desk: 'NBC News', url }); dirty = true }
+      continue
+    }
+    publishCall(r, cand, [{ desk: 'NBC News', url }], 'nbc')
+    if (pub.calls[r.id] && win.percentVote != null) pub.calls[r.id].pct = win.percentVote
+  }
+}
+let nbcBusy = false
+async function nbcSweep() {
+  if (nbcBusy || paused) return
+  nbcBusy = true
+  try {
+    const states = [...new Set(Object.values(races).filter((r) => closed(r) && !st.ignored.includes(r.id)).map((r) => r.state))]
+    for (let i = 0; i < states.length; i += 4) { // 4 at a time, gently
+      await Promise.all(states.slice(i, i + 4).map((s) => nbcState(s).catch((e) => say(`NBC ${STATES[s]}: ${e.message}`))))
+    }
+  } finally { nbcBusy = false }
 }
 
 // ---------- loop ----------
 const busy = new Set()
 async function worker() {
   for (;;) {
-    const r = !paused && spent() < BUDGET && pick()
+    const r = !paused && !noCredit && process.env.SCOUT_AI !== '0' && spent() < BUDGET && pick()
     if (!r) { await new Promise((ok) => setTimeout(ok, 3000)); continue }
     busy.add(r.id)
     try { await check(r) } catch (e) {
@@ -500,6 +565,16 @@ function stateJson() {
   }
 }
 
+// NBC_TEST=GA: read one state's NBC page, print the calls it would make and exit (publishes nothing)
+if (process.env.NBC_TEST) {
+  await refreshRaces()
+  for (const k of Object.keys(pub.calls)) delete pub.calls[k]
+  saveState.off = true
+  await nbcState(process.env.NBC_TEST)
+  for (const [id, c] of Object.entries(pub.calls)) console.log(id, '→', c.winner, c.party, c.pct, c.flip ? 'FLIP' : '', c.sources.map((x) => x.url).join(' '))
+  console.log(Object.keys(pub.counts).length, 'counts;', Object.keys(st.review).length, 'for review')
+  process.exit(0)
+}
 // SCOUT_TEST=<race id>: one check, print what was found and exit (publishes nothing)
 if (process.env.SCOUT_TEST) {
   await refreshRaces()
@@ -539,5 +614,7 @@ say(`${Object.values(races).filter(inScope).length} races in scope. Searching on
 setInterval(() => refreshRaces().catch((e) => say(`race list refresh failed: ${e.message}`)), 10 * 60 * 1000)
 setInterval(() => scanHeadlines().catch((e) => say(`headline scan failed: ${e.message}`)), 60 * 1000)
 setInterval(publish, 5000)
+nbcSweep()
+setInterval(nbcSweep, NBC_EVERY)
 setInterval(() => sweeps(), 15 * 1000)
 for (let i = 0; i < WORKERS; i++) worker()

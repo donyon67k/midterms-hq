@@ -107,7 +107,7 @@ export default function Gameday({ data, onPick, onPickState, log, watch, chamber
               ? `${called} races already called before this session. New calls will stream in here.`
               : 'No races called yet. Calls stream in here (and as desktop alerts) as the decision desks make them after polls close.'}</div>}
           <div className="dim call-source">
-            HOW RACES ARE CALLED: the HQ call scout uses a strict method and never calls a race unless multiple sources agree on the result. Each call links its sources in the race file. Projections are unofficial until states certify.
+            HOW RACES ARE CALLED: HQ follows the projections of professional decision desks (NBC News, AP) and never calls a race on its own. Each call links its source in the race file. Projections are unofficial until states certify.
           </div>
         </Block>
 
